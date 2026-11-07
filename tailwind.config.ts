@@ -22,9 +22,9 @@ const config: Config = {
         },
       },
       fontFamily: {
-        serif: ["var(--font-cormorant)", "Georgia", "serif"],
-        sans: ["var(--font-jakarta)", "sans-serif"],
-        mono: ["var(--font-jetbrains)", "monospace"],
+        serif: ["'Cormorant Garamond'", "Georgia", "serif"],
+        sans: ["'Plus Jakarta Sans'", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       letterSpacing: {
         widest: "0.2em",
