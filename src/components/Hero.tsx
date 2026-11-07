@@ -1,18 +1,24 @@
 import Image from 'next/image';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
+
 export default function Hero() {
- return <section className="cinema-hero" aria-label="Apresentação Estátua Viva Produções">
-   <div className="cinema-backdrop" aria-hidden="true" />
-   <div className="cinema-grain" aria-hidden="true" />
-   <div className="cinema-layout site-container">
-     <div className="cinema-copy">
-       <p className="cinema-kicker"><span /> PRODUÇÕES ARTÍSTICAS · SÃO PAULO</p>
-       <h1><span>Você</span><span className="cinema-italic">imagina.</span><span>A gente <em>dá vida.</em></span></h1>
-       <p className="cinema-description">Personagens vivos e performances que transformam encontros em histórias inesquecíveis.</p>
-       <div className="cinema-actions"><a href="#briefing" className="cinema-primary">CRIAR MEU EVENTO <ArrowUpRight size={18} /></a><a href="#acervo" className="cinema-secondary">CONHECER O ACERVO <ArrowDown size={16} /></a></div>
-     </div>
-     <div className="cinema-visual"><div className="cinema-frame"><Image src="/brand/artista.webp" alt="Performance em dourado da Estátua Viva Produções" fill priority sizes="(max-width: 767px) 100vw, 50vw" className="object-cover" /></div><span className="cinema-index">01 / A ARTE EM CENA</span><span className="cinema-vertical" aria-hidden="true">ESTÁTUA VIVA PRODUÇÕES</span></div>
-   </div>
-   <div className="cinema-bottom site-container"><span>PERSONAGENS · ARTE · EXPERIÊNCIAS</span><a href="#experiencias">DESCUBRA <ArrowDown size={14} /></a><span>SÃO PAULO / BRASIL</span></div>
- </section>;
+  return <section className="art-hero" aria-label="Estátua Viva Produções">
+    <div className="art-hero-glow" aria-hidden="true" />
+    <div className="art-hero-inner site-container">
+      <div className="art-hero-copy">
+        <p className="art-eyebrow"><span /> ARTE QUE SURPREENDE · DESDE 2005</p>
+        <h1>O instante<br /><em>ganha vida.</em></h1>
+        <p className="art-intro">Estátuas vivas, personagens e performances que transformam seu evento em uma experiência para lembrar.</p>
+        <div className="art-actions"><a href="#acervo" className="art-primary">Explore os personagens <ArrowUpRight size={18} /></a><a href="#briefing" className="art-secondary">Conte seu evento <ArrowUpRight size={17} /></a></div>
+        <div className="art-note"><span>01 — A ARTE DO ENCONTRO</span><span>ESTÁTUA VIVA PRODUÇÕES</span></div>
+      </div>
+      <div className="art-hero-stage">
+        <span className="art-orbit art-orbit-one" aria-hidden="true" /><span className="art-orbit art-orbit-two" aria-hidden="true" />
+        <div className="art-main-image"><Image src="/brand/artista.webp" alt="Artista caracterizado como estátua viva em dourado" fill priority sizes="(max-width: 767px) 85vw, 45vw" className="object-cover" /></div>
+        <div className="art-side-image"><Image src="/brand/pirata.webp" alt="Personagem pirata da Estátua Viva Produções" fill sizes="(max-width: 767px) 26vw, 15vw" className="object-cover object-top" /><span>PERSONAGENS<br />QUE ENCANTAM</span></div>
+        <span className="art-stage-label">O EXTRAORDINÁRIO<br /><em>acontece ao vivo.</em></span>
+      </div>
+    </div>
+    <div className="art-hero-footer site-container"><span>PERFORMANCES · PERSONAGENS · EVENTOS</span><a href="#experiencias">DESLIZE PARA DESCOBRIR <ArrowDownRight size={17} /></a><span>SÃO PAULO / BRASIL</span></div>
+  </section>;
 }
