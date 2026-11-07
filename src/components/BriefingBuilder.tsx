@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Send,
@@ -98,6 +98,11 @@ export default function BriefingBuilder() {
   const [eventCity, setEventCity] = useState<string>('');
   const [guestCount, setGuestCount] = useState<string>('100 a 300 convidados');
   const [notes, setNotes] = useState<string>('');
+  const [missingField, setMissingField] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (step === 3 && missingField) document.getElementById(missingField)?.focus();
+  }, [step, missingField]);
 
   const handleNext = () => {
     if (step < 3) setStep((prev) => prev + 1);
@@ -109,6 +114,14 @@ export default function BriefingBuilder() {
 
   const handleFinalSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const missing = !clientName.trim() ? 'briefing-name' : !eventDate.trim() ? 'briefing-date' : !eventCity.trim() ? 'briefing-city' : null;
+    if (missing) {
+      setMissingField(missing);
+      setStep(3);
+      if (step === 3) document.getElementById(missing)?.focus();
+      return;
+    }
+    setMissingField(null);
 
     const formattedMessage = `*SOLICITAÇÃO DE ORÇAMENTO — ESTÁTUA VIVA PRODUÇÕES*
 
@@ -117,7 +130,7 @@ export default function BriefingBuilder() {
 • *Natureza do Evento:* ${selectedEventType.label}
 • *Estética / Categoria:* ${selectedAesthetic.name}
 • *Data Prevista:* ${eventDate.trim() || 'A definir'}
-• *Cidade / Local:* ${eventCity.trim() || 'São Paulo - SP'}
+• *Cidade / Local:* ${eventCity.trim()}
 • *Porte Estimado:* ${guestCount}
 ${notes.trim() ? `• *Observações Cênicas:* ${notes.trim()}\n` : ''}
 Gostaria de verificar disponibilidade de agenda com a produção artística e obter uma proposta comercial personalizada.`;
@@ -333,13 +346,16 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
                     Detalhes finais para envio
                   </h3>
 
+                  {missingField && <p role="alert" className="mb-4 text-sm text-alabaster">Preencha nome, data e cidade para continuar.</p>}
                   <div className="space-y-4 mb-6">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
+                        <label htmlFor="briefing-name" className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
                           Seu Nome ou Empresa *
                         </label>
                         <input
+                          id="briefing-name"
+                          autoFocus={missingField === 'briefing-name'}
                           type="text"
                           required
                           value={clientName}
@@ -350,10 +366,12 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
                       </div>
 
                       <div>
-                        <label className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
+                        <label htmlFor="briefing-date" className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
                           Data ou Mês Estimado *
                         </label>
                         <input
+                          id="briefing-date"
+                          autoFocus={missingField === 'briefing-date'}
                           type="text"
                           required
                           value={eventDate}
@@ -366,10 +384,12 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
+                        <label htmlFor="briefing-city" className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
                           Cidade / Espaço *
                         </label>
                         <input
+                          id="briefing-city"
+                          autoFocus={missingField === 'briefing-city'}
                           type="text"
                           required
                           value={eventCity}
@@ -504,7 +524,7 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
                     Localidade
                   </span>
                   <span className="text-alabaster font-mono text-[11px] truncate block">
-                    {eventCity.trim() || 'São Paulo - SP'}
+                    {eventCity.trim()}
                   </span>
                 </div>
               </div>
@@ -540,3 +560,4 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
     </section>
   );
 }
+

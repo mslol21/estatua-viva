@@ -24,6 +24,7 @@ export default function CharacterCatalog() {
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [activePhotoIdx, setActivePhotoIdx] = useState<number>(0);
   const [copied, setCopied] = useState<boolean>(false);
+  const [copyError, setCopyError] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'orbit'>('grid');
 
   useEffect(() => {
@@ -62,13 +63,20 @@ export default function CharacterCatalog() {
     setSelectedCharacter(char);
     setActivePhotoIdx(0);
     setCopied(false);
+    setCopyError(false);
   };
 
-  const copyProposalText = (char: Character) => {
+  const copyProposalText = async (char: Character) => {
     const text = `Olá! Gostaria de consultar orçamento e disponibilidade para o personagem "${char.name}" (${char.category}) com a Estátua Viva Produções.`;
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2500);
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopyError(false);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      setCopied(false);
+      setCopyError(true);
+    }
   };
 
   return (
@@ -85,7 +93,7 @@ export default function CharacterCatalog() {
             </h2>
           </div>
           <p className="font-sans text-sm text-stone-warm max-w-md">
-            Passe o mouse para ver indicações cênicas e clique para acessar a ficha técnica completa com fotos em alta resolução.
+            Selecione um personagem para conhecer os detalhes e consultar a disponibilidade.
           </p>
         </div>
 
@@ -97,6 +105,7 @@ export default function CharacterCatalog() {
               return (
                 <button
                   key={cat}
+                  aria-pressed={isSelected}
                   onClick={() => setSelectedCategory(cat)}
                   className={`relative px-4 py-2.5 text-xs font-mono uppercase tracking-[0.14em] transition-colors whitespace-nowrap focus:outline-none ${
                     isSelected ? 'text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
@@ -122,6 +131,7 @@ export default function CharacterCatalog() {
               className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
                 viewMode === 'grid' ? 'bg-champagne-gold text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
               }`}
+              aria-pressed={viewMode === 'grid'}
               aria-label="Visualização em Grade"
             >
               <LayoutGrid size={13} />
@@ -132,6 +142,7 @@ export default function CharacterCatalog() {
               className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
                 viewMode === 'orbit' ? 'bg-champagne-gold text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
               }`}
+              aria-pressed={viewMode === 'orbit'}
               aria-label="Visualização 3D em Órbita"
             >
               <Orbit size={13} />
@@ -209,7 +220,8 @@ export default function CharacterCatalog() {
                         e.stopPropagation();
                         openCharacterModal(character);
                       }}
-                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-obsidian/90 border border-alabaster/20 flex items-center justify-center text-stone-warm hover:text-champagne-gold hover:border-champagne-gold opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 shadow-xl"
+                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-obsidian/90 border border-alabaster/20 flex items-center justify-center text-stone-warm hover:text-champagne-gold hover:border-champagne-gold opacity-100 transition-all duration-300 z-20 shadow-xl"
+                      aria-label={`Ver detalhes de ${character.name}`}
                       title="Abrir ficha técnica completa"
                     >
                       <Eye strokeWidth={1.5} className="w-4 h-4" />
@@ -250,6 +262,7 @@ export default function CharacterCatalog() {
                       <button
                         onClick={() => openCharacterModal(character)}
                         className="p-2.5 border border-alabaster/10 hover:border-champagne-gold text-stone-warm hover:text-champagne-gold text-xs transition-colors"
+                        aria-label={`Ver detalhes de ${character.name}`}
                         title="Ver ficha técnica"
                       >
                         <Eye strokeWidth={1.5} className="w-4 h-4" />
@@ -278,9 +291,10 @@ export default function CharacterCatalog() {
       <Dialog.Root open={!!selectedCharacter} onOpenChange={(open) => !open && setSelectedCharacter(null)}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-obsidian/90 backdrop-blur-md z-50 animate-in fade-in duration-300" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[94vw] max-w-4xl max-h-[92vh] overflow-y-auto bg-charcoal border border-alabaster/20 p-6 sm:p-10 shadow-2xl z-50 focus:outline-none animate-in fade-in zoom-in-95 duration-300">
+          <Dialog.Content data-lenis-prevent className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[94vw] max-w-4xl max-h-[92vh] overflow-y-auto bg-charcoal border border-alabaster/20 p-6 sm:p-10 shadow-2xl z-50 focus:outline-none animate-in fade-in zoom-in-95 duration-300">
             {selectedCharacter && (
               <div>
+                <Dialog.Description className="sr-only">Detalhes e consulta de disponibilidade do personagem selecionado.</Dialog.Description>
                 {/* Header */}
                 <div className="flex items-start justify-between border-b border-alabaster/10 pb-4 mb-6">
                   <div>
@@ -294,7 +308,7 @@ export default function CharacterCatalog() {
                       {selectedCharacter.name}
                     </Dialog.Title>
                   </div>
-                  <Dialog.Close className="p-2 text-stone-warm hover:text-alabaster border border-alabaster/10 hover:border-champagne-gold transition-colors">
+                  <Dialog.Close aria-label="Fechar detalhes" className="p-2 text-stone-warm hover:text-alabaster border border-alabaster/10 hover:border-champagne-gold transition-colors">
                     <X strokeWidth={1.5} className="w-5 h-5" />
                   </Dialog.Close>
                 </div>
@@ -416,6 +430,7 @@ export default function CharacterCatalog() {
                     {copied ? <CheckCheck className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                     <span>{copied ? 'Texto copiado!' : 'Copiar texto para proposta'}</span>
                   </button>
+                  {copyError && <p role="alert" className="text-xs text-alabaster">Não foi possível copiar. Use o botão de orçamento pelo WhatsApp.</p>}
 
                   <a
                     href={`https://wa.me/5511937765250?text=${encodeURIComponent(
@@ -436,3 +451,4 @@ export default function CharacterCatalog() {
     </section>
   );
 }
+

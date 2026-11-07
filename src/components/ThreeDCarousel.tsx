@@ -35,12 +35,19 @@ export default function ThreeDCarousel({
 }: ThreeDCarouselProps) {
   const [isPaused, setIsPaused] = useState(false);
   const count = items.length;
+  const toRgb = (color?: string) => {
+    if (!color || !/^#[0-9a-f]{6}$/i.test(color)) return '223, 189, 124';
+    return [1, 3, 5].map(i => parseInt(color.slice(i, i + 2), 16)).join(', ');
+  };
+  if (!count) return <p className="py-12 text-center text-stone-warm">Nenhum personagem nesta categoria.</p>;
 
   return (
     <div
       className={`threed-carousel-wrapper w-full h-[480px] relative overflow-hidden flex items-center justify-center select-none ${className}`}
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setIsPaused(false); }}
     >
       {/* Ambient background glow */}
       <div
@@ -54,20 +61,22 @@ export default function ThreeDCarousel({
           {
             '--quantity': count,
             '--duration': `${speedSeconds}s`,
-            animationPlayState: isPaused ? 'paused' : 'running',
+            animationPlayState: isPaused || !autoRotate ? 'paused' : 'running',
           } as React.CSSProperties
         }
       >
         {items.map((item, index) => {
           return (
-            <div
+            <button
+              type="button"
+              aria-label={`Ver detalhes de ${item.title || 'personagem'}`}
               key={item.id}
               onClick={() => onSelectItem?.(item.id)}
               className={`threed-card group ${onSelectItem ? 'cursor-pointer' : ''}`}
               style={
                 {
                   '--index': index,
-                  '--color-card': item.color?.replace('#', '') || '223, 189, 124',
+                  '--color-card': toRgb(item.color),
                 } as React.CSSProperties
               }
             >
@@ -95,15 +104,16 @@ export default function ThreeDCarousel({
                   </div>
                 )}
               </div>
-            </div>
+            </button>
           );
         })}
       </div>
 
       {/* Floating prompt */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 font-mono text-[10px] uppercase tracking-widest text-stone-warm bg-charcoal/80 px-3 py-1 border border-alabaster/10 rounded-full backdrop-blur-md">
-        {isPaused ? 'Pausado • Clique para ver' : 'Passe o mouse para pausar a órbita'}
+        {isPaused || !autoRotate ? 'Pausado • Selecione um personagem' : 'Selecione um personagem para ver detalhes'}
       </div>
     </div>
   );
 }
+
