@@ -10,14 +10,6 @@ export default function Footer() {
 
   return (
     <footer className="site-footer relative border-t border-alabaster/10 pt-20 pb-12 overflow-hidden">
-      {/* Huge subtle typography watermark in background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -bottom-10 left-1/2 -translate-x-1/2 text-center select-none opacity-[0.03] whitespace-nowrap font-serif text-[18vw] leading-none text-alabaster font-bold"
-      >
-        ESTÁTUA VIVA
-      </div>
-
       <div className="site-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-alabaster/10">
           {/* Brand Manifesto */}

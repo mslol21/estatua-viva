@@ -640,7 +640,7 @@ body {
   background-color: #061318;
   background-image: linear-gradient(rgba(3, 12, 16, .30), rgba(3, 12, 16, .46)), url('/brand/textura-marmore.webp');
   background-position: center top;
-  background-size: auto, min(100%, 1450px) auto;
+  background-size: auto, 100% auto;
   background-repeat: repeat, repeat-y;
 }
 .site-surface { background: transparent; }
@@ -671,7 +671,7 @@ body {
 .bio-surface { background: transparent; }
 .bio-surface a > div { border-radius: 16px; border-color: var(--ev-border); }
 @media (max-width: 767px) {
-  body { background-size: auto, auto 1050px; }
+  body { background-size: auto, 100% auto; }
   :root { --ev-radius: 18px; }
   .site-surface #acervo .spotlight-card > div:first-child { border-radius: 17px 17px 0 0; }
 }
