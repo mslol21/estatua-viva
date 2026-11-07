@@ -99,7 +99,7 @@ export const CHARACTERS: Character[] = [
     imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Prata-Robo-Executivo-768x898.jpg',
     gallery: [
       'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Prata-Robo-Executivo-768x898.jpg',
-      'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=85',
+      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-viva-Manequim-Robo-Feira-1-768x509.jpg',
     ],
     caseBadge: 'Case Oficial Caterpillar',
     specs: {
@@ -140,9 +140,9 @@ export const CHARACTERS: Character[] = [
     description: 'Mais do que uma estátua viva: uma performance que alterna entre a imobilidade de pedestal e a quebra cômica em passos cambaleantes, conquistando adultos e crianças.',
     idealFor: 'Festas corporativas descontraídas, ativações em cinemas, aniversários e festas de fim de ano.',
     details: ['Figurino fidedigno com couro, fivelas e adereços marítimos', 'Trejeitos e sotaque inspirados na franquia cinematográfica', 'Altíssima geração de selfies e engajamento orgânico'],
-    imageUrl: 'https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: '/brand/pirata.webp',
     gallery: [
-      'https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=85',
+      '/brand/pirata.webp',
     ],
     highlightText: 'Recorde de engajamento e fotos nas redes',
     specs: {
@@ -182,7 +182,7 @@ export const CHARACTERS: Character[] = [
     imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Fernando-Pessoa-768x768.jpg',
     gallery: [
       'https://estatuaviva.com.br/wp-content/uploads/2022/05/Fernando-Pessoa-768x768.jpg',
-      'https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?auto=format&fit=crop&w=1200&q=85',
+      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Carlos-Drummond-768x509.jpg',
     ],
     caseBadge: 'Presença Museu do Ipiranga',
     specs: {
@@ -201,9 +201,9 @@ export const CHARACTERS: Character[] = [
     description: 'Desenvolvimento cenográfico do zero: a partir das diretrizes de branding da sua empresa, criamos o figurino escultural, texturas e maquiagem exclusiva com suas cores.',
     idealFor: 'Lançamentos de produtos, estandes em feiras internacionais e ações de Live Marketing.',
     details: ['Cases Henkel/Loctite, Convenção Acelera DPA e Staedtler', 'Fidelidade de pantones corporativos e logotipo integrado', 'Consultoria e ensaios orientados aos objetivos de marketing'],
-    imageUrl: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/henkel-loctite-boneco-2.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=85',
+      'https://estatuaviva.com.br/wp-content/uploads/2025/07/henkel-loctite-boneco-2.jpg',
     ],
     caseBadge: 'Case Loctite & DPA',
     specs: {
