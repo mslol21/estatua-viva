@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-alabaster relative">
+    <main className="site-surface min-h-screen text-alabaster relative">
       <Navbar />
       <div id="conteudo" tabIndex={-1}><Hero /></div>
       <ClientMarquee />
@@ -23,4 +23,5 @@ export default function Home() {
     </main>
   );
 }
+
 

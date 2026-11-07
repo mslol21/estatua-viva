@@ -63,7 +63,7 @@ const BIO_LINKS = [
 
 export default function LinksPage() {
   return (
-    <main id="conteudo" tabIndex={-1} className="min-h-screen bg-obsidian text-alabaster py-16 px-4 sm:px-6 relative flex flex-col justify-between items-center overflow-hidden">
+    <main id="conteudo" tabIndex={-1} className="site-surface bio-surface min-h-screen text-alabaster py-16 px-4 sm:px-6 relative flex flex-col justify-between items-center overflow-hidden">
       {/* Background Lighting */}
       <div 
         aria-hidden="true" 
@@ -168,4 +168,5 @@ export default function LinksPage() {
     </main>
   );
 }
+
 

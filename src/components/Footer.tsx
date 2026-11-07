@@ -9,7 +9,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative bg-obsidian border-t border-alabaster/10 pt-20 pb-12 overflow-hidden">
+    <footer className="site-footer relative border-t border-alabaster/10 pt-20 pb-12 overflow-hidden">
       {/* Huge subtle typography watermark in background */}
       <div
         aria-hidden="true"
@@ -156,4 +156,5 @@ export default function Footer() {
     </footer>
   );
 }
+
 

@@ -291,7 +291,7 @@ export default function CharacterCatalog() {
       <Dialog.Root open={!!selectedCharacter} onOpenChange={(open) => !open && setSelectedCharacter(null)}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-obsidian/90 backdrop-blur-md z-50 animate-in fade-in duration-300" />
-          <Dialog.Content data-lenis-prevent className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[94vw] max-w-4xl max-h-[92vh] overflow-y-auto bg-charcoal border border-alabaster/20 p-6 sm:p-10 shadow-2xl z-50 focus:outline-none animate-in fade-in zoom-in-95 duration-300">
+          <Dialog.Content data-lenis-prevent className="character-dialog fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[94vw] max-w-4xl max-h-[92vh] overflow-y-auto bg-charcoal border border-alabaster/20 p-6 sm:p-10 shadow-2xl z-50 focus:outline-none animate-in fade-in zoom-in-95 duration-300">
             {selectedCharacter && (
               <div>
                 <Dialog.Description className="sr-only">Detalhes e consulta de disponibilidade do personagem selecionado.</Dialog.Description>

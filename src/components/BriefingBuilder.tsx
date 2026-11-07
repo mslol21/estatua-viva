@@ -203,7 +203,7 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
         {/* Main Split: Interactive Form Steps vs Live Ticket Receipt */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Form View (Steps) */}
-          <div className="lg:col-span-7 bg-obsidian border border-alabaster/10 p-6 sm:p-8 shadow-2xl min-h-[460px] flex flex-col justify-between">
+          <div className="briefing-panel lg:col-span-7 bg-obsidian border border-alabaster/10 p-6 sm:p-8 shadow-2xl min-h-[460px] flex flex-col justify-between">
             <AnimatePresence mode="wait">
               {step === 1 && (
                 <motion.div
@@ -471,7 +471,7 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
           </div>
 
           {/* Right Ticket Preview (Live Receipt) */}
-          <div className="lg:col-span-5 bg-charcoal border border-alabaster/15 p-6 sm:p-8 relative">
+          <div className="briefing-panel lg:col-span-5 bg-charcoal border border-alabaster/15 p-6 sm:p-8 relative">
             {/* Theatrical ticket badge */}
             <div className="flex items-center justify-between border-b border-alabaster/10 pb-4 mb-5">
               <div className="flex items-center gap-2.5">
