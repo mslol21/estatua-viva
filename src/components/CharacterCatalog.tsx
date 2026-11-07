@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, MouseEvent } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { CHARACTERS, Character } from '@/data/portfolioData';
@@ -22,6 +22,20 @@ export default function CharacterCatalog() {
   const reducedMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('Todos');
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
+  useEffect(() => {
+    const selectFromHash = () => {
+      const categoryByHash: Record<string, CategoryType> = {
+        '#estilo-branca': 'Mármore Branco', '#estilo-prata': 'Prata Industrial',
+        '#estilo-ouro': 'Ouro Imperial', '#estilo-diversas': 'Temáticos & Cosplay',
+      };
+      const category = categoryByHash[window.location.hash];
+      if (category) { setSelectedCategory(category); document.getElementById('acervo')?.scrollIntoView({ behavior: 'auto' }); }
+    };
+    selectFromHash();
+    window.addEventListener('hashchange', selectFromHash);
+    return () => window.removeEventListener('hashchange', selectFromHash);
+  }, []);
+
 
   const filteredCharacters = selectedCategory === 'Todos'
     ? CHARACTERS
@@ -104,6 +118,7 @@ export default function CharacterCatalog() {
                   <div className={`relative w-full overflow-hidden bg-charcoal ${character.imageUrl ? 'aspect-square' : 'aspect-[5/3] catalog-concept'}`}>
                     {character.imageUrl ? <Image
                       src={character.imageUrl}
+                      unoptimized
                       alt={character.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -204,6 +219,7 @@ export default function CharacterCatalog() {
                   <div className="relative aspect-[3/4] w-full border border-alabaster/10 overflow-hidden bg-obsidian">
                     {selectedCharacter.imageUrl ? <Image
                       src={selectedCharacter.imageUrl}
+                      unoptimized
                       alt={selectedCharacter.name}
                       fill
                       sizes="(max-width: 768px) 85vw, 350px"
