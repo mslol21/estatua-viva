@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useRef, MouseEvent } from 'react';
+import { useState, MouseEvent } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CHARACTERS, Character } from '@/data/portfolioData';
-import { ArrowUpRight, Check, Eye, X } from 'lucide-react';
+import { ArrowUpRight, Check, Eye, X, Clock, Sparkles, UserCheck, Shield, ChevronLeft, ChevronRight, Copy, CheckCheck } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 
 const CATEGORIES = [
@@ -21,6 +21,8 @@ type CategoryType = typeof CATEGORIES[number];
 export default function CharacterCatalog() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('Todos');
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
+  const [activePhotoIdx, setActivePhotoIdx] = useState<number>(0);
+  const [copied, setCopied] = useState<boolean>(false);
 
   const filteredCharacters = selectedCategory === 'Todos'
     ? CHARACTERS
@@ -33,6 +35,19 @@ export default function CharacterCatalog() {
     const y = e.clientY - rect.top;
     card.style.setProperty('--mouse-x', `${x}px`);
     card.style.setProperty('--mouse-y', `${y}px`);
+  };
+
+  const openCharacterModal = (char: Character) => {
+    setSelectedCharacter(char);
+    setActivePhotoIdx(0);
+    setCopied(false);
+  };
+
+  const copyProposalText = (char: Character) => {
+    const text = `Olá! Gostaria de consultar orçamento e disponibilidade para o personagem "${char.name}" (${char.category}) com a Estátua Viva Produções.`;
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2500);
   };
 
   return (
@@ -49,7 +64,7 @@ export default function CharacterCatalog() {
             </h2>
           </div>
           <p className="font-sans text-sm text-stone-warm max-w-md">
-            Selecione uma estética abaixo ou converse diretamente com a nossa produção cenográfica para figurinos sob medida.
+            Passe o mouse para ver indicações cênicas e clique para acessar a ficha técnica completa com fotos em alta resolução.
           </p>
         </div>
 
@@ -61,7 +76,7 @@ export default function CharacterCatalog() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`relative px-4 py-2 text-xs font-mono uppercase tracking-[0.14em] transition-colors whitespace-nowrap ${
+                className={`relative px-4 py-2.5 text-xs font-mono uppercase tracking-[0.14em] transition-colors whitespace-nowrap focus:outline-none ${
                   isSelected ? 'text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
                 }`}
               >
@@ -78,9 +93,9 @@ export default function CharacterCatalog() {
           })}
         </div>
 
-        {/* Character Bento Grid with Asymmetric Ratio */}
+        {/* Character Bento Grid with Asymmetric Ratio & Fluid Framer Motion */}
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <AnimatePresence>
+          <AnimatePresence mode="popLayout">
             {filteredCharacters.map((character, idx) => {
               const whatsappLink = `https://wa.me/5511937765250?text=${encodeURIComponent(
                 `Olá! Vi o personagem ${character.name} no site da Estátua Viva Produções e gostaria de consultar disponibilidade e orçamento para meu evento.`
@@ -90,27 +105,33 @@ export default function CharacterCatalog() {
                 <motion.div
                   key={character.id}
                   layout
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  exit={{ opacity: 0, scale: 0.94 }}
+                  transition={{ duration: 0.45, delay: idx * 0.04 }}
                   onMouseMove={handleMouseMove}
-                  className="spotlight-card group bg-obsidian border border-alabaster/10 hover:border-champagne-gold/50 flex flex-col justify-between transition-colors duration-500 overflow-hidden"
+                  className="spotlight-card group bg-obsidian border border-alabaster/10 hover:border-champagne-gold/60 flex flex-col justify-between transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-champagne-gold/5"
                 >
                   {/* Image Container with Rest vs Hover Contrast */}
-                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-charcoal">
+                  <div
+                    onClick={() => openCharacterModal(character)}
+                    className="relative aspect-[3/4] w-full overflow-hidden bg-charcoal cursor-pointer"
+                  >
                     <Image
                       src={character.imageUrl}
                       alt={character.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover object-center grayscale-[0.35] contrast-[1.1] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                      className="object-cover object-center grayscale-[0.3] contrast-[1.08] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent opacity-80" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent opacity-85 group-hover:opacity-70 transition-opacity" />
 
-                    {/* Category or Case Badge */}
+                    {/* Category or Case Badge with Color Accent */}
                     <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-20">
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-alabaster bg-obsidian/90 px-2.5 py-1 border border-alabaster/10 backdrop-blur-md">
+                      <span
+                        className="font-mono text-[9px] uppercase tracking-widest text-alabaster bg-obsidian/90 px-2.5 py-1 border backdrop-blur-md"
+                        style={{ borderColor: `${character.colorAccent}50` }}
+                      >
                         {character.category}
                       </span>
                       {character.caseBadge && (
@@ -122,9 +143,12 @@ export default function CharacterCatalog() {
 
                     {/* Quick View Button on Image */}
                     <button
-                      onClick={() => setSelectedCharacter(character)}
-                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-obsidian/80 border border-alabaster/10 flex items-center justify-center text-stone-warm hover:text-champagne-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
-                      title="Ver ficha completa"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openCharacterModal(character);
+                      }}
+                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-obsidian/90 border border-alabaster/20 flex items-center justify-center text-stone-warm hover:text-champagne-gold hover:border-champagne-gold opacity-0 group-hover:opacity-100 transition-all duration-300 z-20 shadow-xl"
+                      title="Abrir ficha técnica completa"
                     >
                       <Eye strokeWidth={1.5} className="w-4 h-4" />
                     </button>
@@ -134,6 +158,11 @@ export default function CharacterCatalog() {
                       <h3 className="font-serif text-xl sm:text-2xl text-alabaster font-normal leading-tight group-hover:text-champagne-gold transition-colors">
                         {character.name}
                       </h3>
+                      {character.highlightText && (
+                        <span className="font-mono text-[9px] uppercase tracking-widest text-champagne-gold/90 mt-1 block">
+                          {character.highlightText}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -148,21 +177,29 @@ export default function CharacterCatalog() {
                         <span className="font-mono text-[9px] uppercase tracking-widest text-stone-warm/80 block mb-1">
                           INDICAÇÃO CÊNICA:
                         </span>
-                        <p className="font-sans text-xs text-alabaster/80 line-clamp-1">
+                        <p className="font-sans text-xs text-alabaster/90 line-clamp-1">
                           {character.idealFor}
                         </p>
                       </div>
                     </div>
 
-                    {/* 1-Click WhatsApp Budget Action */}
-                    <div className="pt-4 mt-4 border-t border-alabaster/10">
+                    {/* Action Bar */}
+                    <div className="pt-4 mt-4 border-t border-alabaster/10 flex items-center gap-2">
+                      <button
+                        onClick={() => openCharacterModal(character)}
+                        className="p-2.5 border border-alabaster/10 hover:border-champagne-gold text-stone-warm hover:text-champagne-gold text-xs transition-colors"
+                        title="Ver ficha técnica"
+                      >
+                        <Eye strokeWidth={1.5} className="w-4 h-4" />
+                      </button>
+
                       <a
                         href={whatsappLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full inline-flex items-center justify-between px-3.5 py-2.5 border border-alabaster/10 group-hover:border-champagne-gold group-hover:bg-champagne-gold text-stone-warm group-hover:text-obsidian text-xs font-mono uppercase tracking-[0.12em] font-semibold transition-all duration-300"
+                        className="flex-grow inline-flex items-center justify-between px-3.5 py-2.5 border border-alabaster/10 group-hover:border-champagne-gold group-hover:bg-champagne-gold text-stone-warm group-hover:text-obsidian text-xs font-mono uppercase tracking-[0.12em] font-semibold transition-all duration-300"
                       >
-                        <span>Orçar este personagem</span>
+                        <span>Orçar personagem</span>
                         <ArrowUpRight strokeWidth={1.5} className="w-3.5 h-3.5" />
                       </a>
                     </div>
@@ -174,41 +211,74 @@ export default function CharacterCatalog() {
         </motion.div>
       </div>
 
-      {/* Radix Dialog for Complete Character Dossier */}
+      {/* Radix Dialog for Immersive Character Dossier */}
       <Dialog.Root open={!!selectedCharacter} onOpenChange={(open) => !open && setSelectedCharacter(null)}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-obsidian/85 backdrop-blur-md z-50 animate-in fade-in duration-300" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-3xl max-h-[90vh] overflow-y-auto bg-charcoal border border-alabaster/20 p-6 sm:p-10 shadow-2xl z-50 focus:outline-none animate-in fade-in zoom-in-95 duration-300">
+          <Dialog.Overlay className="fixed inset-0 bg-obsidian/90 backdrop-blur-md z-50 animate-in fade-in duration-300" />
+          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[94vw] max-w-4xl max-h-[92vh] overflow-y-auto bg-charcoal border border-alabaster/20 p-6 sm:p-10 shadow-2xl z-50 focus:outline-none animate-in fade-in zoom-in-95 duration-300">
             {selectedCharacter && (
               <div>
+                {/* Header */}
                 <div className="flex items-start justify-between border-b border-alabaster/10 pb-4 mb-6">
                   <div>
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-champagne-gold">
-                      DOSSIÊ TÉCNICO • {selectedCharacter.category}
-                    </span>
-                    <Dialog.Title className="font-serif text-3xl sm:text-4xl text-alabaster font-normal mt-1">
+                    <div className="flex items-center gap-2.5">
+                      <span className="w-2 h-2 rounded-full" style={{ backgroundColor: selectedCharacter.colorAccent }} />
+                      <span className="font-mono text-[10px] uppercase tracking-widest text-champagne-gold">
+                        DOSSIÊ TÉCNICO • {selectedCharacter.category}
+                      </span>
+                    </div>
+                    <Dialog.Title className="font-serif text-3xl sm:text-4xl text-alabaster font-normal mt-1.5">
                       {selectedCharacter.name}
                     </Dialog.Title>
                   </div>
-                  <Dialog.Close className="p-2 text-stone-warm hover:text-alabaster border border-alabaster/10 hover:border-champagne-gold">
+                  <Dialog.Close className="p-2 text-stone-warm hover:text-alabaster border border-alabaster/10 hover:border-champagne-gold transition-colors">
                     <X strokeWidth={1.5} className="w-5 h-5" />
                   </Dialog.Close>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-8">
-                  <div className="relative aspect-[3/4] w-full border border-alabaster/10 overflow-hidden bg-obsidian">
-                    <Image
-                      src={selectedCharacter.imageUrl}
-                      alt={selectedCharacter.name}
-                      fill
-                      className="object-cover object-center"
-                    />
+                {/* Main Split: Photo Gallery & Technical Dossier */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-8">
+                  {/* Photo Gallery with Thumbnail switcher */}
+                  <div className="lg:col-span-5 flex flex-col gap-3">
+                    <div className="relative aspect-[3/4] w-full border border-alabaster/10 overflow-hidden bg-obsidian">
+                      <Image
+                        src={selectedCharacter.gallery[activePhotoIdx] || selectedCharacter.imageUrl}
+                        alt={selectedCharacter.name}
+                        fill
+                        className="object-cover object-center transition-all duration-500"
+                      />
+                    </div>
+
+                    {/* Thumbnail strip */}
+                    {selectedCharacter.gallery.length > 1 && (
+                      <div className="flex items-center gap-2">
+                        {selectedCharacter.gallery.map((photo, pIdx) => (
+                          <button
+                            key={pIdx}
+                            onClick={() => setActivePhotoIdx(pIdx)}
+                            className={`relative w-16 h-16 border overflow-hidden transition-all ${
+                              activePhotoIdx === pIdx
+                                ? 'border-champagne-gold scale-105'
+                                : 'border-alabaster/10 opacity-60 hover:opacity-100'
+                            }`}
+                          >
+                            <Image
+                              src={photo}
+                              alt={`${selectedCharacter.name} foto ${pIdx + 1}`}
+                              fill
+                              className="object-cover"
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
-                  <div className="space-y-4">
+                  {/* Technical Dossier Content */}
+                  <div className="lg:col-span-7 space-y-6">
                     <div>
-                      <h4 className="font-mono text-xs uppercase tracking-widest text-stone-warm mb-1">
-                        CONCEITO ARTÍSTICO
+                      <h4 className="font-mono text-xs uppercase tracking-widest text-champagne-gold mb-1.5">
+                        CONCEITO ARTÍSTICO & DRAMATURGIA
                       </h4>
                       <p className="font-sans text-sm text-alabaster leading-relaxed">
                         {selectedCharacter.description}
@@ -216,21 +286,55 @@ export default function CharacterCatalog() {
                     </div>
 
                     <div>
-                      <h4 className="font-mono text-xs uppercase tracking-widest text-stone-warm mb-1">
-                        IDEAL PARA
+                      <h4 className="font-mono text-xs uppercase tracking-widest text-champagne-gold mb-1.5">
+                        INDICAÇÃO PARA O EVENTO
                       </h4>
-                      <p className="font-sans text-sm text-champagne-gold leading-relaxed">
+                      <p className="font-sans text-sm text-stone-warm leading-relaxed">
                         {selectedCharacter.idealFor}
                       </p>
                     </div>
 
+                    {/* Technical Specs Cards */}
+                    <div>
+                      <h4 className="font-mono text-xs uppercase tracking-widest text-champagne-gold mb-3">
+                        FICHA TÉCNICA DE PRODUÇÃO
+                      </h4>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-sans text-xs">
+                        <div className="p-3 bg-obsidian border border-alabaster/10">
+                          <span className="font-mono text-[10px] text-stone-warm uppercase tracking-widest block mb-1">
+                            Duração da Performance
+                          </span>
+                          <span className="text-alabaster font-medium">{selectedCharacter.specs.duration}</span>
+                        </div>
+                        <div className="p-3 bg-obsidian border border-alabaster/10">
+                          <span className="font-mono text-[10px] text-stone-warm uppercase tracking-widest block mb-1">
+                            Tempo de Caracterização
+                          </span>
+                          <span className="text-alabaster font-medium">{selectedCharacter.specs.prepTime}</span>
+                        </div>
+                        <div className="p-3 bg-obsidian border border-alabaster/10">
+                          <span className="font-mono text-[10px] text-stone-warm uppercase tracking-widest block mb-1">
+                            Maquiagem & Pigmento
+                          </span>
+                          <span className="text-alabaster font-medium">{selectedCharacter.specs.makeup}</span>
+                        </div>
+                        <div className="p-3 bg-obsidian border border-alabaster/10">
+                          <span className="font-mono text-[10px] text-stone-warm uppercase tracking-widest block mb-1">
+                            Dinâmica de Interação
+                          </span>
+                          <span className="text-alabaster font-medium">{selectedCharacter.specs.interaction}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Highlights List */}
                     <div>
                       <h4 className="font-mono text-xs uppercase tracking-widest text-stone-warm mb-2">
-                        ESPECIFICAÇÕES CÊNICAS
+                        DIFERENCIAIS ARTÍSTICOS
                       </h4>
                       <ul className="space-y-2">
                         {selectedCharacter.details.map((detail, i) => (
-                          <li key={i} className="flex items-start gap-2 text-xs font-sans text-stone-warm">
+                          <li key={i} className="flex items-start gap-2.5 text-xs font-sans text-stone-warm">
                             <Check strokeWidth={1.5} className="w-4 h-4 text-champagne-gold shrink-0 mt-0.5" />
                             <span>{detail}</span>
                           </li>
@@ -240,17 +344,23 @@ export default function CharacterCatalog() {
                   </div>
                 </div>
 
-                <div className="border-t border-alabaster/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-                  <span className="font-mono text-[10px] uppercase text-stone-warm">
-                    Disponibilidade sujeita a agenda prévia de elenco
-                  </span>
+                {/* Footer Modal Actions */}
+                <div className="border-t border-alabaster/10 pt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
+                  <button
+                    onClick={() => copyProposalText(selectedCharacter)}
+                    className="inline-flex items-center justify-center gap-2 px-4 py-3 border border-alabaster/15 hover:border-champagne-gold text-stone-warm hover:text-alabaster text-xs font-mono uppercase tracking-[0.12em] transition-colors"
+                  >
+                    {copied ? <CheckCheck className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
+                    <span>{copied ? 'Texto copiado!' : 'Copiar texto para proposta'}</span>
+                  </button>
+
                   <a
                     href={`https://wa.me/5511937765250?text=${encodeURIComponent(
-                      `Olá! Gostaria de consultar orçamento e datas para o personagem ${selectedCharacter.name} com a Estátua Viva Produções.`
+                      `Olá! Gostaria de consultar orçamento e datas para o personagem ${selectedCharacter.name} (${selectedCharacter.category}) com a Estátua Viva Produções.`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-8 py-3.5 bg-champagne-gold hover:bg-champagne-hover text-obsidian text-xs font-mono uppercase tracking-[0.14em] font-semibold text-center transition-colors"
+                    className="px-8 py-3.5 bg-champagne-gold hover:bg-champagne-hover text-obsidian text-xs font-mono uppercase tracking-[0.14em] font-semibold text-center transition-colors shadow-lg shadow-champagne-gold/15"
                   >
                     Consultar Data via WhatsApp
                   </a>

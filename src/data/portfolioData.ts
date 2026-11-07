@@ -7,8 +7,16 @@ export interface Character {
   idealFor: string;
   details: string[];
   imageUrl: string;
+  gallery: string[];
   highlightText?: string;
   caseBadge?: string;
+  colorAccent: string;
+  specs: {
+    duration: string;
+    prepTime: string;
+    makeup: string;
+    interaction: string;
+  };
 }
 
 export const CHARACTERS: Character[] = [
@@ -16,88 +24,175 @@ export const CHARACTERS: Character[] = [
     id: 'deusa-grega-ouro',
     name: 'Deusa Grega & Clássicos em Ouro',
     category: 'Ouro Imperial',
+    colorAccent: '#C5A059',
     tagline: 'A magnificência da mitologia esculpida em pátina dourada e presença nobre.',
     description: 'Com pintura corporal metálica em tom ouro nobre e figurino drapeado clássico de alta costura, esta intervenção confere imponência e atmosfera mítica imediata.',
     idealFor: 'Casamentos luxuosos, recepções de gala, premiações corporativas e formaturas.',
     details: ['Pintura atóxica metálica de alta aderência', 'Posturas e gestos estatuários de precisão milimétrica', 'Interação solene com convidados para fotografias'],
     imageUrl: 'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85',
+    ],
     highlightText: 'Mais requisitada em eventos sociais de luxo',
+    specs: {
+      duration: 'Entradas de 45 a 60 min com intervalos',
+      prepTime: '2h de preparação em camarim',
+      makeup: 'Pintura metálica atóxica de alta fixação',
+      interaction: 'Recepção solene e poses fotográficas',
+    },
   },
   {
     id: 'deusa-espelho-anjos-marmore',
     name: 'Deusa do Espelho & Anjos em Mármore',
     category: 'Mármore Branco',
+    colorAccent: '#F4F1EA',
     tagline: 'Textura mineral de mármore de Carrara com pureza escultural estonteante.',
     description: 'Efeito textural de pedra cinzelada com acabamento acetinado alabastro. O contraste entre os reflexos do espelho e a serenidade do anjo barroco cria momentos de pura poesia visual.',
     idealFor: 'Cerimônias de casamento, bodas, jantares intimistas e bienais de arte.',
     details: ['Efeito craquelado e marmorizado artesanal', 'Asas anatômicas e adereços de inspiração renascentista', 'Iluminação cênica integrada opcional'],
     imageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=85',
+    ],
     highlightText: 'Impacto visual etéreo e atemporal',
+    specs: {
+      duration: 'Ciclos de 45 min com repouso',
+      prepTime: '2h30 para marmorização cênica',
+      makeup: 'Pigmento mineral branco e pó de mármore',
+      interaction: 'Gestual lento, reflexivo e etéreo',
+    },
   },
   {
     id: 'operario-executivo-prata',
     name: 'Operário & Executivo Metálico',
     category: 'Prata Industrial',
+    colorAccent: '#94A3B8',
     tagline: 'Estética futurista e industrial com acabamento cromado reluzente.',
     description: 'Desenvolvido com maestria cenográfica para simbolizar precisão, tecnologia e força do trabalho. O reflexo metálico prateado dialoga com estandes modernos de alta tecnologia.',
     idealFor: 'Feiras industriais, congressos de tecnologia, convenções de vendas e logística.',
     details: ['Case de sucesso oficial Caterpillar 70 Anos', 'Figurino customizável com ferramentas cenográficas cromadas', 'Atuação de alto fluxo e retenção em estandes'],
     imageUrl: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85',
+    ],
     caseBadge: 'Case Oficial Caterpillar',
+    specs: {
+      duration: 'Atuação de pico em horários nobres de feira',
+      prepTime: '1h45 para cromagem artística',
+      makeup: 'Base prateada atóxica de alta durabilidade',
+      interaction: 'Retenção e atração de público para estande',
+    },
   },
   {
     id: 'catrina-miguelito',
     name: 'Catrina & Miguelito (Día de los Muertos)',
     category: 'Temáticos & Cosplay',
+    colorAccent: '#E11D48',
     tagline: 'Exuberância artística folclórica, coroas de flores e riqueza de adereços.',
     description: 'A reverenciada tradição mexicana ganha vida através de figurinos bordados, rendas finas e maquiagem facial artística de nível cinematográfico premiado.',
     idealFor: 'Festas temáticas, eventos de Halloween/Día de los Muertos, festivais culturais e lançamentos.',
     details: ['Maquiagem artística 3D em degradê', 'Acessórios barrocos e flores hiper-realistas', 'Performance magnética com elegância e mistério'],
     imageUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=85',
+    ],
     highlightText: 'Maquiagem artística cinematográfica',
+    specs: {
+      duration: 'Ciclos de 50 min de interação imersiva',
+      prepTime: '2h30 com maquiador visagista',
+      makeup: 'Pintura facial 3D resistente ao calor',
+      interaction: 'Mistério, elegância e selfies com o público',
+    },
   },
   {
     id: 'capitao-jack-sparrow',
     name: 'Capitão Jack Sparrow Interativo',
     category: 'Temáticos & Cosplay',
+    colorAccent: '#D97706',
     tagline: 'Fidelidade absoluta aos trejeitos, voz e gingado do icônico pirata dos cinemas.',
     description: 'Mais do que uma estátua viva: uma performance que alterna entre a imobilidade de pedestal e a quebra cômica em passos cambaleantes, conquistando adultos e crianças.',
     idealFor: 'Festas corporativas descontraídas, ativações em cinemas, aniversários e festas de fim de ano.',
     details: ['Figurino fidedigno com couro, fivelas e adereços marítimos', 'Trejeitos e sotaque inspirados na franquia cinematográfica', 'Altíssima geração de selfies e engajamento orgânico'],
     imageUrl: 'https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=85',
+      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=85',
+    ],
     highlightText: 'Recorde de engajamento e fotos nas redes',
+    specs: {
+      duration: 'Atuação contínua e quebras cômicas',
+      prepTime: '1h30 para caracterização e peruca',
+      makeup: 'Caracterização facial de cinema',
+      interaction: 'Humor, sotaque pirata e interação direta',
+    },
   },
   {
     id: 'mimica-charles-chaplin',
     name: 'Arte da Mímica & Charles Chaplin',
     category: 'Temáticos & Cosplay',
+    colorAccent: '#A1A1AA',
     tagline: 'A poesia silenciosa da Belle Époque e do cinema mudo que emociona gerações.',
     description: 'Munido de bengala, cartola e sapato largo, o eterno Vagabundo interage de forma sutil, cordial e profundamente poética, desarmando o público com gestos gentis.',
     idealFor: 'Recepções de teatros, premiações literárias, festivais de cinema e eventos corporativos.',
     details: ['Gestual clássico da mímica francesa e comédia física', 'Interação elegante sem uso da palavra falada', 'Ideal para quebra de gelo no acolhimento de convidados'],
     imageUrl: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=85',
+    ],
+    specs: {
+      duration: 'Recepção de 1h30 a 2h no acolhimento',
+      prepTime: '1h15 para maquiagem monocromática',
+      makeup: 'Maquiagem branca e olhos marcados clássicos',
+      interaction: 'Gentileza, mímica poética e flores de pano',
+    },
   },
   {
     id: 'personagens-historicos',
     name: 'Personagens Históricos & Literatura',
     category: 'Projetos Sob Medida (B2B)',
+    colorAccent: '#854D0E',
     tagline: 'Santos Dumont, Drummond de Andrade, Fernando Pessoa e vultos da nossa história.',
     description: 'Recriações com rigor de pesquisa iconográfica histórica. Os personagens parecem ter acabado de descer dos monumentos das praças para conversar com a audiência.',
     idealFor: 'Museus, feiras literárias, bienais, universidades, inaugurações de centros culturais.',
     details: ['Apresentações já realizadas no Museu do Ipiranga e Bienal do Livro', 'Acessórios de época autênticos (óculos, canetas bico de pena, monóculos)', 'Textos e declamações estatuárias adaptáveis'],
     imageUrl: 'https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?auto=format&fit=crop&w=1200&q=85',
+    ],
     caseBadge: 'Presença Museu do Ipiranga',
+    specs: {
+      duration: 'Entradas com textos e estátua cênica',
+      prepTime: '2h de visagismo de época',
+      makeup: 'Envelhecimento cênico e bronze estatuário',
+      interaction: 'Declamações poéticas e poses de pedestal',
+    },
   },
   {
     id: 'mascote-produto-custom',
     name: 'Mascote & Produto Vivo Sob Medida',
     category: 'Projetos Sob Medida (B2B)',
+    colorAccent: '#0D9488',
     tagline: 'O tubo de cola, a embalagem ou a mascote da sua marca transformados em arte viva.',
     description: 'Desenvolvimento cenográfico do zero: a partir das diretrizes de branding da sua empresa, criamos o figurino escultural, texturas e maquiagem exclusiva com suas cores.',
     idealFor: 'Lançamentos de produtos, estandes em feiras internacionais e ações de Live Marketing.',
     details: ['Cases Henkel/Loctite, Convenção Acelera DPA e Staedtler', 'Fidelidade de pantones corporativos e logotipo integrado', 'Consultoria e ensaios orientados aos objetivos de marketing'],
     imageUrl: 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=85',
+    gallery: [
+      'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=85',
+    ],
     caseBadge: 'Case Loctite & DPA',
+    specs: {
+      duration: 'Alinhada à programação do evento / lançamento',
+      prepTime: 'Desenvolvimento prévio em atelier de 15 a 30 dias',
+      makeup: 'Personalizada com os pantones da empresa',
+      interaction: 'Performance voltada aos objetivos de marketing',
+    },
   },
 ];
 
@@ -166,7 +261,7 @@ export const VIDEOS = [
     duration: '02:45',
     thumbnail: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=85',
     description: 'Imagens de bastidores e participações especiais em novelas da TV Globo e programas de auditório da TV brasileira.',
-    videoSrc: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ', // Clean embed ready
+    videoSrc: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
   },
   {
     id: 'vid-2',
