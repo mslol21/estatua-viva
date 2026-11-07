@@ -4,7 +4,6 @@ import ClientMarquee from '@/components/ClientMarquee';
 import EventCuratorship from '@/components/EventCuratorship';
 import CharacterCatalog from '@/components/CharacterCatalog';
 import CategoryGallery from '@/components/CategoryGallery';
-import VideoShowcase from '@/components/VideoShowcase';
 import BriefingBuilder from '@/components/BriefingBuilder';
 import ReviewsAndFaq from '@/components/ReviewsAndFaq';
 import Footer from '@/components/Footer';
@@ -18,7 +17,6 @@ export default function Home() {
       <EventCuratorship />
       <CategoryGallery />
       <CharacterCatalog />
-      <VideoShowcase />
       <BriefingBuilder />
       <ReviewsAndFaq />
       <Footer />

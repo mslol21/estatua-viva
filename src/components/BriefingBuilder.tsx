@@ -148,7 +148,7 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 border border-champagne-gold/30 bg-obsidian rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold animate-pulse" />
             <span className="font-mono text-[10px] uppercase tracking-widest text-champagne-gold">
-              04 / CONFIGURADOR DE PROPOSTA EXPRESSA
+              03 / CONFIGURADOR DE PROPOSTA EXPRESSA
             </span>
           </div>
 

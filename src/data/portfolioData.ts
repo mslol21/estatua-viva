@@ -271,34 +271,3 @@ export const FAQS = [
     answer: 'Recomendamos que eventos corporativos, feiras e casamentos façam a reserva com pelo menos 30 a 60 dias de antecedência, especialmente para os meses de alta temporada (maio, setembro, outubro, novembro e dezembro). Para projetos sob medida com confecção cenográfica personalizada, sugerimos de 45 a 90 dias para confecção e ensaios.',
   },
 ];
-
-export const VIDEOS = [
-  {
-    id: 'vid-1',
-    title: 'Aparição em Rede Nacional — Televisão & Novelas',
-    tag: 'Televisão',
-    duration: '02:45',
-    thumbnail: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=1200&q=85',
-    description: 'Imagens de bastidores e participações especiais em novelas da TV Globo e programas de auditório da TV brasileira.',
-    videoSrc: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
-  },
-  {
-    id: 'vid-2',
-    title: 'Case Caterpillar 70 Anos — Retenção em Feira de Negócios',
-    tag: 'Corporativo B2B',
-    duration: '01:50',
-    thumbnail: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85',
-    description: 'Apresentação da performance de Prata Industrial mobilizando centenas de decisores e visitantes em estande.',
-    videoSrc: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
-  },
-  {
-    id: 'vid-3',
-    title: 'Recepção de Gala & Casamento de Alto Padrão',
-    tag: 'Casamento & Social',
-    duration: '03:10',
-    thumbnail: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85',
-    description: 'Entrada solene dos convidados ladeada por Deusas Gregas em Ouro Imperial e Anjos em Mármore Branco.',
-    videoSrc: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
-  },
-];
-

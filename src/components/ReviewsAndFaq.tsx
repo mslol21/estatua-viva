@@ -10,7 +10,7 @@ export default function ReviewsAndFaq() {
     <section id="faq" className="section-space border-b border-alabaster/10">
       <div className="site-container grid lg:grid-cols-[0.8fr_1.2fr] gap-12 lg:gap-20">
         <div className="section-heading">
-          <p className="eyebrow">05 / Antes do grande dia</p>
+          <p className="eyebrow">04 / Antes do grande dia</p>
           <h2>Vamos tirar<br /><em>suas dúvidas?</em></h2>
           <p>Conte com a produção para definir os detalhes da sua experiência.</p>
           <a
@@ -45,3 +45,4 @@ export default function ReviewsAndFaq() {
     </section>
   );
 }
+

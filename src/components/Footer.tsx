@@ -68,11 +68,6 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#videos" className="hover:text-champagne-gold transition-colors">
-                  Galeria em Movimento
-                </a>
-              </li>
-              <li>
                 <a href="#clientes" className="hover:text-champagne-gold transition-colors">
                   Nossa proposta artística
                 </a>

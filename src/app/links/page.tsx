@@ -53,7 +53,7 @@ const BIO_LINKS = [
   },
   {
     title: 'Instagram Oficial @estatuavivaproducoes',
-    subtitle: 'Bastidores, ensaios e vídeos de atuações ao vivo',
+    subtitle: 'Bastidores, ensaios e apresentações artísticas',
     href: 'https://www.instagram.com/estatuavivaproducoes',
     highlight: false,
     icon: Instagram,

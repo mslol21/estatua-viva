@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Instagram, MessageCircle, Star, Video } from 'lucide-react';
+import { Instagram, MessageCircle, Star } from 'lucide-react';
 
 interface IsometricSocialsProps {
   className?: string;
@@ -29,13 +29,6 @@ export default function IsometricSocials({ className = '' }: IsometricSocialsPro
       icon: Star,
       color: '#DFBD7C',
       accentColor: '#D3AF6C',
-    },
-    {
-      name: 'Vídeos',
-      href: '#videos',
-      icon: Video,
-      color: '#4FA3E3',
-      accentColor: '#2B6CB0',
     },
   ];
 
@@ -68,3 +61,4 @@ export default function IsometricSocials({ className = '' }: IsometricSocialsPro
     </div>
   );
 }
+

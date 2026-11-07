@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-const links = [{ label: 'Branca', href: '/#estilo-branca' }, { label: 'Prata', href: '/#estilo-prata' }, { label: 'Ouro', href: '/#estilo-ouro' }, { label: 'Diversas', href: '/#estilo-diversas' }, { label: 'Vídeos', href: 'https://estatuaviva.com.br/estatua-viva-videos/' }, { label: 'Blog', href: 'https://estatuaviva.com.br/blog/' }, { label: 'Contato', href: '/#briefing' }];
+const links = [{ label: 'Branca', href: '/#estilo-branca' }, { label: 'Prata', href: '/#estilo-prata' }, { label: 'Ouro', href: '/#estilo-ouro' }, { label: 'Diversas', href: '/#estilo-diversas' }, { label: 'Contato', href: '/#briefing' }];
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Instagram, MessageCircle, Youtube, Star } from 'lucide-react';
+import { Instagram, MessageCircle, Star } from 'lucide-react';
 
 interface SocialCardProps {
   variant?: 'brand' | 'colorful';
@@ -49,7 +49,7 @@ export default function SocialCard({ variant = 'brand', className = '' }: Social
           </span>
         </a>
 
-        {/* Box 3: Google Reviews / Vídeos */}
+        {/* Box 3: Google Reviews */}
         <a
           href="https://www.google.com/search?kgmid=/g/11yfq6b8js&hl=pt-BR&q=Est%C3%A1tua+viva"
           target="_blank"
@@ -68,3 +68,4 @@ export default function SocialCard({ variant = 'brand', className = '' }: Social
     </div>
   );
 }
+
