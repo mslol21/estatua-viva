@@ -33,7 +33,6 @@ export const CHARACTERS: Character[] = [
     gallery: [
       'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=85',
       'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85',
     ],
     highlightText: 'Mais requisitada em eventos sociais de luxo',
     specs: {
@@ -56,7 +55,6 @@ export const CHARACTERS: Character[] = [
     gallery: [
       'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85',
       'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=85',
     ],
     highlightText: 'Impacto visual etéreo e atemporal',
     specs: {
@@ -75,10 +73,10 @@ export const CHARACTERS: Character[] = [
     description: 'Desenvolvido com maestria cenográfica para simbolizar precisão, tecnologia e força do trabalho. O reflexo metálico prateado dialoga com estandes modernos de alta tecnologia.',
     idealFor: 'Feiras industriais, congressos de tecnologia, convenções de vendas e logística.',
     details: ['Case de sucesso oficial Caterpillar 70 Anos', 'Figurino customizável com ferramentas cenográficas cromadas', 'Atuação de alto fluxo e retenção em estandes'],
-    imageUrl: 'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Prata-Robo-Executivo-768x898.jpg',
     gallery: [
+      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Prata-Robo-Executivo-768x898.jpg',
       'https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85',
     ],
     caseBadge: 'Case Oficial Caterpillar',
     specs: {
@@ -97,10 +95,10 @@ export const CHARACTERS: Character[] = [
     description: 'A reverenciada tradição mexicana ganha vida através de figurinos bordados, rendas finas e maquiagem facial artística de nível cinematográfico premiado.',
     idealFor: 'Festas temáticas, eventos de Halloween/Día de los Muertos, festivais culturais e lançamentos.',
     details: ['Maquiagem artística 3D em degradê', 'Acessórios barrocos e flores hiper-realistas', 'Performance magnética com elegância e mistério'],
-    imageUrl: 'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-4-768x1024.jpg',
     gallery: [
+      'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-4-768x1024.jpg',
       'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=85',
     ],
     highlightText: 'Maquiagem artística cinematográfica',
     specs: {
@@ -122,7 +120,6 @@ export const CHARACTERS: Character[] = [
     imageUrl: 'https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=85',
     gallery: [
       'https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=85',
     ],
     highlightText: 'Recorde de engajamento e fotos nas redes',
     specs: {
@@ -141,8 +138,9 @@ export const CHARACTERS: Character[] = [
     description: 'Munido de bengala, cartola e sapato largo, o eterno Vagabundo interage de forma sutil, cordial e profundamente poética, desarmando o público com gestos gentis.',
     idealFor: 'Recepções de teatros, premiações literárias, festivais de cinema e eventos corporativos.',
     details: ['Gestual clássico da mímica francesa e comédia física', 'Interação elegante sem uso da palavra falada', 'Ideal para quebra de gelo no acolhimento de convidados'],
-    imageUrl: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Charles-Chaplin-2.jpg',
     gallery: [
+      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Charles-Chaplin-2.jpg',
       'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=85',
     ],
     specs: {
@@ -161,8 +159,9 @@ export const CHARACTERS: Character[] = [
     description: 'Recriações com rigor de pesquisa iconográfica histórica. Os personagens parecem ter acabado de descer dos monumentos das praças para conversar com a audiência.',
     idealFor: 'Museus, feiras literárias, bienais, universidades, inaugurações de centros culturais.',
     details: ['Apresentações já realizadas no Museu do Ipiranga e Bienal do Livro', 'Acessórios de época autênticos (óculos, canetas bico de pena, monóculos)', 'Textos e declamações estatuárias adaptáveis'],
-    imageUrl: 'https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Fernando-Pessoa-768x768.jpg',
     gallery: [
+      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Fernando-Pessoa-768x768.jpg',
       'https://images.unsplash.com/photo-1549887552-cb1071d3e5ca?auto=format&fit=crop&w=1200&q=85',
     ],
     caseBadge: 'Presença Museu do Ipiranga',

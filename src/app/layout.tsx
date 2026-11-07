@@ -27,6 +27,7 @@ export const metadata: Metadata = {
     siteName: 'Estátua Viva Produções',
     locale: 'pt_BR',
     type: 'website',
+    images: [{ url: '/brand/artista.webp', width: 794, height: 794, alt: 'Estátua Viva Produções' }],
   },
 };
 
@@ -46,6 +47,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-obsidian text-alabaster font-sans selection:bg-champagne-gold selection:text-obsidian antialiased">
+        <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
         <NoiseOverlay />
         <SmoothScroll>
           {children}

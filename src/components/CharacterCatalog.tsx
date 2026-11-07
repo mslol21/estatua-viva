@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, MouseEvent } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CHARACTERS, Character } from '@/data/portfolioData';
@@ -23,6 +23,25 @@ export default function CharacterCatalog() {
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [activePhotoIdx, setActivePhotoIdx] = useState<number>(0);
   const [copied, setCopied] = useState<boolean>(false);
+
+  useEffect(() => {
+    const selectFromHash = () => {
+      const categoryByHash: Record<string, CategoryType> = {
+        '#estilo-branca': 'Mármore Branco',
+        '#estilo-prata': 'Prata Industrial',
+        '#estilo-ouro': 'Ouro Imperial',
+        '#estilo-diversas': 'Temáticos & Cosplay',
+      };
+      const category = categoryByHash[window.location.hash];
+      if (category) {
+        setSelectedCategory(category);
+        document.getElementById('acervo')?.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    selectFromHash();
+    window.addEventListener('hashchange', selectFromHash);
+    return () => window.removeEventListener('hashchange', selectFromHash);
+  }, []);
 
   const filteredCharacters = selectedCategory === 'Todos'
     ? CHARACTERS

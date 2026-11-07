@@ -131,18 +131,30 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
   };
 
   return (
+<<<<<<< HEAD
     <section id="briefing" className="py-24 bg-charcoal border-b border-alabaster/10 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-14">
+=======
+    <section id="briefing" className="section-space bg-charcoal/40 border-b border-alabaster/10 relative">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+>>>>>>> origin/main
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 border border-champagne-gold/30 bg-obsidian rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold animate-pulse" />
             <span className="font-mono text-[10px] uppercase tracking-widest text-champagne-gold">
+<<<<<<< HEAD
               CONFIGURADOR DE PROPOSTA EXPRESSA
+=======
+              04 / Vamos criar o seu momento
+>>>>>>> origin/main
             </span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-5xl text-alabaster font-normal mb-4">
+<<<<<<< HEAD
             Planeje a intervenção artística perfeita.
           </h2>
           <p className="font-sans text-sm sm:text-base text-stone-warm max-w-xl mx-auto">
@@ -186,10 +198,126 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
             <div
               className="bg-champagne-gold h-full transition-all duration-500 ease-out"
               style={{ width: `${(step / 3) * 100}%` }}
+=======
+            O próximo encontro inesquecível começa aqui.
+          </h2>
+          <p className="font-sans text-sm sm:text-base text-stone-warm max-w-xl mx-auto">
+            Conte um pouco sobre o seu evento. Ao continuar, você abre o WhatsApp com os detalhes preenchidos para conversar com a produção.
+          </p>
+        </div>
+
+        {/* Builder Form Card */}
+        <form
+          onSubmit={handleSendBriefing}
+          className="bg-obsidian border border-alabaster/10 p-6 sm:p-10 shadow-2xl relative"
+        >
+          {/* Step 1: Event Nature */}
+          <fieldset className="mb-8">
+            <legend className="block font-mono text-xs uppercase tracking-widest text-champagne-gold mb-3">
+              01. Qual é o tipo de evento?
+            </legend>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {EVENT_NATURES.map((item) => {
+                const isSelected = nature === item;
+                return (
+                  <button
+                    type="button"
+                    key={item}
+                    aria-pressed={isSelected}
+                    onClick={() => setNature(item)}
+                    className={`p-3.5 text-left text-xs font-mono uppercase tracking-[0.08em] border transition-all duration-200 flex items-center justify-between ${
+                      isSelected
+                        ? 'border-champagne-gold bg-charcoal text-champagne-gold'
+                        : 'border-alabaster/10 bg-charcoal/40 text-stone-warm hover:border-alabaster/30 hover:text-alabaster'
+                    }`}
+                  >
+                    <span>{item}</span>
+                    {isSelected && <CheckCircle2 strokeWidth={1.5} className="w-4 h-4 text-champagne-gold shrink-0 ml-2" />}
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
+
+          {/* Step 2: Desired Aesthetics */}
+          <fieldset className="mb-8">
+            <legend className="block font-mono text-xs uppercase tracking-widest text-champagne-gold mb-3">
+              02. Qual estilo você imagina?
+            </legend>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              {AESTHETICS.map((item) => {
+                const isSelected = aesthetic === item;
+                return (
+                  <button
+                    type="button"
+                    key={item}
+                    aria-pressed={isSelected}
+                    onClick={() => setAesthetic(item)}
+                    className={`p-3.5 text-left text-xs font-mono uppercase tracking-[0.08em] border transition-all duration-200 flex items-center justify-between ${
+                      isSelected
+                        ? 'border-champagne-gold bg-charcoal text-champagne-gold'
+                        : 'border-alabaster/10 bg-charcoal/40 text-stone-warm hover:border-alabaster/30 hover:text-alabaster'
+                    }`}
+                  >
+                    <span>{item}</span>
+                    {isSelected && <CheckCircle2 strokeWidth={1.5} className="w-4 h-4 text-champagne-gold shrink-0 ml-2" />}
+                  </button>
+                );
+              })}
+            </div>
+          </fieldset>
+
+          {/* Step 3: Quick Info Fields */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div>
+              <label htmlFor="client-name" className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-2">
+                03. Seu Nome ou Empresa
+              </label>
+              <input
+                id="client-name"
+                type="text"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Ex: Beatriz Lima (Agência Vértice)"
+                className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/80 focus:outline-none focus:border-champagne-gold transition-colors font-sans"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="client-date-city" className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-2">
+                04. Data ou Mês Previsto + Cidade
+              </label>
+              <input
+                id="client-date-city"
+                type="text"
+                required
+                value={dateAndCity}
+                onChange={(e) => setDateAndCity(e.target.value)}
+                placeholder="Ex: 14 de Novembro • São Paulo - SP"
+                className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/80 focus:outline-none focus:border-champagne-gold transition-colors font-sans"
+              />
+            </div>
+          </div>
+
+          {/* Optional notes */}
+          <div className="mb-8">
+            <label htmlFor="client-notes" className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-2">
+              Detalhes Adicionais (opcional)
+            </label>
+            <textarea
+              id="client-notes"
+              rows={2}
+              value={additionalNotes}
+              onChange={(e) => setAdditionalNotes(e.target.value)}
+              placeholder="Número estimado de convidados, horários ou referências específicas..."
+              className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/80 focus:outline-none focus:border-champagne-gold transition-colors font-sans resize-y"
+>>>>>>> origin/main
             />
           </div>
         </div>
 
+<<<<<<< HEAD
         {/* Main Split: Interactive Form Steps vs Live Ticket Receipt */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Form View (Steps) */}
@@ -539,7 +667,23 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
             </button>
           </div>
         </div>
+=======
+          {/* Submit Action */}
+          <button
+            type="submit"
+            className="w-full py-4 bg-champagne-gold hover:bg-champagne-hover text-obsidian text-xs font-mono uppercase tracking-[0.16em] font-semibold flex items-center justify-center gap-2 transition-all duration-300 shadow-xl shadow-champagne-gold/15"
+          >
+            <Send strokeWidth={1.5} className="w-4 h-4" />
+            <span>Continuar no WhatsApp</span>
+          </button>
+
+          <p className="text-center font-mono text-[10px] uppercase tracking-widest text-stone-warm mt-4">
+            A proposta e a disponibilidade serão confirmadas pela produção.
+          </p>
+        </form>
+>>>>>>> origin/main
       </div>
     </section>
   );
 }
+

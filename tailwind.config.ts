@@ -9,15 +9,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        obsidian: "#09090B",
-        charcoal: "#111113",
+        obsidian: "#061317",
+        charcoal: "#0D242A",
         alabaster: "#F4F1EA",
         stone: {
-          warm: "#9A968E",
+          warm: "#B8B9AE",
         },
         champagne: {
-          gold: "#C5A059",
-          hover: "#D6B26A",
+          gold: "#D3AF6C",
+          hover: "#E8C88A",
           muted: "#8C713E",
         },
       },

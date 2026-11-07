@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-obsidian text-alabaster">
       <Navbar />
-      <Hero />
+      <div id="conteudo" tabIndex={-1}><Hero /></div>
       <ClientMarquee />
       <EventCuratorship />
       <CharacterCatalog />
@@ -23,3 +23,4 @@ export default function Home() {
     </main>
   );
 }
+

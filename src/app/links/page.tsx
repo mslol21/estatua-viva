@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import BrandLogo from '@/components/BrandLogo';
 import {
   MessageCircle,
   Sparkles,
@@ -35,16 +36,16 @@ const BIO_LINKS = [
     isExternal: false,
   },
   {
-    title: 'Montador de Briefing Express',
-    subtitle: 'Monte sua proposta em 30 segundos no site oficial',
+    title: 'Planejar meu evento',
+    subtitle: 'Conte sua ideia e solicite uma proposta',
     href: '/#briefing',
     highlight: false,
     icon: CalendarCheck,
     isExternal: false,
   },
   {
-    title: 'Ver Avaliações no Google (Nota 5.0 ★)',
-    subtitle: '37 depoimentos verificados de clientes reais',
+    title: 'Consultar avaliações no Google',
+    subtitle: 'Leia as avaliações diretamente no Google',
     href: 'https://www.google.com/search?kgmid=/g/11yfq6b8js&hl=pt-BR&q=Est%C3%A1tua+viva',
     highlight: false,
     icon: Star,
@@ -62,7 +63,7 @@ const BIO_LINKS = [
 
 export default function LinksPage() {
   return (
-    <main className="min-h-screen bg-obsidian text-alabaster py-16 px-4 sm:px-6 relative flex flex-col justify-between items-center overflow-hidden">
+    <main id="conteudo" tabIndex={-1} className="min-h-screen bg-obsidian text-alabaster py-16 px-4 sm:px-6 relative flex flex-col justify-between items-center overflow-hidden">
       {/* Background Lighting */}
       <div 
         aria-hidden="true" 
@@ -72,17 +73,10 @@ export default function LinksPage() {
       <div className="w-full max-w-lg mx-auto relative z-10 flex flex-col items-center">
         {/* Brand Header */}
         <Link href="/" className="group flex flex-col items-center text-center mb-8 focus:outline-none">
-          <div className="w-16 h-16 border border-champagne-gold/50 flex items-center justify-center font-serif text-2xl font-normal text-champagne-gold mb-4 group-hover:border-champagne-gold transition-colors shadow-2xl bg-charcoal">
-            EV
-          </div>
-          <h1 className="font-serif text-2xl sm:text-3xl tracking-widest text-alabaster uppercase font-medium">
-            Estátua Viva
-          </h1>
-          <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-champagne-gold mt-1">
-            Produções Artísticas • São Paulo
-          </span>
+          <BrandLogo className="brand-logo-bio" />
+          <h1 className="sr-only">Estátua Viva Produções — canais oficiais</h1>
           <p className="font-sans text-xs text-stone-warm max-w-xs mt-3 leading-relaxed">
-            Direção de Rodolfo Valentino. Transformando eventos em espetáculos memoráveis desde 2005.
+            Você imagina. A gente dá vida. Personagens vivos e performances artísticas para festas e eventos.
           </p>
         </Link>
 
@@ -174,3 +168,4 @@ export default function LinksPage() {
     </main>
   );
 }
+

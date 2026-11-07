@@ -1,54 +1,36 @@
-# Estátua Viva Produções — Site Editorial de Alta Conversão
+# Estátua Viva Produções
 
-Website institucional, catálogo cênico interativo e hub de atendimento para a **Estátua Viva Produções** (fundada e dirigida por Rodolfo Valentino desde 2005 em São Paulo - SP).
+Site institucional em Next.js 14, React 18, TypeScript e Tailwind CSS. Identidade em azul petróleo, dourado e tons claros, baseada nas referências fornecidas pela empresa.
 
-Desenvolvido com foco em estética editorial (*Dark & Champagne Gold*, nível estúdio internacional / Awwwards) e alta taxa de conversão (CRO).
+## Executar
 
----
-
-## 🎭 Tecnologias e Bibliotecas
-
-- **Core:** Next.js 14 (App Router, TypeScript) + Tailwind CSS
-- **Animações & Layout Fluido:**
-  - `framer-motion` (transições com `layoutId` nos filtros de catálogo)
-  - `lenis` (smooth scrolling editorial inercial)
-  - `embla-carousel-react` (carrossel drag-free com física suave)
-- **Componentes Primitivos (Headless & Acessibilidade):**
-  - `@radix-ui/react-dialog` (modais cênicos e visualizadores de vídeo)
-  - `@radix-ui/react-accordion` (FAQ acessível)
-- **Design System & Tipografia:**
-  - `Cormorant Garamond` (display / serifadas clássicas)
-  - `Plus Jakarta Sans` (leitura / UI)
-  - `JetBrains Mono` (metadados e índices técnicos)
-  - Cores: Obsidian Matte (`#09090B`), Warm Charcoal (`#111113`), Alabaster (`#F4F1EA`) e Champagne Gold (`#C5A059`)
-  - Overlay sutil de granulação de filme analógico em SVG
-
----
-
-## 🏛️ Estrutura de Seções
-
-1. **Top Bar & Navegação Flutuante:** Monograma `EV`, pílula de navegação em vidro fosco e acesso rápido ao WhatsApp e Instagram.
-2. **Hero Cênica:** Headline monumental, aura de holofote teatral e rodapé métrico (5.0 Google, +20 anos, cobertura nacional).
-3. **Chancela Corporativa & Emissoras:** TV Globo (*Novela As Três Graças, Jô, Faustão*), Record (*Eliana*), Caterpillar, Loctite, Museu do Ipiranga e Monet.
-4. **Curadoria por Tipo de Evento:** 3 painéis editoriais (Corporativo & Feiras, Casamentos & Gala, Temáticos & Culturais).
-5. **Acervo de Personagens:** Grid Bento assimétrico com efeito spotlight no cursor, categorias dinâmicas e dossiê detalhado.
-6. **Galeria em Movimento:** Carrossel audiovisual de bastidores e TV com player em modal.
-7. **Montador de Briefing Express:** Formulário interativo em pílulas que formata o briefing e envia direto para o WhatsApp.
-8. **Prova Social & FAQ:** Selo oficial de 5,0 estrelas no Google Perfil de Empresa e perguntas frequentes.
-9. **Footer Monumental:** Informações oficiais do atelier no Tatuapé (SP).
-10. **Rota `/links`:** Hub no próprio domínio para substituir agregadores externos no perfil do Instagram.
-
----
-
-## 🚀 Como Executar Localmente
-
-```bash
-# Instalar dependências
-npm install
-
-# Iniciar servidor de desenvolvimento
+```sh
+npm ci
 npm run dev
-
-# Gerar build de produção
 npm run build
+npm start
 ```
+
+## Conteúdo e interações
+
+- Página inicial com apresentação, seleção de tipos de evento e catálogo filtrável.
+- Detalhes dos personagens em modal acessível (Radix Dialog).
+- Formulário que prepara uma mensagem com os dados do evento e abre o WhatsApp. O visitante confirma o envio no WhatsApp; nenhum dado é armazenado pelo site.
+- FAQ acessível e links para os canais externos da empresa.
+- Página `/links` com a mesma identidade visual.
+- Rolagem Lenis com respeito à preferência por movimento reduzido.
+
+## Imagens da empresa
+
+As três referências fornecidas foram otimizadas em WebP em `public/brand/`. `BrandLogo` enquadra a logo presente na arte de identidade, sem recriar o desenho. Uma versão isolada em SVG ou PNG transparente poderá substituir esse enquadramento quando estiver disponível.
+
+O catálogo utiliza as duas imagens reais recebidas. Os demais estilos são apresentados sem fotografias de banco e podem receber fotos reais em `src/data/portfolioData.ts` no campo `imageUrl`.
+
+Vídeos de demonstração sem relação com a empresa e depoimentos sem fonte foram retirados da apresentação. A seção de bastidores direciona ao Instagram oficial e as avaliações podem ser consultadas diretamente no Google. Repertório e dados de contato existentes devem ser mantidos pela produção.
+
+## Verificação da revisão visual
+
+- `npx tsc --noEmit` e `npm run build`.
+- Conferência visual da home no navegador.
+- Verificação de filtro do catálogo, modal de personagem, seleção de evento, FAQ e navegação para `/links`.
+- Responsividade implementada em CSS; a revisão no navegador desta sessão foi realizada no viewport de desktop.
