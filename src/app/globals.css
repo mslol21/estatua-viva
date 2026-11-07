@@ -685,3 +685,35 @@ body {
   -webkit-mask-image: radial-gradient(ellipse 65% 62% at 50% 50%, #000 56%, transparent 100%);
   mask-image: radial-gradient(ellipse 65% 62% at 50% 50%, #000 56%, transparent 100%);
 }
+
+/* Cabeçalho sempre acessível, com atalhos também em telas pequenas. */
+.site-header { position: sticky; top: 0; z-index: 50; padding: 6px 0; background: rgba(5, 18, 23, .96); border-bottom: 1px solid rgba(219, 187, 128, .22); -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+.site-header .brand-logo { width: 132px; height: 75px; }
+.site-header .brand-logo-art { background-size: 190px auto; background-position: -29px -38px; }
+.site-header .nav-link { font-size: 13px; white-space: nowrap; }
+.site-header .nav-link:hover { color: #f4d8a0; }
+.header-shortcuts { display: none; }
+.art-hero { padding-top: 0; }
+.art-hero-inner { min-height: calc(100svh - 153px); }
+.art-hero h1 { font-size: clamp(61px, 6.4vw, 100px); line-height: .95; }
+.art-intro { max-width: 460px; }
+.art-hero-stage { min-height: 560px; }
+#experiencias,#acervo,#videos,#briefing,#faq { scroll-margin-top: 100px; }
+@media(max-width:1023px) {
+  .site-header { padding-bottom: 0; }
+  .site-header .brand-logo { width: 115px; height: 65px; }
+  .site-header .brand-logo-art { background-size: 165px auto; background-position: -25px -33px; }
+  .header-shortcuts { display: flex; width: 100%; gap: 8px; overflow-x: auto; overscroll-behavior-inline: contain; padding: 0 20px 9px; scrollbar-width: none; }
+  .header-shortcuts::-webkit-scrollbar { display: none; }
+  .header-shortcuts a { display: inline-flex; flex: 0 0 auto; align-items: center; min-height: 34px; padding: 5px 15px; border: 1px solid rgba(218,184,122,.24); border-radius: 999px; font-size: 12px; color: #eadfc9; }
+  .header-shortcuts a:hover { border-color: #dfbd7c; color: #f4d8a0; }
+  .mobile-navigation { max-height: min(65vh, 480px); overflow-y: auto; margin: 0 20px 12px; }
+  .art-hero { padding-top: 0; }
+  #experiencias,#acervo,#videos,#briefing,#faq { scroll-margin-top: 140px; }
+}
+@media(max-width:767px) {
+  .art-hero-copy { padding: 38px 0 4px; }
+  .art-hero h1 { font-size: clamp(54px, 12vw, 86px); line-height: .98; }
+  .art-hero-stage { min-height: 410px; }
+  .art-note { margin-top: 28px; }
+}

@@ -7,10 +7,10 @@ export default function Hero() {
     <div className="art-hero-inner site-container">
       <div className="art-hero-copy">
         <p className="art-eyebrow"><span /> ARTE QUE SURPREENDE · DESDE 2005</p>
-        <h1>O instante<br /><em>ganha vida.</em></h1>
-        <p className="art-intro">Estátuas vivas, personagens e performances que transformam seu evento em uma experiência para lembrar.</p>
-        <div className="art-actions"><a href="#acervo" className="art-primary">Explore os personagens <ArrowUpRight size={18} /></a><a href="#briefing" className="art-secondary">Conte seu evento <ArrowUpRight size={17} /></a></div>
-        <div className="art-note"><span>01 — A ARTE DO ENCONTRO</span><span>ESTÁTUA VIVA PRODUÇÕES</span></div>
+        <h1>Você imagina.<br /><em>A gente dá vida.</em></h1>
+        <p className="art-intro">Estátuas vivas e personagens que surpreendem, encantam e fazem parte da história do seu evento.</p>
+        <div className="art-actions"><a href="#acervo" className="art-primary">Conheça os personagens <ArrowUpRight size={18} /></a><a href="#briefing" className="art-secondary">Solicitar orçamento <ArrowUpRight size={17} /></a></div>
+        <div className="art-note"><span>ESTÁTUAS VIVAS · PERSONAGENS</span><span>ESTÁTUA VIVA PRODUÇÕES</span></div>
       </div>
       <div className="art-hero-stage">
         <span className="art-orbit art-orbit-one" aria-hidden="true" /><span className="art-orbit art-orbit-two" aria-hidden="true" />
@@ -22,3 +22,4 @@ export default function Hero() {
     <div className="art-hero-footer site-container"><span>PERFORMANCES · PERSONAGENS · EVENTOS</span><a href="#experiencias">DESLIZE PARA DESCOBRIR <ArrowDownRight size={17} /></a><span>SÃO PAULO / BRASIL</span></div>
   </section>;
 }
+
