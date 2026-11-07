@@ -29,22 +29,40 @@ export default function CharacterCatalog() {
   const [viewMode, setViewMode] = useState<'grid' | 'orbit'>('grid');
 
   useEffect(() => {
+    const categoryByHash: Record<string, CategoryType> = {
+      '#estilo-branca': 'Mármore Branco',
+      '#estilo-prata': 'Prata Industrial',
+      '#estilo-ouro': 'Ouro Imperial',
+      '#estilo-diversas': 'Temáticos & Cosplay',
+    };
     const selectFromHash = () => {
-      const categoryByHash: Record<string, CategoryType> = {
-        '#estilo-branca': 'Mármore Branco',
-        '#estilo-prata': 'Prata Industrial',
-        '#estilo-ouro': 'Ouro Imperial',
-        '#estilo-diversas': 'Temáticos & Cosplay',
-      };
       const category = categoryByHash[window.location.hash];
-      if (category) {
-        setSelectedCategory(category);
-        document.getElementById('acervo')?.scrollIntoView({ behavior: 'smooth' });
-      }
+      if (!category) return;
+      setSelectedCategory(category);
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.getElementById('acervo')?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    };
+    const onCategoryClick = (event: globalThis.MouseEvent) => {
+      if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const link = event.target instanceof Element ? event.target.closest('a[href]') : null;
+      if (!(link instanceof HTMLAnchorElement) || link.target || link.hasAttribute('download')) return;
+      const url = new URL(link.href, window.location.href);
+      if (url.origin !== window.location.origin || url.pathname !== '/' || window.location.pathname !== '/' || !categoryByHash[url.hash]) return;
+      event.preventDefault();
+      // Handle repeated clicks too, before the smooth-scroll listener sees the anchor.
+      event.stopPropagation();
+      if (window.location.hash !== url.hash) window.history.pushState(null, '', url.hash);
+      selectFromHash();
     };
     selectFromHash();
+    document.addEventListener('click', onCategoryClick);
     window.addEventListener('hashchange', selectFromHash);
-    return () => window.removeEventListener('hashchange', selectFromHash);
+    window.addEventListener('popstate', selectFromHash);
+    return () => {
+      document.removeEventListener('click', onCategoryClick);
+      window.removeEventListener('hashchange', selectFromHash);
+      window.removeEventListener('popstate', selectFromHash);
+    };
   }, []);
 
   const filteredCharacters = selectedCategory === 'Todos'
