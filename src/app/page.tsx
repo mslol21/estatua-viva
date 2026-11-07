@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import ClientMarquee from '@/components/ClientMarquee';
 import EventCuratorship from '@/components/EventCuratorship';
 import CharacterCatalog from '@/components/CharacterCatalog';
+import CategoryGallery from '@/components/CategoryGallery';
 import VideoShowcase from '@/components/VideoShowcase';
 import BriefingBuilder from '@/components/BriefingBuilder';
 import ReviewsAndFaq from '@/components/ReviewsAndFaq';
@@ -15,6 +16,7 @@ export default function Home() {
       <div id="conteudo" tabIndex={-1}><Hero /></div>
       <ClientMarquee />
       <EventCuratorship />
+      <CategoryGallery />
       <CharacterCatalog />
       <VideoShowcase />
       <BriefingBuilder />

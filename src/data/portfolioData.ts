@@ -21,6 +21,32 @@ export interface Character {
 
 export const CHARACTERS: Character[] = [
   {
+    id: 'chef-prateado',
+    name: 'Chef Prateado',
+    category: 'Prata Industrial',
+    colorAccent: '#94A3B8',
+    tagline: 'A arte da gastronomia em uma performance de estátua viva.',
+    description: 'Um chef caracterizado em prata leva criatividade e surpresa a eventos e recepções.',
+    idealFor: 'Eventos gastronômicos, recepções e ações especiais.',
+    details: ['Caracterização em prata', 'Personagem inspirado na gastronomia', 'Interação com os convidados'],
+    imageUrl: '/portfolio/prata.webp',
+    gallery: ['/portfolio/prata.webp'],
+    specs: { duration: 'A combinar com a produção', prepTime: 'A combinar com a produção', makeup: 'Caracterização prateada', interaction: 'Performance e interação com o público' },
+  },
+  {
+    id: 'estatua-classica-ouro',
+    name: 'Estátua Clássica em Ouro',
+    category: 'Ouro Imperial',
+    colorAccent: '#C5A059',
+    tagline: 'Uma figura clássica ganha vida em tons de ouro.',
+    description: 'Caracterização artística em dourado para receber e surpreender convidados.',
+    idealFor: 'Recepções, eventos culturais e corporativos.',
+    details: ['Caracterização em dourado', 'Presença clássica', 'Performance de estátua viva'],
+    imageUrl: '/portfolio/ouro.webp',
+    gallery: ['/portfolio/ouro.webp'],
+    specs: { duration: 'A combinar com a produção', prepTime: 'A combinar com a produção', makeup: 'Caracterização dourada', interaction: 'Performance e interação com o público' },
+  },
+  {
     id: 'deusa-grega-ouro',
     name: 'Deusa Grega & Clássicos em Ouro',
     category: 'Ouro Imperial',
@@ -44,18 +70,15 @@ export const CHARACTERS: Character[] = [
   },
   {
     id: 'deusa-espelho-anjos-marmore',
-    name: 'Deusa do Espelho & Anjos em Mármore',
+    name: 'Anjo em Branco',
     category: 'Mármore Branco',
     colorAccent: '#F4F1EA',
-    tagline: 'Textura mineral de mármore de Carrara com pureza escultural estonteante.',
-    description: 'Efeito textural de pedra cinzelada com acabamento acetinado alabastro. O contraste entre os reflexos do espelho e a serenidade do anjo barroco cria momentos de pura poesia visual.',
+    tagline: 'A serenidade de um anjo ganha vida em uma performance delicada.',
+    description: 'Uma estátua viva em branco, com asas e gestos delicados, leva poesia e encanto para a recepção dos seus convidados.',
     idealFor: 'Cerimônias de casamento, bodas, jantares intimistas e bienais de arte.',
     details: ['Efeito craquelado e marmorizado artesanal', 'Asas anatômicas e adereços de inspiração renascentista', 'Iluminação cênica integrada opcional'],
-    imageUrl: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85',
-    gallery: [
-      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=85',
-    ],
+    imageUrl: '/portfolio/branca.webp',
+    gallery: ['/portfolio/branca.webp'],
     highlightText: 'Impacto visual etéreo e atemporal',
     specs: {
       duration: 'Ciclos de 45 min com repouso',
@@ -138,11 +161,8 @@ export const CHARACTERS: Character[] = [
     description: 'Munido de bengala, cartola e sapato largo, o eterno Vagabundo interage de forma sutil, cordial e profundamente poética, desarmando o público com gestos gentis.',
     idealFor: 'Recepções de teatros, premiações literárias, festivais de cinema e eventos corporativos.',
     details: ['Gestual clássico da mímica francesa e comédia física', 'Interação elegante sem uso da palavra falada', 'Ideal para quebra de gelo no acolhimento de convidados'],
-    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Charles-Chaplin-2.jpg',
-    gallery: [
-      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Charles-Chaplin-2.jpg',
-      'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1200&q=85',
-    ],
+    imageUrl: '/portfolio/diversas.webp',
+    gallery: ['/portfolio/diversas.webp'],
     specs: {
       duration: 'Recepção de 1h30 a 2h no acolhimento',
       prepTime: '1h15 para maquiagem monocromática',
@@ -281,3 +301,4 @@ export const VIDEOS = [
     videoSrc: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
   },
 ];
+
