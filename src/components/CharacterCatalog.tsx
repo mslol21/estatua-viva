@@ -7,6 +7,7 @@ import { CHARACTERS, Character } from '@/data/portfolioData';
 import { ArrowUpRight, Check, Eye, X, Clock, Sparkles, UserCheck, Shield, ChevronLeft, ChevronRight, Copy, CheckCheck, LayoutGrid, Orbit } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
 import ThreeDCarousel from './ThreeDCarousel';
+import OriginalPhotoGallery from './OriginalPhotoGallery';
 
 const CATEGORIES = [
   'Todos',
@@ -285,6 +286,7 @@ export default function CharacterCatalog() {
           </AnimatePresence>
         </motion.div>
         )}
+        <OriginalPhotoGallery key={selectedCategory} category={selectedCategory} />
       </div>
 
       {/* Radix Dialog for Immersive Character Dossier */}

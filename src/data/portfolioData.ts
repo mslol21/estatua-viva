@@ -55,10 +55,10 @@ export const CHARACTERS: Character[] = [
     description: 'Com pintura corporal metálica em tom ouro nobre e figurino drapeado clássico de alta costura, esta intervenção confere imponência e atmosfera mítica imediata.',
     idealFor: 'Casamentos luxuosos, recepções de gala, premiações corporativas e formaturas.',
     details: ['Pintura atóxica metálica de alta aderência', 'Posturas e gestos estatuários de precisão milimétrica', 'Interação solene com convidados para fotografias'],
-    imageUrl: 'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-2-e1753540896401.jpg',
     gallery: [
-      'https://images.unsplash.com/photo-1544717302-de2939b7ef71?auto=format&fit=crop&w=1200&q=85',
-      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1200&q=85',
+      'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-2-e1753540896401.jpg',
+      'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-3-e1753540846431.jpg',
     ],
     highlightText: 'Mais requisitada em eventos sociais de luxo',
     specs: {
@@ -121,7 +121,7 @@ export const CHARACTERS: Character[] = [
     imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-4-768x1024.jpg',
     gallery: [
       'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-4-768x1024.jpg',
-      'https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=85',
+      'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-6-768x512.jpg',
     ],
     highlightText: 'Maquiagem artística cinematográfica',
     specs: {
