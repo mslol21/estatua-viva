@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-const links = [{ label: 'Experiências', href: '#experiencias' }, { label: 'Personagens', href: '#acervo' }, { label: 'Bastidores', href: '#videos' }, { label: 'Dúvidas', href: '#faq' }];
+const links = [{ label: 'Branca', href: '/#estilo-branca' }, { label: 'Prata', href: '/#estilo-prata' }, { label: 'Ouro', href: '/#estilo-ouro' }, { label: 'Diversas', href: '/#estilo-diversas' }, { label: 'Vídeos', href: 'https://estatuaviva.com.br/estatua-viva-videos/' }, { label: 'Blog', href: 'https://estatuaviva.com.br/blog/' }, { label: 'Contato', href: '/#briefing' }];
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const header = useRef<HTMLElement>(null);
@@ -18,7 +18,7 @@ export default function Navbar() {
   return <header ref={header} className="site-header">
     <div className="site-container flex items-center justify-between gap-6">
       <Link href="/" aria-label="Estátua Viva Produções — início" className="shrink-0"><BrandLogo /></Link>
-      <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-7">{links.map(link => <a key={link.href} href={link.href} className="nav-link">{link.label}</a>)}</nav>
+      <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-4 xl:gap-6">{links.map(link => <a key={link.href} href={link.href} className="nav-link">{link.label}</a>)}</nav>
       <a href="#briefing" className="button-gold hidden sm:inline-flex !min-h-11 !px-5 !text-xs">Solicitar orçamento <ArrowUpRight size={15} /></a>
       <button ref={toggle} onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? 'Fechar menu' : 'Abrir menu'} className="lg:hidden w-11 h-11 border border-champagne-gold/30 flex items-center justify-center text-champagne-gold">{open ? <X size={21} /> : <Menu size={21} />}</button>
     </div>

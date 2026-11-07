@@ -40,7 +40,7 @@ export const CHARACTERS: Character[] = [
     description: 'Desenvolvido com maestria cenográfica para simbolizar precisão, tecnologia e força do trabalho. O reflexo metálico prateado dialoga com estandes modernos de alta tecnologia.',
     idealFor: 'Feiras industriais, congressos de tecnologia, convenções de vendas e logística.',
     details: ['Conceito industrial para eventos corporativos', 'Figurino customizável com ferramentas cenográficas cromadas', 'Atuação de alto fluxo e retenção em estandes'],
-    imageUrl: '',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Prata-Robo-Executivo-768x898.jpg',
   },
   {
     id: 'catrina-miguelito',
@@ -50,7 +50,7 @@ export const CHARACTERS: Character[] = [
     description: 'Personagens inspirados na tradição mexicana, com figurinos, flores e maquiagem artística para eventos temáticos.',
     idealFor: 'Festas temáticas, eventos de Halloween/Día de los Muertos, festivais culturais e lançamentos.',
     details: ['Caracterização artística temática', 'Acessórios barrocos e flores hiper-realistas', 'Performance magnética com elegância e mistério'],
-    imageUrl: '',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-4-768x1024.jpg',
   },
   {
     id: 'capitao-jack-sparrow',
@@ -70,7 +70,7 @@ export const CHARACTERS: Character[] = [
     description: 'Munido de bengala, cartola e sapato largo, o eterno Vagabundo interage de forma sutil, cordial e profundamente poética, desarmando o público com gestos gentis.',
     idealFor: 'Recepções de teatros, premiações literárias, festivais de cinema e eventos corporativos.',
     details: ['Gestual clássico da mímica francesa e comédia física', 'Interação elegante sem uso da palavra falada', 'Ideal para quebra de gelo no acolhimento de convidados'],
-    imageUrl: '',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Charles-Chaplin-2.jpg',
   },
   {
     id: 'personagens-historicos',
@@ -80,7 +80,7 @@ export const CHARACTERS: Character[] = [
     description: 'Recriações com rigor de pesquisa iconográfica histórica. Os personagens parecem ter acabado de descer dos monumentos das praças para conversar com a audiência.',
     idealFor: 'Museus, feiras literárias, bienais, universidades, inaugurações de centros culturais.',
     details: ['Personagens inspirados na história e na literatura', 'Acessórios de época autênticos (óculos, canetas bico de pena, monóculos)', 'Textos e declamações estatuárias adaptáveis'],
-    imageUrl: '/brand/artista.webp',
+    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Fernando-Pessoa-768x768.jpg',
   },
   {
     id: 'mascote-produto-custom',
