@@ -6,6 +6,13 @@ import BrandLogo from './BrandLogo';
 const links = [{ label: 'Branca', href: '/#estilo-branca' }, { label: 'Prata', href: '/#estilo-prata' }, { label: 'Ouro', href: '/#estilo-ouro' }, { label: 'Diversas', href: '/#estilo-diversas' }, { label: 'Vídeos', href: 'https://estatuaviva.com.br/estatua-viva-videos/' }, { label: 'Blog', href: 'https://estatuaviva.com.br/blog/' }, { label: 'Contato', href: '/#briefing' }];
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const update = () => setScrolled(window.scrollY > 24);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, []);
   const header = useRef<HTMLElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
@@ -15,7 +22,7 @@ export default function Navbar() {
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', closeOutside);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', closeOutside); };
   }, [open]);
-  return <header ref={header} className="site-header">
+  return <header ref={header} className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
     <div className="site-container flex items-center justify-between gap-6">
       <Link href="/" aria-label="Estátua Viva Produções — início" className="shrink-0"><BrandLogo /></Link>
       <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-4 xl:gap-6">{links.map(link => <a key={link.href} href={link.href} className="nav-link">{link.label}</a>)}</nav>

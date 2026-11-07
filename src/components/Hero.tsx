@@ -12,12 +12,10 @@ export default function Hero() {
         <div className="art-actions"><a href="#acervo" className="art-primary">Conheça os personagens <ArrowUpRight size={18} /></a><a href="#briefing" className="art-secondary">Solicitar orçamento <ArrowUpRight size={17} /></a></div>
         <div className="art-note"><span>ESTÁTUAS VIVAS · PERSONAGENS</span><span>ESTÁTUA VIVA PRODUÇÕES</span></div>
       </div>
-      <div className="art-hero-stage">
-        <span className="art-orbit art-orbit-one" aria-hidden="true" /><span className="art-orbit art-orbit-two" aria-hidden="true" />
-        <div className="art-main-image"><Image src="/brand/artista.webp" alt="Artista caracterizado como estátua viva em dourado" fill priority sizes="(max-width: 767px) 85vw, 45vw" className="object-cover" /></div>
-        <div className="art-side-image"><Image src="/brand/pirata.webp" alt="Personagem pirata da Estátua Viva Produções" fill sizes="(max-width: 767px) 26vw, 15vw" className="object-cover object-top" /><span>PERSONAGENS<br />QUE ENCANTAM</span></div>
-        <span className="art-stage-label">O EXTRAORDINÁRIO<br /><em>acontece ao vivo.</em></span>
-      </div>
+      <figure className="hero-portrait">
+        <div className="hero-portrait-image"><Image src="/brand/artista.webp" alt="Artista caracterizado como estátua viva em dourado" fill priority sizes="(max-width: 767px) 100vw, 52vw" className="object-cover" /></div>
+        <figcaption className="hero-portrait-caption"><span>ARTE QUE SE REVELA</span><em>O extraordinário acontece ao vivo.</em></figcaption>
+      </figure>
     </div>
     <div className="art-hero-footer site-container"><span>PERFORMANCES · PERSONAGENS · EVENTOS</span><a href="#experiencias">DESLIZE PARA DESCOBRIR <ArrowDownRight size={17} /></a><span>SÃO PAULO / BRASIL</span></div>
   </section>;
