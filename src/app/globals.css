@@ -735,3 +735,26 @@ body {
   .hero-portrait-caption em { font-size: 19px; }
 }
 @media(prefers-reduced-motion:reduce) { .hero-portrait, .hero-portrait-image img, .site-header { animation: none !important; transition: none !important; } }
+
+/* A marca ocupa o palco principal. Os elementos decorativos são discretos. */
+.hero-brand-stage { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; min-height: 560px; isolation: isolate; animation: art-rise 1s .12s both; }
+.hero-brand-halo { position: absolute; z-index: -1; width: min(90%, 510px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(33, 82, 88, .48), rgba(9, 34, 40, .18) 48%, transparent 70%); animation: art-breathe 7s ease-in-out infinite alternate; }
+.hero-brand-orbit { position: absolute; width: min(82%, 460px); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(223, 189, 124, .22); pointer-events: none; }
+.hero-brand-orbit-one { animation: brand-orbit 34s linear infinite; }
+.hero-brand-orbit-one::after, .hero-brand-orbit-two::after { content: ''; position: absolute; top: 14%; left: 14%; width: 6px; height: 6px; border-radius: 50%; background: #e1bf7e; box-shadow: 0 0 14px rgba(225, 191, 126, .75); }
+.hero-brand-orbit-two { width: min(92%, 515px); border-color: rgba(223, 189, 124, .11); animation: brand-orbit 48s linear infinite reverse; }
+.hero-brand-orbit-two::after { width: 4px; height: 4px; top: 77%; left: 8%; }
+.hero-brand-stage .hero-brand-logo { width: 326px; height: 192px; max-width: 70%; flex-shrink: 0; filter: drop-shadow(0 8px 25px rgba(0, 0, 0, .48)); }
+.hero-brand-stage .hero-brand-logo .brand-logo-art { background-size: 460px auto; background-position: -68px -90px; mix-blend-mode: screen; -webkit-mask-image: radial-gradient(ellipse 65% 62% at 50% 50%, #000 56%, transparent 100%); mask-image: radial-gradient(ellipse 65% 62% at 50% 50%, #000 56%, transparent 100%); }
+.hero-brand-caption { position: absolute; bottom: 12%; color: #dbc393; font-size: 9px; letter-spacing: .18em; text-align: center; line-height: 1.8; }
+.hero-brand-caption span { color: #d6b16d; margin: 0 8px; }
+@keyframes brand-orbit { to { transform: rotate(360deg); } }
+@media (max-width: 767px) {
+  .hero-brand-stage { min-height: 380px; margin: 5px 0 20px; }
+  .hero-brand-stage .hero-brand-logo { width: 260px; height: 154px; max-width: 76%; }
+  .hero-brand-stage .hero-brand-logo .brand-logo-art { background-size: 368px auto; background-position: -54px -72px; }
+  .hero-brand-orbit { width: min(78%, 335px); }
+  .hero-brand-orbit-two { width: min(88%, 370px); }
+  .hero-brand-caption { bottom: 4%; font-size: 8px; letter-spacing: .12em; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-brand-stage, .hero-brand-halo, .hero-brand-orbit { animation: none !important; } }

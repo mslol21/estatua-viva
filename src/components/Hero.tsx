@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import BrandLogo from './BrandLogo';
 import { ArrowDownRight, ArrowUpRight } from 'lucide-react';
 
 export default function Hero() {
@@ -12,10 +12,13 @@ export default function Hero() {
         <div className="art-actions"><a href="#acervo" className="art-primary">Conheça os personagens <ArrowUpRight size={18} /></a><a href="#briefing" className="art-secondary">Solicitar orçamento <ArrowUpRight size={17} /></a></div>
         <div className="art-note"><span>ESTÁTUAS VIVAS · PERSONAGENS</span><span>ESTÁTUA VIVA PRODUÇÕES</span></div>
       </div>
-      <figure className="hero-portrait">
-        <div className="hero-portrait-image"><Image src="/brand/artista.webp" alt="Artista caracterizado como estátua viva em dourado" fill priority sizes="(max-width: 767px) 100vw, 52vw" className="object-cover" /></div>
-        <figcaption className="hero-portrait-caption"><span>ARTE QUE SE REVELA</span><em>O extraordinário acontece ao vivo.</em></figcaption>
-      </figure>
+      <div className="hero-brand-stage" aria-label="Estátua Viva Produções">
+        <div className="hero-brand-halo" aria-hidden="true" />
+        <div className="hero-brand-orbit hero-brand-orbit-one" aria-hidden="true" />
+        <div className="hero-brand-orbit hero-brand-orbit-two" aria-hidden="true" />
+        <BrandLogo className="hero-brand-logo" />
+        <span className="hero-brand-caption" aria-hidden="true">ARTE QUE SURPREENDE <span>✦</span> EXPERIÊNCIAS QUE FICAM</span>
+      </div>
     </div>
     <div className="art-hero-footer site-container"><span>PERFORMANCES · PERSONAGENS · EVENTOS</span><a href="#experiencias">DESLIZE PARA DESCOBRIR <ArrowDownRight size={17} /></a><span>SÃO PAULO / BRASIL</span></div>
   </section>;
