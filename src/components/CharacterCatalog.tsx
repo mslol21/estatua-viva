@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useEffect, MouseEvent } from 'react';
+import { useState, useEffect, useRef, MouseEvent } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { CHARACTERS, Character } from '@/data/portfolioData';
 import { ArrowUpRight, Check, Eye, X, Clock, Sparkles, UserCheck, Shield, ChevronLeft, ChevronRight, Copy, CheckCheck, LayoutGrid, Orbit } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -27,6 +27,33 @@ export default function CharacterCatalog() {
   const [copied, setCopied] = useState<boolean>(false);
   const [copyError, setCopyError] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'orbit'>('grid');
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
+
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel || viewMode !== 'grid') return;
+    carousel.scrollLeft = 0;
+    const update = () => {
+      setCanScrollLeft(carousel.scrollLeft > 1);
+      setCanScrollRight(carousel.scrollLeft + carousel.clientWidth < carousel.scrollWidth - 1);
+    };
+    const observer = new ResizeObserver(update);
+    observer.observe(carousel);
+    carousel.addEventListener('scroll', update, { passive: true });
+    const frame = requestAnimationFrame(update);
+    return () => { cancelAnimationFrame(frame); observer.disconnect(); carousel.removeEventListener('scroll', update); };
+  }, [selectedCategory, viewMode]);
+
+  const scrollCarousel = (direction: -1 | 1) => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+    const card = carousel.querySelector<HTMLElement>('[data-character-card]');
+    const distance = card ? card.offsetWidth + 24 : carousel.clientWidth * 0.8;
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    carousel.scrollBy({ left: direction * distance, behavior: reducedMotion ? 'auto' : 'smooth' });
+  };
 
   useEffect(() => {
     const categoryByHash: Record<string, CategoryType> = {
@@ -151,10 +178,10 @@ export default function CharacterCatalog() {
                 viewMode === 'grid' ? 'bg-champagne-gold text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
               }`}
               aria-pressed={viewMode === 'grid'}
-              aria-label="Visualização em Grade"
+              aria-label="Visualização em carrossel"
             >
               <LayoutGrid size={13} />
-              <span>Grade</span>
+              <span>Carrossel</span>
             </button>
             <button
               onClick={() => setViewMode('orbit')}
@@ -186,8 +213,15 @@ export default function CharacterCatalog() {
             />
           </div>
         ) : (
-          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <AnimatePresence mode="popLayout">
+          <div>
+            <div className="mb-5 flex items-center justify-between gap-4">
+              <p className="text-xs text-stone-warm">Deslize para conhecer mais personagens</p>
+              <div className="flex shrink-0 gap-2">
+                <button type="button" aria-label="Personagens anteriores" aria-controls="carrossel-personagens" disabled={!canScrollLeft} onClick={() => scrollCarousel(-1)} className="flex h-11 w-11 items-center justify-center border border-champagne-gold/40 text-champagne-gold transition-colors hover:bg-champagne-gold/10 disabled:cursor-not-allowed disabled:opacity-35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne-gold"><ChevronLeft size={20} /></button>
+                <button type="button" aria-label="Próximos personagens" aria-controls="carrossel-personagens" disabled={!canScrollRight} onClick={() => scrollCarousel(1)} className="flex h-11 w-11 items-center justify-center border border-champagne-gold/40 text-champagne-gold transition-colors hover:bg-champagne-gold/10 disabled:cursor-not-allowed disabled:opacity-35 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne-gold"><ChevronRight size={20} /></button>
+              </div>
+            </div>
+          <div id="carrossel-personagens" ref={carouselRef} aria-label="Personagens do acervo" tabIndex={0} data-lenis-prevent className="flex snap-x snap-mandatory gap-6 overflow-x-auto overscroll-x-contain pb-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne-gold">
             {filteredCharacters.map((character, idx) => {
               const whatsappLink = `https://wa.me/5511937765250?text=${encodeURIComponent(
                 `Olá! Vi o personagem ${character.name} no site da Estátua Viva Produções e gostaria de consultar disponibilidade e orçamento para meu evento.`
@@ -196,13 +230,13 @@ export default function CharacterCatalog() {
               return (
                 <motion.div
                   key={character.id}
-                  layout
+                  data-character-card
                   initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.94 }}
                   transition={{ duration: 0.45, delay: idx * 0.04 }}
                   onMouseMove={handleMouseMove}
-                  className="spotlight-card group bg-obsidian border border-alabaster/10 hover:border-champagne-gold/60 flex flex-col justify-between transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-champagne-gold/5"
+                  className="spotlight-card group w-[min(82vw,320px)] shrink-0 snap-start sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] bg-obsidian border border-alabaster/10 hover:border-champagne-gold/60 flex flex-col justify-between transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-champagne-gold/5"
                 >
                   {/* Image Container with Rest vs Hover Contrast */}
                   <div
@@ -301,8 +335,8 @@ export default function CharacterCatalog() {
                 </motion.div>
               );
             })}
-          </AnimatePresence>
-        </motion.div>
+          </div>
+          </div>
         )}
         <OriginalPhotoGallery key={selectedCategory} category={selectedCategory} />
       </div>
