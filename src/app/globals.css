@@ -678,3 +678,10 @@ body {
 .site-surface .art-hero::before {
   background: linear-gradient(100deg, rgba(3, 14, 19, .54), rgba(4, 19, 24, .28)), url('/brand/textura-marmore.webp') center 40% / cover no-repeat;
 }
+
+/* Integra a arte original da marca ao cabeçalho, sem a moldura da imagem. */
+.site-header .brand-logo-art {
+  mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(ellipse 65% 62% at 50% 50%, #000 56%, transparent 100%);
+  mask-image: radial-gradient(ellipse 65% 62% at 50% 50%, #000 56%, transparent 100%);
+}
