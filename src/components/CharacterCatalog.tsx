@@ -4,8 +4,9 @@ import { useState, useEffect, MouseEvent } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { CHARACTERS, Character } from '@/data/portfolioData';
-import { ArrowUpRight, Check, Eye, X, Clock, Sparkles, UserCheck, Shield, ChevronLeft, ChevronRight, Copy, CheckCheck } from 'lucide-react';
+import { ArrowUpRight, Check, Eye, X, Clock, Sparkles, UserCheck, Shield, ChevronLeft, ChevronRight, Copy, CheckCheck, LayoutGrid, Orbit } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
+import ThreeDCarousel from './ThreeDCarousel';
 
 const CATEGORIES = [
   'Todos',
@@ -23,6 +24,7 @@ export default function CharacterCatalog() {
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
   const [activePhotoIdx, setActivePhotoIdx] = useState<number>(0);
   const [copied, setCopied] = useState<boolean>(false);
+  const [viewMode, setViewMode] = useState<'grid' | 'orbit'>('grid');
 
   useEffect(() => {
     const selectFromHash = () => {
@@ -87,33 +89,74 @@ export default function CharacterCatalog() {
           </p>
         </div>
 
-        {/* Filter Tabs with Framer Motion LayoutId */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none border-b border-alabaster/10">
-          {CATEGORIES.map((cat) => {
-            const isSelected = selectedCategory === cat;
-            return (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`relative px-4 py-2.5 text-xs font-mono uppercase tracking-[0.14em] transition-colors whitespace-nowrap focus:outline-none ${
-                  isSelected ? 'text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
-                }`}
-              >
-                {isSelected && (
-                  <motion.div
-                    layoutId="activeFilterPill"
-                    className="absolute inset-0 bg-champagne-gold z-0"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{cat}</span>
-              </button>
-            );
-          })}
+        {/* Filter Tabs with Framer Motion LayoutId & View Mode Toggle */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-10 border-b border-alabaster/10">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+            {CATEGORIES.map((cat) => {
+              const isSelected = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`relative px-4 py-2.5 text-xs font-mono uppercase tracking-[0.14em] transition-colors whitespace-nowrap focus:outline-none ${
+                    isSelected ? 'text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeFilterPill"
+                      className="absolute inset-0 bg-champagne-gold z-0"
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{cat}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Grid vs 3D Orbit View Toggle */}
+          <div className="flex items-center gap-1 border border-alabaster/15 p-1 rounded-full self-start md:self-auto bg-charcoal/50 backdrop-blur-sm shrink-0">
+            <button
+              onClick={() => setViewMode('grid')}
+              className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
+                viewMode === 'grid' ? 'bg-champagne-gold text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
+              }`}
+              aria-label="Visualização em Grade"
+            >
+              <LayoutGrid size={13} />
+              <span>Grade</span>
+            </button>
+            <button
+              onClick={() => setViewMode('orbit')}
+              className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
+                viewMode === 'orbit' ? 'bg-champagne-gold text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
+              }`}
+              aria-label="Visualização 3D em Órbita"
+            >
+              <Orbit size={13} />
+              <span>Órbita 3D</span>
+            </button>
+          </div>
         </div>
 
-        {/* Character Bento Grid with Asymmetric Ratio & Fluid Framer Motion */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {viewMode === 'orbit' ? (
+          <div className="py-4">
+            <ThreeDCarousel
+              items={filteredCharacters.map((char) => ({
+                id: char.id,
+                title: char.name,
+                image: char.imageUrl,
+                color: char.colorAccent || '223, 189, 124',
+              }))}
+              onSelectItem={(id) => {
+                const found = filteredCharacters.find((c) => c.id === id);
+                if (found) openCharacterModal(found);
+              }}
+            />
+          </div>
+        ) : (
+          <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredCharacters.map((character, idx) => {
               const whatsappLink = `https://wa.me/5511937765250?text=${encodeURIComponent(
@@ -228,6 +271,7 @@ export default function CharacterCatalog() {
             })}
           </AnimatePresence>
         </motion.div>
+        )}
       </div>
 
       {/* Radix Dialog for Immersive Character Dossier */}

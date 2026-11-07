@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-obsidian text-alabaster">
+    <main className="min-h-screen text-alabaster relative">
       <Navbar />
       <div id="conteudo" tabIndex={-1}><Hero /></div>
       <ClientMarquee />

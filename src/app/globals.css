@@ -24,6 +24,14 @@ html {
 body {
   overflow-x: hidden;
   background-color: #061317;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(211, 175, 108, 0.08), transparent 45%),
+    linear-gradient(to bottom, rgba(6, 19, 23, 0.88), rgba(6, 19, 23, 0.94)),
+    url('/brand/bg-marble.jpg');
+  background-size: 100% auto, 100% 100%, cover;
+  background-position: center top;
+  background-repeat: no-repeat, no-repeat, repeat-y;
+  background-attachment: fixed;
 }
 
 /* Custom Selection */
@@ -405,4 +413,217 @@ button, a { touch-action: manipulation; }
   letter-spacing: 1px;
   font-size: 1.15em;
   color: #dfbd7c;
+}
+
+/* 3D Perspective Rotating Card Cylinder */
+.threed-carousel-wrapper {
+  perspective: 1200px;
+}
+
+.threed-carousel-inner {
+  --w: 130px;
+  --h: 195px;
+  --translateZ: calc((var(--w) + var(--h)) + 20px);
+  --rotateX: -14deg;
+  --perspective: 1000px;
+  position: absolute;
+  width: var(--w);
+  height: var(--h);
+  top: 26%;
+  left: calc(50% - (var(--w) / 2));
+  z-index: 2;
+  transform-style: preserve-3d;
+  transform: perspective(var(--perspective));
+  animation: threed-rotating var(--duration, 25s) linear infinite;
+  will-change: transform;
+}
+
+@keyframes threed-rotating {
+  from {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(0deg);
+  }
+  to {
+    transform: perspective(var(--perspective)) rotateX(var(--rotateX)) rotateY(360deg);
+  }
+}
+
+.threed-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1.5px solid rgba(var(--color-card, 223, 189, 124), 0.45);
+  background: #091c21;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(var(--color-card, 223, 189, 124), 0.15);
+  transform: rotateY(calc((360deg / var(--quantity)) * var(--index))) translateZ(var(--translateZ));
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  backface-visibility: visible;
+}
+
+.threed-card:hover {
+  border-color: rgba(var(--color-card, 223, 189, 124), 0.95);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(var(--color-card, 223, 189, 124), 0.35);
+}
+
+.threed-gradient-fallback {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(var(--color-card, 223, 189, 124), 0.25) 0%,
+    rgba(var(--color-card, 223, 189, 124), 0.6) 80%,
+    rgba(var(--color-card, 223, 189, 124), 0.9) 100%
+  );
+}
+
+@media (max-width: 767px) {
+  .threed-carousel-inner {
+    --w: 105px;
+    --h: 155px;
+    --translateZ: calc((var(--w) + var(--h)) + 15px);
+    --rotateX: -10deg;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .threed-carousel-inner {
+    animation: none !important;
+  }
+}
+
+/* Isometric 3D Projection Social Card */
+.iso-social-container {
+  display: inline-block;
+}
+
+.iso-social-card {
+  max-width: fit-content;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  background: rgba(13, 36, 42, 0.55);
+  border: 1px solid rgba(211, 175, 108, 0.25);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05),
+    inset 0 0 5px rgba(211, 175, 108, 0.15), 0 10px 25px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 0.5rem;
+}
+
+.iso-social-card:hover {
+  background: rgba(13, 36, 42, 0.75);
+  border-color: rgba(211, 175, 108, 0.5);
+  box-shadow: inset 0 0 20px rgba(211, 175, 108, 0.1),
+    0 15px 35px rgba(0, 0, 0, 0.6);
+}
+
+.iso-social-list {
+  padding: 0.5rem;
+  display: flex;
+  list-style: none;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+}
+
+.iso-social-list li.iso-pro {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  transition: 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iso-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 5;
+}
+
+.iso-svg {
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 0.75rem;
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  color: #dfbd7c;
+  background: rgba(6, 19, 23, 0.8);
+  box-shadow: inset 0 0 12px rgba(223, 189, 124, 0.2),
+    inset 0 0 4px rgba(255, 255, 255, 0.3), 0 5px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(223, 189, 124, 0.3);
+}
+
+.iso-text {
+  opacity: 0;
+  border-radius: 6px;
+  padding: 4px 10px;
+  transition: all 0.3s ease;
+  color: #dfbd7c;
+  background-color: rgba(6, 19, 23, 0.9);
+  border: 1px solid rgba(223, 189, 124, 0.35);
+  position: absolute;
+  bottom: -28px;
+  white-space: nowrap;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  z-index: 20;
+  pointer-events: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+}
+
+.iso-pro:hover a > .iso-svg {
+  transform: translate(10px, -10px);
+  color: #f4f1ea;
+  border-color: rgba(223, 189, 124, 0.8);
+  box-shadow: inset 0 0 15px rgba(223, 189, 124, 0.4), 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.iso-pro:hover .iso-text {
+  opacity: 1;
+  transform: translateY(0) skew(-3deg);
+}
+
+.iso-pro span {
+  opacity: 0;
+  position: absolute;
+  border-color: #dfbd7c;
+  box-shadow: inset 0 0 15px rgba(223, 189, 124, 0.25),
+    inset 0 0 4px rgba(255, 255, 255, 0.2), 0 5px 8px rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  border: 1px solid rgba(223, 189, 124, 0.2);
+  background: rgba(13, 36, 42, 0.4);
+  transition: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  height: 48px;
+  width: 48px;
+  pointer-events: none;
+}
+
+.iso-pro:hover span {
+  opacity: 1;
+}
+
+.iso-pro:hover span:nth-child(1) {
+  opacity: 0.3;
+}
+
+.iso-pro:hover span:nth-child(2) {
+  opacity: 0.5;
+  transform: translate(4px, -4px);
+}
+
+.iso-pro:hover span:nth-child(3) {
+  opacity: 0.75;
+  transform: translate(8px, -8px);
 }

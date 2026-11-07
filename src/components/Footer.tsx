@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import BrandLogo from './BrandLogo';
+import IsometricSocials from './IsometricSocials';
 import { Instagram, Mail, Phone, MapPin, Clock, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
@@ -51,6 +52,10 @@ export default function Footer() {
                 <span>Hub da Bio</span>
                 <ArrowUpRight strokeWidth={1.5} className="w-3 h-3" />
               </Link>
+            </div>
+
+            <div className="mt-8">
+              <IsometricSocials />
             </div>
           </div>
 
