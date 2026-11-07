@@ -43,22 +43,22 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
   };
 
   return (
-    <section id="briefing" className="py-24 bg-charcoal border-b border-alabaster/10 relative">
+    <section id="briefing" className="section-space bg-charcoal/40 border-b border-alabaster/10 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 mb-3 border border-champagne-gold/30 bg-obsidian rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-champagne-gold" />
             <span className="font-mono text-[10px] uppercase tracking-widest text-champagne-gold">
-              ORÇAMENTO EXPRESSO VIA WHATSAPP
+              04 / Vamos criar o seu momento
             </span>
           </div>
 
           <h2 className="font-serif text-3xl sm:text-5xl text-alabaster font-normal mb-4">
-            Monte a proposta para o seu evento em segundos.
+            O próximo encontro inesquecível começa aqui.
           </h2>
           <p className="font-sans text-sm sm:text-base text-stone-warm max-w-xl mx-auto">
-            Selecione as premissas artísticas abaixo. Montamos o briefing estruturado e direcionamos você direto ao diretor de elenco.
+            Conte um pouco sobre o seu evento. Ao continuar, você abre o WhatsApp com os detalhes preenchidos para conversar com a produção.
           </p>
         </div>
 
@@ -68,10 +68,10 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
           className="bg-obsidian border border-alabaster/10 p-6 sm:p-10 shadow-2xl relative"
         >
           {/* Step 1: Event Nature */}
-          <div className="mb-8">
-            <label className="block font-mono text-xs uppercase tracking-widest text-champagne-gold mb-3">
-              01. Qual a natureza do evento?
-            </label>
+          <fieldset className="mb-8">
+            <legend className="block font-mono text-xs uppercase tracking-widest text-champagne-gold mb-3">
+              01. Qual é o tipo de evento?
+            </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {EVENT_NATURES.map((item) => {
                 const isSelected = nature === item;
@@ -79,6 +79,7 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
                   <button
                     type="button"
                     key={item}
+                    aria-pressed={isSelected}
                     onClick={() => setNature(item)}
                     className={`p-3.5 text-left text-xs font-mono uppercase tracking-[0.08em] border transition-all duration-200 flex items-center justify-between ${
                       isSelected
@@ -92,13 +93,13 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
                 );
               })}
             </div>
-          </div>
+          </fieldset>
 
           {/* Step 2: Desired Aesthetics */}
-          <div className="mb-8">
-            <label className="block font-mono text-xs uppercase tracking-widest text-champagne-gold mb-3">
-              02. Qual estética cênica você busca?
-            </label>
+          <fieldset className="mb-8">
+            <legend className="block font-mono text-xs uppercase tracking-widest text-champagne-gold mb-3">
+              02. Qual estilo você imagina?
+            </legend>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {AESTHETICS.map((item) => {
                 const isSelected = aesthetic === item;
@@ -106,6 +107,7 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
                   <button
                     type="button"
                     key={item}
+                    aria-pressed={isSelected}
                     onClick={() => setAesthetic(item)}
                     className={`p-3.5 text-left text-xs font-mono uppercase tracking-[0.08em] border transition-all duration-200 flex items-center justify-between ${
                       isSelected
@@ -119,7 +121,7 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
                 );
               })}
             </div>
-          </div>
+          </fieldset>
 
           {/* Step 3: Quick Info Fields */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
@@ -134,7 +136,7 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Ex: Beatriz Lima (Agência Vértice)"
-                className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/50 focus:outline-none focus:border-champagne-gold transition-colors font-sans"
+                className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/80 focus:outline-none focus:border-champagne-gold transition-colors font-sans"
               />
             </div>
 
@@ -149,7 +151,7 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
                 value={dateAndCity}
                 onChange={(e) => setDateAndCity(e.target.value)}
                 placeholder="Ex: 14 de Novembro • São Paulo - SP"
-                className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/50 focus:outline-none focus:border-champagne-gold transition-colors font-sans"
+                className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/80 focus:outline-none focus:border-champagne-gold transition-colors font-sans"
               />
             </div>
           </div>
@@ -165,7 +167,7 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
               value={additionalNotes}
               onChange={(e) => setAdditionalNotes(e.target.value)}
               placeholder="Número estimado de convidados, horários ou referências específicas..."
-              className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/50 focus:outline-none focus:border-champagne-gold transition-colors font-sans resize-none"
+              className="w-full bg-charcoal border border-alabaster/15 px-4 py-3 text-sm text-alabaster placeholder:text-stone-warm/80 focus:outline-none focus:border-champagne-gold transition-colors font-sans resize-y"
             />
           </div>
 
@@ -175,14 +177,15 @@ Gostaria de verificar disponibilidade de agenda e receber uma estimativa de inve
             className="w-full py-4 bg-champagne-gold hover:bg-champagne-hover text-obsidian text-xs font-mono uppercase tracking-[0.16em] font-semibold flex items-center justify-center gap-2 transition-all duration-300 shadow-xl shadow-champagne-gold/15"
           >
             <Send strokeWidth={1.5} className="w-4 h-4" />
-            <span>Enviar Briefing Estruturado via WhatsApp</span>
+            <span>Continuar no WhatsApp</span>
           </button>
 
           <p className="text-center font-mono text-[10px] uppercase tracking-widest text-stone-warm mt-4">
-            Resposta ágil em horário comercial: Seg a Sáb das 09h às 22h
+            A proposta e a disponibilidade serão confirmadas pela produção.
           </p>
         </form>
       </div>
     </section>
   );
 }
+

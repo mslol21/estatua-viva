@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import BrandLogo from './BrandLogo';
 import { Instagram, Mail, Phone, MapPin, Clock, ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
@@ -16,21 +17,14 @@ export default function Footer() {
         ESTÁTUA VIVA
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
+      <div className="site-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-alabaster/10">
           {/* Brand Manifesto */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-8 h-8 border border-champagne-gold/40 flex items-center justify-center font-serif text-sm font-normal text-champagne-gold">
-                EV
-              </div>
-              <span className="font-serif text-xl tracking-widest text-alabaster uppercase">
-                Estátua Viva Produções
-              </span>
-            </div>
+            <Link href="/" className="mb-5"><BrandLogo className="brand-logo-footer" /></Link>
 
             <p className="font-sans text-sm text-stone-warm leading-relaxed mb-6 max-w-sm">
-              Fundada e dirigida por Rodolfo Valentino, pioneira na profissionalização e criação cenográfica de intervenções esculturais vivas de alto padrão no Brasil desde 2005.
+              Personagens vivos e performances artísticas para festas e eventos. Você imagina. A gente dá vida.
             </p>
 
             <div className="flex items-center gap-3">
@@ -83,17 +77,17 @@ export default function Footer() {
               </li>
               <li>
                 <a href="#clientes" className="hover:text-champagne-gold transition-colors">
-                  Clientes & Televisão
+                  Nossa proposta artística
                 </a>
               </li>
               <li>
                 <a href="#briefing" className="hover:text-champagne-gold transition-colors">
-                  Configurador de Proposta
+                  Planejar meu evento
                 </a>
               </li>
               <li>
                 <a href="#faq" className="hover:text-champagne-gold transition-colors">
-                  FAQ & Avaliações Google
+                  Dúvidas & Avaliações
                 </a>
               </li>
             </ul>
@@ -157,3 +151,4 @@ export default function Footer() {
     </footer>
   );
 }
+

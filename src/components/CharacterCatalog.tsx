@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useRef, MouseEvent } from 'react';
+import { useState, MouseEvent } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { CHARACTERS, Character } from '@/data/portfolioData';
 import { ArrowUpRight, Check, Eye, X } from 'lucide-react';
 import * as Dialog from '@radix-ui/react-dialog';
@@ -19,12 +19,14 @@ const CATEGORIES = [
 type CategoryType = typeof CATEGORIES[number];
 
 export default function CharacterCatalog() {
+  const reducedMotion = useReducedMotion();
   const [selectedCategory, setSelectedCategory] = useState<CategoryType>('Todos');
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
 
   const filteredCharacters = selectedCategory === 'Todos'
     ? CHARACTERS
     : CHARACTERS.filter((c) => c.category === selectedCategory);
+  const orderedCharacters = [...filteredCharacters].sort((a, b) => Number(Boolean(b.imageUrl)) - Number(Boolean(a.imageUrl)));
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
@@ -36,20 +38,20 @@ export default function CharacterCatalog() {
   };
 
   return (
-    <section id="acervo" className="py-24 bg-charcoal/50 border-b border-alabaster/10 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <section id="acervo" className="section-space bg-charcoal/20 border-b border-alabaster/10 relative">
+      <div className="site-container">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="font-mono text-[11px] uppercase tracking-technical text-champagne-gold mb-2">
-              ACERVO CÊNICO & FIGURINOS EXCLUSIVOS
+              02 / Personagens & possibilidades
             </div>
             <h2 className="font-serif text-3xl sm:text-5xl text-alabaster font-normal">
-              Obras vivas esculpidas em detalhe e rigor artístico.
+              Quem você gostaria de encontrar?
             </h2>
           </div>
           <p className="font-sans text-sm text-stone-warm max-w-md">
-            Selecione uma estética abaixo ou converse diretamente com a nossa produção cenográfica para figurinos sob medida.
+            Explore os estilos e consulte a produção para conhecer o repertório disponível para a sua data.
           </p>
         </div>
 
@@ -60,6 +62,7 @@ export default function CharacterCatalog() {
             return (
               <button
                 key={cat}
+                aria-pressed={isSelected}
                 onClick={() => setSelectedCategory(cat)}
                 className={`relative px-4 py-2 text-xs font-mono uppercase tracking-[0.14em] transition-colors whitespace-nowrap ${
                   isSelected ? 'text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
@@ -69,7 +72,7 @@ export default function CharacterCatalog() {
                   <motion.div
                     layoutId="activeFilterPill"
                     className="absolute inset-0 bg-champagne-gold z-0"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    transition={{ duration: reducedMotion ? 0 : 0.2 }}
                   />
                 )}
                 <span className="relative z-10">{cat}</span>
@@ -79,9 +82,9 @@ export default function CharacterCatalog() {
         </div>
 
         {/* Character Bento Grid with Asymmetric Ratio */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
-            {filteredCharacters.map((character, idx) => {
+            {orderedCharacters.map((character, idx) => {
               const whatsappLink = `https://wa.me/5511937765250?text=${encodeURIComponent(
                 `Olá! Vi o personagem ${character.name} no site da Estátua Viva Produções e gostaria de consultar disponibilidade e orçamento para meu evento.`
               )}`;
@@ -90,22 +93,22 @@ export default function CharacterCatalog() {
                 <motion.div
                   key={character.id}
                   layout
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={false}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  transition={{ duration: reducedMotion ? 0 : 0.3 }}
                   onMouseMove={handleMouseMove}
                   className="spotlight-card group bg-obsidian border border-alabaster/10 hover:border-champagne-gold/50 flex flex-col justify-between transition-colors duration-500 overflow-hidden"
                 >
                   {/* Image Container with Rest vs Hover Contrast */}
-                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-charcoal">
-                    <Image
+                  <div className={`relative w-full overflow-hidden bg-charcoal ${character.imageUrl ? 'aspect-square' : 'aspect-[5/3] catalog-concept'}`}>
+                    {character.imageUrl ? <Image
                       src={character.imageUrl}
                       alt={character.name}
                       fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover object-center grayscale-[0.35] contrast-[1.1] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
-                    />
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover object-top group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                    /> : <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5 pb-8"><span aria-hidden="true" className="font-serif text-6xl italic text-champagne-gold/70">0{idx + 1}</span><span className="text-xs text-stone-warm mt-3">Consulte figurinos e disponibilidade</span></div>}
                     <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/30 to-transparent opacity-80" />
 
                     {/* Category or Case Badge */}
@@ -123,8 +126,9 @@ export default function CharacterCatalog() {
                     {/* Quick View Button on Image */}
                     <button
                       onClick={() => setSelectedCharacter(character)}
-                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-obsidian/80 border border-alabaster/10 flex items-center justify-center text-stone-warm hover:text-champagne-gold opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20"
-                      title="Ver ficha completa"
+                      className="absolute top-3 right-3 w-11 h-11 rounded-full bg-obsidian/80 border border-alabaster/10 flex items-center justify-center text-stone-warm hover:text-champagne-gold opacity-100 transition-opacity duration-300 z-20"
+                      aria-label={`Ver detalhes de ${character.name}`}
+                      title="Ver detalhes"
                     >
                       <Eye strokeWidth={1.5} className="w-4 h-4" />
                     </button>
@@ -178,31 +182,33 @@ export default function CharacterCatalog() {
       <Dialog.Root open={!!selectedCharacter} onOpenChange={(open) => !open && setSelectedCharacter(null)}>
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-obsidian/85 backdrop-blur-md z-50 animate-in fade-in duration-300" />
-          <Dialog.Content className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-3xl max-h-[90vh] overflow-y-auto bg-charcoal border border-alabaster/20 p-6 sm:p-10 shadow-2xl z-50 focus:outline-none animate-in fade-in zoom-in-95 duration-300">
+          <Dialog.Content data-lenis-prevent className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] max-w-3xl max-h-[90vh] overflow-y-auto overscroll-contain bg-charcoal border border-alabaster/20 p-6 sm:p-10 shadow-2xl z-50 focus:outline-none animate-in fade-in zoom-in-95 duration-300">
             {selectedCharacter && (
               <div>
+                <Dialog.Description className="sr-only">Descrição e consulta de disponibilidade do personagem selecionado.</Dialog.Description>
                 <div className="flex items-start justify-between border-b border-alabaster/10 pb-4 mb-6">
                   <div>
                     <span className="font-mono text-[10px] uppercase tracking-widest text-champagne-gold">
-                      DOSSIÊ TÉCNICO • {selectedCharacter.category}
+                      PERSONAGEM • {selectedCharacter.category}
                     </span>
                     <Dialog.Title className="font-serif text-3xl sm:text-4xl text-alabaster font-normal mt-1">
                       {selectedCharacter.name}
                     </Dialog.Title>
                   </div>
-                  <Dialog.Close className="p-2 text-stone-warm hover:text-alabaster border border-alabaster/10 hover:border-champagne-gold">
+                  <Dialog.Close aria-label="Fechar detalhes" className="p-2 text-stone-warm hover:text-alabaster border border-alabaster/10 hover:border-champagne-gold">
                     <X strokeWidth={1.5} className="w-5 h-5" />
                   </Dialog.Close>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-8">
                   <div className="relative aspect-[3/4] w-full border border-alabaster/10 overflow-hidden bg-obsidian">
-                    <Image
+                    {selectedCharacter.imageUrl ? <Image
                       src={selectedCharacter.imageUrl}
                       alt={selectedCharacter.name}
                       fill
-                      className="object-cover object-center"
-                    />
+                      sizes="(max-width: 768px) 85vw, 350px"
+                      className="object-cover object-top"
+                    /> : <div className="catalog-concept h-full flex items-center justify-center px-6 text-center"><p className="font-serif text-3xl text-champagne-gold">Uma criação para o seu evento.</p></div>}
                   </div>
 
                   <div className="space-y-4">
@@ -263,3 +269,4 @@ export default function CharacterCatalog() {
     </section>
   );
 }
+

@@ -14,7 +14,8 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
     if (prefersReducedMotion) return;
 
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.9,
+      anchors: { offset: -110 },
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
@@ -40,3 +41,4 @@ export default function SmoothScroll({ children }: SmoothScrollProps) {
 
   return <>{children}</>;
 }
+
