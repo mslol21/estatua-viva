@@ -58,27 +58,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2.5 font-sans text-sm text-stone-warm">
               <li>
-                <a href="#experiencias" className="hover:text-champagne-gold transition-colors">
+                <a href="/#experiencias" className="hover:text-champagne-gold transition-colors">
                   Curadoria de Eventos
                 </a>
               </li>
               <li>
-                <a href="#acervo" className="hover:text-champagne-gold transition-colors">
+                <a href="/#acervo" className="hover:text-champagne-gold transition-colors">
                   Acervo de Personagens
                 </a>
               </li>
               <li>
-                <a href="#clientes" className="hover:text-champagne-gold transition-colors">
+                <a href="/#clientes" className="hover:text-champagne-gold transition-colors">
                   Nossa proposta artística
                 </a>
               </li>
               <li>
-                <a href="#briefing" className="hover:text-champagne-gold transition-colors">
+                <a href="/#briefing" className="hover:text-champagne-gold transition-colors">
                   Planejar meu evento
                 </a>
               </li>
               <li>
-                <a href="#faq" className="hover:text-champagne-gold transition-colors">
+                <a href="/#faq" className="hover:text-champagne-gold transition-colors">
                   Dúvidas & Avaliações
                 </a>
               </li>

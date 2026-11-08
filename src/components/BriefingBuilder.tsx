@@ -96,7 +96,7 @@ export default function BriefingBuilder() {
   const [clientName, setClientName] = useState<string>('');
   const [eventDate, setEventDate] = useState<string>('');
   const [eventCity, setEventCity] = useState<string>('');
-  const [guestCount, setGuestCount] = useState<string>('100 a 300 convidados');
+  const [guestCount, setGuestCount] = useState<string>('');
   const [notes, setNotes] = useState<string>('');
   const [missingField, setMissingField] = useState<string | null>(null);
 
@@ -131,7 +131,7 @@ export default function BriefingBuilder() {
 • *Estética / Categoria:* ${selectedAesthetic.name}
 • *Data Prevista:* ${eventDate.trim() || 'A definir'}
 • *Cidade / Local:* ${eventCity.trim()}
-• *Porte Estimado:* ${guestCount}
+• *Porte Estimado:* ${guestCount || 'A definir'}
 ${notes.trim() ? `• *Observações Cênicas:* ${notes.trim()}\n` : ''}
 Gostaria de verificar disponibilidade de agenda com a produção artística e obter uma proposta comercial personalizada.`;
 
@@ -376,7 +376,7 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
                           required
                           value={eventDate}
                           onChange={(e) => setEventDate(e.target.value)}
-                          placeholder="Ex: 22 de Outubro de 2024"
+                          placeholder="Ex: 22 de outubro ou mês previsto"
                           className="w-full bg-charcoal border border-alabaster/15 px-3.5 py-2.5 text-sm text-alabaster placeholder:text-stone-warm/50 focus:outline-none focus:border-champagne-gold transition-colors font-sans"
                         />
                       </div>
@@ -400,27 +400,31 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
                       </div>
 
                       <div>
-                        <label className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
+                        <label htmlFor="briefing-guests" className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
                           Porte Estimado
                         </label>
                         <select
+                          id="briefing-guests"
                           value={guestCount}
                           onChange={(e) => setGuestCount(e.target.value)}
                           className="w-full bg-charcoal border border-alabaster/15 px-3.5 py-2.5 text-sm text-alabaster focus:outline-none focus:border-champagne-gold transition-colors font-sans"
                         >
+                          <option value="">Selecione ou deixe para depois</option>
                           <option value="Até 100 convidados">Até 100 convidados</option>
-                          <option value="100 a 300 convidados">100 a 300 convidados</option>
-                          <option value="300 a 800 convidados">300 a 800 convidados</option>
+                          <option value="101 a 300 convidados">101 a 300 convidados</option>
+                          <option value="301 a 800 convidados">301 a 800 convidados</option>
+                          <option value="801 a 1.000 convidados">801 a 1.000 convidados</option>
                           <option value="+1.000 pessoas (Feira / Congresso)">+1.000 pessoas (Feira / Congresso)</option>
                         </select>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
+                      <label htmlFor="briefing-notes" className="block font-mono text-xs uppercase tracking-widest text-stone-warm mb-1.5">
                         Observações Especiais (Opcional)
                       </label>
                       <textarea
+                        id="briefing-notes"
                         rows={2}
                         value={notes}
                         onChange={(e) => setNotes(e.target.value)}

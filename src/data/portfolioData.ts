@@ -60,8 +60,7 @@ export const CHARACTERS: Character[] = [
       'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-2-e1753540896401.jpg',
       'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-3-e1753540846431.jpg',
     ],
-    highlightText: 'Mais requisitada em eventos sociais de luxo',
-    specs: {
+        specs: {
       duration: 'Entradas de 45 a 60 min com intervalos',
       prepTime: '2h de preparação em camarim',
       makeup: 'Pintura metálica atóxica de alta fixação',
@@ -76,14 +75,14 @@ export const CHARACTERS: Character[] = [
     tagline: 'A serenidade de um anjo ganha vida em uma performance delicada.',
     description: 'Uma estátua viva em branco, com asas e gestos delicados, leva poesia e encanto para a recepção dos seus convidados.',
     idealFor: 'Cerimônias de casamento, bodas, jantares intimistas e bienais de arte.',
-    details: ['Efeito craquelado e marmorizado artesanal', 'Asas anatômicas e adereços de inspiração renascentista', 'Iluminação cênica integrada opcional'],
+    details: ['Caracterização em branco', 'Figurino com asas', 'Performance de estátua viva'],
     imageUrl: '/portfolio/branca.webp',
     gallery: ['/portfolio/branca.webp'],
     highlightText: 'Impacto visual etéreo e atemporal',
     specs: {
-      duration: 'Ciclos de 45 min com repouso',
-      prepTime: '2h30 para marmorização cênica',
-      makeup: 'Pigmento mineral branco e pó de mármore',
+      duration: 'A combinar com a produção',
+      prepTime: 'A combinar com a produção',
+      makeup: 'Caracterização em branco',
       interaction: 'Gestual lento, reflexivo e etéreo',
     },
   },
@@ -144,8 +143,7 @@ export const CHARACTERS: Character[] = [
     gallery: [
       '/brand/pirata.webp',
     ],
-    highlightText: 'Recorde de engajamento e fotos nas redes',
-    specs: {
+        specs: {
       duration: 'Atuação contínua e quebras cômicas',
       prepTime: '1h30 para caracterização e peruca',
       makeup: 'Caracterização facial de cinema',

@@ -5,8 +5,8 @@ import SmoothScroll from '@/components/SmoothScroll';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 export const metadata: Metadata = {
-  title: 'Estátua Viva Produções | Performances Artísticas de Alto Padrão em São Paulo',
-  description: 'Intervenções artísticas, estátuas vivas e maquiagem cênica cinematográfica para casamentos, feiras corporativas, convenções e TV. Direção artística de Rodolfo Valentino desde 2005.',
+  title: 'Estátua Viva para Eventos em São Paulo | Estátua Viva Produções',
+  description: 'Estátuas vivas e personagens para festas, casamentos, feiras e eventos corporativos em São Paulo. Consulte disponibilidade com a Estátua Viva Produções.',
   keywords: [
     'estátua viva',
     'estátua viva sp',
@@ -19,11 +19,12 @@ export const metadata: Metadata = {
     'marketing sensorial'
   ],
   authors: [{ name: 'Estátua Viva Produções' }],
-  metadataBase: new URL('https://estatuaviva.com.br'),
+  metadataBase: new URL('https://estatuaviva.konnexy.com.br'),
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'Estátua Viva Produções — A Arte da Imobilidade e do Movimento',
     description: 'Performances hiper-realistas, maquiagem cinematográfica e figurinos autorais para eventos em todo o Brasil.',
-    url: 'https://estatuaviva.com.br',
+    url: 'https://estatuaviva.konnexy.com.br',
     siteName: 'Estátua Viva Produções',
     locale: 'pt_BR',
     type: 'website',
@@ -57,3 +58,4 @@ export default function RootLayout({
     </html>
   );
 }
+
