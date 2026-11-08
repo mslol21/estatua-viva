@@ -9,6 +9,7 @@ import CategoryGallery from '@/components/CategoryGallery';
 import BriefingBuilder from '@/components/BriefingBuilder';
 import ReviewsAndFaq from '@/components/ReviewsAndFaq';
 import Footer from '@/components/Footer';
+import SiteMotion from '@/components/motion/SiteMotion';
 
 export default function Home() {
   const structuredData = {
@@ -44,6 +45,7 @@ export default function Home() {
       <BriefingBuilder />
       <ReviewsAndFaq />
       <Footer />
+      <SiteMotion />
     </main>
   );
 }

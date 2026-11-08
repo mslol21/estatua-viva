@@ -20,7 +20,7 @@ export default function CategoryGallery() {
       </div>
       <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
         {categories.map((category) => (
-          <a key={category.name} href={category.href} className="group relative block overflow-hidden rounded-2xl border border-[#dfbd7c]/25 bg-[#102329] shadow-[0_18px_40px_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d49a]">
+          <a data-motion-tilt key={category.name} href={category.href} className="motion-collectible group relative block overflow-hidden rounded-2xl border border-[#dfbd7c]/25 bg-[#102329] shadow-[0_18px_40px_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d49a]">
             <div className="relative aspect-[3/4]">
               <Image src={category.image} alt={category.alt} fill sizes="(max-width: 639px) 50vw, (max-width: 1023px) 45vw, 25vw" className="object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
               <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#031014]/95 via-[#031014]/10 to-transparent" />

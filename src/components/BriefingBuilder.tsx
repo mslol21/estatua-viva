@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   Send,
   Building2,
@@ -90,6 +90,7 @@ const AESTHETIC_STYLES: AestheticOption[] = [
 ];
 
 export default function BriefingBuilder() {
+  const reducedMotion = useReducedMotion();
   const [step, setStep] = useState<number>(1);
   const [selectedEventType, setSelectedEventType] = useState<EventOption>(EVENT_TYPES[0]);
   const [selectedAesthetic, setSelectedAesthetic] = useState<AestheticOption>(AESTHETIC_STYLES[0]);
@@ -205,8 +206,8 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
           </div>
           <div className="w-full bg-obsidian h-1 border border-alabaster/10 overflow-hidden">
             <div
-              className="bg-champagne-gold h-full transition-all duration-500 ease-out"
-              style={{ width: `${(step / 3) * 100}%` }}
+              className="motion-progress h-full transition-transform duration-500 ease-out motion-reduce:transition-none"
+              style={{ transform: `scaleX(${step / 3})`, transformOrigin: 'left' }}
             />
           </div>
         </div>
@@ -219,10 +220,10 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
               {step === 1 && (
                 <motion.div
                   key="step1"
-                  initial={{ opacity: 0, x: -15 }}
+                  initial={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : -15 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : 15 }}
+                  transition={{ duration: reducedMotion ? 0 : 0.3 }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-technical text-champagne-gold block mb-1">
                     ETAPA 01 / 03
@@ -285,10 +286,10 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
               {step === 2 && (
                 <motion.div
                   key="step2"
-                  initial={{ opacity: 0, x: -15 }}
+                  initial={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : -15 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : 15 }}
+                  transition={{ duration: reducedMotion ? 0 : 0.3 }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-technical text-champagne-gold block mb-1">
                     ETAPA 02 / 03
@@ -345,10 +346,10 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
               {step === 3 && (
                 <motion.div
                   key="step3"
-                  initial={{ opacity: 0, x: -15 }}
+                  initial={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : -15 }}
                   animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 15 }}
-                  transition={{ duration: 0.3 }}
+                  exit={{ opacity: reducedMotion ? 1 : 0, x: reducedMotion ? 0 : 15 }}
+                  transition={{ duration: reducedMotion ? 0 : 0.3 }}
                 >
                   <span className="font-mono text-[10px] uppercase tracking-technical text-champagne-gold block mb-1">
                     ETAPA 03 / 03

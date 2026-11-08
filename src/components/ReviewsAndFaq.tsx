@@ -28,7 +28,7 @@ export default function ReviewsAndFaq() {
 
         <Accordion.Root type="single" collapsible>
           {FAQS.map((faq, index) => (
-            <Accordion.Item key={faq.question} value={`faq-${index}`} className="border-b border-alabaster/15">
+            <Accordion.Item data-motion-reveal data-motion-delay={index * 0.08} key={faq.question} value={`faq-${index}`} className="border-b border-alabaster/15">
               <Accordion.Header>
                 <Accordion.Trigger className="faq-trigger group">
                   <span>{faq.question}</span>
