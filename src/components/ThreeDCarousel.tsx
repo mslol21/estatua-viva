@@ -129,27 +129,72 @@ export default function ThreeDCarousel({
           if (diff < -half) diff += total;
 
           const absDiff = Math.abs(diff);
-          const isVisible = absDiff <= 2;
+          const isVisible = absDiff <= 3;
 
-          // 2. Coordenadas calibradas de Coverflow 3D (elimina vazios entre os cards)
+          // 2. Coordenadas calibradas de Coverflow 3D contínuo ("um atrás do outro")
           const sign = diff > 0 ? 1 : diff < 0 ? -1 : 0;
-          const stepX = isMobile
-            ? absDiff === 0
-              ? 0
-              : absDiff === 1
-              ? sign * 145
-              : sign * 255
-            : absDiff === 0
-            ? 0
-            : absDiff === 1
-            ? sign * 235
-            : sign * 415;
 
-          const translateZ = absDiff === 0 ? 0 : absDiff === 1 ? -100 : -200;
-          const scale = absDiff === 0 ? 1 : absDiff === 1 ? 0.83 : 0.68;
-          const rotateY = absDiff === 0 ? 0 : sign * (absDiff === 1 ? -18 : -26);
-          const opacity = absDiff === 0 ? 1 : absDiff === 1 ? 0.75 : absDiff === 2 ? 0.42 : 0;
-          const zIndex = 30 - absDiff * 10;
+          let stepX = 0;
+          let translateZ = 0;
+          let scale = 1;
+          let rotateY = 0;
+          let opacity = 0;
+
+          if (isMobile) {
+            if (absDiff === 0) {
+              stepX = 0;
+              translateZ = 0;
+              scale = 1;
+              rotateY = 0;
+              opacity = 1;
+            } else if (absDiff === 1) {
+              stepX = sign * 90;
+              translateZ = -60;
+              scale = 0.86;
+              rotateY = sign * -18;
+              opacity = 0.85;
+            } else if (absDiff === 2) {
+              stepX = sign * 165;
+              translateZ = -120;
+              scale = 0.74;
+              rotateY = sign * -28;
+              opacity = 0.60;
+            } else if (absDiff === 3) {
+              stepX = sign * 230;
+              translateZ = -180;
+              scale = 0.62;
+              rotateY = sign * -36;
+              opacity = 0.30;
+            }
+          } else {
+            if (absDiff === 0) {
+              stepX = 0;
+              translateZ = 0;
+              scale = 1;
+              rotateY = 0;
+              opacity = 1;
+            } else if (absDiff === 1) {
+              stepX = sign * 140;
+              translateZ = -75;
+              scale = 0.88;
+              rotateY = sign * -22;
+              opacity = 0.88;
+            } else if (absDiff === 2) {
+              stepX = sign * 255;
+              translateZ = -150;
+              scale = 0.76;
+              rotateY = sign * -32;
+              opacity = 0.68;
+            } else if (absDiff === 3) {
+              stepX = sign * 360;
+              translateZ = -225;
+              scale = 0.64;
+              rotateY = sign * -42;
+              opacity = 0.35;
+            }
+          }
+
+          const zIndex = 40 - absDiff * 10;
 
           const isCenter = diff === 0;
 
