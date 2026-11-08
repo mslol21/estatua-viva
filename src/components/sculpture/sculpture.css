@@ -1,0 +1,52 @@
+.site-surface > .sculpture-experience { background-color: #0c0c0e; }
+.sculpture-experience { position: relative; height: 300svh; color: #e5e5e5; border-block: 1px solid #ffffff14; }
+.sculpture-stage { position: sticky; top: 0; height: 100svh; min-height: 620px; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse at 50% 44%, #242321 0%, #0c0c0e 70%); }
+.sculpture-render { position: absolute; inset: 0; z-index: -1; }
+.sculpture-topline,.sculpture-bottomline { position: absolute; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 16px; text-transform: uppercase; letter-spacing: .16em; font-size: 10px; color: #a3a3a3; }
+.sculpture-topline { top: 112px; padding-bottom: 16px; border-bottom: 1px solid #ffffff1a; }
+.sculpture-bottomline { bottom: 28px; }
+.sculpture-copy { position: absolute; width: min(36%, 460px); top: 50%; transform: translateY(-40%); pointer-events: none; }
+.sculpture-copy-intro { left: 8%; }
+.sculpture-copy-detail,.sculpture-copy-specs { right: 8%; }
+.sculpture-eyebrow { font-size: 10px !important; text-transform: uppercase; letter-spacing: .2em; color: #c7b18d !important; margin-bottom: 24px; }
+.sculpture-copy h2,.sculpture-copy h3 { font-size: clamp(38px, 4.3vw, 72px); line-height: 1.05; letter-spacing: -.045em; font-weight: 400; }
+.sculpture-copy em { font-family: Georgia, serif; color: #c9bda8; font-weight: 400; }
+.sculpture-copy > p:not(.sculpture-eyebrow) { font-size: 14px; line-height: 1.9; color: #a3a3a3; margin-top: 22px; max-width: 350px; }
+.sculpture-scroll { display: inline-flex; align-items: center; gap: 40px; margin-top: 32px; font-size: 11px; letter-spacing: .08em; }
+.sculpture-scroll span { font-size: 22px; color: #c9bda8; }
+.sculpture-copy dl { margin-top: 24px; font-size: 12px; }
+.sculpture-copy dl div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #ffffff1a; }
+.sculpture-copy dt { color: #a3a3a3; }
+.sculpture-copy dd { text-align: right; }
+.sculpture-copy > p.sculpture-disclaimer { font-size: 10px; margin-top: 12px; }
+.sculpture-copy a { pointer-events: auto; display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 20px; border: 1px solid #c9bda866; border-radius: 2px; font-size: 12px; margin-top: 24px; background: #0c0c0ecc; transition: background .2s; }
+.sculpture-copy a:hover { background: #c9bda822; }
+.sculpture-copy a:focus-visible { outline: 2px solid #c9bda8; outline-offset: 5px; }
+.sculpture-loading { position: absolute; inset: 0; display: grid; place-items: center; font-size: 11px; letter-spacing: .15em; color: #a3a3a3; }
+.sculpture-loader { white-space: nowrap; font-size: 11px; color: #c9bda8; }
+.sculpture-static { position: absolute; width: 230px; height: 310px; left: 60%; top: 40%; transform: translate(-50%,-50%) rotate(-20deg); border: 50px solid #b6aa97; border-radius: 48% 54% 42% 60%; box-shadow: inset 8px 12px 24px #0009, 15px 20px 40px #0008; background: #161616; }
+@media(max-width:767px) {
+  .sculpture-stage { min-height: 660px; }
+  .sculpture-topline { top: 140px; font-size: 8px; }
+  .sculpture-copy { top: auto; bottom: 65px; left: 7%; right: 7%; width: auto; transform: none; }
+  .sculpture-copy h2,.sculpture-copy h3 { font-size: clamp(30px,7vw,42px); }
+  .sculpture-copy h2 br { display: none; }
+  .sculpture-copy h2 em::before,.sculpture-copy h2 em::after { content: ' '; }
+  .sculpture-eyebrow { margin-bottom: 12px; font-size: 9px !important; }
+  .sculpture-copy > p:not(.sculpture-eyebrow) { font-size: 12px; line-height: 1.7; margin-top: 12px; max-width: 100%; }
+  .sculpture-scroll { margin-top: 12px; }
+  .sculpture-copy dl { margin-top: 10px; font-size: 11px; }
+  .sculpture-copy dl div { padding: 8px 0; }
+  .sculpture-copy a { margin-top: 12px; padding: 12px 14px; }
+  .sculpture-bottomline { font-size: 8px; bottom: 22px; }
+  .sculpture-bottomline span:last-child { display: none; }
+  .sculpture-static { top: 35%; left: 50%; width: 150px; height: 210px; border-width: 35px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .sculpture-experience { height: auto; }
+  .sculpture-stage { position: relative; height: auto; padding: 400px 7% 70px; min-height: 0; }
+  .sculpture-render { height: 420px; }
+  .sculpture-topline { top: 32px; }
+  .sculpture-copy { position: relative; inset: auto; transform: none; width: 100%; max-width: 600px; margin: 0 auto 48px; opacity: 1 !important; visibility: visible !important; }
+  .sculpture-scroll { display: none; }
+}
