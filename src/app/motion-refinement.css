@@ -39,3 +39,11 @@
 }
 .hero-split:not([data-hero-active='true']) .hero-photo-breathe,
 .hero-split:not([data-hero-active='true']) .hero-orbit-layer svg { animation-play-state: paused; }
+
+/* Movimento sutil da imagem e reflexos; as partículas do Hero são desenhadas pelo canvas existente. */
+.hero-bronze-art { animation: bronzeCamera 8s ease-in-out infinite; transform-origin: 52% 48%; }
+.hero-bronze-glint { position: absolute; inset: -10%; pointer-events: none; background: linear-gradient(112deg, transparent 28%, rgba(255,220,148,.13) 48%, transparent 65%); mix-blend-mode: screen; opacity: .28; animation: bronzeLight 8s ease-in-out infinite; }
+@keyframes bronzeCamera { 0%, 100% { transform: scale(1.02) translateY(0); } 50% { transform: scale(1.055) translateY(-0.4%); } }
+@keyframes bronzeLight { 0%, 100% { transform: translateX(-18%); opacity: .15; } 50% { transform: translateX(18%); opacity: .42; } }
+.hero-split:not([data-hero-active='true']) .hero-bronze-art, .hero-split:not([data-hero-active='true']) .hero-bronze-glint { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .hero-bronze-art, .hero-bronze-glint { animation: none !important; } }
