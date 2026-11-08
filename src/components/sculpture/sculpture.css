@@ -24,7 +24,7 @@
 .sculpture-copy a:focus-visible { outline: 2px solid #c9bda8; outline-offset: 5px; }
 .sculpture-loading { position: absolute; inset: 0; display: grid; place-items: center; font-size: 11px; letter-spacing: .15em; color: #a3a3a3; }
 .sculpture-loader { white-space: nowrap; font-size: 11px; color: #c9bda8; }
-.sculpture-static { position: absolute; width: 230px; height: 310px; left: 60%; top: 40%; transform: translate(-50%,-50%) rotate(-20deg); border: 50px solid #b6aa97; border-radius: 48% 54% 42% 60%; box-shadow: inset 8px 12px 24px #0009, 15px 20px 40px #0008; background: #161616; }
+.sculpture-static { position: absolute; width: 230px; height: 310px; left: var(--sculpture-fallback-x, 60%); top: 40%; transform: translate(-50%,-50%) rotate(-20deg) scale(var(--sculpture-fallback-scale, 1)); border: 50px solid #b6aa97; border-radius: 48% 54% 42% 60%; box-shadow: inset 8px 12px 24px #0009, 15px 20px 40px #0008; background: #161616; }
 @media(max-width:767px) {
   .sculpture-stage { min-height: 660px; }
   .sculpture-topline { top: 140px; font-size: 8px; }

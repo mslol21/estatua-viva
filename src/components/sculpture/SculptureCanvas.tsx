@@ -4,10 +4,25 @@ import { Component, Suspense, useEffect, useMemo, useRef, type MutableRefObject,
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Center, ContactShadows, Environment, Float, Html, useGLTF } from '@react-three/drei';
 import { Group, MathUtils, TorusKnotGeometry } from 'three';
+import gsap from 'gsap';
 import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js';
 
 export type SceneMotion = { rotation: number; scale: number; x: number };
 type Props = { motion: MutableRefObject<SceneMotion>; active: boolean; reduced: boolean; modelUrl?: string };
+
+function StaticForm({ motion, active, reduced }: Props) {
+  const element = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const update = () => {
+      element.current?.style.setProperty('--sculpture-fallback-x', `${50 + motion.current.x * 14}%`);
+      element.current?.style.setProperty('--sculpture-fallback-scale', String(motion.current.scale));
+    };
+    update();
+    if (active && !reduced) gsap.ticker.add(update);
+    return () => { gsap.ticker.remove(update); };
+  }, [motion, active, reduced]);
+  return <div ref={element} className="sculpture-static" role="img" aria-label="Estudo escultórico abstrato em cerâmica" />;
+}
 
 class SceneBoundary extends Component<{ children: ReactNode; fallback: ReactNode }, { failed: boolean }> {
   state = { failed: false };
@@ -67,8 +82,8 @@ function Sculpture({ motion, reduced, modelUrl }: Props) {
 }
 
 export default function SculptureCanvas(props: Props) {
-  return <SceneBoundary fallback={<div className="sculpture-static" role="img" aria-label="Estudo escultórico abstrato em cerâmica" />}>
-    <Canvas dpr={[1, 2]} camera={{ position: [0, 0.25, 6.5], fov: 42 }} shadows frameloop={!props.active ? 'never' : props.reduced ? 'demand' : 'always'} gl={{ antialias: true, powerPreference: 'low-power' }} fallback={<div className="sculpture-static" role="img" aria-label="Estudo escultórico abstrato em cerâmica" />}>
+  return <SceneBoundary fallback={<StaticForm {...props} />}>
+    <Canvas dpr={[1, 2]} camera={{ position: [0, 0.25, 6.5], fov: 42 }} shadows frameloop={!props.active ? 'never' : props.reduced ? 'demand' : 'always'} gl={{ antialias: true, powerPreference: 'low-power' }} fallback={<StaticForm {...props} />}>
       <ambientLight intensity={0.65} />
       <directionalLight position={[-4, 2, 3]} intensity={1.6} color="#aec7db" />
       <spotLight position={[2, 6, 4]} angle={0.45} penumbra={0.9} intensity={65} castShadow shadow-mapSize={[1024, 1024]} />
