@@ -88,20 +88,20 @@ export default function Footer() {
           {/* Official Operational Details */}
           <div className="lg:col-span-4 space-y-4">
             <h4 className="font-mono text-xs uppercase tracking-widest text-champagne-gold mb-4">
-              ATELIER & ATENDIMENTO OFICIAL
+              BASE ADMINISTRATIVA & CONTATO
             </h4>
 
             <div className="flex items-start gap-3 text-xs font-sans text-stone-warm">
               <MapPin strokeWidth={1.5} className="w-4 h-4 text-champagne-gold shrink-0 mt-0.5" />
               <span>
-                R. Oriximiná, 27 — Cidade Mãe do Céu (Tatuapé)<br />
-                São Paulo - SP, CEP 03306-060
+                Base administrativa no Tatuapé, São Paulo.<br />
+                Apresentações realizadas no local do evento; não há atendimento presencial nesta base.
               </span>
             </div>
 
             <div className="flex items-center gap-3 text-xs font-sans text-stone-warm">
               <Clock strokeWidth={1.5} className="w-4 h-4 text-champagne-gold shrink-0" />
-              <span>Segunda a Sábado, das 09h às 22h</span>
+              <span>Consulte disponibilidade e horários pelo WhatsApp</span>
             </div>
 
             <div className="flex items-center gap-3 text-xs font-sans text-stone-warm">
