@@ -62,12 +62,12 @@ export default function ThreeDCarousel({
 
   // Rotação automática suave quando não pausado
   useEffect(() => {
-    if (paused || reduced || total < 2) return;
+    if (paused || reduced || isMobile || total < 2) return;
     const interval = setInterval(() => {
       setActiveIndex(prev => (prev + 1) % total);
     }, 4500);
     return () => clearInterval(interval);
-  }, [paused, reduced, total]);
+  }, [paused, reduced, isMobile, total]);
 
   const goNext = () => {
     setActiveIndex(prev => (prev + 1) % total);
@@ -109,6 +109,8 @@ export default function ThreeDCarousel({
       className={`orbit-live relative select-none w-full ${className}`}
       aria-label="Carrossel 3D Coverflow de Estilos"
       aria-roledescription="carrossel"
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false); }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -129,7 +131,7 @@ export default function ThreeDCarousel({
           if (diff < -half) diff += total;
 
           const absDiff = Math.abs(diff);
-          const isVisible = absDiff <= 3;
+          const isVisible = absDiff <= (isMobile ? 1 : 3);
 
           // 2. Coordenadas calibradas de Coverflow 3D contínuo ("um atrás do outro")
           const sign = diff > 0 ? 1 : diff < 0 ? -1 : 0;
@@ -204,7 +206,7 @@ export default function ThreeDCarousel({
             transform: `translate3d(calc(-50% + ${stepX}px), -50%, ${translateZ}px) scale(${scale}) rotateY(${rotateY}deg)`,
             opacity: isVisible ? opacity : 0,
             zIndex,
-            pointerEvents: isVisible ? 'auto' : 'none',
+            pointerEvents: isCenter ? 'auto' : 'none',
             border: isCenter
               ? '1.5px solid rgba(230, 198, 135, 0.75)'
               : '1px solid rgba(230, 198, 135, 0.25)',
