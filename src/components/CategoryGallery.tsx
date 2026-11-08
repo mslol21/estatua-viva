@@ -97,7 +97,7 @@ export default function CategoryGallery() {
   };
 
   return (
-    <section id="inspiracao" aria-labelledby="categorias-title" className="site-container py-16 sm:py-24 relative overflow-hidden">
+    <section id="inspiracao" aria-labelledby="categorias-title" className="site-container py-16 sm:py-24 relative overflow-x-clip w-full">
       {/* Glow de fundo */}
       <div
         aria-hidden="true"
@@ -172,7 +172,7 @@ export default function CategoryGallery() {
 
       {/* Disposição em Órbita 3D ou Grade */}
       {viewMode === 'orbit' ? (
-        <div className="relative z-10 w-full">
+        <div className="relative z-10 w-full overflow-visible">
           <ThreeDCarousel
             items={ORBIT_INSPIRATIONS}
             onSelectItem={handleSelectInspiration}

@@ -28,338 +28,224 @@ const DEFAULT_ITEMS: CarouselItem[] = CHARACTERS.map(char => ({
   color: char.colorAccent,
 }));
 
-const TAU = Math.PI * 2;
-
 export default function ThreeDCarousel({
   items = DEFAULT_ITEMS,
   className = '',
   onSelectItem,
 }: ThreeDCarouselProps) {
-  const root = useRef<HTMLDivElement>(null);
-  const angle = useRef(0);
-  const target = useRef(0);
-  const speed = useRef(0);
-  const interacting = useRef(false);
-  const hovering = useRef(false);
-  const focusWithin = useRef(false);
-  const dragged = useRef(false);
-  const drag = useRef({ x: 0, lastX: 0, time: 0, pointer: -1 });
-
-  const [active, setActive] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const [reduced, setReduced] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const count = items.length;
-  const signature = items.map(item => item.id).join('|');
+  const dragStartX = useRef<number | null>(null);
+  const dragDistance = useRef(0);
+  const total = items.length;
 
   useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const update = () => setReduced(media.matches);
-    update();
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, []);
-
-  useEffect(() => {
-    angle.current = 0;
-    target.current = 0;
-    speed.current = 0;
-    setActive(0);
-  }, [signature]);
-
-  useEffect(() => {
-    const node = root.current;
-    if (!node || !count) return;
-    const cards = Array.from(node.querySelectorAll<HTMLElement>('[data-orbit-card]'));
-    let frame = 0;
-    let last = 0;
-    let visible = false;
-
-    const draw = () => {
-      const isMobile = node.clientWidth < 640;
-      // Spacing and 3D depth tuned so cards NEVER collide or drop vertically
-      const xSpacing = isMobile
-        ? Math.min(node.clientWidth * 0.46, 170)
-        : Math.min(node.clientWidth * 0.32, 270);
-      const zDepth = isMobile ? 120 : 180;
-      const maxRotate = isMobile ? 22 : 30;
-
-      const progress = (-angle.current / TAU) * count;
-
-      cards.forEach((card, index) => {
-        let diff = ((index - progress) % count + count) % count;
-        if (diff > count / 2) diff -= count;
-
-        const absDiff = Math.abs(diff);
-
-        // Hide cards that are far away to prevent screen clutter
-        if (absDiff > (isMobile ? 1.5 : 2.2)) {
-          card.style.opacity = '0';
-          card.style.pointerEvents = 'none';
-          card.style.transform = `translateX(-50%) translate3d(${diff > 0 ? xSpacing * 2.5 : -xSpacing * 2.5}px, 0, -400px) scale(0.6)`;
-          card.style.zIndex = '0';
-          card.setAttribute('aria-hidden', 'true');
-          card.tabIndex = -1;
-          return;
-        }
-
-        const x = diff * xSpacing;
-        const z = -absDiff * zDepth;
-        const scale = Math.max(0.78, 1 - absDiff * 0.14);
-        const rotateY = -Math.sign(diff) * Math.min(maxRotate, Math.pow(absDiff, 0.85) * maxRotate);
-        const opacity = Math.max(0, 1 - absDiff * 0.42);
-        const zIndex = Math.round(50 - absDiff * 15);
-
-        // Clean horizontal 3D transform with Y strictly fixed at 0 (never drops!)
-        card.style.transform = `translateX(-50%) translate3d(${x.toFixed(1)}px, 0, ${z.toFixed(1)}px) scale(${scale.toFixed(3)}) rotateY(${rotateY.toFixed(1)}deg)`;
-        card.style.opacity = opacity.toFixed(2);
-        card.style.zIndex = String(zIndex);
-
-        const isCenter = absDiff < 0.35;
-        card.tabIndex = isCenter ? 0 : -1;
-        card.style.pointerEvents = absDiff < 1.3 ? 'auto' : 'none';
-        card.setAttribute('aria-hidden', String(!isCenter));
-      });
-    };
-
-    const tick = (time: number) => {
-      const dt = Math.min((time - (last || time)) / 1000, 0.05);
-      last = time;
-
-      if (!interacting.current) {
-        if (Math.abs(speed.current) > 0.008 && !reduced) {
-          target.current += speed.current * dt;
-          speed.current *= Math.exp(-dt * 5);
-        } else if (!paused && !reduced && !hovering.current && !focusWithin.current) {
-          target.current -= dt * 0.06;
-        }
-        angle.current += (target.current - angle.current) * (reduced ? 1 : 1 - Math.exp(-dt * 9));
-      }
-
-      const activeIndex = ((Math.round(-angle.current / TAU * count) % count) + count) % count;
-      setActive(prev => (prev !== activeIndex ? activeIndex : prev));
-
-      draw();
-
-      if (!reduced || Math.abs(target.current - angle.current) > 0.001) {
-        frame = requestAnimationFrame(tick);
-      } else {
-        frame = 0;
-      }
-    };
-
-    const start = () => {
-      if (!frame && visible && !document.hidden) {
-        last = 0;
-        frame = requestAnimationFrame(tick);
-      }
-    };
-
-    const sync = () => {
-      if (document.hidden || !visible) {
-        cancelAnimationFrame(frame);
-        frame = 0;
-      } else {
-        start();
-      }
-    };
-
-    const observer = new IntersectionObserver(([entry]) => {
-      visible = entry.isIntersecting;
-      sync();
-    });
-    observer.observe(node);
-
-    const resize = new ResizeObserver(draw);
-    resize.observe(node);
-
-    const manual = () => {
-      start();
-    };
-    node.addEventListener('orbit-update', manual);
-    document.addEventListener('visibilitychange', sync);
-    draw();
+    setReduced(media.matches);
+    const updateMotion = () => setReduced(media.matches);
+    media.addEventListener('change', updateMotion);
 
     return () => {
-      cancelAnimationFrame(frame);
-      observer.disconnect();
-      resize.disconnect();
-      node.removeEventListener('orbit-update', manual);
-      document.removeEventListener('visibilitychange', sync);
+      window.removeEventListener('resize', checkMobile);
+      media.removeEventListener('change', updateMotion);
     };
-  }, [signature, count, paused, reduced]);
+  }, []);
 
-  const snapToNearest = () => {
-    if (!count) return;
-    speed.current = 0;
-    const stepAngle = TAU / count;
-    const currentStep = Math.round(-angle.current / stepAngle);
-    target.current = -currentStep * stepAngle;
-    root.current?.dispatchEvent(new Event('orbit-update'));
+  // Rotação automática suave quando não pausado
+  useEffect(() => {
+    if (paused || reduced || total < 2) return;
+    const interval = setInterval(() => {
+      setActiveIndex(prev => (prev + 1) % total);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [paused, reduced, total]);
+
+  const goNext = () => {
+    setActiveIndex(prev => (prev + 1) % total);
   };
 
-  const go = (delta: number) => {
-    if (!count) return;
-    speed.current = 0;
-    const stepAngle = TAU / count;
-    const currentStep = Math.round(-target.current / stepAngle);
-    const nextStep = currentStep + delta;
-    target.current = -nextStep * stepAngle;
-    root.current?.dispatchEvent(new Event('orbit-update'));
+  const goPrev = () => {
+    setActiveIndex(prev => (prev - 1 + total) % total);
   };
 
-  const show = (index: number) => {
-    let delta = (index - active + count) % count;
-    if (delta > count / 2) delta -= count;
-    go(delta);
+  // Suporte a toque / swipe com pointer events
+  const handlePointerDown = (e: PointerEvent<HTMLDivElement>) => {
+    dragStartX.current = e.clientX;
+    dragDistance.current = 0;
   };
 
-  const down = (event: PointerEvent<HTMLDivElement>) => {
-    if (count < 2 || event.button !== 0 || (event.target as HTMLElement).closest('[data-orbit-control]')) return;
-    drag.current = { x: event.clientX, lastX: event.clientX, time: event.timeStamp, pointer: event.pointerId };
-    dragged.current = false;
-    interacting.current = true;
-    speed.current = 0;
+  const handlePointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    if (dragStartX.current === null) return;
+    dragDistance.current = e.clientX - dragStartX.current;
   };
 
-  const move = (event: PointerEvent<HTMLDivElement>) => {
-    if (!interacting.current || event.pointerId !== drag.current.pointer) return;
-    const delta = event.clientX - drag.current.lastX;
-    if (Math.abs(event.clientX - drag.current.x) > 6) {
-      dragged.current = true;
-      event.currentTarget.setPointerCapture(event.pointerId);
+  const handlePointerUp = () => {
+    if (dragStartX.current !== null && Math.abs(dragDistance.current) > 40) {
+      if (dragDistance.current < 0) {
+        goNext();
+      } else {
+        goPrev();
+      }
     }
-    if (dragged.current) {
-      const factor = 0.005;
-      angle.current += delta * factor;
-      target.current = angle.current;
-      speed.current = Math.max(-2.5, Math.min(2.5, (delta * factor) / Math.max((event.timeStamp - drag.current.time) / 1000, 0.016)));
-      root.current?.dispatchEvent(new Event('orbit-update'));
-    }
-    drag.current.lastX = event.clientX;
-    drag.current.time = event.timeStamp;
+    dragStartX.current = null;
+    dragDistance.current = 0;
   };
 
-  const release = (event: PointerEvent<HTMLDivElement>) => {
-    interacting.current = false;
-    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
-      event.currentTarget.releasePointerCapture(event.pointerId);
-    }
-    snapToNearest();
-  };
-
-  if (!count) return <p className="py-12 text-center text-stone-warm">Nenhum item disponível.</p>;
+  if (!total) {
+    return <p className="py-12 text-center text-stone-warm">Nenhum item disponível.</p>;
+  }
 
   return (
     <div
-      ref={root}
       className={`orbit-live relative select-none w-full ${className}`}
-      aria-label="Carrossel em perspectiva 3D"
+      aria-label="Carrossel 3D Coverflow de Estilos"
       aria-roledescription="carrossel"
-      onPointerEnter={event => {
-        if (event.pointerType === 'mouse') hovering.current = true;
-      }}
-      onPointerLeave={() => {
-        hovering.current = false;
-        if (!dragged.current) interacting.current = false;
-      }}
-      onFocusCapture={() => {
-        focusWithin.current = true;
-      }}
-      onBlurCapture={event => {
-        if (!event.currentTarget.contains(event.relatedTarget)) focusWithin.current = false;
-      }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
-      {/* 3D Stage Container */}
+      {/* 3D Stage Container sem paredes de corte (overflow-visible) */}
       <div
-        className="orbit-live-stage relative mx-auto h-[420px] sm:h-[480px] max-w-5xl overflow-hidden pt-2"
+        className="orbit-live-stage relative mx-auto w-full max-w-7xl h-[460px] sm:h-[520px] overflow-visible flex items-center justify-center cursor-grab active:cursor-grabbing"
         style={{ perspective: '1100px', touchAction: 'pan-y' }}
-        onPointerDown={down}
-        onPointerMove={move}
-        onPointerUp={release}
-        onPointerCancel={release}
-        onLostPointerCapture={() => {
-          interacting.current = false;
-        }}
-        onClickCapture={event => {
-          if (dragged.current) {
-            event.preventDefault();
-            event.stopPropagation();
-            dragged.current = false;
-          }
-        }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerUp}
       >
-        {/* Glow de fundo teatral central */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] rounded-full bg-champagne-gold/15 blur-[100px]"
-        />
-
         {items.map((item, index) => {
-          const isCurrent = index === active;
+          // 1. Cálculo circular (Wrap-Around) simétrico (cards nos dois lados)
+          let diff = index - activeIndex;
+          const half = Math.floor(total / 2);
+          if (diff > half) diff -= total;
+          if (diff < -half) diff += total;
+
+          const absDiff = Math.abs(diff);
+          const isVisible = absDiff <= 2;
+
+          // 2. Coordenadas calibradas de Coverflow 3D
+          const stepX = isMobile
+            ? absDiff === 0
+              ? 0
+              : absDiff === 1
+              ? diff * 155
+              : diff * 260
+            : absDiff === 0
+            ? 0
+            : absDiff === 1
+            ? diff * 255
+            : diff * 430;
+
+          const translateZ = absDiff === 0 ? 0 : absDiff === 1 ? -110 : -220;
+          const scale = absDiff === 0 ? 1 : absDiff === 1 ? 0.82 : 0.66;
+          const rotateY = absDiff === 0 ? 0 : diff * -18;
+          const opacity = absDiff === 0 ? 1 : absDiff === 1 ? 0.72 : absDiff === 2 ? 0.35 : 0;
+          const zIndex = 30 - absDiff * 10;
+
+          const isCenter = diff === 0;
+
+          const cardStyle: React.CSSProperties = {
+            left: '50%',
+            top: '50%',
+            transform: `translate3d(calc(-50% + ${stepX}px), -50%, ${translateZ}px) scale(${scale}) rotateY(${rotateY}deg)`,
+            opacity: isVisible ? opacity : 0,
+            zIndex,
+            pointerEvents: isVisible ? 'auto' : 'none',
+            border: isCenter
+              ? '1.5px solid rgba(230, 198, 135, 0.75)'
+              : '1px solid rgba(230, 198, 135, 0.25)',
+            boxShadow: isCenter
+              ? '0 0 42px 4px rgba(212, 175, 55, 0.38), inset 0 0 24px rgba(212, 175, 55, 0.22)'
+              : '0 12px 30px rgba(0, 0, 0, 0.65)',
+            transition:
+              'transform 520ms cubic-bezier(0.22, 1, 0.36, 1), opacity 420ms ease, box-shadow 420ms ease, border-color 420ms ease',
+          };
+
           return (
-            <button
-              data-orbit-card
+            <div
               key={item.id}
-              type="button"
-              onClick={() => (isCurrent ? onSelectItem?.(item.id) : show(index))}
-              aria-label={isCurrent ? `Ver detalhes de ${item.title}` : `Girar para ${item.title}`}
-              className={`neon-gold-card group absolute left-1/2 top-2 h-[370px] w-[260px] sm:h-[430px] sm:w-[310px] overflow-hidden rounded-2xl bg-[#0a1e24] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne-gold transition-shadow duration-300 ${
-                isCurrent ? 'cursor-pointer shadow-[0_0_30px_rgba(245,215,145,0.7)]' : 'cursor-pointer opacity-80'
+              data-orbit-card="true"
+              onClick={() => {
+                if (!isCenter) {
+                  setActiveIndex(index);
+                }
+              }}
+              style={cardStyle}
+              aria-hidden={!isCenter}
+              className={`absolute w-[250px] h-[360px] sm:w-[300px] sm:h-[420px] rounded-[9999px] overflow-hidden bg-[#071318] group ${
+                isCenter ? 'cursor-default' : 'cursor-pointer hover:opacity-90'
               }`}
             >
+              {/* Imagem do personagem */}
               {item.image && (
                 <Image
                   draggable={false}
                   src={item.image}
                   alt={item.title || ''}
                   fill
-                  sizes="(max-width: 640px) 260px, 310px"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 640px) 250px, 300px"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 pointer-events-none"
                 />
               )}
+
               {/* Degradê uniforme de leitura */}
-              <span
+              <div
                 aria-hidden="true"
-                className="absolute inset-0 bg-gradient-to-t from-[#031014]/95 via-[#031014]/35 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-[#050e12] via-[#050e12]/35 to-transparent pointer-events-none"
               />
 
-              {/* Informações do card */}
-              <span className="absolute inset-x-0 bottom-0 p-5 text-left flex flex-col justify-end">
+              {/* Overlay de texto 100% centralizado na curva oval */}
+              <div className="absolute inset-x-0 bottom-0 px-8 pb-8 pt-16 text-center flex flex-col items-center justify-end bg-gradient-to-t from-[#050e12] via-[#050e12]/80 to-transparent">
                 {item.badge && (
-                  <span className="inline-block self-start px-2.5 py-0.5 mb-2 rounded-full text-[10px] font-mono tracking-widest uppercase bg-[#071318]/90 text-[#ffe6a3] border border-[#dfbd7c]/50 backdrop-blur-md shadow-[0_0_10px_rgba(223,189,124,0.35)]">
+                  <span className="self-center mx-auto inline-block px-3 py-0.5 mb-2 rounded-full text-[9px] font-mono tracking-widest uppercase bg-[#071318]/90 text-[#ffe6a3] border border-[#dfbd7c]/50 backdrop-blur-md shadow-[0_0_10px_rgba(223,189,124,0.35)]">
                     {item.badge}
                   </span>
                 )}
-                <span className="font-serif text-2xl sm:text-3xl leading-tight text-white font-normal group-hover:text-[#ffe6a3] transition-colors drop-shadow-md">
+
+                <h3 className="font-serif text-2xl sm:text-3xl text-white font-normal leading-tight drop-shadow-md text-center">
                   {item.title}
-                </span>
+                </h3>
+
                 {item.subtitle && (
-                  <span className="mt-1.5 block text-xs text-[#d5d7cf] line-clamp-2 leading-relaxed">
+                  <p className="mt-1.5 text-xs text-[#d5d7cf] line-clamp-2 leading-relaxed text-center max-w-[200px]">
                     {item.subtitle}
-                  </span>
+                  </p>
                 )}
 
-                {isCurrent && (
-                  <span className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#071318] bg-[#dfbd7c] px-3.5 py-1.5 rounded-lg mt-3 self-start shadow-[0_0_15px_rgba(223,189,124,0.5)] group-hover:bg-[#ffe6a3] transition-all">
+                {/* Botão de Ação Centralizado */}
+                {isCenter && (
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectItem?.(item.id);
+                    }}
+                    className="self-center mx-auto inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-[#dfbd7c] hover:bg-[#ffe6a3] text-[#071318] transition-all shadow-[0_0_15px_rgba(223,189,124,0.5)] mt-3 cursor-pointer"
+                  >
                     <span>Explorar estilo</span>
-                    <ArrowUpRight size={14} />
-                  </span>
+                    <ArrowUpRight size={13} />
+                  </button>
                 )}
-              </span>
-            </button>
+              </div>
+            </div>
           );
         })}
       </div>
 
-      {/* Controles de Navegação Limpos */}
-      <div data-orbit-control className="flex items-center justify-center gap-4 pt-3 pb-2">
+      {/* Controles Inferiores Centralizados */}
+      <div className="mt-4 flex items-center justify-center gap-4 z-40 relative">
         <button
           type="button"
-          onClick={() => go(-1)}
-          disabled={count < 2}
+          onClick={goPrev}
+          disabled={total < 2}
           aria-label="Item anterior"
-          className="orbit-control w-10 h-10 rounded-full border border-[#dfbd7c]/50 flex items-center justify-center text-[#dfbd7c] hover:bg-[#dfbd7c]/20 hover:shadow-[0_0_15px_rgba(223,189,124,0.5)] transition-all"
+          className="w-10 h-10 rounded-full border border-[#dfbd7c]/50 flex items-center justify-center text-[#dfbd7c] hover:bg-[#dfbd7c]/20 hover:shadow-[0_0_15px_rgba(223,189,124,0.5)] transition-all cursor-pointer"
         >
           <ChevronLeft size={20} />
         </button>
@@ -370,10 +256,10 @@ export default function ThreeDCarousel({
             <button
               key={it.id}
               type="button"
-              onClick={() => show(idx)}
+              onClick={() => setActiveIndex(idx)}
               aria-label={`Ir para ${it.title}`}
-              className={`h-2 rounded-full transition-all duration-300 ${
-                idx === active
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                idx === activeIndex
                   ? 'w-7 bg-[#dfbd7c] shadow-[0_0_10px_rgba(223,189,124,0.8)]'
                   : 'w-2 bg-alabaster/25 hover:bg-alabaster/50'
               }`}
@@ -383,10 +269,10 @@ export default function ThreeDCarousel({
 
         <button
           type="button"
-          onClick={() => go(1)}
-          disabled={count < 2}
+          onClick={goNext}
+          disabled={total < 2}
           aria-label="Próximo item"
-          className="orbit-control w-10 h-10 rounded-full border border-[#dfbd7c]/50 flex items-center justify-center text-[#dfbd7c] hover:bg-[#dfbd7c]/20 hover:shadow-[0_0_15px_rgba(223,189,124,0.5)] transition-all"
+          className="w-10 h-10 rounded-full border border-[#dfbd7c]/50 flex items-center justify-center text-[#dfbd7c] hover:bg-[#dfbd7c]/20 hover:shadow-[0_0_15px_rgba(223,189,124,0.5)] transition-all cursor-pointer"
         >
           <ChevronRight size={20} />
         </button>
@@ -394,22 +280,19 @@ export default function ThreeDCarousel({
         {!reduced && (
           <button
             type="button"
-            onClick={() => {
-              speed.current = 0;
-              setPaused(v => !v);
-            }}
+            onClick={() => setPaused(v => !v)}
             aria-label={paused ? 'Retomar rotação automática' : 'Pausar rotação automática'}
             aria-pressed={paused}
-            className="orbit-control w-9 h-9 rounded-full border border-alabaster/20 flex items-center justify-center text-stone-warm hover:text-[#ffe6a3] transition-colors ml-1"
+            className="w-9 h-9 rounded-full border border-alabaster/20 flex items-center justify-center text-stone-warm hover:text-[#ffe6a3] transition-colors ml-1 cursor-pointer"
           >
             {paused ? <Play size={14} /> : <Pause size={14} />}
           </button>
         )}
       </div>
 
-      <p className="text-center text-xs text-stone-warm flex items-center justify-center gap-1.5 mt-1">
+      <p className="text-center text-xs text-stone-warm flex items-center justify-center gap-1.5 mt-2">
         <Sparkles size={12} className="text-[#dfbd7c]" />
-        <span>Deslize ou toque nas laterais para navegar pelos estilos.</span>
+        <span>Deslize ou toque nos medalhões laterais para navegar pelos estilos.</span>
       </p>
     </div>
   );

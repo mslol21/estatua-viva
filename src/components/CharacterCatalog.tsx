@@ -198,7 +198,7 @@ export default function CharacterCatalog() {
         </div>
 
         {viewMode === 'orbit' ? (
-          <div className="py-4">
+          <div className="py-4 overflow-visible w-full">
             <ThreeDCarousel
               items={filteredCharacters.map((char) => ({
                 id: char.id,
