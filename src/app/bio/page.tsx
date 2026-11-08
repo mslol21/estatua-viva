@@ -2,10 +2,8 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import {
   MessageCircle,
-  Star,
   Instagram,
   Youtube,
   Facebook,
@@ -15,12 +13,10 @@ import {
   Heart,
   PartyPopper,
   Palette,
-  CheckCircle2,
-  MapPin,
-  Clock,
   ChevronRight,
-  ShieldCheck,
 } from 'lucide-react';
+import BrandLogo from '@/components/BrandLogo';
+import ThreeDCarousel, { CarouselItem } from '@/components/ThreeDCarousel';
 import { CHARACTERS, Character } from '@/data/portfolioData';
 import { trackLeadAndOpenWhatsApp, captureAndStoreUtms } from '@/lib/tracking';
 
@@ -65,26 +61,26 @@ export default function BioHubPage() {
   };
 
   return (
-    <div className="site-surface min-h-screen text-[#f4f1ea] relative selection:bg-[#dfbd7c] selection:text-[#071318]">
+    <div className="site-surface min-h-screen text-[#f4f1ea] relative overflow-x-clip selection:bg-[#dfbd7c] selection:text-[#071318]">
       {/* Background radial glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] h-[450px] bg-champagne-gold/10 blur-[130px] rounded-full"
+        className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[600px] h-[500px] bg-champagne-gold/10 blur-[140px] rounded-full"
       />
 
       <main className="max-w-[480px] mx-auto min-h-screen px-4 py-8 relative z-10 flex flex-col justify-between">
         <div>
-          {/* 1. CABEÇALHO DE AUTORIDADE & PROVA SOCIAL */}
+          {/* 1. CABEÇALHO DE AUTORIDADE COM LOGO OFICIAL & PROVA SOCIAL */}
           <header className="flex flex-col items-center text-center mb-6">
-            {/* Monograma Dourado EV */}
+            {/* Logo Oficial com Halo Dourado */}
             <Link
               href="/"
-              className="group relative flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-[#dfbd7c] via-[#b8862d] to-[#dfbd7c] p-[2px] shadow-[0_0_25px_rgba(223,189,124,0.4)] hover:shadow-[0_0_35px_rgba(223,189,124,0.7)] transition-all mb-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dfbd7c]"
+              aria-label="Ir para a página inicial"
+              className="group flex flex-col items-center justify-center mb-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dfbd7c]"
             >
-              <div className="w-full h-full rounded-full bg-[#071318] flex items-center justify-center">
-                <span className="font-serif text-2xl font-bold tracking-widest text-[#ffe6a3] group-hover:scale-105 transition-transform">
-                  EV
-                </span>
+              <div className="relative flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#dfbd7c]/20 blur-2xl rounded-full group-hover:bg-[#dfbd7c]/35 transition-all" />
+                <BrandLogo className="brand-logo-bio drop-shadow-[0_4px_25px_rgba(223,189,124,0.35)] group-hover:scale-105 transition-transform duration-300" />
               </div>
             </Link>
 
@@ -101,41 +97,41 @@ export default function BioHubPage() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Ver 5 estrelas no Google"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono tracking-wider uppercase bg-[#dfbd7c]/15 text-[#ffe6a3] border border-[#dfbd7c]/40 hover:border-[#ffe6a3] hover:shadow-[0_0_12px_rgba(223,189,124,0.4)] transition-all mb-4"
+              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-[11px] font-mono tracking-wider uppercase bg-[#dfbd7c]/15 text-[#ffe6a3] border border-[#dfbd7c]/40 hover:border-[#ffe6a3] hover:shadow-[0_0_15px_rgba(223,189,124,0.45)] transition-all mb-4"
             >
               <span className="text-[#ffe6a3] tracking-widest">★★★★★</span>
               <span>5,0 no Google · Opiniões reais</span>
               <ArrowUpRight size={12} />
             </a>
 
-            {/* Ícones sociais compactos */}
+            {/* Ícones sociais compactos com borda neon dourada */}
             <div className="flex items-center gap-3">
               <a
                 href="https://www.instagram.com/estatuavivaproducoes"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram Oficial"
-                className="w-8 h-8 rounded-full border border-alabaster/15 flex items-center justify-center text-stone-warm hover:text-[#ffe6a3] hover:border-[#dfbd7c]/60 hover:shadow-[0_0_10px_rgba(223,189,124,0.3)] transition-all"
+                className="neon-gold-card w-9 h-9 rounded-full flex items-center justify-center text-stone-warm hover:text-[#ffe6a3] hover:shadow-[0_0_12px_rgba(223,189,124,0.4)] transition-all bg-[#0a1e24]/80"
               >
-                <Instagram size={15} />
+                <Instagram size={16} />
               </a>
               <a
                 href="https://www.youtube.com/@estatuavivaoficial"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="YouTube Oficial"
-                className="w-8 h-8 rounded-full border border-alabaster/15 flex items-center justify-center text-stone-warm hover:text-[#ffe6a3] hover:border-[#dfbd7c]/60 hover:shadow-[0_0_10px_rgba(223,189,124,0.3)] transition-all"
+                className="neon-gold-card w-9 h-9 rounded-full flex items-center justify-center text-stone-warm hover:text-[#ffe6a3] hover:shadow-[0_0_12px_rgba(223,189,124,0.4)] transition-all bg-[#0a1e24]/80"
               >
-                <Youtube size={15} />
+                <Youtube size={16} />
               </a>
               <a
                 href="https://www.facebook.com/estatuavivaproducoes"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook Oficial"
-                className="w-8 h-8 rounded-full border border-alabaster/15 flex items-center justify-center text-stone-warm hover:text-[#ffe6a3] hover:border-[#dfbd7c]/60 hover:shadow-[0_0_10px_rgba(223,189,124,0.3)] transition-all"
+                className="neon-gold-card w-9 h-9 rounded-full flex items-center justify-center text-stone-warm hover:text-[#ffe6a3] hover:shadow-[0_0_12px_rgba(223,189,124,0.4)] transition-all bg-[#0a1e24]/80"
               >
-                <Facebook size={15} />
+                <Facebook size={16} />
               </a>
             </div>
           </header>
@@ -254,24 +250,24 @@ export default function BioHubPage() {
             </div>
           </section>
 
-          {/* 3. VITRINE INTERATIVA DE TRABALHOS ("Sem Sair Daqui") */}
-          <section aria-labelledby="vitrine-title" className="mb-9">
-            <div className="flex items-center justify-between mb-3">
+          {/* 3. VITRINE DE PERSONAGENS EM ÓRBITA 3D ("Sem Sair Daqui") */}
+          <section aria-labelledby="vitrine-title" className="mb-10">
+            <div className="flex items-center justify-between mb-3 px-1">
               <div className="flex items-center gap-2">
-                <Sparkles size={14} className="text-[#dfbd7c]" />
-                <h2 id="vitrine-title" className="font-serif text-lg text-[#f4f1ea] font-medium">
-                  Vitrine de Personagens
+                <Sparkles size={16} className="text-[#dfbd7c] animate-pulse" />
+                <h2 id="vitrine-title" className="font-serif text-xl text-[#f4f1ea] font-medium tracking-tight">
+                  Acervo em Órbita 3D
                 </h2>
               </div>
-              <span className="text-[10px] font-mono text-stone-warm uppercase tracking-wider">
-                Deslize para ver
+              <span className="text-[10px] font-mono text-[#dfbd7c] uppercase tracking-wider bg-[#dfbd7c]/10 px-2.5 py-0.5 rounded-full border border-[#dfbd7c]/30">
+                Arraste para girar
               </span>
             </div>
 
-            {/* Pílulas de Filtro */}
+            {/* Pílulas de Filtro de Categoria com Neon Dourado */}
             <div
               data-lenis-prevent
-              className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none mb-3.5"
+              className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none mb-3"
             >
               {BIO_CATEGORIES.map((cat) => {
                 const isSelected = selectedCategory === cat;
@@ -280,10 +276,10 @@ export default function BioHubPage() {
                     key={cat}
                     type="button"
                     onClick={() => setSelectedCategory(cat)}
-                    className={`shrink-0 px-3 py-1 rounded-full text-[11px] font-mono uppercase tracking-wider transition-all ${
+                    className={`shrink-0 px-3.5 py-1.5 rounded-full text-[11px] font-mono uppercase tracking-wider transition-all cursor-pointer ${
                       isSelected
-                        ? 'bg-[#dfbd7c] text-[#071318] font-bold shadow-[0_0_12px_rgba(223,189,124,0.5)]'
-                        : 'bg-[#0d272d]/60 border border-alabaster/10 text-stone-warm hover:text-alabaster'
+                        ? 'bg-[#dfbd7c] text-[#071318] font-bold shadow-[0_0_16px_rgba(223,189,124,0.6)] border border-[#ffe6a3]'
+                        : 'neon-gold-card bg-[#071a20]/70 text-stone-warm hover:text-alabaster hover:border-[#dfbd7c]/40'
                     }`}
                   >
                     {cat}
@@ -292,50 +288,24 @@ export default function BioHubPage() {
               })}
             </div>
 
-            {/* Carrossel Horizontal Swipe de Cards com Neon Dourado */}
-            <div
-              data-lenis-prevent
-              className="flex gap-3.5 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-none"
-            >
-              {filteredCharacters.map((char) => (
-                <div
-                  key={char.id}
-                  className="neon-gold-card w-[220px] shrink-0 snap-start rounded-2xl overflow-hidden bg-[#0c242a] flex flex-col justify-between"
-                >
-                  <div className="relative aspect-[3/4] w-full bg-[#071318] overflow-hidden">
-                    <Image
-                      src={char.imageUrl}
-                      alt={char.name}
-                      fill
-                      sizes="220px"
-                      className="object-cover object-center"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#031014]/95 via-transparent to-transparent" />
-                    <span className="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-full text-[9px] font-mono uppercase tracking-wider bg-[#071318]/85 text-[#ffe6a3] border border-[#dfbd7c]/40 backdrop-blur-sm">
-                      {char.category}
-                    </span>
-                    <div className="absolute bottom-2.5 left-2.5 right-2.5">
-                      <h3 className="font-serif text-lg font-normal text-white leading-tight">
-                        {char.name}
-                      </h3>
-                      <p className="text-[11px] text-[#c7c9c1] line-clamp-1 mt-0.5">
-                        {char.idealFor}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="p-3 bg-[#0a1e24]">
-                    <button
-                      type="button"
-                      onClick={() => handleCharacterWhatsApp(char)}
-                      className="w-full py-2 px-3 rounded-lg bg-[#dfbd7c] hover:bg-[#ffe6a3] text-[#071318] text-xs font-mono uppercase tracking-wider font-bold flex items-center justify-between transition-colors shadow-[0_0_12px_rgba(223,189,124,0.3)]"
-                    >
-                      <span>Orçar Personagem</span>
-                      <ArrowUpRight size={14} />
-                    </button>
-                  </div>
-                </div>
-              ))}
+            {/* Carrossel 3D Coverflow que se expande elegantemente além dos 480px */}
+            <div className="relative w-screen left-1/2 -translate-x-1/2 overflow-visible py-2">
+              <ThreeDCarousel
+                key={selectedCategory}
+                items={filteredCharacters.map((char) => ({
+                  id: char.id,
+                  title: char.name,
+                  subtitle: char.idealFor || char.tagline || char.category,
+                  badge: char.category,
+                  image: char.imageUrl,
+                  color: char.colorAccent || '223, 189, 124',
+                }))}
+                onSelectItem={(id) => {
+                  const char = filteredCharacters.find((c) => String(c.id) === String(id));
+                  if (char) handleCharacterWhatsApp(char);
+                }}
+                actionLabel="Orçar Personagem"
+              />
             </div>
           </section>
 

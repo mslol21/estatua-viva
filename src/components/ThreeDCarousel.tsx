@@ -18,6 +18,7 @@ interface ThreeDCarouselProps {
   items?: CarouselItem[];
   className?: string;
   onSelectItem?: (id: string | number) => void;
+  actionLabel?: string;
 }
 
 const DEFAULT_ITEMS: CarouselItem[] = CHARACTERS.map(char => ({
@@ -32,6 +33,7 @@ export default function ThreeDCarousel({
   items = DEFAULT_ITEMS,
   className = '',
   onSelectItem,
+  actionLabel = 'Explorar estilo',
 }: ThreeDCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -228,7 +230,7 @@ export default function ThreeDCarousel({
                     }}
                     className="self-center mx-auto inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-[#dfbd7c] hover:bg-[#ffe6a3] text-[#071318] transition-all shadow-[0_0_15px_rgba(223,189,124,0.5)] mt-3 cursor-pointer"
                   >
-                    <span>Explorar estilo</span>
+                    <span>{actionLabel}</span>
                     <ArrowUpRight size={13} />
                   </button>
                 )}
