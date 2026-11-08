@@ -1,81 +1,114 @@
 'use client';
 
-import dynamic from 'next/dynamic';
-import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { useEffect, useRef, useState, type PointerEvent } from 'react';
+import { useLenis } from 'lenis/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import type { SceneMotion } from './SculptureCanvas';
+import { CHARACTERS } from '@/data/portfolioData';
 import './sculpture.css';
 
-const SculptureCanvas = dynamic(() => import('./SculptureCanvas'), { ssr: false, loading: () => <div className="sculpture-loading" role="status">Preparando a galeria…</div> });
+const portraits = [
+  { image: '/portfolio/ouro.webp', name: 'Estátua Clássica em Ouro', category: 'Ouro Imperial', href: '#estilo-ouro' },
+  { image: '/portfolio/prata.webp', name: 'Chef Prateado', category: 'Prata Industrial', href: '#estilo-prata' },
+  { image: '/portfolio/branca.webp', name: 'Anjo em Branco', category: 'Mármore Branco', href: '#estilo-branca' },
+  { image: '/portfolio/diversas.webp', name: 'Personagens e histórias', category: 'Temáticos e personagens', href: '#estilo-diversas' },
+].map(portrait => ({ ...portrait, name: CHARACTERS.find(character => character.imageUrl === portrait.image)?.name ?? portrait.name }));
 
-/** modelUrl accepts a public .glb/.gltf URL; omit to display the procedural study. */
-export default function SculptureExperience({ modelUrl }: { modelUrl?: string }) {
+export default function SculptureExperience() {
   const container = useRef<HTMLElement>(null);
-  const motion = useRef<SceneMotion>({ rotation: 0, scale: 1, x: 1.15 });
-  const [near, setNear] = useState(false);
-  const [active, setActive] = useState(false);
+  const stage = useRef<HTMLDivElement>(null);
+  const pointerControl = useRef<{ x: (value: number) => void; y: (value: number) => void }>();
+  const lenis = useLenis();
+  const [selected, setSelected] = useState(0);
   const [reduced, setReduced] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const update = () => setReduced(media.matches);
     update(); media.addEventListener('change', update);
-    const node = container.current;
-    if (!node) return;
-    const preload = new IntersectionObserver(([entry]) => { if (entry.isIntersecting) { setNear(true); preload.disconnect(); } }, { rootMargin: '400px' });
-    const visibility = new IntersectionObserver(([entry]) => setActive(entry.isIntersecting));
-    preload.observe(node); visibility.observe(node);
-    return () => { media.removeEventListener('change', update); preload.disconnect(); visibility.disconnect(); };
+    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting));
+    if (container.current) observer.observe(container.current);
+    return () => { media.removeEventListener('change', update); observer.disconnect(); };
   }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
-      if (reduced) { motion.current = { rotation: 0.35, scale: 1, x: 0 }; return; }
-      gsap.set('[data-scene-copy="1"], [data-scene-copy="2"]', { autoAlpha: 0, y: 28 });
-      const timeline = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: container.current, start: 'top top', end: 'bottom bottom', scrub: 0.7, invalidateOnRefresh: true } });
-      timeline.to({}, { duration: 0.28 })
-        .to('[data-scene-copy="0"]', { autoAlpha: 0, y: -24, duration: 0.08 }, 0.28)
-        .to(motion.current, { rotation: Math.PI * 0.7, scale: 1.24, x: -1.15, duration: 0.3 }, 0.33)
-        .to('[data-scene-copy="1"]', { autoAlpha: 1, y: 0, duration: 0.12 }, 0.39)
-        .to('[data-scene-copy="1"]', { autoAlpha: 0, y: -24, duration: 0.08 }, 0.63)
-        .to(motion.current, { rotation: Math.PI * 0.86, scale: 0.94, x: -1.55, duration: 0.25 }, 0.66)
-        .to('[data-scene-copy="2"]', { autoAlpha: 1, y: 0, duration: 0.12 }, 0.74)
-        .to({}, { duration: 0.14 }, 0.86);
-      // An invisible phase must not retain keyboard-focusable controls.
-      const cta = container.current?.querySelector<HTMLAnchorElement>('[data-scene-copy="2"] a');
-      if (cta) {
-        cta.tabIndex = -1;
-        timeline.eventCallback('onUpdate', () => { cta.tabIndex = timeline.progress() >= 0.74 ? 0 : -1; });
-      }
+      const cards = gsap.utils.toArray<HTMLElement>('.living-portrait');
+      if (reduced) return;
+      const movement = { position: 0 };
+      const draw = () => {
+        const narrow = window.innerWidth < 768;
+        cards.forEach((card, index) => {
+          const distance = index - movement.position;
+          const depth = Math.abs(distance);
+          gsap.set(card, { x: distance * (narrow ? 190 : 310), y: depth * 28, z: -depth * 190, rotationY: distance * -22, rotationZ: distance * 3, scale: 1 - Math.min(depth, 3) * 0.055, opacity: Math.max(0, 1 - depth * 0.38), zIndex: 10 - Math.round(depth * 2) });
+          // Only the highlighted portrait is a keyboard stop.
+          const current = Math.round(movement.position) === index;
+          card.tabIndex = current ? 0 : -1;
+          card.style.pointerEvents = current ? 'auto' : 'none';
+        });
+        setSelected(Math.round(movement.position));
+      };
+      draw();
+      gsap.to(movement, { position: portraits.length - 1, ease: 'none', onUpdate: draw, scrollTrigger: { trigger: container.current, start: 'top top', end: 'bottom bottom', scrub: 0.6, onRefresh: draw, invalidateOnRefresh: true } });
+      pointerControl.current = {
+        x: gsap.quickTo(stage.current, 'rotationY', { duration: 0.9, ease: 'power3.out' }),
+        y: gsap.quickTo(stage.current, 'rotationX', { duration: 0.9, ease: 'power3.out' }),
+      };
     }, container);
-    return () => { ctx.revert(); container.current?.querySelector('a')?.removeAttribute('tabindex'); };
+    return () => {
+      pointerControl.current = undefined;
+      ctx.revert();
+      container.current?.querySelectorAll<HTMLElement>('.living-portrait').forEach(card => {
+        card.removeAttribute('tabindex');
+        card.style.removeProperty('pointer-events');
+      });
+    };
   }, [reduced]);
 
-  return <section ref={container} id="galeria-3d" aria-labelledby="sculpture-title" className="sculpture-experience">
-    <div className="sculpture-stage">
-      <div className="sculpture-topline"><span>Estátua Viva Produções</span><span>Galeria digital / 01</span></div>
-      <div className="sculpture-render" aria-hidden="true">{near && <SculptureCanvas motion={motion} active={active} reduced={reduced} modelUrl={modelUrl} />}</div>
-      <article className="sculpture-copy sculpture-copy-intro" data-scene-copy="0">
-        <p className="sculpture-eyebrow">Um estudo de forma e presença</p>
-        <h2 id="sculpture-title">A matéria.<br /><em>O movimento.</em><br />A presença.</h2>
-        <p>Um convite para desacelerar e observar. Explore uma forma que revela novos contornos a cada ponto de vista.</p>
-        <span className="sculpture-scroll">Role para explorar <span aria-hidden="true">↓</span></span>
-      </article>
-      <article className="sculpture-copy sculpture-copy-detail" data-scene-copy="1">
-        <p className="sculpture-eyebrow">02 / Olhar de perto</p>
-        <h3>Entre luz<br /><em>e superfície.</em></h3>
-        <p>Curvas contínuas, reflexos suaves e uma superfície que transforma a luz em textura. Mova o cursor e descubra outros ângulos.</p>
-      </article>
-      <article className="sculpture-copy sculpture-copy-specs" data-scene-copy="2">
-        <p className="sculpture-eyebrow">03 / Ficha do estudo</p>
-        <h3>Uma forma.<br /><em>Muitas leituras.</em></h3>
-        <dl><div><dt>Natureza</dt><dd>{modelUrl ? 'Modelo digital 3D' : 'Estudo digital procedural'}</dd></div><div><dt>Acabamento visual</dt><dd>Cerâmica acetinada · metal suave</dd></div><div><dt>Exibição</dt><dd>Luz de galeria · tempo real</dd></div></dl>
-        <p className="sculpture-disclaimer">Representação artística digital, sem correspondência com uma obra física do acervo.</p>
-        <a href="#briefing">Criar uma experiência para meu evento <span aria-hidden="true">↗</span></a>
-      </article>
-      <div className="sculpture-bottomline"><span>Escultura viva / Estudo digital</span><span aria-hidden="true">Forma em transformação</span></div>
+  const tilt = (event: PointerEvent<HTMLElement>) => {
+    if (reduced || event.pointerType !== 'mouse') return;
+    const box = event.currentTarget.getBoundingClientRect();
+    pointerControl.current?.x(((event.clientX - box.left) / box.width - 0.5) * 9);
+    pointerControl.current?.y(-((event.clientY - box.top) / box.height - 0.5) * 6);
+  };
+  const choose = (index: number) => {
+    if (!container.current) return;
+    if (reduced) {
+      container.current.querySelectorAll<HTMLAnchorElement>('.living-portrait')[index]?.focus();
+      return;
+    }
+    const node = container.current;
+    const target = node.getBoundingClientRect().top + window.scrollY + index / (portraits.length - 1) * (node.offsetHeight - window.innerHeight);
+    if (lenis) lenis.scrollTo(target, { duration: 0.85 });
+    else window.scrollTo({ top: target, behavior: 'smooth' });
+  };
+
+  return <section ref={container} id="galeria-3d" aria-labelledby="living-title" className={`living-gallery ${visible ? 'is-visible' : ''}`}>
+    <div className="living-stage" onPointerMove={tilt} onPointerLeave={() => { pointerControl.current?.x(0); pointerControl.current?.y(0); }}>
+      <div className="living-light" aria-hidden="true" />
+      <div className="living-heading">
+        <p className="living-eyebrow">O acervo ganha o palco</p>
+        <h2 id="living-title">Parece estátua.<br /><em>Até ganhar vida.</em></h2>
+        <p>Expressão, figurino e presença. Conheça os personagens que transformam o encontro com o público em uma experiência.</p>
+        <a className="living-cta" href="#acervo">Explorar os personagens <span aria-hidden="true">↗</span></a>
+      </div>
+      <div ref={stage} className="living-perspective" aria-label="Retratos dos personagens em movimento">
+        {portraits.map((portrait, index) => <a className="living-portrait" href={portrait.href} key={portrait.image} aria-label={`Conhecer ${portrait.name}`}>
+          <figure className="living-photo" style={{ animationDelay: `${index * -1.8}s` }}>
+            <div className="living-photo-image"><Image src={portrait.image} alt={`${portrait.name} — caracterização e performance da Estátua Viva Produções`} fill sizes="(max-width: 767px) 66vw, 340px" loading="lazy" /></div>
+            <div className="living-photo-shine" aria-hidden="true" />
+            <figcaption><span>{portrait.category}</span><strong>{portrait.name}</strong><span className="living-photo-discover">Conhecer personagem ↗</span></figcaption>
+          </figure>
+        </a>)}
+      </div>
+      <div className="living-controls" aria-label="Escolher personagem em destaque">
+        {portraits.map((portrait, index) => <button key={portrait.image} type="button" onClick={() => choose(index)} aria-label={`Destacar ${portrait.name}`} aria-pressed={selected === index} className={selected === index ? 'is-selected' : ''}><span className="living-control-number">0{index + 1}</span><span>{portrait.category}</span></button>)}
+      </div>
+      <p className="living-scroll">Role e veja o acervo ganhar movimento <span aria-hidden="true">↓</span></p>
     </div>
   </section>;
 }

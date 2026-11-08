@@ -1,52 +1,71 @@
-.site-surface > .sculpture-experience { background-color: #0c0c0e; }
-.sculpture-experience { position: relative; height: 300svh; color: #e5e5e5; border-block: 1px solid #ffffff14; }
-.sculpture-stage { position: sticky; top: 0; height: 100svh; min-height: 620px; overflow: hidden; isolation: isolate; background: radial-gradient(ellipse at 50% 44%, #242321 0%, #0c0c0e 70%); }
-.sculpture-render { position: absolute; inset: 0; z-index: -1; }
-.sculpture-topline,.sculpture-bottomline { position: absolute; left: 5%; right: 5%; display: flex; justify-content: space-between; gap: 16px; text-transform: uppercase; letter-spacing: .16em; font-size: 10px; color: #a3a3a3; }
-.sculpture-topline { top: 112px; padding-bottom: 16px; border-bottom: 1px solid #ffffff1a; }
-.sculpture-bottomline { bottom: 28px; }
-.sculpture-copy { position: absolute; width: min(36%, 460px); top: 50%; transform: translateY(-40%); pointer-events: none; }
-.sculpture-copy-intro { left: 8%; }
-.sculpture-copy-detail,.sculpture-copy-specs { right: 8%; }
-.sculpture-eyebrow { font-size: 10px !important; text-transform: uppercase; letter-spacing: .2em; color: #c7b18d !important; margin-bottom: 24px; }
-.sculpture-copy h2,.sculpture-copy h3 { font-size: clamp(38px, 4.3vw, 72px); line-height: 1.05; letter-spacing: -.045em; font-weight: 400; }
-.sculpture-copy em { font-family: Georgia, serif; color: #c9bda8; font-weight: 400; }
-.sculpture-copy > p:not(.sculpture-eyebrow) { font-size: 14px; line-height: 1.9; color: #a3a3a3; margin-top: 22px; max-width: 350px; }
-.sculpture-scroll { display: inline-flex; align-items: center; gap: 40px; margin-top: 32px; font-size: 11px; letter-spacing: .08em; }
-.sculpture-scroll span { font-size: 22px; color: #c9bda8; }
-.sculpture-copy dl { margin-top: 24px; font-size: 12px; }
-.sculpture-copy dl div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid #ffffff1a; }
-.sculpture-copy dt { color: #a3a3a3; }
-.sculpture-copy dd { text-align: right; }
-.sculpture-copy > p.sculpture-disclaimer { font-size: 10px; margin-top: 12px; }
-.sculpture-copy a { pointer-events: auto; display: inline-flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 20px; border: 1px solid #c9bda866; border-radius: 2px; font-size: 12px; margin-top: 24px; background: #0c0c0ecc; transition: background .2s; }
-.sculpture-copy a:hover { background: #c9bda822; }
-.sculpture-copy a:focus-visible { outline: 2px solid #c9bda8; outline-offset: 5px; }
-.sculpture-loading { position: absolute; inset: 0; display: grid; place-items: center; font-size: 11px; letter-spacing: .15em; color: #a3a3a3; }
-.sculpture-loader { white-space: nowrap; font-size: 11px; color: #c9bda8; }
-.sculpture-static { position: absolute; width: 230px; height: 310px; left: var(--sculpture-fallback-x, 60%); top: 40%; transform: translate(-50%,-50%) rotate(-20deg) scale(var(--sculpture-fallback-scale, 1)); border: 50px solid #b6aa97; border-radius: 48% 54% 42% 60%; box-shadow: inset 8px 12px 24px #0009, 15px 20px 40px #0008; background: #161616; }
+.site-surface > .living-gallery { background-color: #061318; }
+.living-gallery { position: relative; height: 240svh; color: #f5eee0; border-block: 1px solid #dfbd7c26; }
+.living-stage { position: sticky; top: 0; height: 100svh; min-height: 680px; overflow: hidden; isolation: isolate; perspective: 1500px; background: radial-gradient(ellipse at 74% 42%, #21464a80, #06131800 66%), linear-gradient(#061318bd,#061318ed), url('/brand/textura-marmore.webp') center / cover; }
+.living-light { pointer-events: none; position: absolute; inset: 10% 0 0 30%; background: radial-gradient(ellipse at 55% 25%, #dfbd7c18, transparent 65%); }
+.living-heading { position: absolute; z-index: 20; top: 50%; left: 5%; width: 31%; transform: translateY(-43%); }
+.living-eyebrow { font-size: 10px; text-transform: uppercase; letter-spacing: .2em; color: #dfbd7c; margin-bottom: 22px; }
+.living-heading h2 { font-family: Georgia, serif; font-size: clamp(38px,4.1vw,66px); line-height: 1.07; font-weight: 400; letter-spacing: -.035em; }
+.living-heading h2 em { color: #dfbd7c; }
+.living-heading > p:not(.living-eyebrow) { margin-top: 24px; font-size: 14px; line-height: 1.9; color: #c1c8c5; max-width: 350px; }
+.living-cta { display: inline-flex; gap: 24px; align-items: center; margin-top: 30px; padding: 14px 0; font-size: 12px; border-bottom: 1px solid #dfbd7c80; color: #ead4a9; }
+.living-perspective { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
+.living-portrait { position: absolute; top: 50%; left: 68%; width: clamp(230px,23vw,340px); height: min(56svh,480px); min-height: 350px; margin-left: clamp(-170px,-11.5vw,-115px); margin-top: max(-28svh,-240px); transform-style: preserve-3d; transform-origin: center; }
+.living-photo { position: relative; width: 100%; height: 100%; border: 1px solid #dfbd7c70; border-radius: 150px 150px 16px 16px; box-shadow: 0 25px 60px #0009, 0 0 35px #dfbd7c0d; overflow: hidden; background: #0c242a; animation: living-float 6.5s ease-in-out infinite; animation-play-state: paused; }
+.living-gallery.is-visible .living-photo { animation-play-state: running; }
+.living-photo-image { position: absolute; inset: 0; animation: living-breathe 10s ease-in-out infinite alternate; animation-play-state: paused; }
+.living-gallery.is-visible .living-photo-image { animation-play-state: running; }
+.living-photo-image img { object-fit: cover; object-position: center 28%; }
+.living-photo-shine { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, #fff0 20%, #fff2 42%, #fff0 58%); opacity: .35; }
+.living-photo figcaption { position: absolute; inset: auto 0 0; padding: 70px 24px 24px; background: linear-gradient(transparent,#031014f5 65%); transform: translateZ(20px); }
+.living-photo figcaption > span:first-child { display: block; font-size: 9px; text-transform: uppercase; letter-spacing: .16em; color: #ead4a9; }
+.living-photo strong { display: block; margin-top: 7px; font-family: Georgia, serif; font-size: 25px; line-height: 1.1; font-weight: 400; color: #fff9eb; }
+.living-photo-discover { display: block; font-size: 10px; color: #ddd3bf; margin-top: 14px; }
+.living-controls { position: absolute; left: 5%; bottom: 72px; right: 5%; display: flex; justify-content: flex-end; gap: 22px; z-index: 25; }
+.living-controls button { min-height: 44px; display: flex; align-items: center; gap: 8px; font-size: 10px; color: #c0c6bf; border-bottom: 1px solid #dfbd7c30; padding: 10px 0; transition: color .2s, border-color .2s; }
+.living-controls button.is-selected { border-color: #dfbd7c; color: #f0d49a; }
+.living-control-number { font-family: monospace; font-size: 9px; color: #dfbd7c; }
+.living-scroll { position: absolute; bottom: 28px; left: 5%; right: 5%; font-size: 9px; text-transform: uppercase; letter-spacing: .14em; color: #a4b1ac; display: flex; justify-content: space-between; }
+.living-scroll span { font-size: 18px; color: #dfbd7c; }
+.living-gallery a:focus-visible,.living-gallery button:focus-visible { outline: 2px solid #dfbd7c; outline-offset: 6px; }
+@keyframes living-float { 0%,100% { transform: translateY(0) rotateZ(-.7deg); } 50% { transform: translateY(-13px) rotateZ(.7deg); } }
+@keyframes living-breathe { from { transform: scale(1.02) translateY(0); } to { transform: scale(1.09) translateY(5px); } }
 @media(max-width:767px) {
-  .sculpture-stage { min-height: 660px; }
-  .sculpture-topline { top: 140px; font-size: 8px; }
-  .sculpture-copy { top: auto; bottom: 65px; left: 7%; right: 7%; width: auto; transform: none; }
-  .sculpture-copy h2,.sculpture-copy h3 { font-size: clamp(30px,7vw,42px); }
-  .sculpture-copy h2 br { display: none; }
-  .sculpture-copy h2 em::before,.sculpture-copy h2 em::after { content: ' '; }
-  .sculpture-eyebrow { margin-bottom: 12px; font-size: 9px !important; }
-  .sculpture-copy > p:not(.sculpture-eyebrow) { font-size: 12px; line-height: 1.7; margin-top: 12px; max-width: 100%; }
-  .sculpture-scroll { margin-top: 12px; }
-  .sculpture-copy dl { margin-top: 10px; font-size: 11px; }
-  .sculpture-copy dl div { padding: 8px 0; }
-  .sculpture-copy a { margin-top: 12px; padding: 12px 14px; }
-  .sculpture-bottomline { font-size: 8px; bottom: 22px; }
-  .sculpture-bottomline span:last-child { display: none; }
-  .sculpture-static { top: 35%; left: 50%; width: 150px; height: 210px; border-width: 35px; }
+  .living-stage { min-height: 760px; }
+  .living-heading { left: 7%; top: 150px; width: 86%; transform: none; }
+  .living-eyebrow { margin-bottom: 10px; font-size: 9px; }
+  .living-heading h2 { font-size: clamp(30px,8vw,40px); }
+  .living-heading h2 br { display: none; }
+  .living-heading h2 em::before { content: ' '; }
+  .living-heading > p:not(.living-eyebrow) { font-size: 12px; line-height: 1.7; margin-top: 12px; max-width: 100%; }
+  .living-cta { margin-top: 6px; padding: 8px 0; font-size: 11px; }
+  .living-portrait { left: 50%; top: 350px; width: 60vw; max-width: 270px; height: clamp(290px,36svh,380px); min-height: 0; margin-left: max(-30vw,-135px); margin-top: 0; }
+  .living-photo { border-radius: 110px 110px 12px 12px; }
+  .living-photo figcaption { padding: 60px 18px 18px; }
+  .living-photo strong { font-size: 22px; }
+  .living-controls { bottom: 50px; left: 7%; right: 7%; justify-content: space-between; gap: 12px; }
+  .living-controls button { font-size: 9px; }
+  .living-controls button > span:last-child { display: none; }
+  .living-controls button.is-selected > span:last-child { display: inline; }
+  .living-scroll { left: 7%; right: 7%; bottom: 18px; font-size: 8px; letter-spacing: .08em; }
 }
 @media(prefers-reduced-motion:reduce) {
-  .sculpture-experience { height: auto; }
-  .sculpture-stage { position: relative; height: auto; padding: 400px 7% 70px; min-height: 0; }
-  .sculpture-render { height: 420px; }
-  .sculpture-topline { top: 32px; }
-  .sculpture-copy { position: relative; inset: auto; transform: none; width: 100%; max-width: 600px; margin: 0 auto 48px; opacity: 1 !important; visibility: visible !important; }
-  .sculpture-scroll { display: none; }
+  .living-gallery { height: auto; }
+  .living-stage { position: relative; height: auto; min-height: 0; padding: 70px 6%; overflow: visible; }
+  .living-heading { position: relative; inset: auto; width: 100%; transform: none; max-width: 600px; }
+  .living-perspective { position: relative; inset: auto; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 24px; margin-top: 40px; pointer-events: auto; }
+  .living-portrait { position: relative; inset: auto; width: 100%; max-width: none; margin: 0; height: auto; min-height: 0; aspect-ratio: 3 / 4; }
+  .living-photo,.living-photo-image { animation: none !important; }
+  .living-controls,.living-scroll { display: none; }
+}
+@media(prefers-reduced-motion:reduce) and (max-width:480px) {
+  .living-perspective { grid-template-columns: 1fr; }
+}
+@media(max-width:767px) and (max-height:760px) and (prefers-reduced-motion:no-preference) {
+  .living-stage { min-height: 100svh; }
+  .living-heading { top: 133px; }
+  .living-heading h2 { font-size: 29px; }
+  .living-heading > p:not(.living-eyebrow) { font-size: 11px; line-height: 1.5; margin-top: 8px; }
+  .living-portrait { top: 300px; height: clamp(180px,calc(100svh - 390px),280px); width: 52vw; margin-left: -26vw; }
+  .living-photo strong { font-size: 18px; }
+  .living-photo figcaption { padding: 45px 14px 14px; }
 }
