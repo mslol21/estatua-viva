@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Send,
@@ -99,6 +99,17 @@ export default function BriefingBuilder() {
   const [guestCount, setGuestCount] = useState<string>('');
   const [notes, setNotes] = useState<string>('');
   const [missingField, setMissingField] = useState<string | null>(null);
+  const ticketRef = useRef<HTMLDivElement>(null);
+  const ticketInitialized = useRef(false);
+  useEffect(() => {
+    if (!ticketInitialized.current) { ticketInitialized.current = true; return; }
+    const ticket = ticketRef.current;
+    if (!ticket || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    ticket.classList.remove('ticket-updated');
+    const frame = requestAnimationFrame(() => ticket.classList.add('ticket-updated'));
+    const timer = window.setTimeout(() => ticket.classList.remove('ticket-updated'), 500);
+    return () => { cancelAnimationFrame(frame); clearTimeout(timer); ticket.classList.remove('ticket-updated'); };
+  }, [selectedEventType, selectedAesthetic, clientName, eventDate, eventCity, guestCount, notes]);
 
   useEffect(() => {
     if (step === 3 && missingField) document.getElementById(missingField)?.focus();
@@ -475,7 +486,7 @@ Gostaria de verificar disponibilidade de agenda com a produção artística e ob
           </div>
 
           {/* Right Ticket Preview (Live Receipt) */}
-          <div className="briefing-panel lg:col-span-5 bg-charcoal border border-alabaster/15 p-6 sm:p-8 relative">
+          <div ref={ticketRef} className="briefing-panel ticket-preview lg:col-span-5 bg-charcoal border border-alabaster/15 p-6 sm:p-8 relative">
             {/* Theatrical ticket badge */}
             <div className="flex items-center justify-between border-b border-alabaster/10 pb-4 mb-5">
               <div className="flex items-center gap-2.5">

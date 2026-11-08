@@ -144,8 +144,8 @@ export default function CharacterCatalog() {
         </div>
 
         {/* Filter Tabs with Framer Motion LayoutId & View Mode Toggle */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 mb-10 border-b border-alabaster/10">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+        <div className="flex flex-col xl:flex-row xl:items-center justify-between gap-4 pb-4 mb-10 border-b border-alabaster/10">
+          <div data-lenis-prevent className="catalog-filters flex min-w-0 items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
             {CATEGORIES.map((cat) => {
               const isSelected = selectedCategory === cat;
               return (
@@ -153,7 +153,7 @@ export default function CharacterCatalog() {
                   key={cat}
                   aria-pressed={isSelected}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`relative px-4 py-2.5 text-xs font-mono uppercase tracking-[0.14em] transition-colors whitespace-nowrap focus:outline-none ${
+                  className={`catalog-filter relative shrink-0 px-[14px] py-2.5 text-xs font-mono uppercase tracking-[0.06em] transition-colors whitespace-nowrap focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-champagne-gold ${
                     isSelected ? 'text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
                   }`}
                 >

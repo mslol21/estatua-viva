@@ -26,3 +26,13 @@
 .hero-ticker-track { display: flex; width: max-content; white-space: nowrap; animation: tickerScroll 36s linear infinite; }
 @keyframes tickerScroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .hero-gold-shimmer, .hero-ticker-track { animation: none; } .hero-spotlight { display: none; } }
+
+/* Filtros sempre legíveis; no celular permanecem roláveis por toque. */
+.catalog-filters { scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.catalog-filter { scroll-snap-align: start; text-overflow: clip; }
+@media (max-width: 767px) { .catalog-filters { padding-inline: 1rem; } }
+@media (min-width: 768px) { .catalog-filters { flex-wrap: wrap; overflow: visible; justify-content: center; } }
+.ticket-preview { transition: border-color .3s, box-shadow .3s; }
+.ticket-preview.ticket-updated { animation: ticketGoldPulse .5s ease-out; }
+@keyframes ticketGoldPulse { 0%, 100% { border-color: rgba(255,255,255,.15); box-shadow: none; } 40% { border-color: rgba(230,198,135,.9); box-shadow: 0 0 28px rgba(212,175,55,.38); } }
+@media (prefers-reduced-motion: reduce) { .ticket-preview.ticket-updated { animation: none; } .ticket-preview { transition: none; } }
