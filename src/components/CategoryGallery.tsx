@@ -53,16 +53,16 @@ const ORBIT_INSPIRATIONS: CarouselItem[] = [
   {
     id: '#estilo-ouro',
     title: 'Ouro Imperial',
-    badge: 'Gala & Solenidade',
-    subtitle: 'Brilho supremo e estátuas douradas triunfais',
+    badge: 'Gala & Celebrações',
+    subtitle: 'Brilho escultural soberano para recepções triunfais e eventos solenes',
     image: '/portfolio/ouro.webp',
     color: '244, 212, 154',
   },
   {
     id: '#estilo-branca',
     title: 'Mármore Branco',
-    badge: 'Clássico & Casamento',
-    subtitle: 'Pureza escultural renascentista e anjos barrocos',
+    badge: 'Clássico & Casamentos',
+    subtitle: 'Pureza renascentista, anjos barrocos e arte celestial atemporal',
     image: '/portfolio/branca.webp',
     color: '240, 240, 245',
   },
@@ -70,48 +70,16 @@ const ORBIT_INSPIRATIONS: CarouselItem[] = [
     id: '#estilo-prata',
     title: 'Prata Industrial',
     badge: 'Corporativo & High-Tech',
-    subtitle: 'Elegância metálica, robótica e figuras futuristas',
+    subtitle: 'Vanguardismo metálico, robôs e figuras contemporâneas para feiras',
     image: '/portfolio/prata.webp',
     color: '200, 205, 215',
   },
   {
     id: '#estilo-diversas',
     title: 'Temáticos & Lúdicos',
-    badge: 'Experiência & Cinema',
-    subtitle: 'Chaplin, piratas e personagens sob medida',
+    badge: 'Cinema & Ficção',
+    subtitle: 'Chaplin, Piratas, Deuses e criações exclusivas sob medida para seu tema',
     image: '/portfolio/diversas.webp',
-    color: '228, 193, 132',
-  },
-  {
-    id: '#estilo-ouro',
-    title: 'Deusa Grega em Ouro',
-    badge: 'Mitologia Imperial',
-    subtitle: 'Presença cênica monumental para palcos e recepções',
-    image: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-2-e1753540896401.jpg',
-    color: '244, 212, 154',
-  },
-  {
-    id: '#estilo-branca',
-    title: 'Anjo Barroco Celestial',
-    badge: 'Recepção Mágica',
-    subtitle: 'Asas esculturais e atmosfera etérea inesquecível',
-    image: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-viva-anjo-branco-5.jpg',
-    color: '240, 240, 245',
-  },
-  {
-    id: '#estilo-prata',
-    title: 'Chef & Pintor Prateado',
-    badge: 'Arte & Gastronomia',
-    subtitle: 'Interação sutil e performática com os convidados',
-    image: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Prata-Chef-768x1057.jpg',
-    color: '200, 205, 215',
-  },
-  {
-    id: '#estilo-diversas',
-    title: 'Personagens Cênicos',
-    badge: 'Projetos Especiais',
-    subtitle: 'Figurinos artesanais criados para marcas e lançamentos',
-    image: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/Hera-Lancamento-Marca-2-768x768.jpg',
     color: '228, 193, 132',
   },
 ];
@@ -129,14 +97,14 @@ export default function CategoryGallery() {
   };
 
   return (
-    <section id="inspiracao" aria-labelledby="categorias-title" className="site-container py-20 sm:py-28 relative">
+    <section id="inspiracao" aria-labelledby="categorias-title" className="site-container py-16 sm:py-24 relative overflow-hidden">
       {/* Glow de fundo */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-12 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-champagne-gold/10 blur-[130px] rounded-full"
       />
 
-      <div className="mb-8 flex flex-col gap-6 sm:mb-12 sm:flex-row sm:items-end sm:justify-between relative z-10">
+      <div className="mb-8 flex flex-col gap-6 sm:mb-10 sm:flex-row sm:items-end sm:justify-between relative z-10">
         <div>
           <div className="flex items-center gap-2 mb-3">
             <span className="w-6 h-[1.5px] bg-[#dfbd7c]" />
@@ -144,18 +112,18 @@ export default function CategoryGallery() {
               Um universo de personagens
             </p>
           </div>
-          <h2 id="categorias-title" className="font-serif text-4xl text-[#f6f1e8] sm:text-5xl font-normal">
+          <h2 id="categorias-title" className="font-serif text-3xl sm:text-5xl text-[#f6f1e8] font-normal">
             Escolha sua <span className="italic text-[#e4c184]">inspiração.</span>
           </h2>
         </div>
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-          <p className="max-w-xs text-sm leading-6 text-[#d5d7cf]">
-            Explore estilos em órbita 3D e descubra a performance ideal para encantar seu público.
+          <p className="max-w-xs text-xs sm:text-sm leading-6 text-[#d5d7cf]">
+            Explore os 4 estilos cênicos e descubra a performance ideal para encantar seu público.
           </p>
 
           {/* Alternador de visualização (Órbita 3D vs Grade) */}
-          <div className="flex items-center gap-1 border border-[#dfbd7c]/35 p-1 rounded-full bg-[#0a1e24]/70 backdrop-blur-md shrink-0 shadow-[0_0_15px_rgba(223,189,124,0.2)]">
+          <div className="flex items-center gap-1 border border-[#dfbd7c]/35 p-1 rounded-full bg-[#0a1e24]/80 backdrop-blur-md shrink-0 shadow-[0_0_15px_rgba(223,189,124,0.2)]">
             <button
               type="button"
               onClick={() => setViewMode('orbit')}
@@ -187,9 +155,9 @@ export default function CategoryGallery() {
       </div>
 
       {/* Atalhos rápidos de categorias com neon dourado suave */}
-      <div className="flex flex-wrap items-center gap-2.5 mb-8 relative z-10">
+      <div className="flex flex-wrap items-center gap-2 mb-6 relative z-10">
         <span className="text-[11px] font-mono uppercase tracking-wider text-stone-warm mr-1">
-          Filtrar direto:
+          Ir direto ao estilo:
         </span>
         {CATEGORIES.map((cat) => (
           <a
@@ -204,7 +172,7 @@ export default function CategoryGallery() {
 
       {/* Disposição em Órbita 3D ou Grade */}
       {viewMode === 'orbit' ? (
-        <div className="relative z-10">
+        <div className="relative z-10 w-full">
           <ThreeDCarousel
             items={ORBIT_INSPIRATIONS}
             onSelectItem={handleSelectInspiration}
