@@ -131,23 +131,24 @@ export default function ThreeDCarousel({
           const absDiff = Math.abs(diff);
           const isVisible = absDiff <= 2;
 
-          // 2. Coordenadas calibradas de Coverflow 3D
+          // 2. Coordenadas calibradas de Coverflow 3D (elimina vazios entre os cards)
+          const sign = diff > 0 ? 1 : diff < 0 ? -1 : 0;
           const stepX = isMobile
             ? absDiff === 0
               ? 0
               : absDiff === 1
-              ? diff * 155
-              : diff * 260
+              ? sign * 145
+              : sign * 255
             : absDiff === 0
             ? 0
             : absDiff === 1
-            ? diff * 255
-            : diff * 430;
+            ? sign * 235
+            : sign * 415;
 
-          const translateZ = absDiff === 0 ? 0 : absDiff === 1 ? -110 : -220;
-          const scale = absDiff === 0 ? 1 : absDiff === 1 ? 0.82 : 0.66;
-          const rotateY = absDiff === 0 ? 0 : diff * -18;
-          const opacity = absDiff === 0 ? 1 : absDiff === 1 ? 0.72 : absDiff === 2 ? 0.35 : 0;
+          const translateZ = absDiff === 0 ? 0 : absDiff === 1 ? -100 : -200;
+          const scale = absDiff === 0 ? 1 : absDiff === 1 ? 0.83 : 0.68;
+          const rotateY = absDiff === 0 ? 0 : sign * (absDiff === 1 ? -18 : -26);
+          const opacity = absDiff === 0 ? 1 : absDiff === 1 ? 0.75 : absDiff === 2 ? 0.42 : 0;
           const zIndex = 30 - absDiff * 10;
 
           const isCenter = diff === 0;
