@@ -7,6 +7,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/bio',
     '/estatua-viva-para-casamento',
     '/estatua-viva-para-eventos-corporativos',
+    '/estatua-viva-para-inauguracao',
+    '/estatua-viva-para-feiras',
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: new Date(),
