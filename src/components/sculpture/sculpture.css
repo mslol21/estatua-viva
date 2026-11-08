@@ -69,3 +69,7 @@
   .living-photo strong { font-size: 18px; }
   .living-photo figcaption { padding: 45px 14px 14px; }
 }
+/* Mantém os retratos ao fundo fora da área de leitura. */
+@media(min-width:768px) and (prefers-reduced-motion:no-preference) {
+  .living-stage::after { content: ''; position: absolute; inset: 0; z-index: 15; pointer-events: none; background: linear-gradient(90deg,#061318 0%,#061318f5 25%,#061318cc 32%,#06131800 42%); }
+}
