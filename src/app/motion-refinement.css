@@ -59,3 +59,11 @@
 .hero-split:not([data-hero-active='true']) .hero-immersive-image, .hero-split:not([data-hero-active='true']) .hero-immersive-light { animation-play-state: paused; }
 @media(max-width:1023px) { .hero-immersive-image { object-position: 53% center; } .hero-immersive-shade { background: linear-gradient(180deg,rgba(3,14,19,.76),rgba(3,14,19,.65) 48%,rgba(3,14,19,.92)); } }
 @media(prefers-reduced-motion:reduce) { .hero-immersive-image, .hero-immersive-light { animation: none !important; } }
+
+/* Reflexos e partículas sutis inspirados na atmosfera do Hero. */
+.cinematic-card-image::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(circle at 16% 20%, rgba(255,222,154,.65) 0 1px, transparent 2px), radial-gradient(circle at 78% 28%, rgba(255,211,132,.55) 0 1px, transparent 2px), radial-gradient(circle at 65% 65%, rgba(255,224,165,.48) 0 1px, transparent 2px), radial-gradient(circle at 30% 77%, rgba(255,208,128,.4) 0 1px, transparent 2px), radial-gradient(ellipse at 85% 15%, rgba(225,168,75,.2), transparent 48%); opacity: .38; transition: opacity .6s ease; animation: cardGoldenLight 7s ease-in-out infinite alternate; }
+.motion-collectible:hover .cinematic-card-image::after, .spotlight-card:hover .cinematic-card-image::after, .motion-collectible:focus-visible .cinematic-card-image::after, .spotlight-card:focus-within .cinematic-card-image::after { opacity: .8; }
+.motion-collectible, .site-surface #acervo .spotlight-card { border-color: rgba(223,189,124,.24); }
+.motion-collectible:hover, .site-surface #acervo .spotlight-card:hover { border-color: rgba(223,189,124,.65); box-shadow: 0 24px 60px rgba(0,0,0,.42), 0 0 26px rgba(213,165,84,.14); }
+@keyframes cardGoldenLight { from { transform: translateY(2%); filter: brightness(.8); } to { transform: translateY(-2%); filter: brightness(1.15); } }
+@media (prefers-reduced-motion: reduce) { .cinematic-card-image::after { animation: none; transition: none; } }

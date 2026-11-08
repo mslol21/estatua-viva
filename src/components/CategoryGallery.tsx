@@ -21,10 +21,10 @@ export default function CategoryGallery() {
       <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
         {categories.map((category) => (
           <a data-motion-tilt key={category.name} href={category.href} className="motion-collectible group relative block overflow-hidden rounded-2xl border border-[#dfbd7c]/25 bg-[#102329] shadow-[0_18px_40px_rgba(0,0,0,0.25)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d49a]">
-            <div className="relative aspect-[3/4]">
+            <div className="cinematic-card-image relative aspect-[3/4]">
               <Image src={category.image} alt={category.alt} fill sizes="(max-width: 639px) 50vw, (max-width: 1023px) 45vw, 25vw" className="object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
               <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#031014]/95 via-[#031014]/10 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 p-4 sm:p-6">
+              <div className="absolute z-10 inset-x-0 bottom-0 flex items-end justify-between gap-2 p-4 sm:p-6">
                 <div><span className="text-[10px] uppercase tracking-[0.16em] text-[#e4c184]">Conheça o estilo</span><h3 className="mt-1 font-serif text-2xl text-white sm:text-3xl">{category.name}</h3></div>
                 <ArrowUpRight aria-hidden="true" className="mb-1 h-5 w-5 shrink-0 text-[#e4c184] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
               </div>

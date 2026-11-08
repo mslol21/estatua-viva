@@ -241,7 +241,7 @@ export default function CharacterCatalog() {
                   {/* Image Container with Rest vs Hover Contrast */}
                   <div
                     onClick={() => openCharacterModal(character)}
-                    className="relative aspect-[3/4] w-full overflow-hidden bg-charcoal cursor-pointer"
+                    className="cinematic-card-image relative aspect-[3/4] w-full overflow-hidden bg-charcoal cursor-pointer"
                   >
                     <Image
                       src={character.imageUrl}
