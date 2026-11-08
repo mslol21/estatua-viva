@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { trackLeadAndOpenWhatsApp } from '@/lib/tracking';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   Send,
@@ -147,9 +148,7 @@ export default function BriefingBuilder() {
 ${notes.trim() ? `• *Observações Cênicas:* ${notes.trim()}\n` : ''}
 Gostaria de verificar disponibilidade de agenda com a produção artística e obter uma proposta comercial personalizada.`;
 
-    const encoded = encodeURIComponent(formattedMessage);
-    const url = `https://wa.me/5511937765250?text=${encoded}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+    trackLeadAndOpenWhatsApp({ message: formattedMessage, leadSource: 'briefing', leadLabel: `orcamento_${selectedEventType.id}_${selectedAesthetic.id}`, eventCategory: 'Quote' });
   };
 
   return (
