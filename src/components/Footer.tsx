@@ -77,6 +77,10 @@ export default function Footer() {
                   Planejar meu evento
                 </a>
               </li>
+              <li><Link href="/estatua-viva-para-casamento" className="hover:text-champagne-gold transition-colors">Estátuas vivas para casamentos</Link></li>
+              <li><Link href="/estatua-viva-para-eventos-corporativos" className="hover:text-champagne-gold transition-colors">Eventos corporativos</Link></li>
+              <li><Link href="/estatua-viva-para-inauguracao" className="hover:text-champagne-gold transition-colors">Inaugurações</Link></li>
+              <li><Link href="/estatua-viva-para-feiras" className="hover:text-champagne-gold transition-colors">Feiras e congressos</Link></li>
               <li>
                 <a href="/#faq" className="hover:text-champagne-gold transition-colors">
                   Dúvidas & Avaliações
