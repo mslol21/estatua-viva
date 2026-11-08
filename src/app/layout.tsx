@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './hero-refinement.css';
 import NoiseOverlay from '@/components/NoiseOverlay';
 import SmoothScroll from '@/components/SmoothScroll';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
