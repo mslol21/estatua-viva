@@ -80,12 +80,10 @@ export default function HeroAtmosphereCanvas({ hero }: { hero: RefObject<HTMLEle
         const box = root.getBoundingClientRect();
         pointer = { x: (event.clientX - box.left) / box.width, y: (event.clientY - box.top) / box.height };
         const photoBox = frame?.getBoundingClientRect();
-        if (photoBox) { nx = Math.max(-1, Math.min(1, (event.clientX - photoBox.left) / photoBox.width * 2 - 1)); ny = Math.max(-1, Math.min(1, (event.clientY - photoBox.top) / photoBox.height * 2 - 1)); }
+        if (photoBox && photoBox.width > 0 && photoBox.height > 0) { nx = Math.max(-1, Math.min(1, (event.clientX - photoBox.left) / photoBox.width * 2 - 1)); ny = Math.max(-1, Math.min(1, (event.clientY - photoBox.top) / photoBox.height * 2 - 1)); }
       };
       const leave = () => { nx = ny = 0; pointer = { x: 0.62, y: 0.4 }; };
       root.addEventListener('pointermove', move); root.addEventListener('pointerleave', leave);
-      const reveals = root.querySelectorAll('[data-hero-reveal]');
-      const intro = gsap.fromTo(reveals, { y: 20, opacity: 0, filter: 'blur(4px)' }, { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.75, stagger: 0.11, delay: 0.1, ease: 'power3.out', clearProps: 'filter' });
       const button = root.querySelector<HTMLElement>('.hero-gold-button');
       const buttonX = gsap.quickTo(button, 'x', { duration: 0.5, ease: 'elastic.out(1,0.5)' });
       const buttonY = gsap.quickTo(button, 'y', { duration: 0.5, ease: 'elastic.out(1,0.5)' });
@@ -93,7 +91,7 @@ export default function HeroAtmosphereCanvas({ hero }: { hero: RefObject<HTMLEle
       const release = () => { buttonX(0); buttonY(0); };
       button?.addEventListener('pointermove', magnet); button?.addEventListener('pointerleave', release);
       return () => {
-        gsap.ticker.remove(tick); observer.disconnect(); visibility.disconnect(); intro.revert();
+        gsap.ticker.remove(tick); observer.disconnect(); visibility.disconnect();
         document.removeEventListener('visibilitychange', sync); root.removeEventListener('pointermove', move); root.removeEventListener('pointerleave', leave);
         button?.removeEventListener('pointermove', magnet); button?.removeEventListener('pointerleave', release); buttonX.tween.kill(); buttonY.tween.kill();
         [frame, halo, photo, copy, button].forEach(node => node?.style.removeProperty('transform'));
