@@ -9,7 +9,7 @@
 .living-heading > p:not(.living-eyebrow) { margin-top: 24px; font-size: 14px; line-height: 1.9; color: #c1c8c5; max-width: 350px; }
 .living-cta { display: inline-flex; gap: 24px; align-items: center; margin-top: 30px; padding: 14px 0; font-size: 12px; border-bottom: 1px solid #dfbd7c80; color: #ead4a9; }
 .living-perspective { position: absolute; inset: 0; transform-style: preserve-3d; pointer-events: none; }
-.living-portrait { position: absolute; top: 50%; left: 68%; width: clamp(230px,23vw,340px); height: min(56svh,480px); min-height: 350px; margin-left: clamp(-170px,-11.5vw,-115px); margin-top: max(-28svh,-240px); transform-style: preserve-3d; transform-origin: center; }
+.living-portrait { position: absolute; top: 50%; left: 68%; width: clamp(190px,18vw,260px); height: min(42svh,360px); min-height: 260px; margin-left: clamp(-130px,-9vw,-95px); margin-top: max(-21svh,-180px); transform-style: preserve-3d; transform-origin: center; }
 .living-photo { position: relative; width: 100%; height: 100%; border: 1px solid #dfbd7c70; border-radius: 150px 150px 16px 16px; box-shadow: 0 25px 60px #0009, 0 0 35px #dfbd7c0d; overflow: hidden; background: #0c242a; animation: living-float 6.5s ease-in-out infinite; animation-play-state: paused; }
 .living-gallery.is-visible .living-photo { animation-play-state: running; }
 .living-photo-image { position: absolute; inset: 0; animation: living-breathe 10s ease-in-out infinite alternate; animation-play-state: paused; }
@@ -72,4 +72,9 @@
 /* Mantém os retratos ao fundo fora da área de leitura. */
 @media(min-width:768px) and (prefers-reduced-motion:no-preference) {
   .living-stage::after { content: ''; position: absolute; inset: 0; z-index: 15; pointer-events: none; background: linear-gradient(90deg,#061318 0%,#061318f5 25%,#061318cc 32%,#06131800 42%); }
+}
+
+@media(min-width:768px) {
+  .living-photo figcaption { padding: 55px 18px 18px; }
+  .living-photo strong { font-size: 22px; }
 }

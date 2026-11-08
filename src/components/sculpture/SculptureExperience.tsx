@@ -44,7 +44,7 @@ export default function SculptureExperience() {
         cards.forEach((card, index) => {
           const distance = index - movement.position;
           const depth = Math.abs(distance);
-          gsap.set(card, { x: distance * (narrow ? 190 : 310), y: depth * 28, z: -depth * 190, rotationY: distance * -22, rotationZ: distance * 3, scale: 1 - Math.min(depth, 3) * 0.055, opacity: Math.max(0, 1 - depth * 0.38), zIndex: 10 - Math.round(depth * 2) });
+          gsap.set(card, { x: distance * (narrow ? 190 : 245), y: depth * 28, z: -depth * 190, rotationY: distance * -22, rotationZ: distance * 3, scale: 1 - Math.min(depth, 3) * 0.055, opacity: Math.max(0, 1 - depth * 0.38), zIndex: 10 - Math.round(depth * 2) });
           // Only the highlighted portrait is a keyboard stop.
           const current = Math.round(movement.position) === index;
           card.tabIndex = current ? 0 : -1;
@@ -99,7 +99,7 @@ export default function SculptureExperience() {
       <div ref={stage} className="living-perspective" aria-label="Retratos dos personagens em movimento">
         {portraits.map((portrait, index) => <a className="living-portrait" href={portrait.href} key={portrait.image} aria-label={`Conhecer ${portrait.name}`}>
           <figure className="living-photo" style={{ animationDelay: `${index * -1.8}s` }}>
-            <div className="living-photo-image"><Image src={portrait.image} alt={`${portrait.name} — caracterização e performance da Estátua Viva Produções`} fill sizes="(max-width: 767px) 66vw, 340px" loading="lazy" /></div>
+            <div className="living-photo-image"><Image src={portrait.image} alt={`${portrait.name} — caracterização e performance da Estátua Viva Produções`} fill sizes="(max-width: 767px) 66vw, 260px" loading="lazy" /></div>
             <div className="living-photo-shine" aria-hidden="true" />
             <figcaption><span>{portrait.category}</span><strong>{portrait.name}</strong><span className="living-photo-discover">Conhecer personagem ↗</span></figcaption>
           </figure>
