@@ -236,7 +236,7 @@ export default function CharacterCatalog() {
                   exit={{ opacity: 0, scale: 0.94 }}
                   transition={{ duration: 0.45, delay: idx * 0.04 }}
                   onMouseMove={handleMouseMove}
-                  className="spotlight-card group w-[min(82vw,320px)] shrink-0 snap-start sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] bg-obsidian border border-alabaster/10 hover:border-champagne-gold/60 flex flex-col justify-between transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-champagne-gold/5"
+                  className="neon-gold-card spotlight-card group w-[min(82vw,320px)] shrink-0 snap-start sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-72px)/4)] bg-obsidian flex flex-col justify-between transition-all duration-500 overflow-hidden"
                 >
                   {/* Image Container with Rest vs Hover Contrast */}
                   <div

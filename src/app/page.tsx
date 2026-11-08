@@ -26,7 +26,7 @@ export default function Home() {
         address: { '@type': 'PostalAddress', streetAddress: 'R. Oriximiná, 27 — Cidade Mãe do Céu (Tatuapé)', addressLocality: 'São Paulo', addressRegion: 'SP', postalCode: '03306-060', addressCountry: 'BR' },
         openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '22:00' }],
         areaServed: [{ '@type': 'City', name: 'São Paulo' }, { '@type': 'Country', name: 'Brasil' }],
-        sameAs: ['https://www.instagram.com/estatuavivaproducoes/'],
+        sameAs: ['https://www.instagram.com/estatuavivaproducoes/', 'https://www.youtube.com/@estatuavivaoficial', 'https://www.facebook.com/estatuavivaproducoes'],
       },
       { '@type': 'FAQPage', mainEntity: FAQS.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
     ],

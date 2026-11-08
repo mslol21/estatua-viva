@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import BrandLogo from './BrandLogo';
 import IsometricSocials from './IsometricSocials';
-import { Instagram, Mail, Phone, MapPin, Clock, ArrowUpRight } from 'lucide-react';
+import { Instagram, Mail, Phone, MapPin, Clock, ArrowUpRight, Youtube, Facebook } from 'lucide-react';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -38,7 +38,7 @@ export default function Footer() {
                 <Mail strokeWidth={1.5} className="w-4 h-4" />
               </a>
               <Link
-                href="/links"
+                href="/bio"
                 className="px-3 py-1.5 border border-alabaster/10 text-[11px] font-mono uppercase tracking-widest text-stone-warm hover:text-champagne-gold hover:border-champagne-gold/40 transition-colors flex items-center gap-1.5"
               >
                 <span>Hub da Bio</span>

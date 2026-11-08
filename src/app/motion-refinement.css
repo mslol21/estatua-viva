@@ -67,3 +67,90 @@
 .motion-collectible:hover, .site-surface #acervo .spotlight-card:hover { border-color: rgba(223,189,124,.65); box-shadow: 0 24px 60px rgba(0,0,0,.42), 0 0 26px rgba(213,165,84,.14); }
 @keyframes cardGoldenLight { from { transform: translateY(2%); filter: brightness(.8); } to { transform: translateY(-2%); filter: brightness(1.15); } }
 @media (prefers-reduced-motion: reduce) { .cinematic-card-image::after { animation: none; transition: none; } }
+
+/* ========================================================
+   EFEITO NEON DOURADO DE ALTO IMPACTO (GOLDEN NEON BORDER)
+   Destaque luminoso e cinematogrfico em todos os cards do site
+   ======================================================== */
+
+.neon-gold-card,
+.motion-collectible,
+.site-surface #acervo .spotlight-card,
+.spotlight-card,
+[data-orbit-card],
+.threed-card,
+.event-detail,
+.motion-value-card,
+.iso-social-card,
+.social-interactive-card,
+.sculpture-card,
+.living-photo,
+#briefing form,
+.catalog-concept {
+  position: relative;
+  border: 1.5px solid rgba(245, 215, 145, 0.78) !important;
+  box-shadow: 
+    0 0 12px rgba(245, 215, 145, 0.45),
+    0 0 26px rgba(223, 189, 124, 0.3),
+    0 0 45px rgba(184, 134, 45, 0.18),
+    0 18px 45px rgba(0, 0, 0, 0.6),
+    inset 0 0 12px rgba(245, 215, 145, 0.18) !important;
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+
+.neon-gold-card:hover,
+.motion-collectible:hover,
+.site-surface #acervo .spotlight-card:hover,
+.spotlight-card:hover,
+[data-orbit-card]:hover,
+.threed-card:hover,
+.event-detail:hover,
+.motion-value-card:hover,
+.iso-social-card:hover,
+.social-interactive-card:hover,
+.sculpture-card:hover,
+.living-photo:hover,
+#briefing form:focus-within,
+.motion-collectible:focus-visible,
+.spotlight-card:focus-within {
+  border-color: #ffe6a3 !important;
+  box-shadow: 
+    0 0 18px rgba(255, 230, 163, 0.95),
+    0 0 38px rgba(245, 215, 145, 0.7),
+    0 0 70px rgba(223, 189, 124, 0.45),
+    0 0 95px rgba(184, 134, 45, 0.25),
+    0 24px 60px rgba(0, 0, 0, 0.75),
+    inset 0 0 20px rgba(255, 230, 163, 0.32) !important;
+  transform: translateY(-4px);
+}
+
+@keyframes neonGoldPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 12px rgba(245, 215, 145, 0.45),
+      0 0 26px rgba(223, 189, 124, 0.3),
+      0 0 45px rgba(184, 134, 45, 0.18),
+      0 18px 45px rgba(0, 0, 0, 0.6),
+      inset 0 0 12px rgba(245, 215, 145, 0.18);
+  }
+  50% {
+    box-shadow: 
+      0 0 18px rgba(255, 230, 163, 0.8),
+      0 0 36px rgba(245, 215, 145, 0.52),
+      0 0 65px rgba(223, 189, 124, 0.32),
+      0 20px 50px rgba(0, 0, 0, 0.65),
+      inset 0 0 18px rgba(255, 230, 163, 0.26);
+  }
+}
+
+.neon-gold-pulse,
+[data-orbit-card][aria-hidden="false"] {
+  animation: neonGoldPulse 3.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neon-gold-pulse,
+  [data-orbit-card][aria-hidden="false"] {
+    animation: none !important;
+  }
+}

@@ -7,6 +7,8 @@ import {
   Layers,
   Star,
   Instagram,
+  Youtube,
+  Facebook,
   Phone,
   ArrowUpRight,
   MapPin,

@@ -16,6 +16,15 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/links',
+        destination: '/bio',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
