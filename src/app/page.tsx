@@ -1,7 +1,6 @@
 import { FAQS } from '@/data/portfolioData';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import SculptureExperience from '@/components/sculpture/SculptureExperience';
 import ClientMarquee from '@/components/ClientMarquee';
 import EventCuratorship from '@/components/EventCuratorship';
 import CharacterCatalog from '@/components/CharacterCatalog';
@@ -37,7 +36,6 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       <Navbar />
       <div id="conteudo" tabIndex={-1}><Hero /></div>
-      <SculptureExperience />
       <ClientMarquee />
       <EventCuratorship />
       <CategoryGallery />
