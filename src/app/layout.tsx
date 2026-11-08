@@ -7,8 +7,8 @@ import SmoothScroll from '@/components/SmoothScroll';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 export const metadata: Metadata = {
-  title: 'Estátua Viva Produções | Performances Artísticas e Personagens para Eventos em SP',
-  description: 'Você imagina. A gente dá vida. Estátuas vivas e personagens para eventos corporativos, feiras e casamentos em São Paulo desde 2005.',
+  title: 'Estátua Viva para Eventos em SP | Estátua Viva Produções',
+  description: 'Contrate estátuas vivas e personagens para casamentos, feiras, inaugurações e eventos corporativos em São Paulo. Solicite um orçamento personalizado.',
   keywords: [
     'estátua viva',
     'estátua viva sp',
