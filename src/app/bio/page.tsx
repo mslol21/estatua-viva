@@ -88,7 +88,7 @@ export default function BioHubPage() {
               Estátua Viva Produções
             </h1>
             <p className="font-sans text-xs text-[#c7c9c1] max-w-xs leading-relaxed mb-3">
-              Você imagina. A gente dá vida. Performances artísticas e estátuas vivas em São Paulo desde 2005.
+              Você imagina. A gente dá vida. Performances artísticas e estátuas vivas para eventos em todo o Brasil.
             </p>
 
             {/* Selo Prova Social Google 5.0 */}
