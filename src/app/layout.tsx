@@ -7,8 +7,8 @@ import SmoothScroll from '@/components/SmoothScroll';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
 export const metadata: Metadata = {
-  title: 'Estátua Viva para Eventos em SP | Estátua Viva Produções',
-  description: 'Contrate estátuas vivas e personagens para casamentos, feiras, inaugurações e eventos corporativos em São Paulo. Solicite um orçamento personalizado.',
+  title: 'Estátua Viva para Eventos no Brasil | Estátua Viva Produções',
+  description: 'Contrate estátuas vivas e personagens para casamentos, feiras, inaugurações e eventos corporativos em todo o Brasil. Solicite um orçamento personalizado.',
   keywords: [
     'estátua viva',
     'estátua viva sp',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   other: { 'geo.region': 'BR-SP', 'geo.placename': 'São Paulo' },
   openGraph: {
     title: 'Estátua Viva Produções — Você imagina. A gente dá vida.',
-    description: 'Estátuas vivas e personagens para eventos corporativos, feiras e celebrações em São Paulo.',
+    description: 'Estátuas vivas e personagens para eventos corporativos, feiras e celebrações em todo o Brasil.',
     url: 'https://estatuaviva.konnexy.com.br/',
     siteName: 'Estátua Viva Produções',
     locale: 'pt_BR',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Estátua Viva Produções — Você imagina. A gente dá vida.',
-    description: 'Estátuas vivas e personagens para festas e eventos em São Paulo.',
+    description: 'Estátuas vivas e personagens para festas e eventos em todo o Brasil.',
     images: ['https://estatuaviva.konnexy.com.br/og-image.png'],
   }
 };
