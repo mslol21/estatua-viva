@@ -262,7 +262,7 @@ export const FAQS = [
   },
   {
     question: 'Vocês atendem fora da capital de São Paulo?',
-    answer: 'Com certeza. Embora nossa sede artística esteja localizada no Tatuapé (São Paulo - SP), possuímos logística estruturada para atender eventos em todo o estado de São Paulo, litoral, interior e em capitais de todo o território brasileiro, incluindo transporte de adereços, maquiagem especializada e elenco.',
+    answer: 'Com certeza. Nossa base administrativa fica em São Paulo, mas o atendimento comercial é realizado online e as apresentações podem ocorrer em eventos por todo o Brasil, mediante consulta de disponibilidade e logística.',
   },
   {
     question: 'Qual a antecedência recomendada para reserva de data?',
