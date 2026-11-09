@@ -15,7 +15,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': ['LocalBusiness', 'PerformingGroup'],
+        '@type': 'Organization',
         '@id': 'https://estatuaviva.konnexy.com.br/#empresa',
         name: 'Estátua Viva Produções',
         url: 'https://estatuaviva.konnexy.com.br/',
@@ -23,11 +23,12 @@ export default function Home() {
         telephone: '+55-11-93776-5250',
         email: 'contato@estatuaviva.com.br',
         image: 'https://estatuaviva.konnexy.com.br/og-image.png',
-        address: { '@type': 'PostalAddress', addressLocality: 'São Paulo', addressRegion: 'SP', postalCode: '03306-060', addressCountry: 'BR' },
-        description: 'Produção de performances de estátuas vivas para eventos, com base administrativa no Tatuapé e atendimento no local contratado.',
+        location: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR' } },
+        description: 'Produção de performances de estátuas vivas para casamentos, feiras, inaugurações e eventos corporativos em todo o Brasil. Atendimento comercial virtual e apresentações no local contratado.',
         areaServed: [{ '@type': 'City', name: 'São Paulo' }, { '@type': 'Country', name: 'Brasil' }],
         sameAs: ['https://www.instagram.com/estatuavivaproducoes/', 'https://www.youtube.com/@estatuavivaoficial', 'https://www.facebook.com/estatuavivaproducoes'],
       },
+      { '@type': 'Service', name: 'Performances de estátuas vivas para eventos', serviceType: 'Entretenimento artístico para eventos', provider: { '@id': 'https://estatuaviva.konnexy.com.br/#empresa' }, areaServed: { '@type': 'Country', name: 'Brasil' }, description: 'Apresentações artísticas presenciais em casamentos, eventos corporativos, feiras e inaugurações em todo o Brasil.' },
       { '@type': 'FAQPage', mainEntity: FAQS.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
     ],
   };
