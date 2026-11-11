@@ -25,7 +25,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Estátua Viva Produções' }],
   metadataBase: new URL(SITE_URL),
-  alternates: { canonical: `${SITE_URL}/` },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
   other: { 'geo.region': 'BR-SP', 'geo.placename': 'São Paulo' },
   openGraph: {
