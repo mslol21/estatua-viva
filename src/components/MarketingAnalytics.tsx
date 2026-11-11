@@ -1,5 +1,6 @@
 'use client';
 import Script from 'next/script';
+import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { captureAndStoreUtms } from '@/lib/tracking';
@@ -41,7 +42,7 @@ export default function MarketingAnalytics() {
     )}
     {consent === null && gtmId && (
       <aside aria-label="Preferências de privacidade" className="fixed bottom-3 left-3 right-3 z-[100] mx-auto max-w-xl rounded-xl border border-champagne-gold/40 bg-[#071318] p-4 text-[#f4f1ea] shadow-2xl">
-        <p className="text-sm leading-6">Utilizamos ferramentas de análise opcionais para entender o uso do site e melhorar nossos serviços. Você pode aceitar ou recusar. Os recursos essenciais continuam funcionando.</p>
+        <p className="text-sm leading-6">Utilizamos ferramentas de análise opcionais para entender o uso do site e melhorar nossos serviços. Você pode aceitar ou recusar. Os recursos essenciais continuam funcionando. <Link href="/privacidade" className="underline text-champagne-gold">Política de privacidade</Link>.</p>
         <div className="mt-3 flex flex-wrap gap-3">
           <button type="button" onClick={() => choose('accepted')} className="rounded-lg bg-champagne-gold px-4 py-2 text-sm font-semibold text-obsidian">Aceitar análise</button>
           <button type="button" onClick={() => choose('rejected')} className="rounded-lg border border-white/40 px-4 py-2 text-sm">Recusar</button>
