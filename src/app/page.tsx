@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ClientMarquee from '@/components/ClientMarquee';
 import EventCuratorship from '@/components/EventCuratorship';
+import CreativeProcess from '@/components/CreativeProcess';
 import CharacterCatalog from '@/components/CharacterCatalog';
 import CategoryGallery from '@/components/CategoryGallery';
 import BriefingBuilder from '@/components/BriefingBuilder';
@@ -39,6 +40,7 @@ export default function Home() {
       <div id="conteudo" tabIndex={-1}><Hero /></div>
       <ClientMarquee />
       <EventCuratorship />
+      <CreativeProcess />
       <CategoryGallery />
       <CharacterCatalog />
       <BriefingBuilder />
