@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { SITE_URL } from '@/lib/site-config';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import { notFound } from 'next/navigation';
 
-const base = 'https://estatuaviva.konnexy.com.br';
+const base = SITE_URL;
 const services: Record<string, { title: string; description: string; heading: string; intro: string; benefits: string[]; questions: {q:string;a:string}[] }> = {
   'estatua-viva-para-eventos': {
     title: 'Estátua Viva para Eventos | Estátua Viva Produções',
@@ -61,7 +63,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <p className="eyebrow">Estátua Viva Produções · Atendimento em todo o Brasil</p>
       <h1 className="max-w-4xl font-serif text-4xl sm:text-6xl mt-5 mb-7">{item.heading}</h1>
       <p className="max-w-3xl text-lg leading-8 text-stone-warm">{item.intro}</p>
-      <a href={`https://wa.me/5511937765250?text=${encodeURIComponent('Olá! Gostaria de solicitar um orçamento para ' + item.heading + '.')}`} className="mt-9 inline-flex rounded-full bg-champagne-gold px-7 py-4 font-semibold text-obsidian">Solicitar orçamento pelo WhatsApp</a>
+      <TrackedWhatsAppLink message={'Olá! Gostaria de solicitar um orçamento para ' + item.heading + '.'} label={params.slug} className="mt-9 inline-flex rounded-full bg-champagne-gold px-7 py-4 font-semibold text-obsidian">Solicitar orçamento pelo WhatsApp</TrackedWhatsAppLink>
     </section>
     <section className="border-y border-champagne-gold/20 bg-charcoal/50 py-16"><div className="site-container">
       <h2 className="font-serif text-3xl sm:text-4xl mb-8">Como funciona a experiência</h2>
