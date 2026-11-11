@@ -1,4 +1,7 @@
 import type { Metadata, Viewport } from 'next';
+import { Suspense } from 'react';
+import { SITE_URL } from '@/lib/site-config';
+import MarketingAnalytics from '@/components/MarketingAnalytics';
 import './globals.css';
 import './hero-refinement.css';
 import './motion-refinement.css';
@@ -21,22 +24,24 @@ export const metadata: Metadata = {
     'marketing sensorial'
   ],
   authors: [{ name: 'Estátua Viva Produções' }],
-  metadataBase: new URL('https://estatuaviva.konnexy.com.br'),
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: `${SITE_URL}/` },
+  verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
   other: { 'geo.region': 'BR-SP', 'geo.placename': 'São Paulo' },
   openGraph: {
     title: 'Estátua Viva Produções — Você imagina. A gente dá vida.',
     description: 'Estátuas vivas e personagens para eventos corporativos, feiras e celebrações em todo o Brasil.',
-    url: 'https://estatuaviva.konnexy.com.br/',
+    url: `${SITE_URL}/`,
     siteName: 'Estátua Viva Produções',
     locale: 'pt_BR',
     type: 'website',
-    images: [{ url: 'https://estatuaviva.konnexy.com.br/og-image.png', width: 1200, height: 630, type: 'image/png', alt: 'Performance de estátua viva em dourado — Estátua Viva Produções' }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630, type: 'image/png', alt: 'Performance de estátua viva em dourado — Estátua Viva Produções' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Estátua Viva Produções — Você imagina. A gente dá vida.',
     description: 'Estátuas vivas e personagens para festas e eventos em todo o Brasil.',
-    images: ['https://estatuaviva.konnexy.com.br/og-image.png'],
+    images: [`${SITE_URL}/og-image.png`],
   }
 };
 
@@ -63,6 +68,7 @@ export default function RootLayout({
         <SmoothScroll>
           {children}
           <FloatingWhatsApp />
+          <Suspense fallback={null}><MarketingAnalytics /></Suspense>
         </SmoothScroll>
       </body>
     </html>
