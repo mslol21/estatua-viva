@@ -52,7 +52,7 @@ export default function ComoTrabalhamos() {
           <a href="#briefing" className="inline-flex items-center gap-2 rounded-full border border-champagne-gold bg-champagne-gold px-6 py-3 font-semibold text-obsidian hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne-gold">
             Planejar minha apresentação <ArrowUpRight size={18} aria-hidden="true" />
           </a>
-          <a href="#personagens" className="text-sm text-champagne-gold underline underline-offset-4 hover:text-alabaster">
+          <a href="#acervo" className="text-sm text-champagne-gold underline underline-offset-4 hover:text-alabaster">
             Conhecer os personagens
           </a>
         </div>
