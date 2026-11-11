@@ -92,7 +92,7 @@ export function trackLeadAndOpenWhatsApp({
       const w = window as unknown as { dataLayer?: Array<Record<string, unknown>> };
       w.dataLayer = w.dataLayer || [];
       w.dataLayer.push({
-        event: 'generate_lead',
+        event: 'whatsapp_click',
         lead_source: leadSource,
         lead_label: leadLabel,
         event_category: eventCategory,
