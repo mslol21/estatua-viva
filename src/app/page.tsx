@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site-config';
 import { FAQS } from '@/data/portfolioData';
 import Navbar from '@/components/Navbar';
@@ -12,6 +13,8 @@ import BriefingBuilder from '@/components/BriefingBuilder';
 import ReviewsAndFaq from '@/components/ReviewsAndFaq';
 import Footer from '@/components/Footer';
 import SiteMotion from '@/components/motion/SiteMotion';
+
+export const metadata: Metadata = { alternates: { canonical: `${SITE_URL}/` } };
 
 export default function Home() {
   const structuredData = {
