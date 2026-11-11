@@ -2,6 +2,7 @@ import { FAQS } from '@/data/portfolioData';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ClientMarquee from '@/components/ClientMarquee';
+import ComoTrabalhamos from '@/components/ComoTrabalhamos';
 import EventCuratorship from '@/components/EventCuratorship';
 import CharacterCatalog from '@/components/CharacterCatalog';
 import CategoryGallery from '@/components/CategoryGallery';
@@ -38,6 +39,7 @@ export default function Home() {
       <Navbar />
       <div id="conteudo" tabIndex={-1}><Hero /></div>
       <ClientMarquee />
+      <ComoTrabalhamos />
       <EventCuratorship />
       <CategoryGallery />
       <CharacterCatalog />
