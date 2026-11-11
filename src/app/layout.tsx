@@ -22,7 +22,6 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Estátua Viva Produções' }],
   metadataBase: new URL('https://estatuaviva.konnexy.com.br'),
-  alternates: { canonical: '/' },
   other: { 'geo.region': 'BR-SP', 'geo.placename': 'São Paulo' },
   openGraph: {
     title: 'Estátua Viva Produções — Você imagina. A gente dá vida.',
