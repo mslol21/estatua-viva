@@ -19,7 +19,7 @@ export default function PrivacyPage() {
       <h2 className="mb-3 font-serif text-2xl">Análise de navegação</h2>
       <p className="mb-7 text-stone-warm leading-7">Caso ferramentas opcionais de análise sejam habilitadas, o site solicita consentimento antes de carregar o Google Tag Manager. O visitante pode recusar sem perder acesso às informações e aos serviços.</p>
       <h2 className="mb-3 font-serif text-2xl">Como revisar sua escolha</h2>
-      <p className="mb-7 text-stone-warm leading-7">A preferência de análise é armazenada neste navegador. Você pode revisá-la utilizando o controle abaixo. A remoção dos dados do navegador também elimina a preferência armazenada.</p>
+      <p className="mb-7 text-stone-warm leading-7">A preferência de análise é armazenada neste navegador. Para alterar a preferência atualmente armazenada, limpe os dados locais deste site no navegador e escolha novamente na próxima visita.</p>
       <p className="text-sm text-stone-warm">Antes da publicação definitiva, a empresa deverá confirmar os dados do controlador, o canal de privacidade, os prazos de retenção, os fornecedores envolvidos e os procedimentos para solicitações de titulares.</p>
     </article>
   </main>;
