@@ -26,7 +26,7 @@ export default function CharacterCatalog() {
   const [activePhotoIdx, setActivePhotoIdx] = useState<number>(0);
   const [copied, setCopied] = useState<boolean>(false);
   const [copyError, setCopyError] = useState(false);
-  const [viewMode, setViewMode] = useState<'grid' | 'orbit'>('grid');
+  const [viewMode, setViewMode] = useState<'grid' | 'orbit'>('orbit');
   const carouselRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -170,31 +170,7 @@ export default function CharacterCatalog() {
             })}
           </div>
 
-          {/* Grid vs 3D Orbit View Toggle */}
-          <div className="flex items-center gap-1 border border-alabaster/15 p-1 rounded-full self-start md:self-auto bg-charcoal/50 backdrop-blur-sm shrink-0">
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
-                viewMode === 'grid' ? 'bg-champagne-gold text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
-              }`}
-              aria-pressed={viewMode === 'grid'}
-              aria-label="Visualização em carrossel"
-            >
-              <LayoutGrid size={13} />
-              <span>Carrossel</span>
-            </button>
-            <button
-              onClick={() => setViewMode('orbit')}
-              className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 transition-colors ${
-                viewMode === 'orbit' ? 'bg-champagne-gold text-obsidian font-semibold' : 'text-stone-warm hover:text-alabaster'
-              }`}
-              aria-pressed={viewMode === 'orbit'}
-              aria-label="Visualização 3D em Órbita"
-            >
-              <Orbit size={13} />
-              <span>Órbita 3D</span>
-            </button>
-          </div>
+
         </div>
 
         {viewMode === 'orbit' ? (
