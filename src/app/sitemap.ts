@@ -1,18 +1,20 @@
 import type { MetadataRoute } from 'next';
 
+const BASE_URL = 'https://estatuaviva.konnexy.com.br';
+
+const pages = [
+  { path: '', priority: 1 },
+  { path: '/bio', priority: 0.9 },
+  { path: '/estatua-viva-para-eventos', priority: 0.8 },
+  { path: '/estatua-viva-para-casamento', priority: 0.8 },
+  { path: '/estatua-viva-para-eventos-corporativos', priority: 0.8 },
+  { path: '/personagens-para-festas', priority: 0.8 },
+];
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://estatuaviva.konnexy.com.br';
-  return [
-    '',
-    '/bio',
-    '/estatua-viva-para-eventos',
-    '/estatua-viva-para-casamento',
-    '/estatua-viva-para-eventos-corporativos',
-    '/personagens-para-festas',
-  ].map((path) => ({
-    url: `${base}${path}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly',
-    priority: path === '' ? 1 : path === '/bio' ? 0.9 : 0.8,
+  return pages.map(({ path, priority }) => ({
+    url: `${BASE_URL}${path}`,
+    changeFrequency: 'monthly',
+    priority,
   }));
 }
