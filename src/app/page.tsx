@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { SITE_URL } from '@/lib/site-config';
 import { FAQS } from '@/data/portfolioData';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -18,19 +19,19 @@ export default function Home() {
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': 'https://estatuaviva.konnexy.com.br/#empresa',
+        '@id': `${SITE_URL}/#empresa`,
         name: 'Estátua Viva Produções',
-        url: 'https://estatuaviva.konnexy.com.br/',
+        url: `${SITE_URL}/`,
         slogan: 'Você imagina. A gente dá vida.',
         telephone: '+55-11-93776-5250',
         email: 'contato@estatuaviva.com.br',
-        image: 'https://estatuaviva.konnexy.com.br/og-image.png',
+        image: `${SITE_URL}/og-image.png`,
         location: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR' } },
         description: 'Produção de performances de estátuas vivas para casamentos, feiras, inaugurações e eventos corporativos em todo o Brasil. Atendimento comercial virtual e apresentações no local contratado.',
         areaServed: [{ '@type': 'City', name: 'São Paulo' }, { '@type': 'Country', name: 'Brasil' }],
         sameAs: ['https://www.instagram.com/estatuavivaproducoes/', 'https://www.youtube.com/@estatuavivaoficial', 'https://www.facebook.com/estatuavivaproducoes'],
       },
-      { '@type': 'Service', name: 'Entretenimento artístico e personagens para eventos', serviceType: 'Performances de estátuas vivas, figurinos e personagens temáticos para eventos e ações promocionais', provider: { '@id': 'https://estatuaviva.konnexy.com.br/#empresa' }, areaServed: { '@type': 'Country', name: 'Brasil' }, description: 'Criação e caracterização de personagens, figurinos artísticos e performances presenciais para casamentos, feiras, inaugurações, eventos corporativos e ações promocionais.' },
+      { '@type': 'Service', name: 'Entretenimento artístico e personagens para eventos', serviceType: 'Performances de estátuas vivas, figurinos e personagens temáticos para eventos e ações promocionais', provider: { '@id': `${SITE_URL}/#empresa` }, areaServed: { '@type': 'Country', name: 'Brasil' }, description: 'Criação e caracterização de personagens, figurinos artísticos e performances presenciais para casamentos, feiras, inaugurações, eventos corporativos e ações promocionais.' },
       { '@type': 'FAQPage', mainEntity: FAQS.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
     ],
   };
