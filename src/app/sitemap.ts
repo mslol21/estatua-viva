@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const BASE_URL = 'https://estatuaviva.konnexy.com.br';
+import { SITE_URL } from '@/lib/site-config';
 
 const pages = [
   { path: '', priority: 1 },
@@ -13,7 +13,7 @@ const pages = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return pages.map(({ path, priority }) => ({
-    url: `${BASE_URL}${path}`,
+    url: `${SITE_URL}${path}`,
     changeFrequency: 'monthly',
     priority,
   }));
