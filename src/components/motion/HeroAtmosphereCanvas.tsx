@@ -21,7 +21,7 @@ export default function HeroAtmosphereCanvas({ hero }: { hero: RefObject<HTMLEle
       if (!context) return;
       let width = 1, height = 1, onScreen = false, running = false;
       let pointer = { x: 0.62, y: 0.4 }, light = { ...pointer };
-      let nx = 0, ny = 0, smoothX = 0, smoothY = 0, tickerX = 0, tickerSpeed = 22;
+      let nx = 0, ny = 0, smoothX = 0, smoothY = 0, tickerX = 0, tickerSpeed = 22, tickerHalfWidth = 0;
       const particles: Particle[] = Array.from({ length: 35 }, () => ({ x: Math.random(), y: Math.random(), radius: 0.8 + Math.random() * 1.6, phase: Math.random() * Math.PI * 2, speed: 0.006 + Math.random() * 0.012 }));
       const frame = root.querySelector<HTMLElement>('.hero-stage-frame');
       const halo = root.querySelector<HTMLElement>('.hero-orbit-layer');
@@ -32,6 +32,7 @@ export default function HeroAtmosphereCanvas({ hero }: { hero: RefObject<HTMLEle
       if (track) track.style.animation = 'none';
       const resize = () => {
         width = root.clientWidth; height = root.clientHeight;
+        tickerHalfWidth = track ? track.scrollWidth / 2 : 0;
         const dpr = Math.min(window.devicePixelRatio || 1, 2);
         element.width = Math.round(width * dpr); element.height = Math.round(height * dpr);
         context.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -61,8 +62,8 @@ export default function HeroAtmosphereCanvas({ hero }: { hero: RefObject<HTMLEle
         velocity.current *= Math.pow(0.92, dt * 60);
         const target = Math.abs(velocity.current) > 0.3 ? Math.sign(velocity.current) * (22 + Math.abs(velocity.current) * 9) : 22;
         tickerSpeed += (target - tickerSpeed) * amount;
-        if (track && track.scrollWidth > 0) {
-          const span = track.scrollWidth / 2;
+        if (track && tickerHalfWidth > 0) {
+          const span = tickerHalfWidth;
           tickerX = ((tickerX - tickerSpeed * dt) % span + span) % span;
           track.style.transform = `translateX(${tickerX - span}px)`;
         }
