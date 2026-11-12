@@ -34,8 +34,8 @@ export default function NatalPage() {
       <div className="grid gap-6 md:grid-cols-3">
         {videos.map((video, index) => <article key={video.src} className="neon-gold-card rounded-2xl overflow-hidden border border-champagne-gold/25 bg-charcoal/50">
           <div className="relative bg-black/80 aspect-[9/16] max-h-[640px]">
-            <video className="w-full h-full object-contain" controls playsInline preload="none" aria-label={video.title}>
-              <source src={video.src} type="video/mp4" />
+            <video className="w-full h-full object-contain" controls playsInline preload="auto" aria-label={video.title}>
+              <source src={`${video.src}#t=0.5`} type="video/mp4" />
               Seu navegador não suporta vídeo HTML5.
             </video>
           </div>
