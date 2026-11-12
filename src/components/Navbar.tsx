@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowUpRight, Menu, X } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-const links = [{ label: 'Branca', href: '/#estilo-branca', image: '/portfolio/branca.webp' }, { label: 'Prata', href: '/#estilo-prata', image: '/portfolio/prata.webp' }, { label: 'Ouro', href: '/#estilo-ouro', image: '/portfolio/ouro.webp' }, { label: 'Diversas', href: '/#estilo-diversas', image: '/portfolio/diversas.webp' }, { label: 'Contato', href: '/#briefing', image: undefined }];
+const links = [{ label: 'Branca', href: '/#estilo-branca', image: '/portfolio/branca.webp' }, { label: 'Prata', href: '/#estilo-prata', image: '/portfolio/prata.webp' }, { label: 'Ouro', href: '/#estilo-ouro', image: '/portfolio/ouro.webp' }, { label: 'Diversas', href: '/#estilo-diversas', image: '/portfolio/diversas.webp' }, { label: 'Equipe', href: '/equipe', image: undefined }, { label: 'Contato', href: '/#briefing', image: undefined }];
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
