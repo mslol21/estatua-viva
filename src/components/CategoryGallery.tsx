@@ -88,6 +88,8 @@ const ORBIT_INSPIRATIONS: CarouselItem[] = [
     image: '/portfolio/diversas.webp',
     color: '228, 193, 132',
   },
+  { id: '#estilo-personagens', title: 'Personagens vivos', badge: 'Interação & Entretenimento', subtitle: 'Interpretação, falas e interação com o público', image: '/brand/pirata.webp', color: '228, 193, 132' },
+  { id: '#estilo-personalizados', title: 'Produções personalizadas', badge: 'Projetos Exclusivos', subtitle: 'Conceitos artísticos criados para eventos e marcas', image: '/portfolio/diversas.webp', color: '228, 193, 132' },
 ];
 
 export default function CategoryGallery() {
