@@ -2,7 +2,6 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site-config';
 import { FAQS } from '@/data/portfolioData';
-import { GEO_FAQ } from '@/data/geoFaq';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ClientMarquee from '@/components/ClientMarquee';
@@ -15,7 +14,7 @@ import ReviewsAndFaq from '@/components/ReviewsAndFaq';
 import Footer from '@/components/Footer';
 import SiteMotion from '@/components/motion/SiteMotion';
 
-export const metadata: Metadata = { alternates: { canonical: `${SITE_URL}/` } };
+export const metadata: Metadata = { title: 'Estátua Viva e Personagens Vivos em São Paulo | Estátua Viva Produções', description: 'Desde 2005, a Estátua Viva Produções cria estátuas vivas e personagens vivos para casamentos, feiras e eventos corporativos em São Paulo e todo o Brasil. Orçamento personalizado.', alternates: { canonical: `${SITE_URL}/` } };
 
 export default function Home() {
   const structuredData = {
@@ -31,7 +30,7 @@ export default function Home() {
         url: `${SITE_URL}/`,
         slogan: 'Você imagina. A gente dá vida.',
         telephone: '+55-11-93776-5250',
-        email: 'contato@estatuaviva.com.br',
+        email: 'contato@estatuavivaproducoes.com.br',
         image: `${SITE_URL}/og-image.png`,
         location: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR' } },
         description: 'Produção de performances de estátuas vivas para casamentos, feiras, inaugurações e eventos corporativos em todo o Brasil. Atendimento comercial virtual e apresentações no local contratado.',
@@ -64,7 +63,7 @@ export default function Home() {
             <Link href="/natal" className="button-gold inline-flex mt-8">Conhecer o Especial de Natal ↗</Link>
           </div>
           <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-champagne-gold/30 bg-black shadow-[0_0_35px_rgba(207,166,85,0.2)]">
-            <video autoPlay muted loop playsInline controls preload="none" aria-label="Natal — Novos Personagens" className="block w-full max-h-[540px] object-contain">
+            <video muted playsInline controls preload="none" aria-label="Natal — Novos Personagens" className="block w-full max-h-[540px] object-contain">
               <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4" type="video/mp4" />
               Seu navegador não suporta reprodução de vídeo.
             </video>
