@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --font-cormorant: 'Cormorant Garamond';
-  --font-jakarta: 'Plus Jakarta Sans';
-  --font-jetbrains: 'JetBrains Mono';
   --background: #061317;
   --foreground: #f4f1ea;
   --color-gold: #d3af6c;
