@@ -43,6 +43,14 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       <Navbar />
       <div id="conteudo" tabIndex={-1}><Hero /></div>
+      <section aria-label="Especial de Natal" className="site-container py-8 sm:py-12">
+        <div className="neon-gold-card rounded-3xl border border-champagne-gold/30 bg-charcoal/70 p-7 sm:p-12">
+          <p className="eyebrow">Temporada especial de Natal</p>
+          <h2 className="font-serif text-3xl sm:text-5xl mt-3">A magia do Natal ganha vida.</h2>
+          <p className="text-stone-warm max-w-2xl mt-4">Descubra nossos personagens e performances natalinas em três vídeos especiais.</p>
+          <Link href="/natal" className="button-gold inline-flex mt-6">Conhecer o Especial de Natal ↗</Link>
+        </div>
+      </section>
       <ClientMarquee />
       <ComoTrabalhamos />
       <section aria-labelledby="servicos-titulo" className="site-container py-14 sm:py-20">
