@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { OFFICIAL_DOMAIN } from '@/lib/site-config';
-/** Robots.txt is host-specific: the staging hostname is always blocked. */
+/** The official domain remains crawlable. Non-official hosts are blocked via robots meta and X-Robots-Tag. */
 export default function robots(): MetadataRoute.Robots {
-  return { rules: { userAgent: '*', disallow: '/' }, sitemap: `${OFFICIAL_DOMAIN}/sitemap.xml` };
+  return { rules: { userAgent: '*', allow: '/' }, sitemap: `${OFFICIAL_DOMAIN}/sitemap.xml` };
 }
