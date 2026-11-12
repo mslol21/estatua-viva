@@ -1,26 +1,10 @@
 import { ArrowUpRight, Clapperboard, Handshake, Palette, Sparkles } from 'lucide-react';
 
 const etapas = [
-  {
-    icon: Palette,
-    title: 'Criação e caracterização',
-    description: 'Maquiagem artística, figurino e interpretação transformam artistas em personagens vivos, com identidade visual pensada para cada proposta.',
-  },
-  {
-    icon: Sparkles,
-    title: 'Performance e interação',
-    description: 'A imobilidade surpreende; gestos e movimentos inesperados criam encontros, fotografias e momentos memoráveis com o público.',
-  },
-  {
-    icon: Clapperboard,
-    title: 'Experiências para diferentes ocasiões',
-    description: 'Recepções, feiras, lançamentos, eventos corporativos, casamentos, celebrações e projetos culturais podem receber intervenções artísticas.',
-  },
-  {
-    icon: Handshake,
-    title: 'Projetos sob medida',
-    description: 'A produção conversa com organizadores e agências para alinhar personagem, estética, local e dinâmica da apresentação às necessidades do evento.',
-  },
+  { icon: Handshake, title: 'Conte-nos sobre seu evento', description: 'Compartilhe a data, o local, o perfil do público, o conceito desejado e a faixa de investimento prevista.' },
+  { icon: Sparkles, title: 'Exploramos as possibilidades', description: 'Apresentamos personagens e performances do repertório ou avaliamos uma criação exclusiva.' },
+  { icon: Palette, title: 'Planejamos cada detalhe', description: 'Definimos o formato da apresentação, os profissionais, a caracterização e os recursos necessários.' },
+  { icon: Clapperboard, title: 'A arte entra em cena', description: 'Nossa equipe realiza a performance conforme o planejamento, criando momentos de surpresa e interação.' },
 ];
 
 export default function ComoTrabalhamos() {
