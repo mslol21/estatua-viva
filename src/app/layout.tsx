@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
+import { Cormorant_Garamond, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import { SITE_URL } from '@/lib/site-config';
 import MarketingAnalytics from '@/components/MarketingAnalytics';
 import './globals.css';
@@ -8,6 +9,10 @@ import './motion-refinement.css';
 import NoiseOverlay from '@/components/NoiseOverlay';
 import SmoothScroll from '@/components/SmoothScroll';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+
+const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['400', '500', '600', '700'], style: ['normal', 'italic'], display: 'swap', variable: '--font-cormorant' });
+const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-jakarta' });
+const jetbrains = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-jetbrains' });
 
 export const metadata: Metadata = {
   title: 'Estátua Viva para Eventos no Brasil | Estátua Viva Produções',
@@ -57,15 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html lang="pt-BR" className={`${cormorant.variable} ${jakarta.variable} ${jetbrains.variable}`}>
       <body className="bg-obsidian text-alabaster font-sans selection:bg-champagne-gold selection:text-obsidian antialiased">
         <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
         <NoiseOverlay />
