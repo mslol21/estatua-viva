@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { captureAndStoreUtms } from '@/lib/tracking';
 import WebVitalsReporter from './WebVitalsReporter';
 
-const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-TVHJP4QK';
 const ga4Id = process.env.NEXT_PUBLIC_GA4_ID;
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CONSENT_KEY = 'ev_analytics_consent';
@@ -55,11 +55,18 @@ export default function MarketingAnalytics() {
       {/* 1. Coleta automática de Core Web Vitals para otimização de ranking no Google */}
       <WebVitalsReporter />
 
-      {/* 2. Google Tag Manager (GTM) */}
-      {consent === 'accepted' && gtmId && /^GTM-[A-Z0-9]+$/i.test(gtmId) && (
-        <Script id="gtm-loader" strategy="afterInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`}
-        </Script>
+      {/* 2. Google Tag Manager (GTM) Oficial */}
+      {gtmId && /^GTM-[A-Z0-9]+$/i.test(gtmId) && (
+        <>
+          <Script id="gtm-init" strategy="afterInteractive">
+            {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());`}
+          </Script>
+          <Script id="gtm-loader" strategy="afterInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`}
+          </Script>
+        </>
       )}
 
       {/* 3. Google Analytics 4 (GA4) Fallback ou Standalone */}

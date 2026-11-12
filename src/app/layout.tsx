@@ -73,13 +73,15 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-TVHJP4QK';
+
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${jakarta.variable} ${jetbrains.variable}`}>
       <body className="bg-obsidian text-alabaster font-sans selection:bg-champagne-gold selection:text-obsidian antialiased">
-        {process.env.NEXT_PUBLIC_GTM_ID && (
+        {gtmId && (
           <noscript>
             <iframe
-              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
               height="0"
               width="0"
               style={{ display: 'none', visibility: 'hidden' }}
