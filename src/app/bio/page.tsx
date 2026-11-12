@@ -90,13 +90,13 @@ export default function BioHubPage() {
               </div>
             </Link>
 
-            <h1 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#f4f1ea] mb-1.5">
+            <h1 className="font-serif text-[clamp(2rem,7.8vw,2.75rem)] font-semibold leading-[1.12] tracking-tight text-[#f4f1ea] mb-1.5">
               Estátua Viva Produções
             </h1>
-            <p className="mt-2 font-serif text-[clamp(1.65rem,6.5vw,2.15rem)] font-semibold leading-tight tracking-tight text-[#dfbd7c]">
+            <p className="mt-3 max-w-[360px] font-serif text-[clamp(1.2rem,4.8vw,1.55rem)] font-medium leading-snug tracking-tight text-[#dfbd7c]">
               Você imagina. A gente dá vida.
             </p>
-            <p className="mt-3 mb-4 font-sans text-xs sm:text-sm leading-relaxed tracking-wide text-[#c7c9c1]">
+            <p className="mt-2 mb-4 font-sans text-[11px] sm:text-xs leading-relaxed tracking-wide text-[#c7c9c1]">
               Base em SP, atendemos todo o Brasil.
             </p>
 
