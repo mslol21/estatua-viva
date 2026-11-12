@@ -25,7 +25,7 @@ export default function Navbar() {
   }, [open]);
   return <header ref={header} className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
     <div className="site-container flex items-center justify-between gap-6">
-      <Link href="/" aria-label="Estátua Viva Produções — início" className="shrink-0"><BrandLogo /></Link>
+      <Link href="/" aria-label="Estátua Viva Produções — início" className="shrink-0"><BrandLogo variant="monogram" /></Link>
       <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-4 xl:gap-6">{links.map(link => <a key={link.href} href={link.href} className="nav-link">{link.label}{link.image && <span className="nav-preview" aria-hidden="true"><Image src={link.image} alt="" width={48} height={48} /></span>}</a>)}</nav>
       <a href="/#briefing" className="header-outline hidden sm:inline-flex !min-h-11 !px-5 !text-xs">Solicitar orçamento <ArrowUpRight size={15} /></a>
       <button ref={toggle} onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? 'Fechar menu' : 'Abrir menu'} className="lg:hidden w-11 h-11 border border-champagne-gold/30 flex items-center justify-center text-champagne-gold">{open ? <X size={21} /> : <Menu size={21} />}</button>
