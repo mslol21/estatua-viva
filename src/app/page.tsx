@@ -43,19 +43,17 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       <Navbar />
       <div id="conteudo" tabIndex={-1}><Hero /></div>
-      <section aria-label="Especial de Natal" className="border-y border-champagne-gold/20 bg-[#0b1113]">
-        <div className="site-container grid gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(220px,300px)] lg:items-center">
+      <section aria-label="Especial de Natal" className="relative isolate overflow-hidden min-h-[440px] sm:min-h-[520px] flex items-center border-y border-champagne-gold/20 bg-[#0b1113]">
+        <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} className="absolute inset-0 -z-20 h-full w-full object-fill">
+          <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV.mp4" type="video/mp4" />
+        </video>
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-[#071318]/95 via-[#071318]/75 to-[#071318]/35 max-sm:bg-gradient-to-t max-sm:from-[#071318]/95 max-sm:via-[#071318]/65 max-sm:to-[#071318]/30" />
+        <div className="site-container w-full py-20 sm:py-28">
           <div className="max-w-2xl">
             <p className="eyebrow">Temporada especial de Natal</p>
             <h2 className="font-serif text-4xl sm:text-6xl mt-4 leading-tight">A magia do Natal ganha vida.</h2>
             <p className="text-alabaster/90 max-w-xl mt-5 leading-relaxed">Conheça os personagens e performances natalinas da Estátua Viva Produções. Três vídeos especiais para inspirar sua celebração.</p>
             <Link href="/natal" className="button-gold inline-flex mt-8">Conhecer o Especial de Natal ↗</Link>
-          </div>
-          <div className="w-full max-w-[300px] mx-auto lg:ml-auto overflow-hidden rounded-2xl border border-champagne-gold/30 bg-black shadow-[0_0_28px_rgba(207,166,85,0.18)]">
-            <video autoPlay muted loop playsInline controls preload="metadata" aria-label="Convite Noel — Especial de Natal" className="block w-full aspect-[9/16] object-contain">
-              <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV.mp4" type="video/mp4" />
-              Seu navegador não suporta reprodução de vídeo.
-            </video>
           </div>
         </div>
       </section>
