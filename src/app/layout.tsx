@@ -36,7 +36,12 @@ const baseMetadata: Metadata = {
     shortcut: '/brand/monograma-oficial.webp',
     apple: [{ url: '/brand/monograma-oficial.webp', sizes: '180x180', type: 'image/webp' }],
   },
-  verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
+    },
+  },
   other: { 'geo.region': 'BR-SP', 'geo.placename': 'São Paulo' },
   openGraph: {
     title: 'Estátua Viva Produções — Você imagina. A gente dá vida.',
@@ -71,6 +76,16 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${cormorant.variable} ${jakarta.variable} ${jetbrains.variable}`}>
       <body className="bg-obsidian text-alabaster font-sans selection:bg-champagne-gold selection:text-obsidian antialiased">
+        {process.env.NEXT_PUBLIC_GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
         <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
         <NoiseOverlay />
         <SmoothScroll>
