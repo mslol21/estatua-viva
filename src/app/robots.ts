@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/site-config';
+import { OFFICIAL_DOMAIN } from '@/lib/site-config';
+/** Robots.txt is host-specific: the staging hostname is always blocked. */
 export default function robots(): MetadataRoute.Robots {
-  return { rules: { userAgent: '*', allow: '/' }, sitemap: `${SITE_URL}/sitemap.xml` };
+  return { rules: { userAgent: '*', disallow: '/' }, sitemap: `${OFFICIAL_DOMAIN}/sitemap.xml` };
 }
