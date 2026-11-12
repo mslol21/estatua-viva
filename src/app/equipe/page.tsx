@@ -11,6 +11,77 @@ export const metadata: Metadata = {
   alternates: { canonical: '/equipe' },
 };
 
+const equipe = [
+  {
+    "name": "Rodolfo Valentino",
+    "role": "Diretor, criador artístico"
+  },
+  {
+    "name": "Valentina Lindstron",
+    "role": "Produção geral"
+  },
+  {
+    "name": "Aline Varela",
+    "role": "Produção executiva"
+  },
+  {
+    "name": "Bianca Pereira",
+    "role": "Contrarregra, produção"
+  },
+  {
+    "name": "Pablo Trentin",
+    "role": "Figurinista, fotógrafo"
+  },
+  {
+    "name": "Robson da Silva",
+    "role": "Artista"
+  },
+  {
+    "name": "Danielle Yukari",
+    "role": "Artista, dançarina"
+  },
+  {
+    "name": "Deisi Silva",
+    "role": "Artista, bailarina"
+  },
+  {
+    "name": "Daniel Gregório",
+    "role": "Artista"
+  },
+  {
+    "name": "Angelo Medina",
+    "role": "Artista"
+  },
+  {
+    "name": "Giballin Gilberto",
+    "role": "Artista, bailarino"
+  },
+  {
+    "name": "Fernanda Eluf",
+    "role": "Artista"
+  },
+  {
+    "name": "Keyla Nayane",
+    "role": "Artista, dançarina"
+  },
+  {
+    "name": "Luis Almeida",
+    "role": "Artista"
+  },
+  {
+    "name": "Nathália Lanai",
+    "role": "Artista, bailarina"
+  },
+  {
+    "name": "Maira Cardoso",
+    "role": "Atriz, cantora"
+  },
+  {
+    "name": "Nicole Borelli",
+    "role": "Artista, dançarina"
+  }
+];
+
 const frentes = [
   { icon: Palette, title: 'Caracterização e figurino', text: 'Cada detalhe visual ajuda a construir a identidade dos personagens e o impacto de cada apresentação.' },
   { icon: Clapperboard, title: 'Interpretação e performance', text: 'Expressão, presença cênica e interação transformam a caracterização em uma experiência viva.' },
@@ -40,11 +111,31 @@ export default function EquipePage() {
         <section className="site-container section-space">
           <p className="eyebrow">Direção artística</p>
           <h2 className="mt-4 max-w-3xl font-serif text-4xl sm:text-6xl">Rodolfo Valentino</h2>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-stone-warm">À frente da direção artística da Estátua Viva Produções, Rodolfo Valentino está ligado à criação de experiências que unem personagens, caracterização e performance para eventos. A trajetória completa e o retrato oficial poderão ser apresentados aqui após validação com a produção.</p>
+          <p className="mt-5 max-w-3xl text-base leading-8 text-stone-warm">À frente da direção artística da Estátua Viva Produções, Rodolfo Valentino está ligado à criação de experiências que unem personagens, caracterização e performance para eventos. Conheça abaixo os profissionais apresentados no portfólio oficial da produção, com suas respectivas funções.</p>
           <div className="mt-10 rounded-2xl border border-champagne-gold/20 bg-charcoal/40 p-6 sm:p-8">
             <p className="text-sm text-champagne-gold">Conheça o trabalho da produção</p>
-            <p className="mt-2 text-sm leading-7 text-stone-warm">Veja os personagens e projetos realizados enquanto preparamos os perfis individuais dos integrantes, com fotografias e informações autorizadas.</p>
+            <p className="mt-2 text-sm leading-7 text-stone-warm">Os nomes e as funções abaixo seguem o portfólio oficial. Os retratos individuais serão incluídos após a disponibilização dos arquivos de imagem correspondentes.</p>
             <Link href="/#acervo" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-champagne-gold hover:text-white">Explorar o acervo <ArrowUpRight size={16} aria-hidden="true" /></Link>
+          </div>
+        </section>
+        <section id="integrantes" className="site-container section-space" aria-labelledby="integrantes-titulo">
+          <p className="eyebrow">Profissionais do portfólio oficial</p>
+          <h2 id="integrantes-titulo" className="mt-4 font-serif text-4xl sm:text-5xl">Conheça nossa <em className="text-champagne-gold">equipe.</em></h2>
+          <p className="mt-5 max-w-3xl text-sm leading-7 text-stone-warm">Da direção artística à performance, diferentes especialidades se encontram em cada projeto. Conheça os 17 profissionais apresentados em nosso portfólio institucional.</p>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+            {equipe.map(({ name, role }, index) => (
+              <article key={name} className="neon-gold-card group overflow-hidden rounded-2xl border border-champagne-gold/20 bg-[#0b1c20]">
+                <div className="relative flex aspect-[4/4.5] items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_35%,rgba(203,161,89,0.16),transparent_65%)]" aria-label={`Retrato oficial de ${name} ainda não publicado`}>
+                  <span aria-hidden="true" className="font-serif text-5xl sm:text-6xl text-champagne-gold/50">{name.split(' ').map(part => part[0]).slice(0, 2).join('')}</span>
+                  <span className="absolute bottom-3 left-3 right-3 text-center text-[10px] uppercase tracking-wider text-stone-warm">Foto oficial em preparação</span>
+                </div>
+                <div className="border-t border-champagne-gold/20 p-4 sm:p-5">
+                  <span className="text-[10px] font-mono text-champagne-gold/75">INTEGRANTE {String(index + 1).padStart(2, '0')}</span>
+                  <h3 className="mt-2 font-serif text-xl leading-tight text-alabaster sm:text-2xl">{name}</h3>
+                  <p className="mt-2 text-xs leading-5 text-stone-warm">{role}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
         <section className="border-y border-champagne-gold/15 bg-charcoal/40">
