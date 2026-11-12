@@ -23,8 +23,9 @@ export default function BrandLogo({ className = '', variant = 'full' }: BrandLog
           src={src}
           alt=""
           fill
-          priority
-          sizes="(max-width: 640px) 270px, 320px"
+          priority={false}
+          sizes="(max-width: 767px) 144px, 176px"
+          quality={65}
           className="object-contain"
           onError={() => setFailed(true)}
         />
