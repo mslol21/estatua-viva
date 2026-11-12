@@ -43,12 +43,8 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       <Navbar />
       <div id="conteudo" tabIndex={-1}><Hero /></div>
-      <section aria-label="Especial de Natal" className="relative isolate overflow-hidden min-h-[420px] sm:min-h-[480px] lg:min-h-[540px] flex items-center border-y border-champagne-gold/20 bg-[#0b1113]">
-        <div aria-hidden="true" className="absolute inset-0 -z-30 bg-[radial-gradient(ellipse_at_75%_50%,rgba(178,121,45,0.22),transparent_65%)]" />
-        <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} className="absolute inset-y-0 right-0 -z-20 h-full w-full lg:w-[62%] object-contain object-center">
-          <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4" type="video/mp4" />
-        </video>
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-[#071318]/95 via-[#071318]/85 to-[#071318]/20 max-lg:bg-gradient-to-t max-lg:from-[#071318]/95 max-lg:via-[#071318]/65 max-lg:to-[#071318]/25" />
+      <section aria-label="Especial de Natal" className="relative isolate overflow-hidden border-y border-champagne-gold/20 bg-[#0b1113]">
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_75%_50%,rgba(178,121,45,0.22),transparent_65%)]" />
         <div className="natal-sparkles pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
           {Array.from({ length: 16 }, (_, index) => (
             <span key={index} className="natal-sparkle" style={{ left: `${(index * 37 + 9) % 96}%`, top: `${(index * 29 + 11) % 90}%`, animationDelay: `${(index % 7) * -0.65}s`, animationDuration: `${3.5 + (index % 5) * 0.6}s` }} />
@@ -56,12 +52,18 @@ export default function Home() {
         </div>
         <div className="natal-glow pointer-events-none absolute -right-24 top-1/4 z-0 h-64 w-64 rounded-full bg-amber-400/10 blur-3xl" aria-hidden="true" />
         <div className="natal-top-line pointer-events-none absolute inset-x-0 top-0 z-10 h-px" aria-hidden="true" />
-        <div className="relative z-10 site-container w-full py-16 sm:py-20 lg:py-24">
-          <div className="max-w-xl lg:max-w-[48%]">
+        <div className="relative z-10 site-container grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(260px,420px)] lg:gap-14">
+          <div className="max-w-xl">
             <p className="eyebrow">Temporada especial de Natal</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-4 leading-tight">A magia do Natal ganha vida.</h2>
             <p className="text-alabaster/90 max-w-xl mt-5 leading-relaxed">Conheça os personagens e performances natalinas da Estátua Viva Produções. Três vídeos especiais para inspirar sua celebração.</p>
             <Link href="/natal" className="button-gold inline-flex mt-8">Conhecer o Especial de Natal ↗</Link>
+          </div>
+          <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-champagne-gold/30 bg-black shadow-[0_0_35px_rgba(207,166,85,0.2)]">
+            <video autoPlay muted loop playsInline controls preload="metadata" aria-label="Natal — Novos Personagens" className="block w-full max-h-[540px] object-contain">
+              <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4" type="video/mp4" />
+              Seu navegador não suporta reprodução de vídeo.
+            </video>
           </div>
         </div>
       </section>
