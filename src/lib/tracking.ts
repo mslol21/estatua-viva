@@ -87,9 +87,12 @@ export function trackLeadAndOpenWhatsApp({
   const url = buildWhatsAppUrl(message, leadSource);
 
   if (typeof window !== 'undefined') {
-    // 1. Google Tag Manager / GA4 dataLayer
+    // 1. Google Tag Manager / GA4 dataLayer & gtag
     try {
-      const w = window as unknown as { dataLayer?: Array<Record<string, unknown>> };
+      const w = window as unknown as {
+        dataLayer?: Array<Record<string, unknown>>;
+        gtag?: (...args: unknown[]) => void;
+      };
       w.dataLayer = w.dataLayer || [];
       w.dataLayer.push({
         event: 'whatsapp_click',
@@ -98,6 +101,15 @@ export function trackLeadAndOpenWhatsApp({
         event_category: eventCategory,
         timestamp: new Date().toISOString(),
       });
+
+      if (typeof w.gtag === 'function') {
+        w.gtag('event', 'generate_lead', {
+          event_category: eventCategory,
+          event_label: leadLabel,
+          lead_source: leadSource,
+          value: 1,
+        });
+      }
     } catch {
       // noop
     }

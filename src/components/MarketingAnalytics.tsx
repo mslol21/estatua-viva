@@ -8,7 +8,7 @@ import { captureAndStoreUtms } from '@/lib/tracking';
 import WebVitalsReporter from './WebVitalsReporter';
 
 const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-TVHJP4QK';
-const ga4Id = process.env.NEXT_PUBLIC_GA4_ID;
+const ga4Id = process.env.NEXT_PUBLIC_GA4_ID || 'G-BSTJ2JK42W';
 const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID;
 const CONSENT_KEY = 'ev_analytics_consent';
 
@@ -31,15 +31,26 @@ export default function MarketingAnalytics() {
 
   // Notifica o Google Tag Manager / GA4 sobre visualizações virtuais de página em transições SPA
   useEffect(() => {
-    if (consent !== 'accepted') return;
-    const w = window as unknown as { dataLayer?: Array<Record<string, unknown>> };
+    const w = window as unknown as {
+      dataLayer?: Array<Record<string, unknown>>;
+      gtag?: (...args: unknown[]) => void;
+    };
     w.dataLayer = w.dataLayer || [];
+    const fullPath = pathname + (searchParams?.toString() ? '?' + searchParams.toString() : '');
+
     w.dataLayer.push({
       event: 'virtual_page_view',
-      page_path: pathname + (searchParams?.toString() ? '?' + searchParams.toString() : ''),
+      page_path: fullPath,
       page_title: typeof document !== 'undefined' ? document.title : '',
     });
-  }, [pathname, searchParams, consent]);
+
+    if (typeof w.gtag === 'function' && ga4Id) {
+      w.gtag('event', 'page_view', {
+        page_path: fullPath,
+        page_title: typeof document !== 'undefined' ? document.title : '',
+      });
+    }
+  }, [pathname, searchParams]);
 
   const choose = (value: 'accepted' | 'rejected') => {
     try {
@@ -55,28 +66,27 @@ export default function MarketingAnalytics() {
       {/* 1. Coleta automática de Core Web Vitals para otimização de ranking no Google */}
       <WebVitalsReporter />
 
-      {/* 2. Google Tag Manager (GTM) Oficial */}
-      {gtmId && /^GTM-[A-Z0-9]+$/i.test(gtmId) && (
-        <>
-          <Script id="gtm-init" strategy="afterInteractive">
-            {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());`}
-          </Script>
-          <Script id="gtm-loader" strategy="afterInteractive">
-            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`}
-          </Script>
-        </>
+      {/* 2. Google Analytics 4 (GA4) Tag Oficial */}
+      {ga4Id && /^G-[A-Z0-9]+$/i.test(ga4Id) && (
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
+          strategy="afterInteractive"
+        />
       )}
 
-      {/* 3. Google Analytics 4 (GA4) Fallback ou Standalone */}
-      {consent === 'accepted' && !gtmId && ga4Id && /^G-[A-Z0-9]+$/i.test(ga4Id) && (
-        <>
-          <Script src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`} strategy="afterInteractive" />
-          <Script id="ga4-init" strategy="afterInteractive">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${ga4Id}',{send_page_view:true});`}
-          </Script>
-        </>
+      {/* 3. Inicialização unificada de gtag & dataLayer com GA4 e GTM */}
+      <Script id="google-init" strategy="afterInteractive">
+        {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+${ga4Id ? `gtag('config', '${ga4Id}', { send_page_view: true });` : ''}`}
+      </Script>
+
+      {/* 4. Google Tag Manager (GTM) Oficial */}
+      {gtmId && /^GTM-[A-Z0-9]+$/i.test(gtmId) && (
+        <Script id="gtm-loader" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${gtmId}');`}
+        </Script>
       )}
 
       {/* 4. Microsoft Clarity (Mapas de calor e comportamento de busca/clique) */}
