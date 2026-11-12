@@ -16,7 +16,7 @@ interface CategoryStyle {
 
 const CATEGORIES: CategoryStyle[] = [
   {
-    name: 'Ouro Imperial',
+    name: 'Estátuas vivas — Ouro',
     badge: 'Ouro',
     image: '/portfolio/ouro.webp',
     href: '#estilo-ouro',
@@ -24,7 +24,7 @@ const CATEGORIES: CategoryStyle[] = [
     subtitle: 'Nobre, triunfal e banhado a ouro para recepções de gala e momentos solenes.',
   },
   {
-    name: 'Mármore Branco',
+    name: 'Estátuas vivas — Branca',
     badge: 'Branca',
     image: '/portfolio/branca.webp',
     href: '#estilo-branca',
@@ -32,7 +32,7 @@ const CATEGORIES: CategoryStyle[] = [
     subtitle: 'Clássico renascentista, celestial e atemporal para casamentos e eventos elegantes.',
   },
   {
-    name: 'Prata Industrial',
+    name: 'Estátuas vivas — Prata',
     badge: 'Prata',
     image: '/portfolio/prata.webp',
     href: '#estilo-prata',
@@ -40,12 +40,18 @@ const CATEGORIES: CategoryStyle[] = [
     subtitle: 'Futurista, vanguardista e metálico para feiras corporativas e congressos high-tech.',
   },
   {
-    name: 'Temáticos & Lúdicos',
+    name: 'Estátuas vivas — Variadas',
     badge: 'Diversas',
     image: '/portfolio/diversas.webp',
     href: '#estilo-diversas',
     alt: 'Personagens inspirados em Chaplin e bailarina azul',
     subtitle: 'Chaplin, Piratas, Deuses e figuras personalizadas sob medida para o seu tema.',
+  },
+  {
+    name: 'Personagens vivos', badge: 'Interação', image: '/brand/pirata.webp', href: '#estilo-personagens', alt: 'Personagem pirata interagindo com o público', subtitle: 'Interpretação dinâmica, movimentos, falas e interação constante com os convidados.',
+  },
+  {
+    name: 'Produções personalizadas', badge: 'Sob medida', image: '/portfolio/diversas.webp', href: '#estilo-personalizados', alt: 'Personagens e performances de diferentes temáticas', subtitle: 'Personagens, figurinos e performances desenvolvidos a partir do conceito do seu evento ou marca.',
   },
 ];
 
@@ -119,7 +125,7 @@ export default function CategoryGallery() {
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <p className="max-w-xs text-xs sm:text-sm leading-6 text-[#d5d7cf]">
-            Explore os 4 estilos cênicos e descubra a performance ideal para encantar seu público.
+            Explore as 6 linhas artísticas do portfólio oficial e descubra a performance ideal para encantar seu público.
           </p>
 
           {/* Alternador de visualização (Órbita 3D vs Grade) */}
@@ -179,7 +185,7 @@ export default function CategoryGallery() {
           />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 relative z-10">
           {CATEGORIES.map((category) => (
             <a
               data-motion-tilt
