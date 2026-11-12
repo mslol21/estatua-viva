@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-import { SITE_URL } from '@/lib/site-config';
+import { OFFICIAL_DOMAIN as SITE_URL } from '@/lib/site-config';
 
 const pages = [
   { path: '', priority: 1 },
@@ -12,6 +12,7 @@ const pages = [
   { path: '/estatua-viva-para-casamento', priority: 0.8 },
   { path: '/estatua-viva-para-eventos-corporativos', priority: 0.8 },
   { path: '/personagens-para-festas', priority: 0.8 },
+  { path: '/natal', priority: 0.7 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
