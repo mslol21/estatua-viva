@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   MessageCircle,
@@ -15,7 +16,6 @@ import {
   Palette,
   ChevronRight,
 } from 'lucide-react';
-import BrandLogo from '@/components/BrandLogo';
 import ThreeDCarousel, { CarouselItem } from '@/components/ThreeDCarousel';
 import { CHARACTERS, Character } from '@/data/portfolioData';
 import { trackLeadAndOpenWhatsApp, captureAndStoreUtms } from '@/lib/tracking';
@@ -72,15 +72,21 @@ export default function BioHubPage() {
         <div>
           {/* 1. CABEÇALHO DE AUTORIDADE COM LOGO OFICIAL & PROVA SOCIAL */}
           <header className="flex flex-col items-center text-center mb-6">
-            {/* Logo Oficial com Halo Dourado */}
+            {/* Official portrait artwork, distinct from the brand logo. */}
             <Link
               href="/"
               aria-label="Ir para a página inicial"
-              className="group flex flex-col items-center justify-center mb-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dfbd7c]"
+              className="group mb-5 block rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dfbd7c]"
             >
-              <div className="relative flex items-center justify-center">
-                <div className="absolute inset-0 bg-[#dfbd7c]/20 blur-2xl rounded-full group-hover:bg-[#dfbd7c]/35 transition-all" />
-                <BrandLogo className="brand-logo-bio drop-shadow-[0_4px_25px_rgba(223,189,124,0.35)] group-hover:scale-105 transition-transform duration-300" />
+              <div className="relative mx-auto h-[172px] w-[172px] overflow-hidden rounded-full border-2 border-[#dfbd7c]/75 bg-[#071318] shadow-[0_0_0_6px_rgba(223,189,124,0.08),0_12px_40px_rgba(0,0,0,0.5),0_0_30px_rgba(223,189,124,0.18)] transition-transform duration-300 group-hover:scale-[1.04] sm:h-[190px] sm:w-[190px]">
+                <Image
+                  src="/brand/perfil-oficial.webp"
+                  alt="Imagem de perfil oficial da Estátua Viva Produções"
+                  fill
+                  priority
+                  sizes="(max-width: 640px) 172px, 190px"
+                  className="object-cover object-center"
+                />
               </div>
             </Link>
 
