@@ -16,7 +16,7 @@ export default function Hero() {
   return (
     <section ref={heroRef} aria-labelledby="hero-title" className="hero-split relative isolate overflow-hidden border-b border-[#dfbd7c]/15">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-20 bg-[#061217]" />
-      <div aria-hidden="true" className="hero-immersive-background pointer-events-none absolute inset-0 -z-20 overflow-hidden"><Image src="/brand/hero-bronze.jpg" alt="" fill priority sizes="100vw" className="hero-immersive-image object-cover" /></div>
+      <div aria-hidden="true" className="hero-immersive-background pointer-events-none absolute inset-0 -z-20 overflow-hidden"><Image src="/brand/hero-bronze.jpg" alt="" fill priority quality={65} sizes="100vw" className="hero-immersive-image object-cover" /></div>
       <div aria-hidden="true" className="hero-immersive-shade pointer-events-none absolute inset-0 z-[2] opacity-50" />
       <div aria-hidden="true" className="hero-immersive-light pointer-events-none absolute inset-0 z-[2] opacity-40" />
       <div aria-hidden="true" className="pointer-events-none absolute -right-40 top-0 -z-10 h-[32rem] w-[32rem] rounded-full bg-[#d3af6c]/10 blur-[110px]" />
