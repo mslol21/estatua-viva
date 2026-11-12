@@ -93,8 +93,11 @@ export default function BioHubPage() {
             <h1 className="font-serif text-2xl sm:text-3xl font-medium tracking-tight text-[#f4f1ea] mb-1.5">
               Estátua Viva Produções
             </h1>
-            <p className="font-sans text-xs text-[#c7c9c1] max-w-xs leading-relaxed mb-3">
-              Você imagina. A gente dá vida. Base em São Paulo e apresentações em todo o Brasil.
+            <p className="mt-2 font-serif text-[clamp(1.65rem,6.5vw,2.15rem)] font-semibold leading-tight tracking-tight text-[#dfbd7c]">
+              Você imagina. A gente dá vida.
+            </p>
+            <p className="mt-3 mb-4 font-sans text-xs sm:text-sm leading-relaxed tracking-wide text-[#c7c9c1]">
+              Base em SP, atendemos todo o Brasil.
             </p>
 
             {/* Selo Prova Social Google 5.0 */}
