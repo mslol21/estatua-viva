@@ -47,8 +47,18 @@ export default function Home() {
         <div className="neon-gold-card rounded-3xl border border-champagne-gold/30 bg-charcoal/70 p-7 sm:p-12">
           <p className="eyebrow">Temporada especial de Natal</p>
           <h2 className="font-serif text-3xl sm:text-5xl mt-3">A magia do Natal ganha vida.</h2>
-          <p className="text-stone-warm max-w-2xl mt-4">Descubra nossos personagens e performances natalinas em três vídeos especiais.</p>
-          <Link href="/natal" className="button-gold inline-flex mt-6">Conhecer o Especial de Natal ↗</Link>
+          <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(220px,320px)] md:items-center mt-6">
+            <div>
+              <p className="text-stone-warm max-w-2xl">Descubra nossos personagens e performances natalinas em três vídeos especiais.</p>
+              <Link href="/natal" className="button-gold inline-flex mt-6">Conhecer o Especial de Natal ↗</Link>
+            </div>
+            <div className="overflow-hidden rounded-2xl border border-champagne-gold/30 bg-black aspect-[9/16] max-h-[480px] mx-auto w-full">
+              <video autoPlay muted loop playsInline controls preload="metadata" aria-label="POV Noel — vídeo do Especial de Natal" className="h-full w-full object-contain">
+                <source src="/videos/natal/pov-noel.mp4" type="video/mp4" />
+                Seu navegador não suporta reprodução de vídeo.
+              </video>
+            </div>
+          </div>
         </div>
       </section>
       <ClientMarquee />
