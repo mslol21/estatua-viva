@@ -49,7 +49,14 @@ export default function Home() {
           <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4" type="video/mp4" />
         </video>
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-[#071318]/95 via-[#071318]/85 to-[#071318]/20 max-lg:bg-gradient-to-t max-lg:from-[#071318]/95 max-lg:via-[#071318]/65 max-lg:to-[#071318]/25" />
-        <div className="site-container w-full py-16 sm:py-20 lg:py-24">
+        <div className="natal-sparkles pointer-events-none absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+          {Array.from({ length: 16 }, (_, index) => (
+            <span key={index} className="natal-sparkle" style={{ left: `${(index * 37 + 9) % 96}%`, top: `${(index * 29 + 11) % 90}%`, animationDelay: `${(index % 7) * -0.65}s`, animationDuration: `${3.5 + (index % 5) * 0.6}s` }} />
+          ))}
+        </div>
+        <div className="natal-glow pointer-events-none absolute -right-24 top-1/4 z-0 h-64 w-64 rounded-full bg-amber-400/10 blur-3xl" aria-hidden="true" />
+        <div className="natal-top-line pointer-events-none absolute inset-x-0 top-0 z-10 h-px" aria-hidden="true" />
+        <div className="relative z-10 site-container w-full py-16 sm:py-20 lg:py-24">
           <div className="max-w-xl lg:max-w-[48%]">
             <p className="eyebrow">Temporada especial de Natal</p>
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl mt-4 leading-tight">A magia do Natal ganha vida.</h2>
