@@ -16,6 +16,7 @@ const CATEGORIES = [
   'Prata Industrial',
   'Temáticos & Cosplay',
   'Projetos Sob Medida (B2B)',
+  'Personagens vivos',
 ] as const;
 
 type CategoryType = typeof CATEGORIES[number];
@@ -61,6 +62,8 @@ export default function CharacterCatalog() {
       '#estilo-prata': 'Prata Industrial',
       '#estilo-ouro': 'Ouro Imperial',
       '#estilo-diversas': 'Temáticos & Cosplay',
+      '#estilo-personagens': 'Personagens vivos',
+      '#estilo-personalizados': 'Projetos Sob Medida (B2B)',
     };
     const selectFromHash = () => {
       const category = categoryByHash[window.location.hash];
