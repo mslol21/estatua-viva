@@ -45,7 +45,7 @@ export default function Home() {
       <div id="conteudo" tabIndex={-1}><Hero /></div>
       <section aria-label="Especial de Natal" className="relative isolate overflow-hidden min-h-[440px] sm:min-h-[520px] flex items-center border-y border-champagne-gold/20 bg-[#0b1113]">
         <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} className="absolute inset-0 -z-20 h-full w-full object-cover object-center">
-          <source src="/videos/natal/pov-noel.mp4" type="video/mp4" />
+          <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4" type="video/mp4" />
         </video>
         <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-[#071318]/95 via-[#071318]/75 to-[#071318]/35 max-sm:bg-gradient-to-t max-sm:from-[#071318]/95 max-sm:via-[#071318]/65 max-sm:to-[#071318]/30" />
         <div className="site-container w-full py-20 sm:py-28">
