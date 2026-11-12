@@ -111,7 +111,7 @@ html.lenis body {
 
 /* Estátua Viva: petróleo, ouro envelhecido e a arte fornecida pela marca. */
 :root { --background: #061317; --foreground: #f4f1ea; --color-gold: #d3af6c; --color-charcoal: #0d242a; }
-body { background: var(--background); }
+/* Keep the official textured background visible: do not reset the body background shorthand. */
 html { scroll-padding-top: 112px; }
 section[id] { scroll-margin-top: 112px; }
 a, button, input, textarea { -webkit-tap-highlight-color: transparent; }
@@ -762,3 +762,18 @@ body {
 /* Official transparent logo: no legacy background cropping. */
 .brand-logo-official { overflow: visible; }
 .brand-logo-official .brand-logo-art { display: none; }
+
+/* Official background: retain natural detail without aggressive stretching or dark overlays. */
+body {
+  background-color: #061317;
+  background-image: linear-gradient(180deg, rgba(6,19,23,.76), rgba(6,19,23,.84)), url('/brand/background-oficial.webp');
+  background-position: center top, center top;
+  background-size: cover, auto 1152px;
+  background-repeat: no-repeat, repeat-y;
+  background-attachment: scroll;
+}
+@media (max-width: 767px) {
+  body { background-size: cover, auto 780px; }
+}
+.hero-split .hero-immersive-background { opacity: .9; }
+.hero-split .hero-immersive-image { object-position: center center; }
