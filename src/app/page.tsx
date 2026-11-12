@@ -60,7 +60,7 @@ export default function Home() {
             <Link href="/natal" className="button-gold inline-flex mt-8">Conhecer o Especial de Natal ↗</Link>
           </div>
           <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-champagne-gold/30 bg-black shadow-[0_0_35px_rgba(207,166,85,0.2)]">
-            <video autoPlay muted loop playsInline controls preload="metadata" aria-label="Natal — Novos Personagens" className="block w-full max-h-[540px] object-contain">
+            <video autoPlay muted loop playsInline controls preload="none" aria-label="Natal — Novos Personagens" className="block w-full max-h-[540px] object-contain">
               <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4" type="video/mp4" />
               Seu navegador não suporta reprodução de vídeo.
             </video>
