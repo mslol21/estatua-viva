@@ -387,7 +387,7 @@ export default function BioHubPage() {
             Estátua Viva Produções · Direção Artística Rodolfo Valentino
           </p>
           <p className="text-[11px] text-stone-warm">
-            R. Oriximiná, 27 — Tatuapé, São Paulo/SP · CEP 03306-060
+            Base em São Paulo (SP) · Atendimento e apresentações em todo o Brasil
           </p>
           <p className="font-mono text-[11px] text-[#dfbd7c]">
             Atendimento: +55 11 93776-5250
