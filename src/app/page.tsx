@@ -43,21 +43,17 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData).replace(/</g, '\\u003c') }} />
       <Navbar />
       <div id="conteudo" tabIndex={-1}><Hero /></div>
-      <section aria-label="Especial de Natal" className="site-container py-8 sm:py-12">
-        <div className="neon-gold-card rounded-3xl border border-champagne-gold/30 bg-charcoal/70 p-7 sm:p-12">
-          <p className="eyebrow">Temporada especial de Natal</p>
-          <h2 className="font-serif text-3xl sm:text-5xl mt-3">A magia do Natal ganha vida.</h2>
-          <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(220px,320px)] md:items-center mt-6">
-            <div>
-              <p className="text-stone-warm max-w-2xl">Descubra nossos personagens e performances natalinas em três vídeos especiais.</p>
-              <Link href="/natal" className="button-gold inline-flex mt-6">Conhecer o Especial de Natal ↗</Link>
-            </div>
-            <div className="overflow-hidden rounded-2xl border border-champagne-gold/30 bg-black aspect-[9/16] max-h-[480px] mx-auto w-full">
-              <video autoPlay muted loop playsInline controls preload="metadata" aria-label="POV Noel — vídeo do Especial de Natal" className="h-full w-full object-contain">
-                <source src="/videos/natal/pov-noel.mp4" type="video/mp4" />
-                Seu navegador não suporta reprodução de vídeo.
-              </video>
-            </div>
+      <section aria-label="Especial de Natal" className="relative isolate overflow-hidden min-h-[440px] sm:min-h-[520px] flex items-center border-y border-champagne-gold/20 bg-[#0b1113]">
+        <video autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1} className="absolute inset-0 -z-20 h-full w-full object-cover object-center">
+          <source src="/videos/natal/pov-noel.mp4" type="video/mp4" />
+        </video>
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-[#071318]/95 via-[#071318]/75 to-[#071318]/35 max-sm:bg-gradient-to-t max-sm:from-[#071318]/95 max-sm:via-[#071318]/65 max-sm:to-[#071318]/30" />
+        <div className="site-container w-full py-20 sm:py-28">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Temporada especial de Natal</p>
+            <h2 className="font-serif text-4xl sm:text-6xl mt-4 leading-tight">A magia do Natal ganha vida.</h2>
+            <p className="text-alabaster/90 max-w-xl mt-5 leading-relaxed">Conheça os personagens e performances natalinas da Estátua Viva Produções. Três vídeos especiais para inspirar sua celebração.</p>
+            <Link href="/natal" className="button-gold inline-flex mt-8">Conhecer o Especial de Natal ↗</Link>
           </div>
         </div>
       </section>
