@@ -82,6 +82,7 @@ export default function Home() {
           ].map((service) => <Link key={service.href} href={service.href} className="neon-gold-card group rounded-2xl border border-champagne-gold/20 bg-charcoal/50 p-6 focus-visible:outline focus-visible:outline-2 focus-visible:outline-champagne-gold"><h3 className="font-serif text-2xl text-alabaster group-hover:text-champagne-gold">{service.title}</h3><p className="mt-2 text-sm text-stone-warm">{service.detail}</p><span className="mt-4 inline-block text-sm text-champagne-gold">Conhecer serviço →</span></Link>)}
         </div>
       </section>
+      <section aria-labelledby="equipe-resumo-titulo" className="site-container py-16 sm:py-20"><div className="neon-gold-card rounded-3xl border border-champagne-gold/25 bg-charcoal/50 p-7 sm:p-12"><p className="eyebrow">Quem está por trás da arte</p><h2 id="equipe-resumo-titulo" className="mt-4 max-w-2xl font-serif text-4xl sm:text-5xl">Pessoas que transformam ideias em experiências.</h2><p className="mt-5 max-w-2xl text-stone-warm leading-7">Conheça a direção artística e o trabalho de criação, caracterização e interpretação por trás das performances da Estátua Viva Produções.</p><Link href="/equipe" className="button-gold mt-7 inline-flex">Conheça nossa equipe ↗</Link></div></section>
       <EventCuratorship />
       <CategoryGallery />
       <CharacterCatalog />
