@@ -820,3 +820,19 @@ body {
   .natal-sparkle, .natal-glow, .natal-top-line { animation: none !important; }
   .natal-sparkle { opacity: .4; }
 }
+
+/* Mobile-first performance: avoid fixed-background repaints and compositor-heavy effects. */
+@media (max-width: 767px) {
+  body { background-attachment: scroll; }
+  .hero-atmosphere { display: none; }
+  .hero-copy-entry { animation: none; }
+  .hero-immersive-light { animation: none !important; }
+  .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+@media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+  .hero-copy-entry { animation: hero-copy-entrance .7s ease-out both; }
+}
+@keyframes hero-copy-entrance {
+  from { opacity: 0; transform: translate3d(0, 24px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
