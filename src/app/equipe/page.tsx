@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import TeamPortrait from '@/components/TeamPortrait';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
@@ -15,90 +14,75 @@ export const metadata: Metadata = {
 const equipe = [
   {
     "name": "Rodolfo Valentino",
-    "role": "Diretor, criador artístico",
-    "image": "/equipe/rodolfo-valentino.webp"
+    "role": "Diretor, criador artístico"
   },
   {
     "name": "Valentina Lindstron",
-    "role": "Produção geral",
-    "image": "/equipe/valentina-lindstron.webp"
+    "role": "Produção geral"
   },
   {
     "name": "Aline Varela",
-    "role": "Produção executiva",
-    "image": "/equipe/aline-varela.webp"
+    "role": "Produção executiva"
   },
   {
     "name": "Bianca Pereira",
-    "role": "Contrarregra, produção",
-    "image": "/equipe/bianca-pereira.webp"
+    "role": "Contrarregra, produção"
   },
   {
     "name": "Pablo Trentin",
-    "role": "Figurinista, fotógrafo",
-    "image": "/equipe/pablo-trentin.webp"
+    "role": "Figurinista, fotógrafo"
   },
   {
     "name": "Robson da Silva",
-    "role": "Artista",
-    "image": "/equipe/robson-da-silva.webp"
+    "role": "Artista"
   },
   {
     "name": "Danielle Yukari",
-    "role": "Artista, dançarina",
-    "image": "/equipe/danielle-yukari.webp"
+    "role": "Artista, dançarina"
   },
   {
     "name": "Deisi Silva",
-    "role": "Artista, bailarina",
-    "image": "/equipe/deisi-silva.webp"
+    "role": "Artista, bailarina"
   },
   {
     "name": "Daniel Gregório",
-    "role": "Artista",
-    "image": "/equipe/daniel-gregorio.webp"
+    "role": "Artista"
   },
   {
     "name": "Angelo Medina",
-    "role": "Artista",
-    "image": "/equipe/angelo-medina.webp"
+    "role": "Artista"
   },
   {
     "name": "Giballin Gilberto",
-    "role": "Artista, bailarino",
-    "image": "/equipe/giballin-gilberto.webp"
+    "role": "Artista, bailarino"
   },
   {
     "name": "Fernanda Eluf",
-    "role": "Artista",
-    "image": "/equipe/fernanda-eluf.webp"
+    "role": "Artista"
   },
   {
     "name": "Keyla Nayane",
-    "role": "Artista, dançarina",
-    "image": "/equipe/keyla-nayane.webp"
+    "role": "Artista, dançarina"
   },
   {
     "name": "Luis Almeida",
-    "role": "Artista",
-    "image": "/equipe/luis-almeida.webp"
+    "role": "Artista"
   },
   {
     "name": "Nathália Lanai",
-    "role": "Artista, bailarina",
-    "image": "/equipe/nathalia-lanai.webp"
+    "role": "Artista, bailarina"
   },
   {
     "name": "Maira Cardoso",
-    "role": "Atriz, cantora",
-    "image": "/equipe/maira-cardoso.webp"
+    "role": "Atriz, cantora"
   },
   {
     "name": "Nicole Borelli",
-    "role": "Artista, dançarina",
-    "image": "/equipe/nicole-borelli.webp"
+    "role": "Artista, dançarina"
   }
 ];
+
+const fotosEquipe = ['7.png', '8.png', '9.png', '10.png', '11.png', '12.png'];
 
 const frentes = [
   { icon: Palette, title: 'Caracterização e figurino', text: 'Cada detalhe visual ajuda a construir a identidade dos personagens e o impacto de cada apresentação.' },
@@ -132,7 +116,7 @@ export default function EquipePage() {
           <p className="mt-5 max-w-3xl text-base leading-8 text-stone-warm">À frente da direção artística da Estátua Viva Produções, Rodolfo Valentino está ligado à criação de experiências que unem personagens, caracterização e performance para eventos. Conheça abaixo os profissionais apresentados no portfólio oficial da produção, com suas respectivas funções.</p>
           <div className="mt-10 rounded-2xl border border-champagne-gold/20 bg-charcoal/40 p-6 sm:p-8">
             <p className="text-sm text-champagne-gold">Conheça o trabalho da produção</p>
-            <p className="mt-2 text-sm leading-7 text-stone-warm">Os nomes e as funções abaixo seguem o portfólio oficial. Os retratos individuais serão incluídos após a disponibilização dos arquivos de imagem correspondentes.</p>
+            <p className="mt-2 text-sm leading-7 text-stone-warm">Os nomes e as funções abaixo seguem o portfólio oficial. As imagens desta página foram disponibilizadas pela produção.</p>
             <Link href="/#acervo" className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-champagne-gold hover:text-white">Explorar o acervo <ArrowUpRight size={16} aria-hidden="true" /></Link>
           </div>
         </section>
@@ -140,10 +124,16 @@ export default function EquipePage() {
           <p className="eyebrow">Profissionais do portfólio oficial</p>
           <h2 id="integrantes-titulo" className="mt-4 font-serif text-4xl sm:text-5xl">Conheça nossa <em className="text-champagne-gold">equipe.</em></h2>
           <p className="mt-5 max-w-3xl text-sm leading-7 text-stone-warm">Da direção artística à performance, diferentes especialidades se encontram em cada projeto. Conheça os 17 profissionais apresentados em nosso portfólio institucional.</p>
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3" aria-label="Imagens da equipe e da produção">
+            {fotosEquipe.map((arquivo, index) => (
+              <figure key={arquivo} className="neon-gold-card relative aspect-[4/5] overflow-hidden rounded-2xl border border-champagne-gold/20 bg-[#0b1c20]">
+                <Image src={`/${arquivo}`} alt={`Imagem ${index + 1} da equipe Estátua Viva Produções`} fill sizes="(max-width: 639px) 45vw, (max-width: 1023px) 45vw, 30vw" className="object-contain" />
+              </figure>
+            ))}
+          </div>
           <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
-            {equipe.map(({ name, role, image }, index) => (
+            {equipe.map(({ name, role }, index) => (
               <article key={name} className="neon-gold-card group overflow-hidden rounded-2xl border border-champagne-gold/20 bg-[#0b1c20]">
-                <TeamPortrait name={name} src={image} />
                 <div className="border-t border-champagne-gold/20 p-4 sm:p-5">
                   <span className="text-[10px] font-mono text-champagne-gold/75">INTEGRANTE {String(index + 1).padStart(2, '0')}</span>
                   <h3 className="mt-2 font-serif text-xl leading-tight text-alabaster sm:text-2xl">{name}</h3>
