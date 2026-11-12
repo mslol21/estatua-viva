@@ -11,9 +11,9 @@ export const metadata: Metadata = {
   openGraph: { title: 'Especial de Natal — Estátua Viva Produções', description: 'A magia do Natal ganha vida em apresentações e personagens especiais.', url: `${SITE_URL}/natal`, type: 'website' },
 };
 const videos = [
-  { title: 'Convite Noel', description: 'Um convite especial para viver a magia do Natal.', src: '/videos/natal/convite-noel.mp4' },
-  { title: 'Novos personagens de Natal', description: 'Conheça os personagens que dão vida à temporada.', src: '/videos/natal/novos-personagens.mp4' },
-  { title: 'POV Noel', description: 'Veja a experiência natalina de uma nova perspectiva.', src: '/videos/natal/pov-noel.mp4' },
+  { title: 'Convite Noel', description: 'Um convite especial para viver a magia do Natal.', src: 'https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV.mp4' },
+  { title: 'Novos personagens de Natal', description: 'Conheça os personagens que dão vida à temporada.', src: 'https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4' },
+  { title: 'POV Noel', description: 'Veja a experiência natalina de uma nova perspectiva.', src: 'https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%282%29.mp4' },
 ];
 const whatsapp = 'https://wa.me/5511937765250?text=' + encodeURIComponent('Olá! Conheci o Especial de Natal no site da Estátua Viva Produções e gostaria de solicitar um orçamento para meu evento.');
 export default function NatalPage() {
