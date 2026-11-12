@@ -1,0 +1,9 @@
+Arquivos oficiais otimizados para o site Estátua Viva Produções.
+Copie public/brand/* e public/favicon.png para as mesmas pastas do projeto.
+Uso recomendado:
+logo-oficial.webp: navbar, rodapé e metadados sociais
+monograma-oficial.webp: marca compacta
+perfil-oficial.webp: retrato artístico em página institucional
+retrato-oficial.webp: imagem redonda de perfil e sobre
+background-oficial.webp: fundo do hero ou seções
+As imagens não devem ser distorcidas ou recriadas.
