@@ -16,7 +16,7 @@ export default function HeroAtmosphereCanvas({ hero }: { hero: RefObject<HTMLEle
     if (!root || !element) return;
     gsap.registerPlugin(ScrollTrigger);
     const media = gsap.matchMedia();
-    media.add('(prefers-reduced-motion: no-preference)', () => {
+    media.add('(min-width: 768px) and (prefers-reduced-motion: no-preference)', () => {
       const context = element.getContext('2d');
       if (!context) return;
       let width = 1, height = 1, onScreen = false, running = false;
