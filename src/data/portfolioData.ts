@@ -1,7 +1,7 @@
 export interface Character {
   id: string;
   name: string;
-  category: 'Ouro Imperial' | 'Mármore Branco' | 'Prata Industrial' | 'Temáticos & Cosplay' | 'Projetos Sob Medida (B2B)';
+  category: 'Ouro Imperial' | 'Mármore Branco' | 'Prata Industrial' | 'Temáticos & Cosplay' | 'Projetos Sob Medida (B2B)' | 'Personagens vivos';
   tagline: string;
   description: string;
   idealFor: string;
@@ -111,7 +111,7 @@ export const CHARACTERS: Character[] = [
   {
     id: 'catrina-miguelito',
     name: 'Catrina & Miguelito (Día de los Muertos)',
-    category: 'Temáticos & Cosplay',
+    category: 'Personagens vivos',
     colorAccent: '#E11D48',
     tagline: 'Exuberância artística folclórica, coroas de flores e riqueza de adereços.',
     description: 'A reverenciada tradição mexicana ganha vida através de figurinos bordados, rendas finas e maquiagem facial artística de nível cinematográfico premiado.',
@@ -133,7 +133,7 @@ export const CHARACTERS: Character[] = [
   {
     id: 'capitao-jack-sparrow',
     name: 'Capitão Jack Sparrow Interativo',
-    category: 'Temáticos & Cosplay',
+    category: 'Personagens vivos',
     colorAccent: '#D97706',
     tagline: 'Fidelidade absoluta aos trejeitos, voz e gingado do icônico pirata dos cinemas.',
     description: 'Mais do que uma estátua viva: uma performance que alterna entre a imobilidade de pedestal e a quebra cômica em passos cambaleantes, conquistando adultos e crianças.',
@@ -153,7 +153,7 @@ export const CHARACTERS: Character[] = [
   {
     id: 'mimica-charles-chaplin',
     name: 'Arte da Mímica & Charles Chaplin',
-    category: 'Temáticos & Cosplay',
+    category: 'Personagens vivos',
     colorAccent: '#A1A1AA',
     tagline: 'A poesia silenciosa da Belle Époque e do cinema mudo que emociona gerações.',
     description: 'Munido de bengala, cartola e sapato largo, o eterno Vagabundo interage de forma sutil, cordial e profundamente poética, desarmando o público com gestos gentis.',
