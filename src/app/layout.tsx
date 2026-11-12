@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
 import { Cormorant_Garamond, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import { SITE_URL } from '@/lib/site-config';
+import { headers } from 'next/headers';
 import MarketingAnalytics from '@/components/MarketingAnalytics';
 import './globals.css';
 import './hero-refinement.css';
@@ -14,7 +15,7 @@ const cormorant = Cormorant_Garamond({ subsets: ['latin'], weight: ['400', '500'
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], display: 'swap', variable: '--font-jakarta' });
 const jetbrains = JetBrains_Mono({ subsets: ['latin'], display: 'swap', variable: '--font-jetbrains' });
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: 'Estátua Viva para Eventos no Brasil | Estátua Viva Produções',
   description: 'Contrate estátuas vivas e personagens para casamentos, feiras, inaugurações e eventos corporativos em todo o Brasil. Solicite um orçamento personalizado.',
   keywords: [
@@ -53,6 +54,12 @@ export const metadata: Metadata = {
     images: [`${SITE_URL}/og-image.png`],
   }
 };
+
+export function generateMetadata(): Metadata {
+  const host = (headers().get('x-forwarded-host') || headers().get('host') || '').split(':')[0].toLowerCase();
+  const official = host === 'estatuavivaproducoes.com.br' || host === 'www.estatuavivaproducoes.com.br';
+  return { ...baseMetadata, robots: official ? { index: true, follow: true } : { index: false, follow: false, googleBot: { index: false, follow: false } } };
+}
 
 export const viewport: Viewport = { themeColor: '#071318' };
 
