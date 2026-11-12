@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import TeamPortrait from '@/components/TeamPortrait';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
@@ -14,71 +15,88 @@ export const metadata: Metadata = {
 const equipe = [
   {
     "name": "Rodolfo Valentino",
-    "role": "Diretor, criador artístico"
+    "role": "Diretor, criador artístico",
+    "image": "/equipe/rodolfo-valentino.webp"
   },
   {
     "name": "Valentina Lindstron",
-    "role": "Produção geral"
+    "role": "Produção geral",
+    "image": "/equipe/valentina-lindstron.webp"
   },
   {
     "name": "Aline Varela",
-    "role": "Produção executiva"
+    "role": "Produção executiva",
+    "image": "/equipe/aline-varela.webp"
   },
   {
     "name": "Bianca Pereira",
-    "role": "Contrarregra, produção"
+    "role": "Contrarregra, produção",
+    "image": "/equipe/bianca-pereira.webp"
   },
   {
     "name": "Pablo Trentin",
-    "role": "Figurinista, fotógrafo"
+    "role": "Figurinista, fotógrafo",
+    "image": "/equipe/pablo-trentin.webp"
   },
   {
     "name": "Robson da Silva",
-    "role": "Artista"
+    "role": "Artista",
+    "image": "/equipe/robson-da-silva.webp"
   },
   {
     "name": "Danielle Yukari",
-    "role": "Artista, dançarina"
+    "role": "Artista, dançarina",
+    "image": "/equipe/danielle-yukari.webp"
   },
   {
     "name": "Deisi Silva",
-    "role": "Artista, bailarina"
+    "role": "Artista, bailarina",
+    "image": "/equipe/deisi-silva.webp"
   },
   {
     "name": "Daniel Gregório",
-    "role": "Artista"
+    "role": "Artista",
+    "image": "/equipe/daniel-gregorio.webp"
   },
   {
     "name": "Angelo Medina",
-    "role": "Artista"
+    "role": "Artista",
+    "image": "/equipe/angelo-medina.webp"
   },
   {
     "name": "Giballin Gilberto",
-    "role": "Artista, bailarino"
+    "role": "Artista, bailarino",
+    "image": "/equipe/giballin-gilberto.webp"
   },
   {
     "name": "Fernanda Eluf",
-    "role": "Artista"
+    "role": "Artista",
+    "image": "/equipe/fernanda-eluf.webp"
   },
   {
     "name": "Keyla Nayane",
-    "role": "Artista, dançarina"
+    "role": "Artista, dançarina",
+    "image": "/equipe/keyla-nayane.webp"
   },
   {
     "name": "Luis Almeida",
-    "role": "Artista"
+    "role": "Artista",
+    "image": "/equipe/luis-almeida.webp"
   },
   {
     "name": "Nathália Lanai",
-    "role": "Artista, bailarina"
+    "role": "Artista, bailarina",
+    "image": "/equipe/nathalia-lanai.webp"
   },
   {
     "name": "Maira Cardoso",
-    "role": "Atriz, cantora"
+    "role": "Atriz, cantora",
+    "image": "/equipe/maira-cardoso.webp"
   },
   {
     "name": "Nicole Borelli",
-    "role": "Artista, dançarina"
+    "role": "Artista, dançarina",
+    "image": "/equipe/nicole-borelli.webp"
   }
 ];
 
@@ -123,12 +141,9 @@ export default function EquipePage() {
           <h2 id="integrantes-titulo" className="mt-4 font-serif text-4xl sm:text-5xl">Conheça nossa <em className="text-champagne-gold">equipe.</em></h2>
           <p className="mt-5 max-w-3xl text-sm leading-7 text-stone-warm">Da direção artística à performance, diferentes especialidades se encontram em cada projeto. Conheça os 17 profissionais apresentados em nosso portfólio institucional.</p>
           <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
-            {equipe.map(({ name, role }, index) => (
+            {equipe.map(({ name, role, image }, index) => (
               <article key={name} className="neon-gold-card group overflow-hidden rounded-2xl border border-champagne-gold/20 bg-[#0b1c20]">
-                <div className="relative flex aspect-[4/4.5] items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_50%_35%,rgba(203,161,89,0.16),transparent_65%)]" aria-label={`Retrato oficial de ${name} ainda não publicado`}>
-                  <span aria-hidden="true" className="font-serif text-5xl sm:text-6xl text-champagne-gold/50">{name.split(' ').map(part => part[0]).slice(0, 2).join('')}</span>
-                  <span className="absolute bottom-3 left-3 right-3 text-center text-[10px] uppercase tracking-wider text-stone-warm">Foto oficial em preparação</span>
-                </div>
+                <TeamPortrait name={name} src={image} />
                 <div className="border-t border-champagne-gold/20 p-4 sm:p-5">
                   <span className="text-[10px] font-mono text-champagne-gold/75">INTEGRANTE {String(index + 1).padStart(2, '0')}</span>
                   <h3 className="mt-2 font-serif text-xl leading-tight text-alabaster sm:text-2xl">{name}</h3>
