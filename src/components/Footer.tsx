@@ -56,7 +56,8 @@ export default function Footer() {
             <h4 className="font-mono text-xs uppercase tracking-widest text-champagne-gold mb-4">
               NAVEGAÇÃO
             </h4>
-            <ul className="space-y-2.5 font-sans text-sm text-stone-warm">\n              <li><Link href="/equipe" className="hover:text-champagne-gold transition-colors">Nossa Equipe</Link></li>
+            <ul className="space-y-2.5 font-sans text-sm text-stone-warm">\n              <li><Link href="/perguntas-frequentes" className="hover:text-champagne-gold transition-colors">Perguntas frequentes</Link></li>
+              <li><Link href="/equipe" className="hover:text-champagne-gold transition-colors">Nossa Equipe</Link></li>
               <li>
                 <a href="/#experiencias" className="hover:text-champagne-gold transition-colors">
                   Curadoria de Eventos
