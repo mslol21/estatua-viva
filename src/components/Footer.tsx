@@ -31,7 +31,7 @@ export default function Footer() {
                 <Instagram strokeWidth={1.5} className="w-4 h-4" />
               </a>
               <a
-                href="mailto:contato@estatuaviva.com.br"
+                href="mailto:contato@estatuavivaproducoes.com.br"
                 aria-label="E-mail de contato"
                 className="w-9 h-9 border border-alabaster/10 flex items-center justify-center text-stone-warm hover:text-champagne-gold hover:border-champagne-gold/40 transition-colors"
               >
@@ -120,10 +120,10 @@ export default function Footer() {
             <div className="flex items-center gap-3 text-xs font-sans text-stone-warm">
               <Mail strokeWidth={1.5} className="w-4 h-4 text-champagne-gold shrink-0" />
               <a
-                href="mailto:contato@estatuaviva.com.br"
+                href="mailto:contato@estatuavivaproducoes.com.br"
                 className="hover:text-champagne-gold transition-colors"
               >
-                contato@estatuaviva.com.br
+                contato@estatuavivaproducoes.com.br
               </a>
             </div>
           </div>
