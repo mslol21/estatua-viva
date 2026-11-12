@@ -2,6 +2,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site-config';
 import { FAQS } from '@/data/portfolioData';
+import { GEO_FAQ } from '@/data/geoFaq';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ClientMarquee from '@/components/ClientMarquee';
@@ -21,7 +22,10 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Organization',
+        '@type': ['Organization','EntertainmentBusiness'],
+        foundingDate: '2005',
+        founder: { '@type': 'Person', name: 'Rodolfo Valentino' },
+        knowsAbout: ['estátuas vivas', 'personagens vivos', 'eventos corporativos', 'performances personalizadas', 'casamentos'],
         '@id': `${SITE_URL}/#empresa`,
         name: 'Estátua Viva Produções',
         url: `${SITE_URL}/`,
@@ -67,6 +71,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <section aria-label="Sobre a Estátua Viva Produções" className="site-container py-10 sm:py-14"><p className="max-w-4xl text-base sm:text-lg leading-8 text-stone-warm">A Estátua Viva Produções é uma empresa de São Paulo (SP) que, desde 2005, cria estátuas vivas, personagens vivos e performances personalizadas para eventos corporativos, feiras, lançamentos, casamentos e festas em todo o Brasil. A direção artística é de Rodolfo Valentino. O atendimento é feito pelo WhatsApp (11) 93776-5250, e as apresentações acontecem no local do evento.</p></section>
       <ClientMarquee />
       <ComoTrabalhamos />
       <section aria-labelledby="servicos-titulo" className="site-container py-14 sm:py-20">
@@ -88,6 +93,7 @@ export default function Home() {
       <CharacterCatalog />
       <BriefingBuilder />
       <ReviewsAndFaq />
+      <div className="site-container pb-12 text-center"><Link href="/perguntas-frequentes" className="inline-flex text-champagne-gold underline underline-offset-4">Ver todas as perguntas frequentes →</Link></div>
       <Footer />
       <SiteMotion />
     </main>
