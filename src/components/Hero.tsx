@@ -3,15 +3,12 @@
 import Image from 'next/image';
 import HeroAtmosphereCanvas from './motion/HeroAtmosphereCanvas';
 import { useRef } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowDown, ArrowUpRight, Drama, Sparkles, Star } from 'lucide-react';
 
 const REVIEWS_URL = 'https://www.google.com/search?kgmid=/g/11yfq6b8js&hl=pt-BR&q=Est%C3%A1tua+viva';
 
 export default function Hero() {
-  const reducedMotion = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
-  const reveal = { initial: reducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }, animate: { opacity: 1, y: 0 } };
 
   return (
     <section ref={heroRef} aria-labelledby="hero-title" className="hero-split relative isolate overflow-hidden border-b border-[#dfbd7c]/15">
@@ -23,7 +20,7 @@ export default function Hero() {
       <HeroAtmosphereCanvas hero={heroRef} />
       <div className="site-container relative z-10">
         <div className="grid min-h-[calc(100svh-88px)] items-center gap-12 py-16 md:py-20 lg:grid-cols-2 lg:gap-16 lg:py-14">
-          <motion.div initial={reveal.initial} animate={reveal.animate} transition={{ duration: reducedMotion ? 0 : 0.7, ease: 'easeOut' }} className="relative z-10 max-w-2xl"><div className="hero-copy-motion">
+          <div className="hero-copy-entry relative z-10 max-w-2xl"><div className="hero-copy-motion">
             <div data-hero-reveal className="mb-7 inline-flex max-w-full items-center gap-2 rounded-full border border-[#dfbd7c]/30 bg-[#102b30]/75 px-4 py-2 text-xs leading-relaxed text-[#ead4a9] shadow-lg backdrop-blur-sm sm:text-sm">
               <Sparkles aria-hidden="true" className="h-4 w-4 shrink-0 text-[#dfbd7c]" strokeWidth={1.6} />
               <span>Curadoria Artística para Eventos em São Paulo</span>
@@ -40,7 +37,7 @@ export default function Hero() {
               <a href={REVIEWS_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 transition-colors hover:text-[#f1d49d]"><Star aria-hidden="true" className="h-4 w-4 shrink-0 fill-[#dfbd7c] text-[#dfbd7c]" /><span><strong className="font-semibold text-[#f4dfb7]">5,0 no Google</strong> <span className="text-[#e3c580]" aria-label="5 estrelas">★★★★★</span> <span className="text-[#c6c8be]">· veja as avaliações</span></span></a>
               <div className="inline-flex items-center gap-2"><Drama aria-hidden="true" className="h-[18px] w-[18px] shrink-0 text-[#dfbd7c]" strokeWidth={1.6} /><span>Mais de 20 anos de performances desde 2005</span></div>
             </div>
-          </div></motion.div>
+          </div></div>
 
         </div>
         <div className="flex items-center justify-between gap-4 border-t border-[#dfbd7c]/20 py-5 text-[10px] font-medium uppercase tracking-[0.15em] text-[#c5b28e]"><span className="hero-ticker"><span className="hero-ticker-track"><span>Performances vivas desde 2005 · Personagens para festas e eventos · Casamentos, feiras e eventos corporativos · Direção artística Rodolfo Valentino ·&nbsp;</span><span aria-hidden="true">Performances vivas desde 2005 · Personagens para festas e eventos · Casamentos, feiras e eventos corporativos · Direção artística Rodolfo Valentino ·&nbsp;</span></span></span><a href="#experiencias" className="inline-flex items-center gap-2 text-[#ead9b7] transition-colors hover:text-white"><span>Descubra mais</span><ArrowDown aria-hidden="true" className="h-4 w-4" /></a></div>
