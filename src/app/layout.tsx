@@ -37,7 +37,7 @@ const baseMetadata: Metadata = {
     apple: [{ url: '/brand/monograma-oficial.webp', sizes: '180x180', type: 'image/webp' }],
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'UWB3yhyAfaRMJVeKYogT345EW_wYW9hnh-HgwPhOtYQ',
     other: {
       'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
     },
