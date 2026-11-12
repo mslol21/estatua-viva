@@ -56,7 +56,7 @@ export default function EquipePage() {
           </div>
           <div className="mt-8 grid items-start gap-5 md:grid-cols-2 md:gap-7" aria-label="Galeria oficial da equipe">
             {fotosEquipe.map((arquivo, index) => (
-              <figure key={arquivo} className="group min-w-0 overflow-hidden rounded-[1.5rem] border border-champagne-gold/25 bg-[#071519] p-2 shadow-[0_16px_60px_rgba(0,0,0,0.2)] transition-colors duration-300 hover:border-champagne-gold/60 sm:p-3">
+              <figure key={arquivo} className="neon-gold-card spotlight-card group relative min-w-0 overflow-hidden rounded-[1.5rem] border border-champagne-gold/25 bg-[#071519] p-2 shadow-[0_16px_60px_rgba(0,0,0,0.2)] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-champagne-gold/60 hover:shadow-[0_18px_50px_rgba(211,175,108,0.14)] motion-reduce:transform-none sm:p-3">
                 <Image
                   src={`/${arquivo}`}
                   alt={`Página ${index + 1} do portfólio oficial apresentando profissionais da Estátua Viva Produções`}
