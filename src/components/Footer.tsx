@@ -88,14 +88,14 @@ export default function Footer() {
           {/* Official Operational Details */}
           <div className="lg:col-span-4 space-y-4">
             <h4 className="font-mono text-xs uppercase tracking-widest text-champagne-gold mb-4">
-              BASE ADMINISTRATIVA & CONTATO
+              REGIÃO DE ATUAÇÃO & CONTATO
             </h4>
 
             <div className="flex items-start gap-3 text-xs font-sans text-stone-warm">
               <MapPin strokeWidth={1.5} className="w-4 h-4 text-champagne-gold shrink-0 mt-0.5" />
               <span>
-                Base administrativa no Tatuapé, São Paulo.<br />
-                Apresentações realizadas no local do evento; não há atendimento presencial nesta base.
+                Base em São Paulo (SP), com atendimento em todo o Brasil.<br />
+                Contratações e informações pelo WhatsApp; apresentações no local do evento.
               </span>
             </div>
 
@@ -136,7 +136,7 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <span>Direção: Rodolfo Valentino</span>
             <span>•</span>
-            <span>São Paulo / Brasil</span>
+            <span>São Paulo • Atendemos todo o Brasil</span>
           </div>
         </div>
       </div>
