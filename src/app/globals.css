@@ -777,3 +777,10 @@ body {
 }
 .hero-split .hero-immersive-background { opacity: .9; }
 .hero-split .hero-immersive-image { object-position: center center; }
+
+/* Header monogram: larger visual mark while retaining responsive navigation. */
+.site-header .brand-logo-official { width: 176px; height: 92px; }
+.site-header .brand-logo-official img { object-fit: contain; object-position: left center; }
+@media (max-width: 767px) {
+  .site-header .brand-logo-official { width: 144px; height: 78px; }
+}
