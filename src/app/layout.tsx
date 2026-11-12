@@ -25,6 +25,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Estátua Viva Produções' }],
   metadataBase: new URL(SITE_URL),
+  icons: {
+    icon: [{ url: '/brand/monograma-oficial.webp', type: 'image/webp', sizes: 'any' }],
+    shortcut: '/brand/monograma-oficial.webp',
+    apple: [{ url: '/brand/monograma-oficial.webp', sizes: '180x180', type: 'image/webp' }],
+  },
   verification: { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION },
   other: { 'geo.region': 'BR-SP', 'geo.placename': 'São Paulo' },
   openGraph: {
