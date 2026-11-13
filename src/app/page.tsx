@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/lib/site-config';
-import { FAQS } from '@/data/portfolioData';
+import { FAQS, ARTISTIC_LINES } from '@/data/portfolioData';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ClientMarquee from '@/components/ClientMarquee';
@@ -15,31 +15,96 @@ import ReviewsAndFaq from '@/components/ReviewsAndFaq';
 import Footer from '@/components/Footer';
 import SiteMotion from '@/components/motion/SiteMotion';
 
-export const metadata: Metadata = { title: 'Estátua Viva e Personagens Vivos em São Paulo | Estátua Viva Produções', description: 'Estátuas vivas e personagens personalizados para feiras, eventos corporativos, festas e produções culturais. Base em São Paulo e apresentações em todo o Brasil. Peça um orçamento.', alternates: { canonical: `${SITE_URL}/` } };
+export const metadata: Metadata = {
+  title: 'Estátua Viva e Personagens Vivos para Eventos | SP e Brasil',
+  description: 'Contrate estátuas vivas e personagens vivos para casamentos, feiras e eventos corporativos em São Paulo e todo o Brasil com a Estátua Viva Produções.',
+  alternates: { canonical: `${SITE_URL}/` },
+  openGraph: {
+    title: 'Estátua Viva e Personagens Vivos para Eventos | SP e Brasil',
+    description: 'Contrate estátuas vivas e personagens vivos para casamentos, feiras e eventos corporativos em São Paulo e todo o Brasil com a Estátua Viva Produções.',
+    url: `${SITE_URL}/`,
+    type: 'website',
+  },
+};
 
 export default function Home() {
   const structuredData = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': ['Organization','EntertainmentBusiness'],
-        foundingDate: '2005',
-        founder: { '@type': 'Person', name: 'Rodolfo Valentino' },
-        knowsAbout: ['estátuas vivas', 'personagens vivos', 'eventos corporativos', 'performances personalizadas', 'casamentos'],
-        '@id': `${SITE_URL}/#empresa`,
+        '@type': 'LocalBusiness',
+        '@id': 'https://estatuavivaproducoes.com.br',
         name: 'Estátua Viva Produções',
-        url: `${SITE_URL}/`,
-        slogan: 'Você imagina. A gente dá vida.',
-        telephone: '+55-11-93776-5250',
+        image: 'https://estatuavivaproducoes.com.br',
+        url: 'https://www.estatuavivaproducoes.com.br/',
+        telephone: '+5511937765250',
         email: 'contato@estatuavivaproducoes.com.br',
-        image: `${SITE_URL}/og-image.png`,
-        location: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'São Paulo', addressRegion: 'SP', addressCountry: 'BR' } },
-        description: 'Produção de performances de estátuas vivas para casamentos, feiras, inaugurações e eventos corporativos em todo o Brasil. Atendimento comercial virtual e apresentações no local contratado.',
-        areaServed: [{ '@type': 'City', name: 'São Paulo' }, { '@type': 'Country', name: 'Brasil' }],
-        sameAs: ['https://www.instagram.com/estatuavivaproducoes/', 'https://www.youtube.com/@estatuavivaoficial', 'https://www.facebook.com/estatuavivaproducoes'],
+        priceRange: '$$$',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'São Paulo',
+          addressRegion: 'SP',
+          addressCountry: 'BR',
+          streetAddress: 'Tatuapé',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: '-23.5414',
+          longitude: '-46.5762',
+        },
+        founder: {
+          '@type': 'Person',
+          name: 'Rodolfo Valentino',
+        },
+        foundingDate: '2005',
+        areaServed: {
+          '@type': 'Country',
+          name: 'Brasil',
+        },
+        sameAs: [
+          'https://instagram.com/estatuavivaproducoes/',
+          'https://facebook.com/estatuavivaproducoes',
+          'https://youtube.com/@estatuavivaoficial',
+        ],
       },
-      { '@type': 'Service', name: 'Entretenimento artístico e personagens para eventos', serviceType: 'Performances de estátuas vivas, figurinos e personagens temáticos para eventos e ações promocionais', provider: { '@id': `${SITE_URL}/#empresa` }, areaServed: { '@type': 'Country', name: 'Brasil' }, description: 'Criação e caracterização de personagens, figurinos artísticos e performances presenciais para casamentos, feiras, inaugurações, eventos corporativos e ações promocionais.' },
-      { '@type': 'FAQPage', mainEntity: FAQS.map(({ question, answer }) => ({ '@type': 'Question', name: question, acceptedAnswer: { '@type': 'Answer', text: answer } })) },
+      {
+        '@type': 'FAQPage',
+        '@id': 'https://estatuavivaproducoes.com.br',
+        mainEntity: [
+          {
+            '@type': 'Question',
+            name: 'Como funciona a dinâmica das estátuas vivas durante o evento?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Os artistas combinam períodos de imobilidade escultural impactante com movimentos sutis e interações calculadas conforme o público se aproxima, gerando surpresa e excelentes oportunidades de fotos.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Vocês atendem fora da capital de São Paulo?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Sim. Embora nossa base operacional e de criação artística esteja localizada na região do Tatuapé, em São Paulo (SP), a Estátua Viva Produções atende casamentos, feiras e eventos corporativos em todo o Brasil.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'Como solicitar um orçamento de estátua viva ou personagem?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Os orçamentos e consultas de disponibilidade podem ser feitos diretamente pelo nosso WhatsApp Oficial (+55 11 93776-5250) ou através do configurador de proposta expresso em nosso site.',
+            },
+          },
+          {
+            '@type': 'Question',
+            name: 'A empresa possui atendimento presencial no Tatuapé?',
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: 'Nossa base no Tatuapé funciona como ateliê de criação e acervo cênico. O atendimento comercial é centralizado via canais digitais (WhatsApp e E-mail), e as performances artísticas ocorrem diretamente no local do evento contratado.',
+            },
+          },
+        ],
+      },
     ],
   };
   return (

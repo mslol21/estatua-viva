@@ -289,3 +289,127 @@ export const FAQS = [
     answer: 'Recomendamos que eventos corporativos, feiras e casamentos façam a reserva com pelo menos 30 a 60 dias de antecedência, especialmente para os meses de alta temporada (maio, setembro, outubro, novembro e dezembro). Para projetos sob medida com confecção cenográfica personalizada, sugerimos de 45 a 90 dias para confecção e ensaios.',
   },
 ];
+
+export interface ArtisticLine {
+  id: string;
+  name: string;
+  badge: string;
+  categoryKey: string;
+  keywords: string[];
+  description: string;
+  shortSubtitle: string;
+  image: string;
+  href: string;
+  color: string;
+}
+
+export const ARTISTIC_LINES: ArtisticLine[] = [
+  {
+    id: 'ouro-imperial',
+    name: 'Ouro Imperial',
+    badge: 'Gala & Celebrações',
+    categoryKey: 'Ouro Imperial',
+    keywords: [
+      'Estátua viva dourada',
+      'recepção de gala',
+      'eventos solenes São Paulo',
+      'intervenção artística corporativa',
+    ],
+    shortSubtitle: 'Brilho escultural soberano para recepções triunfais e eventos solenes em São Paulo e todo o Brasil.',
+    description:
+      'A linha Ouro Imperial da Estátua Viva Produções traz o brilho escultural soberano para recepções triunfais e eventos solenes. Com figurinos luxuosos ricamente detalhados e maquiagem metalizada impecável, as performances em dourado unem a imponência da mitologia clássica à elegância de festas de gala e premiações empresariais. É a escolha perfeita para criar um impacto visual inesquecível logo na entrada do evento, atraindo olhares e servindo como um ponto nobre para registros fotográficos dos convidados. Disponível para eventos em São Paulo e todo o Brasil.',
+    image: '/portfolio/ouro.webp',
+    href: '#estilo-ouro',
+    color: '244, 212, 154',
+  },
+  {
+    id: 'marmore-branco',
+    name: 'Mármore Branco',
+    badge: 'Clássico & Casamentos',
+    categoryKey: 'Mármore Branco',
+    keywords: [
+      'Estátua viva de anjo',
+      'recepção de casamentos SP',
+      'arte celestial atemporal',
+      'estátua viva branca',
+    ],
+    shortSubtitle: 'Inspirada na pureza renascentista e nos anjos barrocos para casamentos e celebrações clássicas.',
+    description:
+      'Inspirada na pureza renascentista e nos anjos barrocos, a linha Mármore Branco oferece uma experiência de arte celestial atemporal para casamentos, bodas e celebrações clássicas. Nossos artistas esculpem visualmente figuras que remetem a monumentos históricos de pedra e mármore, trazendo leveza, suavidade e lirismo para o acolhimento dos convidados. Se você busca uma recepção artística sofisticada e emocionante para o dia do seu casamento em São Paulo ou outras regiões do país, a estética barroca e os anjos em branco entregam a atmosfera ideal.',
+    image: '/portfolio/branca.webp',
+    href: '#estilo-branca',
+    color: '240, 240, 245',
+  },
+  {
+    id: 'prata-industrial',
+    name: 'Prata Industrial',
+    badge: 'Corporativo & High-Tech',
+    categoryKey: 'Prata Industrial',
+    keywords: [
+      'Estátua viva prateada',
+      'atração para estandes de feiras',
+      'robôs para eventos corporativos',
+      'ativação de marca SP',
+    ],
+    shortSubtitle: 'Vanguardismo metálico e figuras futuristas para feiras de negócios, congressos e ativações de marca.',
+    description:
+      'O vanguardismo metálico se destaca na linha Prata Industrial, desenvolvida sob medida para feiras de negócios, congressos e eventos corporativos high-tech. Composta por robôs, figuras futuristas e personagens contemporâneos com acabamento prateado, essa vertente artística é ideal para ativações de marca, lançamentos de produtos e retenção de público em estandes. Unindo alta tecnologia visual e precisão performática, nossas estátuas vivas prateadas geram forte engajamento e dão máxima presença à sua empresa no ambiente de negócios.',
+    image: '/portfolio/prata.webp',
+    href: '#estilo-prata',
+    color: '200, 205, 215',
+  },
+  {
+    id: 'tematicos-ludicos',
+    name: 'Temáticos & Lúdicos',
+    badge: 'Cinema & Ficção',
+    categoryKey: 'Temáticos & Cosplay',
+    keywords: [
+      'Estátua viva Charles Chaplin',
+      'personagens temáticos para eventos',
+      'piratas interativos',
+      'entretenimento sob medida',
+    ],
+    shortSubtitle: 'Homenagens a ícones do cinema e da ficção com mímica, piratas e personagens memoráveis.',
+    description:
+      'Dê vida às grandes histórias com a linha Temáticos & Lúdicos. Reunindo homenagens a ícones do cinema e da ficção — como as clássicas performances de mímica de Charles Chaplin, piratas interativos e deuses antigos —, essa categoria entrega versatilidade e entretenimento cultural para festas temáticas, shoppings, bienais e museus. Cada caracterização respeita rigorosamente a essência do personagem original, combinando nostalgia, humor sutil e imobilidade artística para encantar públicos de todas as idades.',
+    image: '/portfolio/diversas.webp',
+    href: '#estilo-diversas',
+    color: '228, 193, 132',
+  },
+  {
+    id: 'personagens-vivos',
+    name: 'Personagens Vivos',
+    badge: 'Interação & Entretenimento',
+    categoryKey: 'Personagens vivos',
+    keywords: [
+      'Personagens vivos para festas',
+      'atores performáticos para eventos',
+      'interação com público São Paulo',
+      'cosplay profissional',
+    ],
+    shortSubtitle: 'Interpretação dinâmica com falas, atuação e forte interação para quebrar a barreira do palco.',
+    description:
+      'Diferente das estátuas estáticas, a categoria de Personagens Vivos foca na interpretação dinâmica, uso de falas e forte interação com o público. A Estátua Viva Produções conta com atores performáticos profissionais altamente treinados para quebrar a barreira entre o palco e a plateia, conduzindo dinâmicas cênicas dentro do conceito do seu evento. Seja para recepções animadas, mestre de cerimônias performático ou intervenções teatrais itinerantes, garantimos alto nível de fidelidade cênica e carisma.',
+    image: '/brand/pirata.webp',
+    href: '#estilo-personagens',
+    color: '228, 193, 132',
+  },
+  {
+    id: 'producoes-personalizadas',
+    name: 'Produções Personalizadas',
+    badge: 'Projetos Exclusivos B2B',
+    categoryKey: 'Projetos Sob Medida (B2B)',
+    keywords: [
+      'Criação de personagens para marcas',
+      'mascote vivo para empresas',
+      'projetos cênicos sob medida',
+      'cenografia viva',
+    ],
+    shortSubtitle: 'Atelier cenográfico que desenvolve mascotes, produtos vivos e conceitos do zero para marcas.',
+    description:
+      'Sua marca tem uma identidade única, e nós criamos a expressão artística ideal para ela. Em Produções Personalizadas, o atelier cenográfico dirigido por Rodolfo Valentino desenvolve conceitos artísticos do zero, incluindo figurinos exclusivos, mascotes vivos e produtos vivos sob medida para empresas e campanhas publicitárias. Transformamos o logotipo, o conceito ou o produto da sua marca em uma obra de arte viva e itinerante, gerando conexão emocional direta com seus clientes e garantindo o sucesso de ações de marketing exclusivas.',
+    image: '/portfolio/diversas.webp',
+    href: '#estilo-personalizados',
+    color: '228, 193, 132',
+  },
+];

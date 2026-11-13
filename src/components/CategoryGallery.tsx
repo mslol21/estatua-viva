@@ -2,95 +2,18 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ArrowUpRight, Orbit, LayoutGrid, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Orbit, LayoutGrid, Sparkles, ChevronDown } from 'lucide-react';
 import ThreeDCarousel, { CarouselItem } from './ThreeDCarousel';
+import { ARTISTIC_LINES } from '@/data/portfolioData';
 
-interface CategoryStyle {
-  name: string;
-  badge: string;
-  image: string;
-  href: string;
-  alt: string;
-  subtitle: string;
-}
-
-const CATEGORIES: CategoryStyle[] = [
-  {
-    name: 'Estátuas vivas — Ouro',
-    badge: 'Ouro',
-    image: '/portfolio/ouro.webp',
-    href: '#estilo-ouro',
-    alt: 'Artista caracterizado como estátua viva em dourado',
-    subtitle: 'Nobre, triunfal e banhado a ouro para recepções de gala e momentos solenes.',
-  },
-  {
-    name: 'Estátuas vivas — Branca',
-    badge: 'Branca',
-    image: '/portfolio/branca.webp',
-    href: '#estilo-branca',
-    alt: 'Artista caracterizado como anjo em branco',
-    subtitle: 'Clássico renascentista, celestial e atemporal para casamentos e eventos elegantes.',
-  },
-  {
-    name: 'Estátuas vivas — Prata',
-    badge: 'Prata',
-    image: '/portfolio/prata.webp',
-    href: '#estilo-prata',
-    alt: 'Artista caracterizado como chef prateado',
-    subtitle: 'Futurista, vanguardista e metálico para feiras corporativas e congressos high-tech.',
-  },
-  {
-    name: 'Estátuas vivas — Variadas',
-    badge: 'Diversas',
-    image: '/portfolio/diversas.webp',
-    href: '#estilo-diversas',
-    alt: 'Personagens inspirados em Chaplin e bailarina azul',
-    subtitle: 'Chaplin, Piratas, Deuses e figuras personalizadas sob medida para o seu tema.',
-  },
-  {
-    name: 'Personagens vivos', badge: 'Interação', image: '/brand/pirata.webp', href: '#estilo-personagens', alt: 'Personagem pirata interagindo com o público', subtitle: 'Interpretação dinâmica, movimentos, falas e interação constante com os convidados.',
-  },
-  {
-    name: 'Produções personalizadas', badge: 'Sob medida', image: '/portfolio/diversas.webp', href: '#estilo-personalizados', alt: 'Personagens e performances de diferentes temáticas', subtitle: 'Personagens, figurinos e performances desenvolvidos a partir do conceito do seu evento ou marca.',
-  },
-];
-
-const ORBIT_INSPIRATIONS: CarouselItem[] = [
-  {
-    id: '#estilo-ouro',
-    title: 'Ouro Imperial',
-    badge: 'Gala & Celebrações',
-    subtitle: 'Brilho escultural soberano para recepções triunfais e eventos solenes',
-    image: '/portfolio/ouro.webp',
-    color: '244, 212, 154',
-  },
-  {
-    id: '#estilo-branca',
-    title: 'Mármore Branco',
-    badge: 'Clássico & Casamentos',
-    subtitle: 'Pureza renascentista, anjos barrocos e arte celestial atemporal',
-    image: '/portfolio/branca.webp',
-    color: '240, 240, 245',
-  },
-  {
-    id: '#estilo-prata',
-    title: 'Prata Industrial',
-    badge: 'Corporativo & High-Tech',
-    subtitle: 'Vanguardismo metálico, robôs e figuras contemporâneas para feiras',
-    image: '/portfolio/prata.webp',
-    color: '200, 205, 215',
-  },
-  {
-    id: '#estilo-diversas',
-    title: 'Temáticos & Lúdicos',
-    badge: 'Cinema & Ficção',
-    subtitle: 'Chaplin, Piratas, Deuses e criações exclusivas sob medida para seu tema',
-    image: '/portfolio/diversas.webp',
-    color: '228, 193, 132',
-  },
-  { id: '#estilo-personagens', title: 'Personagens vivos', badge: 'Interação & Entretenimento', subtitle: 'Interpretação, falas e interação com o público', image: '/brand/pirata.webp', color: '228, 193, 132' },
-  { id: '#estilo-personalizados', title: 'Produções personalizadas', badge: 'Projetos Exclusivos', subtitle: 'Conceitos artísticos criados para eventos e marcas', image: '/portfolio/diversas.webp', color: '228, 193, 132' },
-];
+const ORBIT_INSPIRATIONS: CarouselItem[] = ARTISTIC_LINES.map((line) => ({
+  id: line.href,
+  title: line.name,
+  badge: line.badge,
+  subtitle: line.shortSubtitle,
+  image: line.image,
+  color: line.color,
+}));
 
 export default function CategoryGallery() {
   const [viewMode, setViewMode] = useState<'orbit' | 'grid'>('orbit');
@@ -127,7 +50,7 @@ export default function CategoryGallery() {
 
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <p className="max-w-xs text-xs sm:text-sm leading-6 text-[#d5d7cf]">
-            Explore as 6 linhas artísticas do portfólio oficial e descubra a performance ideal para encantar seu público.
+            Explore as 6 linhas artísticas da Estátua Viva Produções e descubra a performance ideal para seu evento.
           </p>
 
           {/* Alternador de visualização (Órbita 3D vs Grade) */}
@@ -138,44 +61,29 @@ export default function CategoryGallery() {
               aria-pressed={viewMode === 'orbit'}
               className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 transition-all ${
                 viewMode === 'orbit'
-                  ? 'bg-[#dfbd7c] text-[#071318] font-bold shadow-[0_0_12px_rgba(223,189,124,0.6)]'
-                  : 'text-[#d5d7cf] hover:text-[#f6f1e8]'
+                  ? 'bg-[#dfbd7c] text-[#071318] font-semibold shadow-[0_0_12px_rgba(223,189,124,0.6)]'
+                  : 'text-[#d5d7cf] hover:text-white'
               }`}
             >
-              <Orbit size={14} />
+              <Orbit size={13} />
               <span>Órbita 3D</span>
             </button>
+
             <button
               type="button"
               onClick={() => setViewMode('grid')}
               aria-pressed={viewMode === 'grid'}
               className={`px-3 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider flex items-center gap-1.5 transition-all ${
                 viewMode === 'grid'
-                  ? 'bg-[#dfbd7c] text-[#071318] font-bold shadow-[0_0_12px_rgba(223,189,124,0.6)]'
-                  : 'text-[#d5d7cf] hover:text-[#f6f1e8]'
+                  ? 'bg-[#dfbd7c] text-[#071318] font-semibold shadow-[0_0_12px_rgba(223,189,124,0.6)]'
+                  : 'text-[#d5d7cf] hover:text-white'
               }`}
             >
-              <LayoutGrid size={14} />
+              <LayoutGrid size={13} />
               <span>Grade</span>
             </button>
           </div>
         </div>
-      </div>
-
-      {/* Atalhos rápidos de categorias com neon dourado suave */}
-      <div className="flex flex-wrap items-center gap-2 mb-6 relative z-10">
-        <span className="text-[11px] font-mono uppercase tracking-wider text-stone-warm mr-1">
-          Ir direto ao estilo:
-        </span>
-        {CATEGORIES.map((cat) => (
-          <a
-            key={cat.href}
-            href={cat.href}
-            className="px-3.5 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider bg-[#0d272d]/70 border border-[#dfbd7c]/45 text-[#ffe6a3] hover:border-[#ffe6a3] hover:shadow-[0_0_15px_rgba(245,215,145,0.5)] transition-all"
-          >
-            {cat.name}
-          </a>
-        ))}
       </div>
 
       {/* Disposição em Órbita 3D ou Grade */}
@@ -187,48 +95,98 @@ export default function CategoryGallery() {
           />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 relative z-10">
-          {CATEGORIES.map((category) => (
-            <a
-              data-motion-tilt
-              key={category.name}
-              href={category.href}
-              className="motion-collectible neon-gold-card group relative block overflow-hidden rounded-2xl bg-[#102329] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#f0d49a]"
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10">
+          {ARTISTIC_LINES.map((line) => (
+            <article
+              key={line.id}
+              className="motion-collectible neon-gold-card group relative flex flex-col justify-between overflow-hidden rounded-2xl bg-[#091a20]/80 border border-[#dfbd7c]/25 p-5 sm:p-6 transition-all hover:border-[#ffe6a3]/60"
             >
-              <div className="cinematic-card-image relative aspect-[3/4]">
-                <Image
-                  src={category.image}
-                  alt={category.alt}
-                  fill
-                  sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-t from-[#031014]/95 via-[#031014]/25 to-transparent"
-                />
-                <div className="absolute z-10 inset-x-0 bottom-0 flex flex-col justify-end p-5 sm:p-6">
-                  <div className="flex items-center justify-between gap-2 mb-1.5">
-                    <span className="text-[10px] uppercase tracking-[0.16em] text-[#e4c184] font-mono">
-                      {category.badge}
-                    </span>
-                    <ArrowUpRight
-                      aria-hidden="true"
-                      className="h-4 w-4 shrink-0 text-[#e4c184] transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
-                    />
-                  </div>
-                  <h3 className="font-serif text-2xl text-white sm:text-3xl font-normal group-hover:text-[#ffe6a3] transition-colors">
-                    {category.name}
+              <div>
+                <div className="cinematic-card-image relative aspect-[16/10] overflow-hidden rounded-xl mb-4 bg-black/40">
+                  <Image
+                    src={line.image}
+                    alt={`${line.name} — ${line.badge}`}
+                    fill
+                    sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 33vw"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#031014]/90 via-transparent to-transparent" />
+                  <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[9px] font-mono tracking-widest uppercase bg-[#071318]/90 text-[#ffe6a3] border border-[#dfbd7c]/50 backdrop-blur-md">
+                    {line.badge}
+                  </span>
+                </div>
+
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <h3 className="font-serif text-2xl text-white font-normal group-hover:text-[#ffe6a3] transition-colors">
+                    {line.name}
                   </h3>
-                  <p className="mt-1.5 text-xs text-[#d5d7cf] line-clamp-2 leading-relaxed">
-                    {category.subtitle}
-                  </p>
+                  <a
+                    href={line.href}
+                    aria-label={`Ver personagens da linha ${line.name}`}
+                    className="text-[#e4c184] hover:text-[#ffe6a3] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  >
+                    <ArrowUpRight size={18} />
+                  </a>
+                </div>
+
+                <p className="text-xs text-[#d5d7cf] leading-relaxed mb-4">
+                  {line.description}
+                </p>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
+                  {line.keywords.map((kw) => (
+                    <span
+                      key={kw}
+                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-[#e4c184]/90 border border-white/5"
+                    >
+                      #{kw}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </a>
+            </article>
           ))}
         </div>
       )}
+
+      {/* Guia Editorial Semântico de SEO & AEO (Indexável por Buscadores e IA) */}
+      <details className="group mt-12 rounded-2xl border border-champagne-gold/25 bg-[#071418]/80 p-6 sm:p-8 neon-gold-card relative z-10 transition-all">
+        <summary className="cursor-pointer flex items-center justify-between font-serif text-xl sm:text-2xl text-[#ffe6a3] select-none hover:text-white transition-colors">
+          <div className="flex items-center gap-2">
+            <Sparkles size={18} className="text-[#dfbd7c]" />
+            <span>Guia das 6 Linhas Artísticas — Estátua Viva Produções</span>
+          </div>
+          <ChevronDown size={20} className="text-[#dfbd7c] transition-transform duration-300 group-open:rotate-180" />
+        </summary>
+
+        <div className="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-3 pt-6 border-t border-champagne-gold/20">
+          {ARTISTIC_LINES.map((line) => (
+            <div key={`guide-${line.id}`} className="space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#dfbd7c]" />
+                <h4 className="font-serif text-lg text-white font-medium">
+                  {line.name} <span className="text-xs font-mono text-[#e4c184]">({line.badge})</span>
+                </h4>
+              </div>
+
+              <p className="text-xs text-[#c5c8bf] leading-relaxed">
+                {line.description}
+              </p>
+
+              <div className="pt-2">
+                <p className="text-[10px] font-mono uppercase tracking-wider text-[#dfbd7c] mb-1">
+                  Palavras-chave alvo:
+                </p>
+                <p className="text-[11px] text-[#e4c184]/80 italic leading-snug">
+                  {line.keywords.join(' · ')}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </details>
     </section>
   );
 }
