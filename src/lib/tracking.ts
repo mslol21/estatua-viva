@@ -103,7 +103,7 @@ export function trackLeadAndOpenWhatsApp({
       });
 
       if (typeof w.gtag === 'function') {
-        w.gtag('event', 'generate_lead', {
+        w.gtag('event', 'whatsapp_click', {
           event_category: eventCategory,
           event_label: leadLabel,
           lead_source: leadSource,
@@ -118,7 +118,7 @@ export function trackLeadAndOpenWhatsApp({
     try {
       const w = window as unknown as { fbq?: (...args: unknown[]) => void };
       if (typeof w.fbq === 'function') {
-        w.fbq('track', 'Lead', {
+        w.fbq('trackCustom', 'WhatsAppClick', {
           content_name: leadLabel,
           content_category: leadSource,
         });
