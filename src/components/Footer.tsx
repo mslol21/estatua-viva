@@ -95,7 +95,7 @@ export default function Footer() {
             <div className="flex items-start gap-3 text-xs font-sans text-stone-warm">
               <MapPin strokeWidth={1.5} className="w-4 h-4 text-champagne-gold shrink-0 mt-0.5" />
               <span>
-                Base em São Paulo (SP), com atendimento em todo o Brasil.<br />
+                Base na região do Tatuapé, São Paulo (SP). Atendimento em todo o Brasil.<br />
                 Contratações e informações pelo WhatsApp; apresentações no local do evento.
               </span>
             </div>
