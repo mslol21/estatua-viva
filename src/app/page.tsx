@@ -15,7 +15,7 @@ import ReviewsAndFaq from '@/components/ReviewsAndFaq';
 import Footer from '@/components/Footer';
 import SiteMotion from '@/components/motion/SiteMotion';
 
-export const metadata: Metadata = { title: 'Estátua Viva e Personagens Vivos em São Paulo | Estátua Viva Produções', description: 'Desde 2005, a Estátua Viva Produções cria estátuas vivas e personagens vivos para casamentos, feiras e eventos corporativos em São Paulo e todo o Brasil. Orçamento personalizado.', alternates: { canonical: `${SITE_URL}/` } };
+export const metadata: Metadata = { title: 'Estátua Viva e Personagens Vivos em São Paulo | Estátua Viva Produções', description: 'Estátuas vivas e personagens personalizados para feiras, eventos corporativos, festas e produções culturais. Base em São Paulo e apresentações em todo o Brasil. Peça um orçamento.', alternates: { canonical: `${SITE_URL}/` } };
 
 export default function Home() {
   const structuredData = {
