@@ -23,7 +23,7 @@ export default function Navbar() {
     document.addEventListener('keydown', onKey); document.addEventListener('pointerdown', closeOutside);
     return () => { document.removeEventListener('keydown', onKey); document.removeEventListener('pointerdown', closeOutside); };
   }, [open]);
-  return <header ref={header} className={`site-header ${scrolled ? 'is-scrolled' : ''}`}>
+  return <header ref={header} className={`site-header ${scrolled || open ? 'is-scrolled is-visible' : 'is-at-top'}`}>
     <div className="site-container flex items-center justify-between gap-6">
       <Link href="/" aria-label="Estátua Viva Produções — início" className="shrink-0"><BrandLogo /></Link>
       <nav aria-label="Navegação principal" className="hidden lg:flex items-center gap-4 xl:gap-6">{links.map(link => <a key={link.href} href={link.href} className="nav-link">{link.label}{link.image && <span className="nav-preview" aria-hidden="true"><Image src={link.image} alt="" width={48} height={48} /></span>}</a>)}</nav>
