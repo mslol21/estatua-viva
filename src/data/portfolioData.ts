@@ -265,6 +265,26 @@ export const FAQS = [
     answer: 'Com certeza. Embora nossa sede artística esteja localizada no Tatuapé (São Paulo - SP), possuímos logística estruturada para atender eventos em todo o estado de São Paulo, litoral, interior e em capitais de todo o território brasileiro, incluindo transporte de adereços, maquiagem especializada e elenco.',
   },
   {
+    question: 'Como solicitar um orçamento de estátua viva ou personagem?',
+    answer: 'Informe a data, a cidade, o tipo de evento, o público esperado e a ideia de personagem ou performance. A produção avalia disponibilidade, formato artístico, necessidades técnicas e logística antes de apresentar a proposta.',
+  },
+  {
+    question: 'Quanto tempo dura uma apresentação de estátua viva?',
+    answer: 'A duração e os intervalos dependem do personagem, do formato do evento e das condições de apresentação. A programação é definida na proposta, considerando conforto do artista, interação com o público e necessidades da produção.',
+  },
+  {
+    question: 'Quais condições o espaço precisa oferecer para a apresentação?',
+    answer: 'A equipe orienta sobre área de atuação, circulação do público, preparação e apoio ao artista conforme o formato contratado. Em feiras, recepções e eventos externos, os detalhes são alinhados previamente com o organizador.',
+  },
+  {
+    question: 'É possível criar personagens para uma feira, marca ou tema específico?',
+    answer: 'Sim. O briefing pode incluir referências visuais, cores, identidade da marca e objetivo do evento. A viabilidade, o prazo e os custos de criação são avaliados individualmente.',
+  },
+  {
+    question: 'A empresa possui atendimento presencial no Tatuapé?',
+    answer: 'A base de produção fica na região do Tatuapé, em São Paulo. O atendimento comercial é realizado de forma remota e as performances acontecem no local contratado, em São Paulo e outras regiões do Brasil, mediante disponibilidade.',
+  },
+  {
     question: 'Qual a antecedência recomendada para reserva de data?',
     answer: 'Recomendamos que eventos corporativos, feiras e casamentos façam a reserva com pelo menos 30 a 60 dias de antecedência, especialmente para os meses de alta temporada (maio, setembro, outubro, novembro e dezembro). Para projetos sob medida com confecção cenográfica personalizada, sugerimos de 45 a 90 dias para confecção e ensaios.',
   },
