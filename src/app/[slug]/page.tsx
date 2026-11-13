@@ -24,9 +24,9 @@ const services: Record<string, { title: string; description: string; heading: st
   },
   'estatua-viva-para-eventos-corporativos': {
     title: 'Estátua Viva para Eventos Corporativos e Feiras',
-    description: 'Performances artísticas e personagens personalizados para feiras, congressos, recepções empresariais e ativações de marca.',
+    description: 'Estátuas vivas para feiras e eventos corporativos em São Paulo e no Brasil. Personagens personalizados para congressos, recepções e ativações de marca.',
     heading: 'Entretenimento artístico para eventos corporativos',
-    intro: 'Performances de estátuas vivas e personagens caracterizados para feiras, congressos, recepções, lançamentos e experiências de marca.',
+    intro: 'Para feiras, congressos, recepções e lançamentos, a Estátua Viva Produções desenvolve performances e personagens caracterizados que valorizam a experiência dos participantes. Base na região do Tatuapé, São Paulo, com atendimento nacional mediante consulta.',
     benefits: ['Atração visual em estandes e recepções', 'Personagens e figurinos temáticos', 'Ações promocionais e lançamentos', 'Experiências com interação do público'],
     questions: [{q:'A apresentação pode seguir o tema da marca?',a:'A produção pode avaliar caracterização e figurino personalizados conforme o briefing e a viabilidade do projeto.'},{q:'Vocês atendem feiras em outras cidades?',a:'Sim. O atendimento informado é nacional, sujeito a agenda e logística.'}],
   },
@@ -63,7 +63,7 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
       <p className="eyebrow">Estátua Viva Produções · Atendimento em todo o Brasil</p>
       <h1 className="max-w-4xl font-serif text-4xl sm:text-6xl mt-5 mb-7">{item.heading}</h1>
       <p className="max-w-3xl text-lg leading-8 text-stone-warm">{item.intro}</p>
-      <TrackedWhatsAppLink message={'Olá! Gostaria de solicitar um orçamento para ' + item.heading + '.'} label={params.slug} className="mt-9 inline-flex rounded-full bg-champagne-gold px-7 py-4 font-semibold text-obsidian">Solicitar orçamento pelo WhatsApp</TrackedWhatsAppLink>
+      <TrackedWhatsAppLink message={'Olá! Gostaria de solicitar um orçamento para ' + item.heading + '. Cidade: [cidade]. Data: [data]. Tipo de evento: [tipo]. Personagem desejado: [ideia].'} label={params.slug} className="mt-9 inline-flex rounded-full bg-champagne-gold px-7 py-4 font-semibold text-obsidian">Solicitar orçamento pelo WhatsApp</TrackedWhatsAppLink>
     </section>
     <section className="border-y border-champagne-gold/20 bg-charcoal/50 py-16"><div className="site-container">
       <h2 className="font-serif text-3xl sm:text-4xl mb-8">Como funciona a experiência</h2>
