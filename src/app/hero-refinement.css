@@ -36,3 +36,38 @@
 .ticket-preview.ticket-updated { animation: ticketGoldPulse .5s ease-out; }
 @keyframes ticketGoldPulse { 0%, 100% { border-color: rgba(255,255,255,.15); box-shadow: none; } 40% { border-color: rgba(230,198,135,.9); box-shadow: 0 0 28px rgba(212,175,55,.38); } }
 @media (prefers-reduced-motion: reduce) { .ticket-preview.ticket-updated { animation: none; } .ticket-preview { transition: none; } }
+
+/* Immersive first fold: navigation appears only after leaving the top. */
+.site-header {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 50;
+  transition: opacity .28s ease, transform .28s ease, background-color .28s ease;
+}
+.site-header.is-at-top {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+.site-header.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.hero-split .hero-copy-entry { padding-inline-end: clamp(0px, 1.5vw, 20px); }
+.hero-split #hero-title { text-wrap: balance; }
+@media (max-width: 1023px) {
+  .hero-split .hero-copy-entry { max-width: 620px; padding-inline-end: 0; }
+  .hero-split .hero-immersive-image { object-position: 62% center; }
+}
+@media (max-width: 639px) {
+  .hero-split #hero-title { font-size: clamp(3.2rem, 12.5vw, 5rem); }
+  .hero-split .hero-immersive-image { object-position: 66% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none; }
+}
