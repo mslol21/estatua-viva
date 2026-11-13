@@ -136,12 +136,12 @@ export default function CategoryGallery() {
 
               <div>
                 <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/10">
-                  {line.keywords.map((kw) => (
+                  {(line.applications || line.keywords).map((app) => (
                     <span
-                      key={kw}
-                      className="text-[10px] font-mono px-2 py-0.5 rounded bg-white/5 text-[#e4c184]/90 border border-white/5"
+                      key={app}
+                      className="text-[11px] font-sans px-2.5 py-0.5 rounded-full bg-[#dfbd7c]/10 text-[#ffe6a3] border border-[#dfbd7c]/25 tracking-wide"
                     >
-                      #{kw}
+                      {app}
                     </span>
                   ))}
                 </div>
@@ -151,12 +151,12 @@ export default function CategoryGallery() {
         </div>
       )}
 
-      {/* Guia Editorial Semântico de SEO & AEO (Indexável por Buscadores e IA) */}
+      {/* Guia Editorial e Curadoria Artística (Acessível a Visitantes, Buscadores e IA) */}
       <details className="group mt-12 rounded-2xl border border-champagne-gold/25 bg-[#071418]/80 p-6 sm:p-8 neon-gold-card relative z-10 transition-all">
         <summary className="cursor-pointer flex items-center justify-between font-serif text-xl sm:text-2xl text-[#ffe6a3] select-none hover:text-white transition-colors">
           <div className="flex items-center gap-2">
             <Sparkles size={18} className="text-[#dfbd7c]" />
-            <span>Guia das 6 Linhas Artísticas — Estátua Viva Produções</span>
+            <span>Guia Curatorial das 6 Linhas Artísticas — Estátua Viva Produções</span>
           </div>
           <ChevronDown size={20} className="text-[#dfbd7c] transition-transform duration-300 group-open:rotate-180" />
         </summary>
@@ -176,11 +176,11 @@ export default function CategoryGallery() {
               </p>
 
               <div className="pt-2">
-                <p className="text-[10px] font-mono uppercase tracking-wider text-[#dfbd7c] mb-1">
-                  Palavras-chave alvo:
+                <p className="text-[11px] font-medium text-[#dfbd7c] mb-1">
+                  Ambientações & Momentos ideais:
                 </p>
-                <p className="text-[11px] text-[#e4c184]/80 italic leading-snug">
-                  {line.keywords.join(' · ')}
+                <p className="text-xs text-[#e4c184]/90 leading-snug">
+                  {(line.applications || line.keywords).join(' · ')}
                 </p>
               </div>
             </div>

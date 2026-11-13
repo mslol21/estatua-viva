@@ -3,12 +3,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { SITE_URL } from '@/lib/site-config';
 import { ArrowUpRight, Clapperboard, Palette, Sparkles, Users } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Nossa Equipe | Estátua Viva Produções',
   description: 'Conheça a direção artística e os profissionais por trás das estátuas vivas, personagens e experiências da Estátua Viva Produções.',
-  alternates: { canonical: '/equipe' },
+  alternates: { canonical: `${SITE_URL}/equipe` },
 };
 
 const fotosEquipe = ['7.png', '8.png', '9.png', '10.png', '11.png', '12.png'];

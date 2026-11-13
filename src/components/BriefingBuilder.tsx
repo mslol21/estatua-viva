@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { trackLeadAndOpenWhatsApp } from '@/lib/tracking';
+import { trackLeadAndOpenWhatsApp, trackStartQuote } from '@/lib/tracking';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import {
   Send,
@@ -118,7 +118,13 @@ export default function BriefingBuilder() {
   }, [step, missingField]);
 
   const handleNext = () => {
-    if (step < 3) setStep((prev) => prev + 1);
+    if (step < 3) {
+      setStep((prev) => {
+        const next = prev + 1;
+        trackStartQuote(`step_${next}`);
+        return next;
+      });
+    }
   };
 
   const handlePrev = () => {
@@ -148,7 +154,13 @@ export default function BriefingBuilder() {
 ${notes.trim() ? `• *Observações Cênicas:* ${notes.trim()}\n` : ''}
 Gostaria de verificar disponibilidade de agenda com a produção artística e obter uma proposta comercial personalizada.`;
 
-    trackLeadAndOpenWhatsApp({ message: formattedMessage, leadSource: 'configurador_proposta', leadLabel: 'gerar_e_enviar_whatsapp' });
+    trackLeadAndOpenWhatsApp({
+      message: formattedMessage,
+      leadSource: 'configurador_proposta',
+      leadLabel: 'gerar_e_enviar_whatsapp',
+      eventCategory: 'Conversion',
+      isQuoteSubmission: true,
+    });
   };
 
   return (

@@ -295,6 +295,7 @@ export interface ArtisticLine {
   name: string;
   badge: string;
   categoryKey: string;
+  applications: string[];
   keywords: string[];
   description: string;
   shortSubtitle: string;
@@ -309,6 +310,12 @@ export const ARTISTIC_LINES: ArtisticLine[] = [
     name: 'Ouro Imperial',
     badge: 'Gala & Celebrações',
     categoryKey: 'Ouro Imperial',
+    applications: [
+      'Recepções de gala',
+      'Eventos solenes',
+      'Premiações corporativas',
+      'Entradas triunfais',
+    ],
     keywords: [
       'Estátua viva dourada',
       'recepção de gala',
@@ -327,6 +334,12 @@ export const ARTISTIC_LINES: ArtisticLine[] = [
     name: 'Mármore Branco',
     badge: 'Clássico & Casamentos',
     categoryKey: 'Mármore Branco',
+    applications: [
+      'Casamentos e bodas',
+      'Cerimônias clássicas',
+      'Anjos barrocos e celestiais',
+      'Acolhimento solene',
+    ],
     keywords: [
       'Estátua viva de anjo',
       'recepção de casamentos SP',
@@ -345,6 +358,12 @@ export const ARTISTIC_LINES: ArtisticLine[] = [
     name: 'Prata Industrial',
     badge: 'Corporativo & High-Tech',
     categoryKey: 'Prata Industrial',
+    applications: [
+      'Estandes em feiras de negócios',
+      'Congressos e convenções',
+      'Ativações de marca e tecnologia',
+      'Lançamentos de produtos',
+    ],
     keywords: [
       'Estátua viva prateada',
       'atração para estandes de feiras',
@@ -363,6 +382,12 @@ export const ARTISTIC_LINES: ArtisticLine[] = [
     name: 'Temáticos & Lúdicos',
     badge: 'Cinema & Ficção',
     categoryKey: 'Temáticos & Cosplay',
+    applications: [
+      'Festas e bailes temáticos',
+      'Shopping centers e museus',
+      'Homenagens ao cinema mudo',
+      'Ações culturais e bienais',
+    ],
     keywords: [
       'Estátua viva Charles Chaplin',
       'personagens temáticos para eventos',
@@ -381,6 +406,12 @@ export const ARTISTIC_LINES: ArtisticLine[] = [
     name: 'Personagens Vivos',
     badge: 'Interação & Entretenimento',
     categoryKey: 'Personagens vivos',
+    applications: [
+      'Recepções interativas e animadas',
+      'Mestres de cerimônias performáticos',
+      'Intervenções teatrais itinerantes',
+      'Interação próxima com convidados',
+    ],
     keywords: [
       'Personagens vivos para festas',
       'atores performáticos para eventos',
@@ -399,6 +430,12 @@ export const ARTISTIC_LINES: ArtisticLine[] = [
     name: 'Produções Personalizadas',
     badge: 'Projetos Exclusivos B2B',
     categoryKey: 'Projetos Sob Medida (B2B)',
+    applications: [
+      'Criação de mascotes vivos de marcas',
+      'Campanhas publicitárias e comerciais',
+      'Produtos e logotipos vivos',
+      'Cenografia viva customizada',
+    ],
     keywords: [
       'Criação de personagens para marcas',
       'mascote vivo para empresas',

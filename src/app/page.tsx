@@ -32,20 +32,26 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'LocalBusiness',
-        '@id': 'https://estatuavivaproducoes.com.br',
+        '@type': ['LocalBusiness', 'EntertainmentBusiness'],
+        '@id': 'https://www.estatuavivaproducoes.com.br/#empresa',
         name: 'Estátua Viva Produções',
-        image: 'https://estatuavivaproducoes.com.br',
+        image: [
+          'https://www.estatuavivaproducoes.com.br/og-image.png',
+          'https://www.estatuavivaproducoes.com.br/brand/perfil-oficial.webp',
+        ],
+        logo: 'https://www.estatuavivaproducoes.com.br/brand/monograma-oficial.webp',
         url: 'https://www.estatuavivaproducoes.com.br/',
         telephone: '+5511937765250',
         email: 'contato@estatuavivaproducoes.com.br',
         priceRange: '$$$',
+        description:
+          'Produção artística de estátuas vivas, personagens temáticos e performances exclusivas para casamentos, feiras e eventos corporativos em todo o Brasil desde 2005.',
         address: {
           '@type': 'PostalAddress',
           addressLocality: 'São Paulo',
           addressRegion: 'SP',
           addressCountry: 'BR',
-          streetAddress: 'Tatuapé',
+          streetAddress: 'Região do Tatuapé',
         },
         geo: {
           '@type': 'GeoCoordinates',
@@ -69,7 +75,7 @@ export default function Home() {
       },
       {
         '@type': 'FAQPage',
-        '@id': 'https://estatuavivaproducoes.com.br',
+        '@id': 'https://www.estatuavivaproducoes.com.br/#faq',
         mainEntity: [
           {
             '@type': 'Question',
@@ -136,6 +142,7 @@ export default function Home() {
               playsInline
               controls
               preload="auto"
+              poster="/brand/hero-bronze.jpg"
               aria-label="Natal — Novos Personagens"
               className="block w-full max-h-[540px] object-contain"
             >

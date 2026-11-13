@@ -76,6 +76,31 @@ export interface TrackLeadOptions {
   leadSource?: string;
   leadLabel?: string;
   eventCategory?: string;
+  isQuoteSubmission?: boolean;
+}
+
+export function trackStartQuote(stepName: string = 'step_1'): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const w = window as unknown as {
+      dataLayer?: Array<Record<string, unknown>>;
+      gtag?: (...args: unknown[]) => void;
+    };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({
+      event: 'start_quote',
+      step: stepName,
+      timestamp: new Date().toISOString(),
+    });
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'start_quote', {
+        event_category: 'Lead_Funnel',
+        event_label: stepName,
+      });
+    }
+  } catch {
+    // noop
+  }
 }
 
 export function trackLeadAndOpenWhatsApp({
@@ -83,6 +108,7 @@ export function trackLeadAndOpenWhatsApp({
   leadSource = 'website',
   leadLabel = 'whatsapp_click',
   eventCategory = 'Engagement',
+  isQuoteSubmission = false,
 }: TrackLeadOptions): void {
   const url = buildWhatsAppUrl(message, leadSource);
 
@@ -94,8 +120,10 @@ export function trackLeadAndOpenWhatsApp({
         gtag?: (...args: unknown[]) => void;
       };
       w.dataLayer = w.dataLayer || [];
+
+      // Evento padrão: click_whatsapp
       w.dataLayer.push({
-        event: 'whatsapp_click',
+        event: 'click_whatsapp',
         lead_source: leadSource,
         lead_label: leadLabel,
         event_category: eventCategory,
@@ -103,12 +131,40 @@ export function trackLeadAndOpenWhatsApp({
       });
 
       if (typeof w.gtag === 'function') {
-        w.gtag('event', 'whatsapp_click', {
+        w.gtag('event', 'click_whatsapp', {
           event_category: eventCategory,
           event_label: leadLabel,
           lead_source: leadSource,
-          value: 1,
         });
+      }
+
+      // Se for uma submissão completa de proposta estruturada, dispara submit_quote e generate_lead
+      if (isQuoteSubmission) {
+        w.dataLayer.push({
+          event: 'submit_quote',
+          lead_source: leadSource,
+          lead_label: leadLabel,
+          timestamp: new Date().toISOString(),
+        });
+        w.dataLayer.push({
+          event: 'generate_lead',
+          currency: 'BRL',
+          lead_source: leadSource,
+          timestamp: new Date().toISOString(),
+        });
+
+        if (typeof w.gtag === 'function') {
+          w.gtag('event', 'submit_quote', {
+            event_category: 'Conversion',
+            event_label: leadLabel,
+            lead_source: leadSource,
+          });
+          w.gtag('event', 'generate_lead', {
+            event_category: 'Conversion',
+            event_label: leadLabel,
+            lead_source: leadSource,
+          });
+        }
       }
     } catch {
       // noop
@@ -122,6 +178,12 @@ export function trackLeadAndOpenWhatsApp({
           content_name: leadLabel,
           content_category: leadSource,
         });
+        if (isQuoteSubmission) {
+          w.fbq('track', 'Lead', {
+            content_name: leadLabel,
+            content_category: leadSource,
+          });
+        }
       }
     } catch {
       // noop
