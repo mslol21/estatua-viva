@@ -63,7 +63,16 @@ export default function Home() {
             <Link href="/natal" className="button-gold inline-flex mt-8">Conhecer o Especial de Natal ↗</Link>
           </div>
           <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-champagne-gold/30 bg-black shadow-[0_0_35px_rgba(207,166,85,0.2)]">
-            <video muted playsInline controls preload="none" aria-label="Natal — Novos Personagens" className="block w-full max-h-[540px] object-contain">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              preload="auto"
+              aria-label="Natal — Novos Personagens"
+              className="block w-full max-h-[540px] object-contain"
+            >
               <source src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4" type="video/mp4" />
               Seu navegador não suporta reprodução de vídeo.
             </video>
@@ -73,6 +82,7 @@ export default function Home() {
       <section aria-label="Sobre a Estátua Viva Produções" className="site-container py-10 sm:py-14"><p className="max-w-4xl text-base sm:text-lg leading-8 text-stone-warm">A Estátua Viva Produções é uma empresa de São Paulo (SP) que, desde 2005, cria estátuas vivas, personagens vivos e performances personalizadas para eventos corporativos, feiras, lançamentos, casamentos e festas em todo o Brasil. A direção artística é de Rodolfo Valentino. O atendimento é feito pelo WhatsApp (11) 93776-5250, e as apresentações acontecem no local do evento.</p></section>
       <ClientMarquee />
       <ComoTrabalhamos />
+      <CategoryGallery />
       <section aria-labelledby="servicos-titulo" className="site-container py-14 sm:py-20">
         <p className="eyebrow">Soluções artísticas</p>
         <h2 id="servicos-titulo" className="font-serif text-3xl sm:text-5xl mb-5">Encontre a apresentação ideal para seu evento</h2>
@@ -88,7 +98,6 @@ export default function Home() {
       </section>
       <section aria-labelledby="equipe-resumo-titulo" className="site-container py-16 sm:py-20"><div className="neon-gold-card rounded-3xl border border-champagne-gold/25 bg-charcoal/50 p-7 sm:p-12"><p className="eyebrow">Quem está por trás da arte</p><h2 id="equipe-resumo-titulo" className="mt-4 max-w-2xl font-serif text-4xl sm:text-5xl">Pessoas que transformam ideias em experiências.</h2><p className="mt-5 max-w-2xl text-stone-warm leading-7">Conheça a direção artística e o trabalho de criação, caracterização e interpretação por trás das performances da Estátua Viva Produções.</p><Link href="/equipe" className="button-gold mt-7 inline-flex">Conheça nossa equipe ↗</Link></div></section>
       <EventCuratorship />
-      <CategoryGallery />
       <CharacterCatalog />
       <BriefingBuilder />
       <ReviewsAndFaq />
