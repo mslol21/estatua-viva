@@ -54,9 +54,14 @@ export default function Footer() {
           {/* Quick Nav Links */}
           <div className="lg:col-span-3">
             <h4 className="font-mono text-xs uppercase tracking-widest text-champagne-gold mb-4">
-              NAVEGAÇÃO
+              SOLUÇÕES & NAVEGAÇÃO
             </h4>
-            <ul className="space-y-2.5 font-sans text-sm text-stone-warm">\n              <li><Link href="/perguntas-frequentes" className="hover:text-champagne-gold transition-colors">Perguntas frequentes</Link></li>
+            <ul className="space-y-2.5 font-sans text-sm text-stone-warm">
+              <li><Link href="/eventos-corporativos" className="hover:text-champagne-gold transition-colors font-medium text-alabaster">Eventos Corporativos</Link></li>
+              <li><Link href="/confraternizacao-empresa" className="hover:text-champagne-gold transition-colors font-medium text-alabaster">Confraternização de Empresa</Link></li>
+              <li><Link href="/natal" className="hover:text-champagne-gold transition-colors font-medium text-champagne-gold">Especial de Natal</Link></li>
+              <li><Link href="/personagens-para-eventos" className="hover:text-champagne-gold transition-colors">Personagens & Performances</Link></li>
+              <li><Link href="/perguntas-frequentes" className="hover:text-champagne-gold transition-colors">Perguntas frequentes</Link></li>
               <li><Link href="/equipe" className="hover:text-champagne-gold transition-colors">Nossa Equipe</Link></li>
               <li>
                 <a href="/#experiencias" className="hover:text-champagne-gold transition-colors">

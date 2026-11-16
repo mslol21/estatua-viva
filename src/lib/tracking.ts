@@ -10,6 +10,8 @@ const UTM_KEYS = [
   'utm_content',
   'utm_term',
   'gclid',
+  'gbraid',
+  'wbraid',
   'fbclid',
 ] as const;
 
@@ -77,6 +79,140 @@ export interface TrackLeadOptions {
   leadLabel?: string;
   eventCategory?: string;
   isQuoteSubmission?: boolean;
+}
+
+export function trackFormStart(formName: string = 'lead_capture_form'): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const w = window as unknown as { dataLayer?: Array<Record<string, unknown>>; gtag?: (...args: unknown[]) => void };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({
+      event: 'form_start',
+      form_name: formName,
+      timestamp: new Date().toISOString(),
+    });
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'form_start', {
+        form_name: formName,
+        event_category: 'Lead_Funnel',
+      });
+    }
+  } catch {
+    // noop
+  }
+}
+
+export function trackFormError(formName: string, errorReason: string): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const w = window as unknown as { dataLayer?: Array<Record<string, unknown>>; gtag?: (...args: unknown[]) => void };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({
+      event: 'form_error',
+      form_name: formName,
+      error_reason: errorReason,
+      timestamp: new Date().toISOString(),
+    });
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'form_error', {
+        form_name: formName,
+        error_reason: errorReason,
+      });
+    }
+  } catch {
+    // noop
+  }
+}
+
+export function trackFormSubmitSuccess(formName: string, meta: { eventType?: string; city?: string } = {}): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const utms = captureAndStoreUtms();
+    const w = window as unknown as {
+      dataLayer?: Array<Record<string, unknown>>;
+      gtag?: (...args: unknown[]) => void;
+      fbq?: (...args: unknown[]) => void;
+    };
+    w.dataLayer = w.dataLayer || [];
+    
+    // 1. Evento de formulário concluído
+    w.dataLayer.push({
+      event: 'form_submit_success',
+      form_name: formName,
+      event_type: meta.eventType || '',
+      city: meta.city || '',
+      ...utms,
+      timestamp: new Date().toISOString(),
+    });
+
+    // 2. Evento oficial de lead gerado (Google Ads & GA4)
+    w.dataLayer.push({
+      event: 'generate_lead',
+      currency: 'BRL',
+      value: 1,
+      form_name: formName,
+      ...utms,
+      timestamp: new Date().toISOString(),
+    });
+
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'generate_lead', {
+        event_category: 'Conversion',
+        event_label: formName,
+        currency: 'BRL',
+        value: 1,
+      });
+    }
+
+    // 3. Meta Pixel (Lead)
+    if (typeof w.fbq === 'function') {
+      w.fbq('track', 'Lead', {
+        content_name: formName,
+        content_category: meta.eventType || 'Corporate_Event',
+        currency: 'BRL',
+        value: 1,
+      });
+    }
+  } catch {
+    // noop
+  }
+}
+
+export function trackClickCTA(ctaName: string, destination: string): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const w = window as unknown as { dataLayer?: Array<Record<string, unknown>>; gtag?: (...args: unknown[]) => void };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({
+      event: 'click_cta',
+      cta_name: ctaName,
+      destination,
+      timestamp: new Date().toISOString(),
+    });
+    if (typeof w.gtag === 'function') {
+      w.gtag('event', 'click_cta', {
+        cta_name: ctaName,
+        destination,
+      });
+    }
+  } catch {
+    // noop
+  }
+}
+
+export function trackViewPortfolio(categoryName: string): void {
+  if (typeof window === 'undefined') return;
+  try {
+    const w = window as unknown as { dataLayer?: Array<Record<string, unknown>>; gtag?: (...args: unknown[]) => void };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({
+      event: 'view_portfolio',
+      category: categoryName,
+      timestamp: new Date().toISOString(),
+    });
+  } catch {
+    // noop
+  }
 }
 
 export function trackStartQuote(stepName: string = 'step_1'): void {
