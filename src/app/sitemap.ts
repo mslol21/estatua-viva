@@ -3,6 +3,7 @@ import { OFFICIAL_DOMAIN as SITE_URL } from '@/lib/site-config';
 
 const pages = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
+  { path: '/entretenimento-para-empresas', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: '/eventos-corporativos', priority: 1.0, changeFrequency: 'weekly' as const },
   { path: '/confraternizacao-empresa', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: '/natal', priority: 0.9, changeFrequency: 'weekly' as const },
@@ -18,7 +19,7 @@ const pages = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastMod = new Date('2026-11-16');
+  const lastMod = new Date('2026-11-18');
   return pages.map(({ path, priority, changeFrequency }) => ({
     url: `${SITE_URL}${path}`,
     lastModified: lastMod,
