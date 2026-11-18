@@ -215,15 +215,17 @@ export default function EventosCorporativosPage() {
             </div>
 
             {/* Imagem Real do Hero */}
-            <figure className="mx-auto w-full max-w-[440px] overflow-hidden rounded-[2rem] border border-champagne-gold/35 bg-[#0a1e24] shadow-[0_0_45px_rgba(223,189,124,0.25)]">
-              <div className="relative aspect-[3/5] w-full sm:aspect-[4/5]">
+            <figure className="mx-auto w-full max-w-[360px] overflow-hidden rounded-[2rem] border border-champagne-gold/35 bg-[#0a1e24] shadow-[0_0_45px_rgba(223,189,124,0.25)] sm:max-w-[440px]">
+              {/* Respeita a proporção original para não cortar cabeça, mãos nem pés no celular. */}
+              <div className="w-full bg-[#0a1e24]">
                 <Image
                   src="/images/estatuas-vivas/estatua-viva-hermes-prata.webp"
                   alt="Performance de estátua viva prateada Hermes para eventos corporativos e feiras"
-                  fill
+                  width={768}
+                  height={1152}
                   priority
-                  sizes="(max-width: 1023px) 90vw, 440px"
-                  className="object-contain object-center"
+                  sizes="(max-width: 639px) min(100vw - 32px, 360px), 440px"
+                  className="block h-auto w-full object-contain"
                 />
               </div>
               <figcaption className="border-t border-champagne-gold/20 bg-[#071318] px-4 py-5 text-center">
