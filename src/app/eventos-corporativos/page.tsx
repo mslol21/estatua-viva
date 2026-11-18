@@ -43,42 +43,42 @@ const solutions = [
   {
     title: 'Confraternizações Empresariais',
     desc: 'Celebrações de fim de ano e fechamento de metas com personagens e recepções marcantes.',
-    img: '/portfolio/ouro.webp',
+    img: '/images/confraternizacoes/interacao-publico-trio-marmore.webp',
     ctaText: 'Ver para confraternização',
     href: '/confraternizacao-empresa',
   },
   {
     title: 'Feiras de Negócios & Estandes',
     desc: 'Estátuas prateadas e figuras futuristas que atraem visitantes no pavilhão e aumentam a retenção de leads.',
-    img: '/portfolio/prata.webp',
+    img: '/images/corporativo/performance-grego-vr-tecnologia.webp',
     ctaText: 'Atrair público no estande',
     href: '#orcamento-form',
   },
   {
     title: 'Lançamentos de Produtos & Marcas',
     desc: 'Intervenções cênicas ao redor do produto ou conceito, gerando curiosidade e registros fotográficos espontâneos.',
-    img: '/brand/hero-bronze.jpg',
+    img: '/images/cases/case-loctite-mascote-personalizado.webp',
     ctaText: 'Personalizar lançamento',
     href: '#orcamento-form',
   },
   {
     title: 'Convenções & Premiações de Vendas',
     desc: 'Performances estilo troféu vivo para noites solenes e reconhecimento de equipes de alta performance.',
-    img: '/portfolio/ouro.webp',
+    img: '/images/cases/recepcao-gala-dionisio-cafu.webp',
     ctaText: 'Planejar premiação',
     href: '#orcamento-form',
   },
   {
     title: 'Recepção de Convidados & Gala',
     desc: 'Acolhimento triunfal logo na entrada do espaço, estabelecendo o padrão de sofisticação do evento.',
-    img: '/portfolio/branca.webp',
+    img: '/images/estatuas-vivas/estatua-viva-musa-lira-ouro.webp',
     ctaText: 'Recepção de alto padrão',
     href: '#orcamento-form',
   },
   {
     title: 'Temporada de Natal Corporativo',
     desc: 'Personagens natalinos nobres (Papai Noel clássico, anjos e guardiões) para eventos de fim de ano.',
-    img: '/portfolio/diversas.webp',
+    img: '/images/hero/estatua-viva-bronze-hero.webp',
     ctaText: 'Conhecer Especial de Natal',
     href: '/natal',
   },
@@ -217,8 +217,8 @@ export default function EventosCorporativosPage() {
             {/* Imagem Real do Hero */}
             <div className="relative mx-auto aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-[2rem] border border-champagne-gold/35 bg-[#0a1e24] shadow-[0_0_45px_rgba(223,189,124,0.25)]">
               <Image
-                src="/portfolio/prata.webp"
-                alt="Performance de estátua viva prateada para eventos corporativos e feiras"
+                src="/images/estatuas-vivas/estatua-viva-hermes-prata.webp"
+                alt="Performance de estátua viva prateada Hermes para eventos corporativos e feiras"
                 fill
                 priority
                 sizes="(max-width: 1023px) 90vw, 440px"

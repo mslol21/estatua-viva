@@ -38,28 +38,40 @@ export const metadata: Metadata = {
 
 const characters = [
   {
-    name: 'Charles Chaplin & Clássicos do Cinema',
-    category: 'Mímica & Nostalgia',
-    desc: 'Homenagens fiéis a ícones do cinema mudo, com bengala, passos cômicos e humor refinado que encanta todas as gerações.',
-    img: '/portfolio/diversas.webp',
+    name: 'Carlos Drummond & Monumentos Históricos',
+    category: 'Literatura & História',
+    desc: 'Caracterização escultural de precisão milimétrica que recria poetas e personalidades históricas para eventos culturais e corporativos.',
+    img: '/images/estatuas-vivas/estatua-viva-carlos-drummond-bronze.webp',
   },
   {
-    name: 'Piratas Interativos & Aventura',
-    category: 'Interação Dinâmica',
-    desc: 'Figurinos detalhados, atuação cênica com falas e dinâmicas que quebram a quarta parede e divertem os convidados.',
-    img: '/brand/pirata.webp',
+    name: 'Hermes & Deuses Mitológicos',
+    category: 'Prata Industrial & Mitologia',
+    desc: 'Pátina metalizada e elegância imponente para acolhimento de eventos temáticos, aniversários de gala e convenções empresariais.',
+    img: '/images/estatuas-vivas/estatua-viva-hermes-prata.webp',
   },
   {
-    name: 'Deuses Mitológicos & Figuras Nobres',
-    category: 'Ouro & Solenidade',
-    desc: 'Pátina metalizada e elegância imponente para acolhimento de eventos temáticos, aniversários de gala e convenções.',
-    img: '/portfolio/ouro.webp',
+    name: 'Musa das Artes com Lira',
+    category: 'Ouro Imperial & Gala',
+    desc: 'Vestimenta drapeada clássica em pátina dourada com adereços florais e lira escultural, perfeita para recepções solenes.',
+    img: '/images/estatuas-vivas/estatua-viva-musa-lira-ouro.webp',
+  },
+  {
+    name: 'Anjos Barrocos em Mármore',
+    category: 'Mármore Branco & Solenidade',
+    desc: 'Esculturas vivas que remetem a monumentos renascentistas e barrocos, ideais para casamentos, bodas e galerias de arte.',
+    img: '/images/estatuas-vivas/estatua-viva-anjo-barroco-igreja.webp',
   },
   {
     name: 'Mascotes & Personagens Customizados B2B',
     category: 'Projetos sob Medida',
-    desc: 'Confecção em ateliê próprio de personagens vivos moldados no conceito ou mascote exclusivo da sua empresa.',
-    img: '/brand/hero-bronze.jpg',
+    desc: 'Confecção em ateliê próprio de personagens vivos e mascotes tridimensionais sob medida para feiras e campanhas de marcas.',
+    img: '/images/cases/case-loctite-mascote-personalizado.webp',
+  },
+  {
+    name: 'Piratas Interativos & Aventura',
+    category: 'Interação Dinâmica & Humor',
+    desc: 'Figurinos detalhados, atuação cênica com improviso teatral que quebram a quarta parede e encantam os convidados.',
+    img: '/brand/pirata.webp',
   },
 ];
 

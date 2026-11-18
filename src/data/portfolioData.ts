@@ -55,10 +55,10 @@ export const CHARACTERS: Character[] = [
     description: 'Com pintura corporal metálica em tom ouro nobre e figurino drapeado clássico de alta costura, esta intervenção confere imponência e atmosfera mítica imediata.',
     idealFor: 'Casamentos luxuosos, recepções de gala, premiações corporativas e formaturas.',
     details: ['Pintura atóxica metálica de alta aderência', 'Posturas e gestos estatuários de precisão milimétrica', 'Interação solene com convidados para fotografias'],
-    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-2-e1753540896401.jpg',
+    imageUrl: '/images/estatuas-vivas/deusa-grega-grupo-acelerador-giant-2-e1753540896401.webp',
     gallery: [
-      'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-2-e1753540896401.jpg',
-      'https://estatuaviva.com.br/wp-content/uploads/2025/07/Deusa-Grega-Grupo-Acelerador-Giant-3-e1753540846431.jpg',
+      '/images/estatuas-vivas/deusa-grega-grupo-acelerador-giant-2-e1753540896401.webp',
+      '/images/estatuas-vivas/deusa-grega-grupo-acelerador-giant-3-e1753540846431.webp',
     ],
         specs: {
       duration: 'Entradas de 45 a 60 min com intervalos',
@@ -95,10 +95,10 @@ export const CHARACTERS: Character[] = [
     description: 'Desenvolvido com maestria cenográfica para simbolizar precisão, tecnologia e força do trabalho. O reflexo metálico prateado dialoga com estandes modernos de alta tecnologia.',
     idealFor: 'Feiras industriais, congressos de tecnologia, convenções de vendas e logística.',
     details: ['Case de sucesso oficial Caterpillar 70 Anos', 'Figurino customizável com ferramentas cenográficas cromadas', 'Atuação de alto fluxo e retenção em estandes'],
-    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Prata-Robo-Executivo-768x898.jpg',
+    imageUrl: '/images/estatuas-vivas/estatua-viva-prata-robo-executivo-768x898.webp',
     gallery: [
-      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Prata-Robo-Executivo-768x898.jpg',
-      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-viva-Manequim-Robo-Feira-1-768x509.jpg',
+      '/images/estatuas-vivas/estatua-viva-prata-robo-executivo-768x898.webp',
+      '/images/estatuas-vivas/estatua-viva-manequim-robo-feira-1-768x509.webp',
     ],
     caseBadge: 'Case Oficial Caterpillar',
     specs: {
@@ -117,10 +117,10 @@ export const CHARACTERS: Character[] = [
     description: 'A reverenciada tradição mexicana ganha vida através de figurinos bordados, rendas finas e maquiagem facial artística de nível cinematográfico premiado.',
     idealFor: 'Festas temáticas, eventos de Halloween/Día de los Muertos, festivais culturais e lançamentos.',
     details: ['Maquiagem artística 3D em degradê', 'Acessórios barrocos e flores hiper-realistas', 'Performance magnética com elegância e mistério'],
-    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-4-768x1024.jpg',
+    imageUrl: '/images/personagens/caveira-mexicana-katrina-e-miguelito-4-768x1024.webp',
     gallery: [
-      'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-4-768x1024.jpg',
-      'https://estatuaviva.com.br/wp-content/uploads/2025/07/Caveira-mexicana-Katrina-e-Miguelito-6-768x512.jpg',
+      '/images/personagens/caveira-mexicana-katrina-e-miguelito-4-768x1024.webp',
+      '/images/personagens/caveira-mexicana-katrina-e-miguelito-6-768x512.webp',
     ],
     highlightText: 'Maquiagem artística cinematográfica',
     specs: {
@@ -177,10 +177,10 @@ export const CHARACTERS: Character[] = [
     description: 'Recriações com rigor de pesquisa iconográfica histórica. Os personagens parecem ter acabado de descer dos monumentos das praças para conversar com a audiência.',
     idealFor: 'Museus, feiras literárias, bienais, universidades, inaugurações de centros culturais.',
     details: ['Apresentações já realizadas no Museu do Ipiranga e Bienal do Livro', 'Acessórios de época autênticos (óculos, canetas bico de pena, monóculos)', 'Textos e declamações estatuárias adaptáveis'],
-    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2022/05/Fernando-Pessoa-768x768.jpg',
+    imageUrl: '/images/portfolio/fernando-pessoa-768x768.webp',
     gallery: [
-      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Fernando-Pessoa-768x768.jpg',
-      'https://estatuaviva.com.br/wp-content/uploads/2022/05/Estatua-Viva-Carlos-Drummond-768x509.jpg',
+      '/images/portfolio/fernando-pessoa-768x768.webp',
+      '/images/portfolio/estatua-viva-carlos-drummond-768x509.webp',
     ],
     caseBadge: 'Presença Museu do Ipiranga',
     specs: {
@@ -199,9 +199,9 @@ export const CHARACTERS: Character[] = [
     description: 'Desenvolvimento cenográfico do zero: a partir das diretrizes de branding da sua empresa, criamos o figurino escultural, texturas e maquiagem exclusiva com suas cores.',
     idealFor: 'Lançamentos de produtos, estandes em feiras internacionais e ações de Live Marketing.',
     details: ['Cases Henkel/Loctite, Convenção Acelera DPA e Staedtler', 'Fidelidade de pantones corporativos e logotipo integrado', 'Consultoria e ensaios orientados aos objetivos de marketing'],
-    imageUrl: 'https://estatuaviva.com.br/wp-content/uploads/2025/07/henkel-loctite-boneco-2.jpg',
+    imageUrl: '/images/cases/henkel-loctite-boneco-2.webp',
     gallery: [
-      'https://estatuaviva.com.br/wp-content/uploads/2025/07/henkel-loctite-boneco-2.jpg',
+      '/images/cases/henkel-loctite-boneco-2.webp',
     ],
     caseBadge: 'Case Loctite & DPA',
     specs: {

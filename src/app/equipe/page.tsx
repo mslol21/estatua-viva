@@ -12,7 +12,14 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/equipe` },
 };
 
-const fotosEquipe = ['7.png', '8.png', '9.png', '10.png', '11.png', '12.png'];
+const fotosEquipe = [
+  '/images/portfolio/elenco-performance-01.webp',
+  '/images/portfolio/elenco-performance-02.webp',
+  '/images/portfolio/elenco-performance-03.webp',
+  '/images/portfolio/elenco-performance-04.webp',
+  '/images/portfolio/elenco-performance-05.webp',
+  '/images/portfolio/elenco-performance-06.webp',
+];
 
 const frentes = [
   { icon: Palette, title: 'Caracterização e figurino', text: 'Cada detalhe visual ajuda a construir a identidade dos personagens e o impacto de cada apresentação.' },
@@ -41,10 +48,30 @@ export default function EquipePage() {
           </div>
         </section>
         <section className="site-container section-space">
-          <p className="eyebrow">Direção artística</p>
-          <h2 className="mt-4 max-w-3xl font-serif text-4xl sm:text-6xl">Rodolfo Valentino</h2>
-          <p className="mt-5 max-w-3xl text-base leading-8 text-stone-warm">À frente da direção artística da Estátua Viva Produções, Rodolfo Valentino está ligado à criação de experiências que unem personagens, caracterização e performance para eventos. Conheça os profissionais que transformam criação, figurino e performance em experiências memoráveis.</p>
-          <Link href="/#acervo" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-champagne-gold hover:text-white">Explorar o acervo artístico <ArrowUpRight size={16} aria-hidden="true" /></Link>
+          <div className="grid items-center gap-10 md:grid-cols-[1fr_auto]">
+            <div>
+              <p className="eyebrow">Direção artística</p>
+              <h2 className="mt-4 max-w-3xl font-serif text-4xl sm:text-6xl">Rodolfo Valentino</h2>
+              <p className="mt-5 max-w-3xl text-base leading-8 text-stone-warm">À frente da direção artística da Estátua Viva Produções desde 2005, Rodolfo Valentino alia pesquisa cênica, ateliê próprio de caracterização e interpretação escultórica para criar experiências visuais que marcam eventos corporativos, feiras e celebrações em todo o Brasil.</p>
+              <Link href="/#acervo" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-champagne-gold hover:text-white">Explorar o acervo artístico <ArrowUpRight size={16} aria-hidden="true" /></Link>
+            </div>
+            <div className="relative mx-auto md:mx-0 shrink-0 flex flex-col items-center">
+              <div className="relative w-48 h-48 sm:w-56 sm:h-56 rounded-full p-1.5 bg-gradient-to-tr from-[#dfbd7c] via-[#ffe6a3] to-[#9a7532] shadow-[0_0_35px_rgba(223,189,124,0.35)]">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-[#071318]">
+                  <Image
+                    src="/images/direcao-artistica/rodolfo-valentino-diretor-artistico.webp"
+                    alt="Rodolfo Valentino — Direção Artística Estátua Viva Produções"
+                    fill
+                    sizes="224px"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+              </div>
+              <span className="mt-3 inline-block px-3.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest text-[#ffe6a3] bg-[#071318]/90 border border-[#dfbd7c]/50">
+                Direção Artística & Concepção
+              </span>
+            </div>
+          </div>
         </section>
         <section id="integrantes" className="site-container section-space" aria-labelledby="integrantes-titulo">
           <div className="flex flex-col gap-5 border-b border-champagne-gold/20 pb-9 md:flex-row md:items-end md:justify-between">
@@ -59,7 +86,7 @@ export default function EquipePage() {
             {fotosEquipe.map((arquivo, index) => (
               <figure key={arquivo} className="neon-gold-card spotlight-card group relative min-w-0 overflow-hidden rounded-[1.5rem] border border-champagne-gold/25 bg-[#071519] p-2 shadow-[0_16px_60px_rgba(0,0,0,0.2)] transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-champagne-gold/60 hover:shadow-[0_18px_50px_rgba(211,175,108,0.14)] motion-reduce:transform-none sm:p-3">
                 <Image
-                  src={`/${arquivo}`}
+                  src={arquivo.startsWith('/') ? arquivo : `/${arquivo}`}
                   alt={`Página ${index + 1} do portfólio oficial apresentando profissionais da Estátua Viva Produções`}
                   width={1200}
                   height={1600}

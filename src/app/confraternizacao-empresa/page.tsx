@@ -40,28 +40,28 @@ export const metadata: Metadata = {
 
 const attractions = [
   {
-    name: 'Recepção de Gala em Ouro Imperial',
+    name: 'Recepção de Gala em Ouro Imperial & Prata Nobre',
     category: 'Gala & Solenidade',
-    desc: 'Estátuas douradas imponentes recebendo os colaboradores logo na entrada do espaço para fotos inesquecíveis.',
-    img: '/portfolio/ouro.webp',
+    desc: 'Estátuas imponentes recebendo os colaboradores logo na entrada do espaço para fotos inesquecíveis.',
+    img: '/images/cases/recepcao-gala-dionisio-cafu.webp',
   },
   {
-    name: 'Personagens Vivos Interativos (Cinema & Mímica)',
+    name: 'Trio Clássico & Interação com o Público',
     category: 'Humor & Interação',
-    desc: 'Atores caracterizados como Charles Chaplin e ícones culturais que quebram o gelo e divertem convidados de todas as idades.',
-    img: '/portfolio/diversas.webp',
+    desc: 'Performances esculturais com toques contemporâneos que quebram o gelo e divertem convidados de todas as idades.',
+    img: '/images/confraternizacoes/interacao-publico-trio-marmore.webp',
   },
   {
     name: 'Papai Noel e Personagens Natalinos Nobres',
     category: 'Temporada Especial',
     desc: 'Figurinos teatrais de altíssimo acabamento para confraternizações de dezembro, confraternizações familiares e shopping centers.',
-    img: '/brand/hero-bronze.jpg',
+    img: '/images/hero/estatua-viva-bronze-hero.webp',
   },
   {
-    name: 'Prata Futurista & Inovação',
+    name: 'Prata Futurista & Tecnologia',
     category: 'Tecnologia & B2B',
-    desc: 'Robôs cromados e chefs prateados para celebrar metas superadas e o olhar voltado ao próximo ano da empresa.',
-    img: '/portfolio/prata.webp',
+    desc: 'Estátuas futuristas e figuras cromadas para celebrar metas superadas e o olhar voltado ao próximo ano da empresa.',
+    img: '/images/corporativo/performance-grego-vr-tecnologia.webp',
   },
 ];
 
