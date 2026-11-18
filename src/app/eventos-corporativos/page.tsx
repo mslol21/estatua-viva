@@ -76,9 +76,9 @@ const solutions = [
     href: '#orcamento-form',
   },
   {
-    title: 'Temporada de Natal Corporativo',
-    desc: 'Personagens natalinos nobres (Papai Noel clássico, anjos e guardiões) para eventos de fim de ano.',
-    img: '/images/hero/estatua-viva-bronze-hero.webp',
+    title: 'Recepção Artística para Eventos de Natal',
+    desc: 'Anjos esculturais e estátuas vivas para recepções, confraternizações e celebrações de fim de ano.',
+    img: '/images/estatuas-vivas/estatua-viva-anjo-branco-1.webp',
     ctaText: 'Conhecer Especial de Natal',
     href: '/natal',
   },
@@ -315,15 +315,14 @@ export default function EventosCorporativosPage() {
                   key={sol.title}
                   className="neon-gold-card group rounded-2xl overflow-hidden border border-champagne-gold/25 bg-[#071318]/80 flex flex-col justify-between"
                 >
-                  <div className="relative aspect-[16/10] w-full overflow-hidden bg-black/60">
+                  <div className="relative aspect-[4/5] sm:aspect-[5/4] w-full overflow-hidden bg-[#071318]">
                     <Image
                       src={sol.img}
                       alt={sol.title}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-contain object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#071318] via-transparent to-transparent opacity-80" />
                   </div>
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
