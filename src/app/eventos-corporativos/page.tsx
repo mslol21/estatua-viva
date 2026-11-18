@@ -215,21 +215,23 @@ export default function EventosCorporativosPage() {
             </div>
 
             {/* Imagem Real do Hero */}
-            <div className="relative mx-auto aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-[2rem] border border-champagne-gold/35 bg-[#0a1e24] shadow-[0_0_45px_rgba(223,189,124,0.25)]">
-              <Image
-                src="/images/estatuas-vivas/estatua-viva-hermes-prata.webp"
-                alt="Performance de estátua viva prateada Hermes para eventos corporativos e feiras"
-                fill
-                priority
-                sizes="(max-width: 1023px) 90vw, 440px"
-                className="object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#071318] via-[#071318]/70 to-transparent p-6 pt-24 text-center">
-                <span className="text-xs font-mono uppercase tracking-[0.2em] text-[#ffe6a3]">
+            <figure className="mx-auto w-full max-w-[440px] overflow-hidden rounded-[2rem] border border-champagne-gold/35 bg-[#0a1e24] shadow-[0_0_45px_rgba(223,189,124,0.25)]">
+              <div className="relative aspect-[3/5] w-full sm:aspect-[4/5]">
+                <Image
+                  src="/images/estatuas-vivas/estatua-viva-hermes-prata.webp"
+                  alt="Performance de estátua viva prateada Hermes para eventos corporativos e feiras"
+                  fill
+                  priority
+                  sizes="(max-width: 1023px) 90vw, 440px"
+                  className="object-contain object-center"
+                />
+              </div>
+              <figcaption className="border-t border-champagne-gold/20 bg-[#071318] px-4 py-5 text-center">
+                <span className="text-xs font-mono uppercase tracking-[0.2em] leading-relaxed text-[#ffe6a3]">
                   Prata Industrial · Destaque Corporativo
                 </span>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           </div>
         </section>
 
