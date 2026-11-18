@@ -51,12 +51,6 @@ export default function Home() {
           addressLocality: 'São Paulo',
           addressRegion: 'SP',
           addressCountry: 'BR',
-          streetAddress: 'Região do Tatuapé',
-        },
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: '-23.5414',
-          longitude: '-46.5762',
         },
         founder: {
           '@type': 'Person',
@@ -162,6 +156,7 @@ export default function Home() {
         <p className="max-w-3xl text-stone-warm mb-8">Criamos experiências com estátuas vivas, figurinos, personagens temáticos e performances para celebrações, empresas e ações promocionais. Conheça nossas opções e solicite um orçamento.</p>
         <div className="grid gap-4 sm:grid-cols-2">
           {[
+            { href: '/entretenimento-para-empresas', title: 'Entretenimento para empresas', detail: 'Confraternizações, premiações e recepção artística corporativa em São Paulo.' },
             { href: '/estatua-viva-para-eventos', title: 'Estátuas vivas para eventos', detail: 'Recepções, festas e experiências artísticas.' },
             { href: '/estatua-viva-para-casamento', title: 'Estátuas vivas para casamentos', detail: 'Recepção artística e personagens para celebrações.' },
             { href: '/estatua-viva-para-eventos-corporativos', title: 'Eventos corporativos e ações promocionais', detail: 'Feiras, lançamentos, ativações e experiências de marca.' },
