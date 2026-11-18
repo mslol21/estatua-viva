@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predev": "node scripts/extract-entertainment-images.cjs",
+    "prebuild": "node scripts/extract-entertainment-images.cjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
