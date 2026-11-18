@@ -59,28 +59,28 @@ const natalVideos = [
 
 const natalCharacters = [
   {
-    name: 'Papai Noel Tradicional de Alta Costura',
-    category: 'Ícone Natalino',
-    desc: 'Figurino em veludo nobre com bordados e barba realista, transmitindo acolhimento e credibilidade para adultos e crianças.',
-    img: '/portfolio/diversas.webp',
-  },
-  {
-    name: 'Anjos Celestiais em Mármore & Ouro',
+    name: 'Anjos Esculturais para Recepções',
     category: 'Clássico & Barroco',
-    desc: 'Asas esculturais e presença solene para recepções natalinas, cantatas e celebrações corporativas de gala.',
-    img: '/portfolio/branca.webp',
+    desc: 'Performance de anjo vivo com caracterização branca, indicada para recepções e celebrações de fim de ano.',
+    img: '/images/estatuas-vivas/estatua-viva-anjo-branco-1.webp',
   },
   {
-    name: 'Guardiões do Natal & Soldadinhos de Chumbo',
-    category: 'Cenografia Viva',
-    desc: 'Postura escultural imponente para entradas de shoppings, clubes sociais e recepção de eventos de encerramento.',
-    img: '/portfolio/ouro.webp',
+    name: 'Mímicos e Interação com Convidados',
+    category: 'Interação Artística',
+    desc: 'Artistas de mímica para acolher participantes, criar interações leves e momentos fotográficos durante a confraternização.',
+    img: '/images/personagens/mimicos-1-768x512.webp',
   },
   {
-    name: 'Duendes & Ajudantes Lúdicos Interativos',
-    category: 'Interação Familiar',
-    desc: 'Atores com mímica e interação alegre para cortejos, distribuição de brindes corporativos e sessões de fotos.',
-    img: '/brand/hero-bronze.jpg',
+    name: 'Estátuas Vivas em Prata',
+    category: 'Recepção Corporativa',
+    desc: 'Personagens esculturais prateados para recepções, coquetéis e encontros empresariais de fim de ano.',
+    img: '/images/estatuas-vivas/estatua-viva-hermes-prata.webp',
+  },
+  {
+    name: 'Estátuas Vivas em Ouro',
+    category: 'Gala & Celebração',
+    desc: 'Caracterizações douradas para eventos de gala, premiações e confraternizações corporativas.',
+    img: '/images/estatuas-vivas/estatua-viva-dourado-ouro-1.webp',
   },
 ];
 
@@ -257,7 +257,7 @@ export default function NatalPage() {
           <div className="text-center max-w-2xl mx-auto mb-16">
             <p className="eyebrow">Acervo natalino</p>
             <h2 className="font-serif text-3xl sm:text-5xl">
-              Personagens disponíveis para sua celebração
+              Atrações artísticas para sua celebração de fim de ano
             </h2>
           </div>
 
@@ -267,15 +267,14 @@ export default function NatalPage() {
                 key={char.name}
                 className="neon-gold-card rounded-2xl overflow-hidden border border-champagne-gold/25 bg-[#071318]/90 flex flex-col justify-between"
               >
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#071318]">
                   <Image
                     src={char.img}
                     alt={char.name}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                    className="object-cover"
+                    className="object-contain object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071318] via-transparent to-transparent opacity-80" />
                 </div>
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
