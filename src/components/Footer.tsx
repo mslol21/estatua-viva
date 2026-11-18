@@ -57,6 +57,7 @@ export default function Footer() {
               SOLUÇÕES & NAVEGAÇÃO
             </h4>
             <ul className="space-y-2.5 font-sans text-sm text-stone-warm">
+              <li><Link href="/entretenimento-para-empresas" className="hover:text-champagne-gold transition-colors">Entretenimento para Empresas</Link></li>
               <li><Link href="/eventos-corporativos" className="hover:text-champagne-gold transition-colors font-medium text-alabaster">Eventos Corporativos</Link></li>
               <li><Link href="/confraternizacao-empresa" className="hover:text-champagne-gold transition-colors font-medium text-alabaster">Confraternização de Empresa</Link></li>
               <li><Link href="/natal" className="hover:text-champagne-gold transition-colors font-medium text-champagne-gold">Especial de Natal</Link></li>
