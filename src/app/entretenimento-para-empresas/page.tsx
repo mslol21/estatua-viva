@@ -103,10 +103,11 @@ export default function EntretenimentoEmpresasPage() {
             <h2 className="font-serif text-3xl sm:text-5xl">Para quais ocasiões?</h2>
             <p className="mt-5 text-stone-warm max-w-3xl leading-relaxed">Confraternizações de Natal e de fim de ano, eventos de reconhecimento de colaboradores, recepção de convidados, feiras de negócios, lançamentos e celebrações empresariais. O formato das atrações é definido de acordo com o espaço, a duração e o perfil dos participantes.</p>
             <div className="mt-7 flex flex-wrap gap-5 text-champagne-gold">
-              <Link href="/confraternizacao-empresa">Confraternizações ↗</Link>
-              <Link href="/eventos-corporativos">Eventos corporativos ↗</Link>
-              <Link href="/natal">Especial de Natal ↗</Link>
-              <Link href="/personagens-para-eventos">Personagens ↗</Link>
+              <Link href="/eventos-corporativos" className="hover:underline">Eventos Corporativos B2B ↗</Link>
+              <Link href="/estatua-viva-para-eventos-corporativos" className="hover:underline">Estátuas Vivas Corporativas ↗</Link>
+              <Link href="/confraternizacao-empresa" className="hover:underline">Confraternizações de Fim de Ano ↗</Link>
+              <Link href="/natal" className="hover:underline">Especial de Natal ↗</Link>
+              <Link href="/personagens-para-eventos" className="hover:underline">Personagens & Performances ↗</Link>
             </div>
           </div>
         </section>

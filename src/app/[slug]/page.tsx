@@ -882,6 +882,41 @@ export default function ServicePage({ params }: { params: { slug: string } }) {
               <p className="text-xs sm:text-sm text-stone-warm max-w-md mx-auto mb-6">
                 Conheça as demais modalidades de apresentações e encontre a inspiração perfeita para o seu evento.
               </p>
+
+              {item.slug === 'estatua-viva-para-eventos-corporativos' && (
+                <div className="mb-6 p-4 rounded-xl border border-champagne-gold/30 bg-charcoal/50 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm">
+                  <span className="text-champagne-gold font-mono uppercase tracking-wider text-[11px] block w-full mb-1">
+                    Soluções Corporativas Complementares:
+                  </span>
+                  <Link href="/eventos-corporativos" className="text-alabaster hover:text-champagne-gold font-medium underline underline-offset-4">
+                    Eventos Corporativos & Feiras
+                  </Link>
+                  <span className="text-champagne-gold/30">·</span>
+                  <Link href="/confraternizacao-empresa" className="text-alabaster hover:text-champagne-gold font-medium underline underline-offset-4">
+                    Confraternização de Empresa
+                  </Link>
+                  <span className="text-champagne-gold/30">·</span>
+                  <Link href="/entretenimento-para-empresas" className="text-alabaster hover:text-champagne-gold font-medium underline underline-offset-4">
+                    Guia de Entretenimento SP
+                  </Link>
+                </div>
+              )}
+
+              {item.slug === 'estatua-viva-para-casamento' && (
+                <div className="mb-6 p-4 rounded-xl border border-champagne-gold/30 bg-charcoal/50 flex flex-wrap items-center justify-center gap-3 text-xs sm:text-sm">
+                  <span className="text-champagne-gold font-mono uppercase tracking-wider text-[11px] block w-full mb-1">
+                    Veja também para casamentos e recepções solenes:
+                  </span>
+                  <Link href="/estatua-viva-para-eventos" className="text-alabaster hover:text-champagne-gold font-medium underline underline-offset-4">
+                    Estátuas Vivas para Eventos
+                  </Link>
+                  <span className="text-champagne-gold/30">·</span>
+                  <Link href="/personagens-para-festas" className="text-alabaster hover:text-champagne-gold font-medium underline underline-offset-4">
+                    Personagens para Festas
+                  </Link>
+                </div>
+              )}
+
               <div className="flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm">
                 <Link href="/#acervo" className="text-champagne-gold underline underline-offset-4 hover:text-white">
                   Acervo completo de personagens

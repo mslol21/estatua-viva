@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
 import { Cormorant_Garamond, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import { SITE_URL } from '@/lib/site-config';
-import { headers } from 'next/headers';
 import MarketingAnalytics from '@/components/MarketingAnalytics';
 import './globals.css';
 import './hero-refinement.css';
@@ -60,11 +59,20 @@ const baseMetadata: Metadata = {
   }
 };
 
-export function generateMetadata(): Metadata {
-  const host = (headers().get('x-forwarded-host') || headers().get('host') || '').split(':')[0].toLowerCase();
-  const official = host === 'estatuavivaproducoes.com.br' || host === 'www.estatuavivaproducoes.com.br';
-  return { ...baseMetadata, robots: official ? { index: true, follow: true } : { index: false, follow: false, googleBot: { index: false, follow: false } } };
-}
+export const metadata: Metadata = {
+  ...baseMetadata,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+};
 
 export const viewport: Viewport = { themeColor: '#071318' };
 

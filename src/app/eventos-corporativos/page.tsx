@@ -120,17 +120,46 @@ const faqs = [
 ];
 
 export default function EventosCorporativosPage() {
+  const pageUrl = `${SITE_URL}/eventos-corporativos`;
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        name: 'Entretenimento para Eventos Corporativos | Estátua Viva Produções',
+        url: pageUrl,
+        inLanguage: 'pt-BR',
+        about: { '@id': `${SITE_URL}/#empresa` },
+        breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Início',
+            item: `${SITE_URL}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Eventos Corporativos',
+            item: pageUrl,
+          },
+        ],
+      },
+      {
         '@type': 'Service',
-        '@id': `${SITE_URL}/eventos-corporativos#servico`,
+        '@id': `${pageUrl}#servico`,
         name: 'Entretenimento para Eventos Corporativos e Feiras',
         description:
           'Estátuas vivas, personagens temáticos e performances artísticas de alto padrão para eventos corporativos, feiras e confraternizações no Brasil.',
         provider: {
           '@type': 'LocalBusiness',
+          '@id': `${SITE_URL}/#empresa`,
           name: 'Estátua Viva Produções',
           url: `${SITE_URL}/`,
           telephone: '+5511937765250',
@@ -143,11 +172,11 @@ export default function EventosCorporativosPage() {
           },
         },
         areaServed: { '@type': 'Country', name: 'Brasil' },
-        url: `${SITE_URL}/eventos-corporativos`,
+        url: pageUrl,
       },
       {
         '@type': 'FAQPage',
-        '@id': `${SITE_URL}/eventos-corporativos#faq`,
+        '@id': `${pageUrl}#faq`,
         mainEntity: faqs.map(({ q, a }) => ({
           '@type': 'Question',
           name: q,
@@ -457,6 +486,68 @@ export default function EventosCorporativosPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* NAVEGAÇÃO CONTEXTUAL CORPORATIVA */}
+        <section className="border-t border-champagne-gold/15 bg-charcoal/40 py-16">
+          <div className="site-container">
+            <p className="eyebrow text-center">Formatos Artísticos Específicos</p>
+            <h2 className="font-serif text-2xl sm:text-4xl text-center text-alabaster mt-2 mb-10">
+              Explore outras abordagens para sua empresa
+            </h2>
+            <div className="grid gap-6 md:grid-cols-3">
+              <Link
+                href="/confraternizacao-empresa"
+                className="group rounded-2xl border border-champagne-gold/20 bg-charcoal/60 p-6 transition-colors hover:border-champagne-gold/50 flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="font-serif text-xl text-champagne-gold group-hover:text-white transition-colors">
+                    Confraternizações de Fim de Ano
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm text-stone-warm leading-relaxed">
+                    Personagens cênicos, celebrações de metas e recepção festiva para fechar o ano da sua equipe em grande estilo.
+                  </p>
+                </div>
+                <span className="mt-4 text-xs font-mono uppercase tracking-widest text-champagne-gold inline-flex items-center gap-1">
+                  Ver atrações de confraternização →
+                </span>
+              </Link>
+
+              <Link
+                href="/estatua-viva-para-eventos-corporativos"
+                className="group rounded-2xl border border-champagne-gold/20 bg-charcoal/60 p-6 transition-colors hover:border-champagne-gold/50 flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="font-serif text-xl text-champagne-gold group-hover:text-white transition-colors">
+                    Estátuas Vivas Corporativas
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm text-stone-warm leading-relaxed">
+                    Apresentações focadas na imobilidade escultural: robôs prateados, troféus vivos dourados e pátina de mármore.
+                  </p>
+                </div>
+                <span className="mt-4 text-xs font-mono uppercase tracking-widest text-champagne-gold inline-flex items-center gap-1">
+                  Ver estátuas vivas →
+                </span>
+              </Link>
+
+              <Link
+                href="/entretenimento-para-empresas"
+                className="group rounded-2xl border border-champagne-gold/20 bg-charcoal/60 p-6 transition-colors hover:border-champagne-gold/50 flex flex-col justify-between"
+              >
+                <div>
+                  <h3 className="font-serif text-xl text-champagne-gold group-hover:text-white transition-colors">
+                    Guia de Entretenimento SP
+                  </h3>
+                  <p className="mt-2.5 text-xs sm:text-sm text-stone-warm leading-relaxed">
+                    Panorama das intervenções artísticas e recepções para eventos corporativos realizados na capital e Grande SP.
+                  </p>
+                </div>
+                <span className="mt-4 text-xs font-mono uppercase tracking-widest text-champagne-gold inline-flex items-center gap-1">
+                  Consultar guia regional →
+                </span>
+              </Link>
             </div>
           </div>
         </section>

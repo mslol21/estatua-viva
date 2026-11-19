@@ -28,8 +28,60 @@ const frentes = [
 ];
 
 export default function EquipePage() {
+  const pageUrl = `${SITE_URL}/equipe`;
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'AboutPage',
+        '@id': `${pageUrl}#about`,
+        name: 'Nossa Equipe | Estátua Viva Produções',
+        url: pageUrl,
+        inLanguage: 'pt-BR',
+        about: { '@id': `${SITE_URL}/#empresa` },
+        breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Início',
+            item: `${SITE_URL}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Nossa Equipe',
+            item: pageUrl,
+          },
+        ],
+      },
+      {
+        '@type': 'Person',
+        '@id': `${pageUrl}#rodolfo-valentino`,
+        name: 'Rodolfo Valentino',
+        jobTitle: 'Diretor Artístico e Fundador',
+        description:
+          'Diretor artístico da Estátua Viva Produções desde 2005. Pesquisador cênico, especialista em caracterização e interpretação escultórica para eventos no Brasil.',
+        image: `${SITE_URL}/images/direcao-artistica/rodolfo-valentino-diretor-artistico.webp`,
+        worksFor: {
+          '@type': 'LocalBusiness',
+          '@id': `${SITE_URL}/#empresa`,
+          name: 'Estátua Viva Produções',
+        },
+      },
+    ],
+  };
+
   return (
     <main className="site-surface min-h-screen text-alabaster">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }}
+      />
       <Navbar />
       <div id="conteudo" tabIndex={-1}>
         <section className="relative isolate overflow-hidden border-b border-champagne-gold/20 bg-[#071519] pt-40 pb-16 sm:pt-48 sm:pb-24">

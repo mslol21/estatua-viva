@@ -95,27 +95,56 @@ const faqs = [
 ];
 
 export default function PersonagensParaEventosPage() {
+  const pageUrl = `${SITE_URL}/personagens-para-eventos`;
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        name: 'Personagens e Performances para Eventos | Estátua Viva Produções',
+        url: pageUrl,
+        inLanguage: 'pt-BR',
+        about: { '@id': `${SITE_URL}/#empresa` },
+        breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Início',
+            item: `${SITE_URL}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Personagens para Eventos',
+            item: pageUrl,
+          },
+        ],
+      },
+      {
         '@type': 'Service',
-        '@id': `${SITE_URL}/personagens-para-eventos#servico`,
+        '@id': `${pageUrl}#servico`,
         name: 'Personagens e Performances para Eventos',
         description:
           'Atores performáticos profissionais, intervenções temáticas e personagens vivos para eventos corporativos, celebrações e feiras no Brasil.',
         provider: {
           '@type': 'LocalBusiness',
+          '@id': `${SITE_URL}/#empresa`,
           name: 'Estátua Viva Produções',
           url: `${SITE_URL}/`,
           telephone: '+5511937765250',
         },
         areaServed: { '@type': 'Country', name: 'Brasil' },
-        url: `${SITE_URL}/personagens-para-eventos`,
+        url: pageUrl,
       },
       {
         '@type': 'FAQPage',
-        '@id': `${SITE_URL}/personagens-para-eventos#faq`,
+        '@id': `${pageUrl}#faq`,
         mainEntity: faqs.map(({ q, a }) => ({
           '@type': 'Question',
           name: q,

@@ -1,11 +1,62 @@
 export const GEO_FAQ = [
-{question:'Quanto custa contratar uma estátua viva para um evento corporativo?',answer:'Cada apresentação recebe um orçamento personalizado, considerando o tipo de evento, a quantidade de artistas, a duração, o figurino, a localização e a data. Entre em contato pelo WhatsApp (11) 93776-5250 para receber uma proposta adequada ao seu evento.'},
-{question:'Como funciona a dinâmica das estátuas vivas durante o evento?',answer:'A estátua viva permanece imóvel, caracterizada como escultura, e ganha vida em momentos planejados. Pode interagir com convidados, posar para fotos e surpreender o público. Duração, turnos e pausas são definidos pela produção conforme o evento.'},
-{question:'Para que tipos de evento corporativo vocês indicam estátua viva?',answer:'Recepções em convenções, jantares de gala, estandes de feiras, lançamentos, inaugurações, confraternizações e experiências de marca. As opções incluem caracterizações douradas, prateadas e produções personalizadas.'},
-{question:'É possível personalizar o figurino com a marca ou produto da minha empresa?',answer:'Sim. A Estátua Viva Produções desenvolve personagens e performances personalizados, com figurino, maquiagem e interpretação alinhados ao conceito do evento. Consulte viabilidade, orçamento e prazo com a produção.'},
-{question:'Vocês atendem fora da capital de São Paulo?',answer:'Sim. A base fica em São Paulo (SP), e a equipe atende eventos em todo o Brasil. Informe cidade e data para consultar disponibilidade e condições de deslocamento.'},
-{question:'Qual a antecedência recomendada para reservar a data?',answer:'Recomendamos consultar a disponibilidade assim que a data estiver definida, especialmente para eventos de fim de ano e datas concorridas. Solicitações de última hora também podem ser avaliadas.'},
-{question:'Quantos artistas e quanto tempo de apresentação são necessários?',answer:'A quantidade de artistas e o formato de apresentação dependem do tamanho do espaço, do público e dos objetivos do evento. A produção orienta a configuração adequada após receber o briefing.'},
-{question:'Vocês trabalham com estátua viva de Natal?',answer:'Sim. A temporada de Natal inclui personagens e performances para confraternizações, shoppings e eventos de fim de ano. Conheça as opções na página Especial de Natal.'},
-{question:'Qual a diferença entre estátua viva e personagem vivo?',answer:'A estátua viva explora imobilidade e caracterização escultural, com movimentos pontuais de surpresa. O personagem vivo interpreta e interage de forma mais contínua com o público. Os formatos podem ser combinados.'}
+  {
+    question: 'O que é uma estátua viva para eventos?',
+    answer:
+      'A estátua viva para eventos é uma intervenção artística onde atores caracterizados com maquiagem e figurinos esculturais (como ouro imperial, mármore clássico ou prata tecnológica) combinam períodos de imobilidade estatuária com movimentos sutis e interações surpreendentes. Na recepção ou circulação, transforma o ambiente, recepciona os convidados com sofisticação e gera grande engajamento em fotos e redes sociais.',
+  },
+  {
+    question: 'Como solicitar um orçamento?',
+    answer:
+      'Para solicitar um orçamento com a Estátua Viva Produções, entre em contato diretamente pelo WhatsApp Oficial (11) 93776-5250, preencha o formulário de proposta no site ou envie um e-mail para contato@estatuavivaproducoes.com.br. Nossa equipe artística responde rapidamente com disponibilidade e valores para o perfil do seu evento.',
+  },
+  {
+    question: 'Quais informações são necessárias para contratar?',
+    answer:
+      'Para agilizar a elaboração da proposta, informe: data e horário do evento, local ou cidade da realização (nossa base é em São Paulo/Tatuapé e atendemos todo o Brasil), tipo de evento (corporativo, feira, confraternização, casamento) e a quantidade aproximada de convidados ou estilo de personagem desejado.',
+  },
+  {
+    question: 'Quanto custa contratar uma estátua viva para um evento corporativo?',
+    answer:
+      'Cada apresentação recebe um orçamento personalizado, considerando o tipo de evento, a quantidade de artistas, a duração, o figurino, a localização e a data. Entre em contato pelo WhatsApp (11) 93776-5250 para receber uma proposta adequada ao seu evento.',
+  },
+  {
+    question: 'Como funciona a dinâmica das estátuas vivas durante o evento?',
+    answer:
+      'A estátua viva permanece imóvel, caracterizada como escultura, e ganha vida em momentos planejados. Pode interagir com convidados, posar para fotos e surpreender o público. Duração, turnos e pausas são definidos pela produção conforme o evento.',
+  },
+  {
+    question: 'Para que tipos de evento corporativo vocês indicam estátua viva?',
+    answer:
+      'Recepções em convenções, jantares de gala, estandes de feiras, lançamentos, inaugurações, confraternizações e experiências de marca. As opções incluem caracterizações douradas, prateadas e produções personalizadas.',
+  },
+  {
+    question: 'É possível personalizar o figurino com a marca ou produto da minha empresa?',
+    answer:
+      'Sim. A Estátua Viva Produções desenvolve personagens e performances personalizados, com figurino, maquiagem e interpretação alinhados ao conceito do evento. Consulte viabilidade, orçamento e prazo com a produção.',
+  },
+  {
+    question: 'Vocês atendem fora da capital de São Paulo?',
+    answer:
+      'Sim. A base fica em São Paulo (SP), e a equipe atende eventos em todo o Brasil. Informe cidade e data para consultar disponibilidade e condições de deslocamento.',
+  },
+  {
+    question: 'Qual a antecedência recomendada para reservar a data?',
+    answer:
+      'Recomendamos consultar a disponibilidade assim que a data estiver definida, especialmente para eventos de fim de ano e datas concorridas. Solicitações de última hora também podem ser avaliadas.',
+  },
+  {
+    question: 'Quantos artistas e quanto tempo de apresentação são necessários?',
+    answer:
+      'A quantidade de artistas e o formato de apresentação dependem do tamanho do espaço, do público e dos objetivos do evento. A produção orienta a configuração adequada após receber o briefing.',
+  },
+  {
+    question: 'Vocês trabalham com estátua viva de Natal?',
+    answer:
+      'Sim. A temporada de Natal inclui personagens e performances para confraternizações, shoppings e eventos de fim de ano. Conheça as opções na página Especial de Natal.',
+  },
+  {
+    question: 'Qual a diferença entre estátua viva e personagem vivo?',
+    answer:
+      'A estátua viva explora imobilidade e caracterização escultural, com movimentos pontuais de surpresa. O personagem vivo interpreta e interage de forma mais contínua com o público. Os formatos podem ser combinados.',
+  },
 ] as const;

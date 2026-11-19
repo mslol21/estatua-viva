@@ -104,27 +104,70 @@ const faqs = [
 ];
 
 export default function NatalPage() {
+  const pageUrl = `${SITE_URL}/natal`;
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
       {
+        '@type': 'WebPage',
+        '@id': `${pageUrl}#webpage`,
+        name: 'Especial de Natal | Estátua Viva Produções',
+        url: pageUrl,
+        inLanguage: 'pt-BR',
+        about: { '@id': `${SITE_URL}/#empresa` },
+        breadcrumb: { '@id': `${pageUrl}#breadcrumb` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Início',
+            item: `${SITE_URL}/`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Especial de Natal',
+            item: pageUrl,
+          },
+        ],
+      },
+      {
         '@type': 'Service',
-        '@id': `${SITE_URL}/natal#servico`,
+        '@id': `${pageUrl}#servico`,
         name: 'Especial de Natal — Personagens e Performances Artísticas',
         description:
           'Personagens natalinos, Papai Noel clássico de alta costura e performances de Natal para eventos corporativos e shoppings no Brasil.',
         provider: {
           '@type': 'LocalBusiness',
+          '@id': `${SITE_URL}/#empresa`,
           name: 'Estátua Viva Produções',
           url: `${SITE_URL}/`,
           telephone: '+5511937765250',
         },
         areaServed: { '@type': 'Country', name: 'Brasil' },
-        url: `${SITE_URL}/natal`,
+        url: pageUrl,
       },
+      ...natalVideos.map((vid, idx) => ({
+        '@type': 'VideoObject',
+        '@id': `${pageUrl}#video-${idx + 1}`,
+        name: vid.title,
+        description: vid.description,
+        thumbnailUrl: `${SITE_URL}${vid.poster}`,
+        contentUrl: vid.src,
+        uploadDate: '2026-10-01T00:00:00+00:00',
+        publisher: {
+          '@type': 'Organization',
+          '@id': `${SITE_URL}/#empresa`,
+          name: 'Estátua Viva Produções',
+        },
+      })),
       {
         '@type': 'FAQPage',
-        '@id': `${SITE_URL}/natal#faq`,
+        '@id': `${pageUrl}#faq`,
         mainEntity: faqs.map(({ q, a }) => ({
           '@type': 'Question',
           name: q,
