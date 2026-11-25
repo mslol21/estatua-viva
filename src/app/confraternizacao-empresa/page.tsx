@@ -232,11 +232,11 @@ export default function ConfraternizacaoEmpresaPage() {
               playsInline
               preload="metadata"
               poster="/brand/hero-bronze.jpg"
-              aria-label="Apresentação artística de personagens especiais"
+              aria-label="Vídeo de apresentação de personagens artísticos de Natal"
               className="w-full h-full object-contain"
             >
               <source
-                src="https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4"
+                src="/midia/videos/novos-personagens-de-natal.mp4"
                 type="video/mp4"
               />
               Seu navegador não suporta reprodução de vídeo.
