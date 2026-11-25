@@ -82,6 +82,7 @@ export default function Footer() {
                   Personagens para Festas
                 </Link>
               </li>
+              <li><Link href="/acervo-artistico" className="hover:text-champagne-gold transition-colors">Acervo Artístico</Link></li>
               <li><Link href="/eventos-culturais" className="hover:text-champagne-gold transition-colors">Eventos Culturais</Link></li>
               <li><Link href="/eventos-publicos" className="hover:text-champagne-gold transition-colors">Eventos Públicos</Link></li>
               <li><Link href="/campanhas-institucionais" className="hover:text-champagne-gold transition-colors">Campanhas Institucionais</Link></li>
