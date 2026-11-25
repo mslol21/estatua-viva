@@ -66,6 +66,6 @@ export const galleryCategories: { key:ArchiveCategory; title:string; description
 ];
 
 export function getAvailableArchivePhotos(category: ArchiveCategory): ArchivePhoto[] {
-  const uploaded = newArchivePhotos.filter(p => p.category === category && fs.existsSync(path.join(process.cwd(), 'public', p.src.replace(/^\\//, ''))));
+  const uploaded = newArchivePhotos.filter(p => p.category === category && fs.existsSync(path.join(process.cwd(), 'public', p.src.slice(1))));
   return uploaded.length ? uploaded : existingFallback.filter(p=>p.category===category);
 }
