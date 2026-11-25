@@ -5,6 +5,7 @@ import { ArrowRight, Building2, Camera, Clock3, MapPin, Sparkles, Users } from '
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppCTA from '@/components/marketing/WhatsAppCTA';
+import ArtworkFrame from '@/components/ArtworkFrame';
 import { SITE_URL } from '@/lib/site-config';
 
 const pageUrl = `${SITE_URL}/fim-de-ano`;
@@ -280,15 +281,15 @@ export default function FimDeAnoPage() {
                   key={item.title}
                   className="neon-gold-card flex flex-col overflow-hidden rounded-2xl border border-champagne-gold/25 bg-[#071318]"
                 >
-                  <div className="relative aspect-[4/5] w-full bg-black/30">
-                    <Image
-                      src={item.image}
-                      alt={item.alt}
-                      fill
-                      sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, (max-width: 1279px) 33vw, 20vw"
-                      className="object-contain object-center"
-                    />
-                  </div>
+                  {item.title === 'Mímicos & Intervenções' ? (
+                    <div className="relative aspect-[4/5] w-full bg-black/30">
+                      <Image src={item.image} alt={item.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw" className="object-cover object-center" />
+                    </div>
+                  ) : (
+                    <div className="p-3 pb-0">
+                      <ArtworkFrame src={item.image} alt={item.alt} sizes="(max-width: 639px) 85vw, (max-width: 1023px) 48vw, 20vw" />
+                    </div>
+                  )>
                   <div className="flex flex-1 flex-col p-5">
                     <p className="text-[11px] uppercase tracking-wider text-champagne-gold">{item.type}</p>
                     <h3 className="mt-2 font-serif text-xl sm:text-2xl text-alabaster">{item.title}</h3>
