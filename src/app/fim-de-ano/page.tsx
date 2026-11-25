@@ -6,6 +6,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppCTA from '@/components/marketing/WhatsAppCTA';
 import ArtworkFrame from '@/components/ArtworkFrame';
+import AcervoArtisticoGallery from '@/components/AcervoArtisticoGallery';
 import { SITE_URL } from '@/lib/site-config';
 
 const pageUrl = `${SITE_URL}/fim-de-ano`;
@@ -311,6 +312,7 @@ export default function FimDeAnoPage() {
             </div>
           </div>
         </section>
+        <AcervoArtisticoGallery categories={['bailarina', 'esculturas', 'corporativos']} compact />
         <section className="site-container grid gap-10 py-16 sm:py-24 lg:grid-cols-2">
           <div className="rounded-2xl border border-champagne-gold/25 bg-charcoal/40 p-7 sm:p-10">
             <p className="eyebrow">Para empresas</p>
