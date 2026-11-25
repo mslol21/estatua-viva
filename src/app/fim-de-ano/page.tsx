@@ -289,7 +289,7 @@ export default function FimDeAnoPage() {
                     <div className="p-3 pb-0">
                       <ArtworkFrame src={item.image} alt={item.alt} sizes="(max-width: 639px) 85vw, (max-width: 1023px) 48vw, 20vw" />
                     </div>
-                  )>
+                  )}
                   <div className="flex flex-1 flex-col p-5">
                     <p className="text-[11px] uppercase tracking-wider text-champagne-gold">{item.type}</p>
                     <h3 className="mt-2 font-serif text-xl sm:text-2xl text-alabaster">{item.title}</h3>
