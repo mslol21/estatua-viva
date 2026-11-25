@@ -40,19 +40,19 @@ const natalVideos = [
   {
     title: 'Novos Personagens de Natal',
     description: 'Conheça o elenco especial e as novas caracterizações cenográficas da temporada.',
-    src: 'https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%281%29.mp4',
+    src: '/midia/videos/novos-personagens-de-natal.mp4',
     poster: '/brand/hero-bronze.jpg',
   },
   {
-    title: 'Convite Noel',
+    title: 'Convite Artístico de Natal',
     description: 'Um convite poético para celebrar a magia das festas com sofisticação.',
-    src: 'https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV.mp4',
+    src: '/midia/videos/convite-artistico-de-natal.mp4',
     poster: '/brand/perfil-oficial.webp',
   },
   {
-    title: 'POV Noel — A Perspectiva do Personagem',
+    title: 'Natal pela Perspectiva do Personagem',
     description: 'Sinta a emoção do acolhimento natalino sob o olhar do próprio personagem.',
-    src: 'https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public/EV%20%282%29.mp4',
+    src: '/midia/videos/natal-pela-perspectiva-do-personagem.mp4',
     poster: '/brand/artista-share.jpg',
   },
 ];
@@ -157,9 +157,8 @@ export default function NatalPage() {
         name: vid.title,
         description: vid.description,
         thumbnailUrl: `${SITE_URL}${vid.poster}`,
-        contentUrl: vid.src,
-        uploadDate: '2026-10-01T00:00:00+00:00',
-        publisher: {
+        contentUrl: `${SITE_URL}${vid.src}`,
+                publisher: {
           '@type': 'Organization',
           '@id': `${SITE_URL}/#empresa`,
           name: 'Estátua Viva Produções',
@@ -275,7 +274,7 @@ export default function NatalPage() {
                     aria-label={vid.title}
                     className="w-full h-full object-contain"
                   >
-                    <source src={`${vid.src}#t=0.5`} type="video/mp4" />
+                    <source src={vid.src} type="video/mp4" />
                     Seu navegador não suporta reprodução de vídeo.
                   </video>
                 </div>
