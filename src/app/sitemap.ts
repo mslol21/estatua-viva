@@ -8,6 +8,7 @@ const pages = [
   { path: '/eventos-culturais', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/eventos-publicos', priority: 0.9, changeFrequency: 'monthly' as const },
   { path: '/campanhas-institucionais', priority: 0.9, changeFrequency: 'monthly' as const },
+  { path: '/acervo-artistico', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/fim-de-ano', priority: 0.95, changeFrequency: 'weekly' as const },
   { path: '/confraternizacao-empresa', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: '/natal', priority: 0.9, changeFrequency: 'weekly' as const },
