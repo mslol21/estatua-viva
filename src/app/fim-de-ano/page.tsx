@@ -20,50 +20,50 @@ export const metadata: Metadata = {
       'Recepções memoráveis, apresentações curtas e estátuas vivas para empresas, condomínios e celebrações em São Paulo.',
     url: pageUrl,
     type: 'website',
-    images: [{ url: `${SITE_URL}/images/fim-de-ano/escultura_dupla_nova.webp`, width: 1080, height: 1185, alt: 'Atrações artísticas para festas de fim de ano — Estátua Viva Produções' }],
+    images: [{ url: `${SITE_URL}/images/fim-de-ano/dionisio_escultura_nova.webp`, width: 1023, height: 1537, alt: 'Atrações artísticas para festas de fim de ano — Estátua Viva Produções' }],
   },
 };
 
 const highlights = [
   {
-    title: 'Dupla Escultural Clássica',
-    type: 'Recepções de alto impacto',
-    image: '/images/fim-de-ano/escultura_dupla_nova.webp',
-    alt: 'Dupla de estátuas vivas em apresentação artística para eventos de fim de ano',
-    description:
-      'Casal de estátuas em sincronia e caracterização escultural para recepcionar convidados e criar oportunidades marcantes de fotos.',
-  },
-  {
-    title: 'Prata & Vanguarda',
-    type: 'Arte contemporânea',
+    title: 'Bailarina Prateada',
+    type: 'Arte contemporânea & Vanguarda',
     image: '/images/fim-de-ano/escultura_prata_nova.webp',
-    alt: 'Artista caracterizado como estátua viva prateada',
+    alt: 'Artista caracterizada como estátua viva bailarina prateada',
     description:
-      'Presença artística prateada e futurista para celebrações de encerramento, premiações corporativas e recepções de gala.',
-  },
-  {
-    title: 'Musa Dourada com Lira',
-    type: 'Solenidade & Gala',
-    image: '/images/fim-de-ano/escultura_lira_nova.webp',
-    alt: 'Artista com caracterização dourada e lira clássica',
-    description:
-      'Performances de inspiração clássica em ouro reluzente que valorizam o cenário e a sofisticação do evento.',
+      'Presença artística prateada e futurista com movimentos coreografados para premiações corporativas, convenções e celebrações modernas.',
   },
   {
     title: 'Dionísio Imperial',
-    type: 'Celebrações & Conquistas',
+    type: 'Solenidade & Conquistas',
     image: '/images/fim-de-ano/dionisio_escultura_nova.webp',
-    alt: 'Estátua viva Dionísio em caracterização mitológica dourada',
+    alt: 'Estátua viva clássica em pátina dourada imperial',
     description:
-      'Imponência cênica e energia comemorativa com caracterização mitológica refinada, celebrando o fechamento do ano em alto nível.',
+      'Imponência cênica e energia comemorativa com caracterização clássica refinada, celebrando o encerramento do ano em grande estilo.',
   },
   {
-    title: 'Escultura Cenográfica',
-    type: 'Intervenção & Surpresa',
-    image: '/images/fim-de-ano/escultura_cenografica_nova.webp',
-    alt: 'Performance de estátua viva cenográfica com pedestal',
+    title: 'Musa Dourada com Lira',
+    type: 'Gala & Tradição',
+    image: '/images/estatuas-vivas/estatua-viva-musa-lira-ouro.webp',
+    alt: 'Estátua viva clássica em ouro imperial com lira',
     description:
-      'A imobilidade perfeita que ganha vida com poesia, gestos sutis e elegância para encantar os convidados na chegada.',
+      'A clássica intervenção artística em ouro imperial com lira, proporcionando um acolhimento nobre, poético e triunfal para os convidados.',
+  },
+  {
+    title: 'Dupla Escultural de Gala',
+    type: 'Recepções de alto impacto',
+    image: '/images/confraternizacoes/ninfa-e-dionisio-festa-debutante-1.webp',
+    alt: 'Casal de estátuas vivas em recepção de gala para eventos',
+    description:
+      'Casal de artistas em harmonia e imobilidade estatuária, criando um ponto nobre de atração visual e cenário especial para fotos com os convidados.',
+  },
+  {
+    title: 'Mímicos & Intervenções',
+    type: 'Interação & Descontração',
+    image: '/images/entretenimento/mimicos-interacao-eventos.webp',
+    alt: 'Artistas de mímica em performance interativa com o público',
+    description:
+      'Interações leves, acolhedoras e refinadas que circulam entre o público, descontraindo o ambiente e aproximando os participantes.',
   },
 ];
 

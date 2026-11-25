@@ -6,7 +6,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 const links = [
   { label: 'Corporativo', href: '/eventos-corporativos', image: '/portfolio/prata.webp' },
-  { label: 'Fim de Ano', href: '/fim-de-ano', image: '/images/fim-de-ano/escultura_dupla_nova.webp' },
+  { label: 'Fim de Ano', href: '/fim-de-ano', image: '/images/fim-de-ano/dionisio_escultura_nova.webp' },
   { label: 'Ouro', href: '/#estilo-ouro', image: '/portfolio/ouro.webp' },
   { label: 'Branca', href: '/#estilo-branca', image: '/portfolio/branca.webp' },
   { label: 'Prata', href: '/#estilo-prata', image: '/portfolio/prata.webp' },
