@@ -130,7 +130,7 @@ export default function Home() {
           </div>
           <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-champagne-gold/30 bg-[#071318] shadow-[0_0_35px_rgba(207,166,85,0.2)]">
             <div className="relative aspect-[4/5] w-full">
-              <Image src="/images/confraternizacoes/ninfa-e-dionisio-festa-debutante-1.webp" alt="Dupla de estátuas vivas em apresentação artística" fill sizes="(max-width: 1023px) 90vw, 420px" className="object-contain object-center" />
+              <Image src="/images/fim-de-ano/escultura_dupla_nova.webp" alt="Dupla de estátuas vivas em apresentação artística para fim de ano" fill sizes="(max-width: 1023px) 90vw, 420px" className="object-contain object-center" />
             </div>
             <p className="border-t border-champagne-gold/20 p-4 text-center text-xs font-mono uppercase tracking-widest text-champagne-gold">Celebre com arte viva</p>
           </div>

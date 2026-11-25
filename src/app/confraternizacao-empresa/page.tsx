@@ -55,7 +55,7 @@ const attractions = [
     name: 'Estátuas Vivas para Celebrações',
     category: 'Fim de Ano',
     desc: 'Intervenções artísticas para recepções e celebrações de encerramento do ano, sem depender de uma temática natalina.',
-    img: '/images/estatuas-vivas/estatua-viva-dourado-ouro-1.webp',
+    img: '/images/fim-de-ano/dionisio_escultura_nova.webp',
   },
   {
     name: 'Prata Futurista & Tecnologia',
