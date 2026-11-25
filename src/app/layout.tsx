@@ -42,7 +42,7 @@ const baseMetadata: Metadata = {
       'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
     },
   },
-  other: { 'geo.region': 'BR-SP', 'geo.placename': 'São Paulo' },
+  other: { 'geo.region': 'BR-SP', 'geo.placename': 'São Paulo', 'google-adsense-account': 'ca-pub-8791614255289045' },
   openGraph: {
     title: 'Estátua Viva Produções — Você imagina. A gente dá vida.',
     description: 'Estátuas vivas e personagens para eventos corporativos, feiras e celebrações em todo o Brasil.',
