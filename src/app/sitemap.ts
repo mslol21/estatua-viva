@@ -5,6 +5,7 @@ const pages = [
   { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
   { path: '/entretenimento-para-empresas', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: '/eventos-corporativos', priority: 1.0, changeFrequency: 'weekly' as const },
+  { path: '/fim-de-ano', priority: 0.95, changeFrequency: 'weekly' as const },
   { path: '/confraternizacao-empresa', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: '/natal', priority: 0.9, changeFrequency: 'weekly' as const },
   { path: '/estatua-viva-para-eventos', priority: 0.9, changeFrequency: 'monthly' as const },
@@ -19,7 +20,7 @@ const pages = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastMod = new Date('2026-11-18');
+  const lastMod = new Date('2026-11-25');
   return pages.map(({ path, priority, changeFrequency }) => ({
     url: `${SITE_URL}${path}`,
     lastModified: lastMod,
