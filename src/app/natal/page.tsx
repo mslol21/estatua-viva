@@ -39,18 +39,21 @@ export const metadata: Metadata = {
 const natalVideos = [
   {
     title: 'Novos Personagens de Natal',
+    slug: 'novos-personagens-de-natal',
     description: 'Conheça o elenco especial e as novas caracterizações cenográficas da temporada.',
     src: '/midia/videos/novos-personagens-de-natal.mp4',
     poster: '/brand/hero-bronze.jpg',
   },
   {
     title: 'Convite Artístico de Natal',
+    slug: 'convite-artistico-de-natal',
     description: 'Um convite poético para celebrar a magia das festas com sofisticação.',
     src: '/midia/videos/convite-artistico-de-natal.mp4',
     poster: '/brand/perfil-oficial.webp',
   },
   {
     title: 'Natal pela Perspectiva do Personagem',
+    slug: 'natal-pela-perspectiva-do-personagem',
     description: 'Sinta a emoção do acolhimento natalino sob o olhar do próprio personagem.',
     src: '/midia/videos/natal-pela-perspectiva-do-personagem.mp4',
     poster: '/brand/artista-share.jpg',
@@ -288,6 +291,9 @@ export default function NatalPage() {
                   <p className="text-stone-warm text-xs sm:text-sm leading-relaxed">
                     {vid.description}
                   </p>
+                  <Link href={`/videos/${vid.slug}`} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-champagne-gold hover:underline">
+                    Assistir vídeo em página própria <ArrowRight size={15}/>
+                  </Link>
                 </div>
               </article>
             ))}
