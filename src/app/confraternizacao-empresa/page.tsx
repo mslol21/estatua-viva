@@ -52,10 +52,10 @@ const attractions = [
     img: '/images/confraternizacoes/interacao-publico-trio-marmore.webp',
   },
   {
-    name: 'Papai Noel e Personagens Natalinos Nobres',
-    category: 'Temporada Especial',
-    desc: 'Figurinos teatrais de altíssimo acabamento para confraternizações de dezembro, confraternizações familiares e shopping centers.',
-    img: '/images/hero/estatua-viva-bronze-hero.webp',
+    name: 'Estátuas Vivas para Celebrações',
+    category: 'Fim de Ano',
+    desc: 'Intervenções artísticas para recepções e celebrações de encerramento do ano, sem depender de uma temática natalina.',
+    img: '/images/estatuas-vivas/estatua-viva-dourado-ouro-1.webp',
   },
   {
     name: 'Prata Futurista & Tecnologia',
@@ -196,7 +196,7 @@ export default function ConfraternizacaoEmpresaPage() {
               </a>
 
               <a
-                href="#video-confraternizacao"
+                href="/fim-de-ano"
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-champagne-gold/30 text-champagne-gold hover:bg-champagne-gold/10 transition-colors text-sm font-semibold"
               >
                 <Play size={16} /> Ver apresentação em vídeo
@@ -312,15 +312,14 @@ export default function ConfraternizacaoEmpresaPage() {
                   key={att.name}
                   className="neon-gold-card group rounded-2xl overflow-hidden border border-champagne-gold/25 bg-[#071318]/90 flex flex-col justify-between"
                 >
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
+                  <div className="relative aspect-[4/5] w-full overflow-hidden bg-black">
                     <Image
                       src={att.img}
                       alt={att.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-contain object-center"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#071318] via-transparent to-transparent opacity-80" />
                   </div>
                   <div className="p-6 flex-1 flex flex-col justify-between">
                     <div>
