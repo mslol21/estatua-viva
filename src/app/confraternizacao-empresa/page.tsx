@@ -199,7 +199,7 @@ export default function ConfraternizacaoEmpresaPage() {
                 href="/fim-de-ano"
                 className="inline-flex items-center gap-2 px-6 py-4 rounded-full border border-champagne-gold/30 text-champagne-gold hover:bg-champagne-gold/10 transition-colors text-sm font-semibold"
               >
-                <Play size={16} /> Ver apresentação em vídeo
+                <Sparkles size={16} /> Descobrir atrações de fim de ano
               </a>
             </div>
 
