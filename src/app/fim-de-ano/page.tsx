@@ -28,44 +28,44 @@ export const metadata: Metadata = {
 
 const highlights = [
   {
-    title: 'Bailarina Prateada',
-    type: 'Arte contemporânea & Vanguarda',
-    image: '/images/fim-de-ano/escultura_prata_nova.webp',
-    alt: 'Artista caracterizada como estátua viva bailarina prateada',
+    title: 'Dupla Escultural Clássica',
+    type: 'Recepções de alto impacto',
+    image: '/images/acervo-2026/dupla-esculturas-recepcao.webp',
+    alt: 'Casal de estátuas vivas clássicas em recepção de gala para eventos',
     description:
-      'Presença artística prateada e futurista com movimentos coreografados para premiações corporativas, convenções e celebrações modernas.',
+      'Casal de estátuas em sincronia e caracterização escultural para recepcionar convidados e criar oportunidades marcantes de fotos.',
   },
   {
-    title: 'Dionísio Imperial',
-    type: 'Solenidade & Conquistas',
-    image: '/images/fim-de-ano/dionisio_escultura_nova.webp',
-    alt: 'Estátua viva clássica em pátina dourada imperial',
+    title: 'Prata & Vanguarda',
+    type: 'Arte contemporânea',
+    image: '/images/acervo-2026/bailarina-prateada-espelhos-em-pe.webp',
+    alt: 'Bailarina prateada — estátua viva de vanguarda e arte contemporânea',
     description:
-      'Imponência cênica e energia comemorativa com caracterização clássica refinada, celebrando o encerramento do ano em grande estilo.',
+      'Presença artística prateada e futurista para celebrações de encerramento, premiações corporativas e recepções de gala.',
   },
   {
     title: 'Musa Dourada com Lira',
-    type: 'Gala & Tradição',
-    image: '/images/estatuas-vivas/estatua-viva-musa-lira-ouro.webp',
-    alt: 'Estátua viva clássica em ouro imperial com lira',
+    type: 'Solenidade & Gala',
+    image: '/images/acervo-2026/escultura-pedra-lira.webp',
+    alt: 'Estátua viva com lira para recepções solenes e celebrações de gala',
     description:
-      'A clássica intervenção artística em ouro imperial com lira, proporcionando um acolhimento nobre, poético e triunfal para os convidados.',
+      'Performances de inspiração clássica que valorizam o cenário e a sofisticação do evento com porte estatuário refinado.',
   },
   {
-    title: 'Dupla Escultural de Gala',
-    type: 'Recepções de alto impacto',
-    image: '/images/confraternizacoes/ninfa-e-dionisio-festa-debutante-1.webp',
-    alt: 'Casal de estátuas vivas em recepção de gala para eventos',
+    title: 'Dionísio Imperial',
+    type: 'Celebrações & Conquistas',
+    image: '/images/fim-de-ano/dionisio_escultura_nova.webp',
+    alt: 'Dionísio Imperial — estátua viva mitológica para celebrações e conquistas',
     description:
-      'Casal de artistas em harmonia e imobilidade estatuária, criando um ponto nobre de atração visual e cenário especial para fotos com os convidados.',
+      'Imponência cênica e energia comemorativa com caracterização mitológica refinada, celebrando o fechamento do ano em alto nível.',
   },
   {
-    title: 'Mímicos & Intervenções',
-    type: 'Interação & Descontração',
-    image: '/images/entretenimento/mimicos-interacao-eventos.webp',
-    alt: 'Artistas de mímica em performance interativa com o público',
+    title: 'Escultura Cenográfica',
+    type: 'Intervenção & Surpresa',
+    image: '/images/acervo-2026/escultura-pedra-ensaio-cenografico.webp',
+    alt: 'Escultura viva cenográfica em ensaio para intervenções e recepções de eventos',
     description:
-      'Interações leves, acolhedoras e refinadas que circulam entre o público, descontraindo o ambiente e aproximando os participantes.',
+      'A imobilidade perfeita que ganha vida com poesia, gestos sutis e elegância para encantar os convidados na chegada.',
   },
 ];
 
@@ -282,15 +282,9 @@ export default function FimDeAnoPage() {
                   key={item.title}
                   className="neon-gold-card flex flex-col overflow-hidden rounded-2xl border border-champagne-gold/25 bg-[#071318]"
                 >
-                  {item.title === 'Mímicos & Intervenções' ? (
-                    <div className="relative aspect-[4/5] w-full bg-black/30">
-                      <Image src={item.image} alt={item.alt} fill sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw" className="object-cover object-center" />
-                    </div>
-                  ) : (
-                    <div className="p-3 pb-0">
-                      <ArtworkFrame src={item.image} alt={item.alt} sizes="(max-width: 639px) 85vw, (max-width: 1023px) 48vw, 20vw" />
-                    </div>
-                  )}
+                  <div className="p-3 pb-0">
+                    <ArtworkFrame src={item.image} alt={item.alt} sizes="(max-width: 639px) 85vw, (max-width: 1023px) 48vw, 20vw" />
+                  </div>
                   <div className="flex flex-1 flex-col p-5">
                     <p className="text-[11px] uppercase tracking-wider text-champagne-gold">{item.type}</p>
                     <h3 className="mt-2 font-serif text-xl sm:text-2xl text-alabaster">{item.title}</h3>

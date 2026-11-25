@@ -3,10 +3,10 @@ import ArtworkFrame from '@/components/ArtworkFrame';
 import { ArrowUpRight } from 'lucide-react';
 
 const obras = [
-  { src: '/images/fim-de-ano/escultura_prata_nova.webp', title: 'Bailarina Prateada', detail: 'Performance escultural em cenário de espelhos' },
-  { src: '/images/fim-de-ano/dionisio_escultura_nova.webp', title: 'Bailarina Prateada', detail: 'Pose artística em cenário com iluminação dourada' },
-  { src: '/images/fim-de-ano/escultura_lira_nova.webp', title: 'Bailarina Prateada', detail: 'Composição contemporânea com reflexos e espelhos' },
-  { src: '/images/fim-de-ano/escultura_cenografica_nova.webp', title: 'Bailarina Prateada', detail: 'Pose elegante em moldura cenográfica iluminada' },
+  { src: '/images/acervo-2026/bailarina-prateada-espelhos-em-pe.webp', title: 'Bailarina Prateada', detail: 'Performance escultural diante de espelhos — pose em pé' },
+  { src: '/images/acervo-2026/bailarina-prateada-cenario-dourado.webp', title: 'Bailarina Prateada', detail: 'Composição artística em cenário com iluminação dourada' },
+  { src: '/images/acervo-2026/bailarina-prateada-espelhos-pose-baixa.webp', title: 'Bailarina Prateada', detail: 'Composição contemporânea com reflexos e espelhos — pose baixa' },
+  { src: '/images/acervo-2026/bailarina-prateada-cenario-violeta.webp', title: 'Bailarina Prateada', detail: 'Pose elegante em cenário com iluminação violeta' },
 ];
 
 export default function GaleriaObrasVivas() {
