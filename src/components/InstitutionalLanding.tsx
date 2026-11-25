@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { ArrowRight, CheckCircle2, FileText, MessageCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import AcervoArtisticoGallery from '@/components/AcervoArtisticoGallery';
 import WhatsAppCTA from '@/components/marketing/WhatsAppCTA';
 import { SITE_URL } from '@/lib/site-config';
 
@@ -79,6 +80,9 @@ export default function InstitutionalLanding({ data }: { data: InstitutionalPage
             ))}
           </div>
         </section>
+        {data.slug === 'eventos-culturais' && <AcervoArtisticoGallery categories={['culturais', 'quadros-vivos', 'esculturas']} compact />}
+        {data.slug === 'eventos-publicos' && <AcervoArtisticoGallery categories={['culturais', 'corporativos', 'quadros-vivos']} compact />}
+        {data.slug === 'campanhas-institucionais' && <AcervoArtisticoGallery categories={['personagens', 'bastidores']} compact />}
         <section className="border-y border-champagne-gold/20 bg-[#071318] py-16 sm:py-24">
           <div className="site-container grid gap-12 lg:grid-cols-2">
             <div>
