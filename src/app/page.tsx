@@ -11,6 +11,7 @@ import EventCuratorship from '@/components/EventCuratorship';
 import CharacterCatalog from '@/components/CharacterCatalog';
 import CategoryGallery from '@/components/CategoryGallery';
 import GaleriaObrasVivas from '@/components/GaleriaObrasVivas';
+import AcervoArtisticoGallery from '@/components/AcervoArtisticoGallery';
 import ArtworkFrame from '@/components/ArtworkFrame';
 import BriefingBuilder from '@/components/BriefingBuilder';
 import ReviewsAndFaq from '@/components/ReviewsAndFaq';
@@ -140,6 +141,7 @@ export default function Home() {
       <ComoTrabalhamos />
       <CategoryGallery />
       <GaleriaObrasVivas />
+      <AcervoArtisticoGallery categories={['quadros-vivos', 'culturais']} compact />
       <section aria-labelledby="servicos-titulo" className="site-container py-14 sm:py-20">
         <p className="eyebrow">Soluções artísticas</p>
         <h2 id="servicos-titulo" className="font-serif text-3xl sm:text-5xl mb-5">Encontre a apresentação ideal para seu evento</h2>
