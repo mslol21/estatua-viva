@@ -807,7 +807,7 @@ body {
 .natal-top-line {
   background: linear-gradient(90deg, transparent 5%, rgba(238,191,110,.15) 25%, rgba(255,231,177,.9) 50%, rgba(238,191,110,.15) 75%, transparent 95%);
   background-size: 200% 100%;
-  animation: natal-light-sweep 10s ease-in-out infinite;
+  /* Linha dourada estática reduz custo de pintura contínua. */
 }
 @keyframes natal-twinkle {
   0%, 100% { opacity: 0; transform: translate3d(0, 9px, 0) scale(.6); }
