@@ -6,7 +6,7 @@ import { ArrowUpRight, Menu, X } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 const links = [
   { label: 'Corporativo', href: '/eventos-corporativos', image: '/portfolio/prata.webp' },
-  { label: 'Natal', href: '/natal', image: '/brand/hero-bronze.jpg' },
+  { label: 'Fim de Ano', href: '/fim-de-ano', image: '/images/cases/recepcao-gala-dionisio-cafu.webp' },
   { label: 'Ouro', href: '/#estilo-ouro', image: '/portfolio/ouro.webp' },
   { label: 'Branca', href: '/#estilo-branca', image: '/portfolio/branca.webp' },
   { label: 'Prata', href: '/#estilo-prata', image: '/portfolio/prata.webp' },
@@ -16,6 +16,7 @@ const links = [
 const mobileLinks = [
   { label: 'Eventos Corporativos', href: '/eventos-corporativos' },
   { label: 'Confraternização de Empresa', href: '/confraternizacao-empresa' },
+  { label: 'Festas de Fim de Ano', href: '/fim-de-ano' },
   { label: 'Especial de Natal', href: '/natal' },
   { label: 'Estátuas para Eventos', href: '/estatua-viva-para-eventos' },
   { label: 'Estátuas para Casamentos', href: '/estatua-viva-para-casamento' },
