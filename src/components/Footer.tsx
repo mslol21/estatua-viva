@@ -112,6 +112,9 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/fim-de-ano" className="hover:text-champagne-gold transition-colors font-medium text-champagne-gold">Festas de Fim de Ano</Link>
+              </li>
+              <li>
                 <Link href="/confraternizacao-empresa" className="hover:text-champagne-gold transition-colors font-medium text-alabaster">
                   Confraternizações
                 </Link>
