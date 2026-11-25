@@ -11,6 +11,7 @@ import EventCuratorship from '@/components/EventCuratorship';
 import CharacterCatalog from '@/components/CharacterCatalog';
 import CategoryGallery from '@/components/CategoryGallery';
 import GaleriaObrasVivas from '@/components/GaleriaObrasVivas';
+import ArtworkFrame from '@/components/ArtworkFrame';
 import BriefingBuilder from '@/components/BriefingBuilder';
 import ReviewsAndFaq from '@/components/ReviewsAndFaq';
 import Footer from '@/components/Footer';
@@ -129,11 +130,8 @@ export default function Home() {
             <p className="text-alabaster/90 max-w-xl mt-5 leading-relaxed">Estátuas vivas, performances e recepções marcantes para confraternizações, empresas, condomínios e encontros especiais em São Paulo.</p>
             <div className="mt-8 flex flex-wrap gap-4"><Link href="/fim-de-ano" className="button-gold inline-flex">Ver atrações de fim de ano ↗</Link><Link href="/natal" className="inline-flex items-center text-sm text-champagne-gold hover:underline">Especial de Natal ↗</Link></div>
           </div>
-          <div className="relative mx-auto w-full max-w-[420px] overflow-hidden rounded-2xl border border-champagne-gold/30 bg-[#071318] shadow-[0_0_35px_rgba(207,166,85,0.2)]">
-            <div className="relative aspect-[4/5] w-full">
-              <Image src="/images/fim-de-ano/dionisio_escultura_nova.webp" alt="Estátua viva clássica em apresentação artística para celebrações de fim de ano" fill sizes="(max-width: 1023px) 90vw, 420px" className="object-contain object-center" />
-            </div>
-            <p className="border-t border-champagne-gold/20 p-4 text-center text-xs font-mono uppercase tracking-widest text-champagne-gold">Celebre com arte viva</p>
+          <div className="mx-auto w-full max-w-[420px]">
+            <ArtworkFrame src="/images/fim-de-ano/dionisio_escultura_nova.webp" alt="Dionísio — estátua viva clássica em evento" sizes="(max-width: 1023px) 90vw, 420px" label="Dionísio · Celebre com arte viva" />
           </div>
         </div>
       </section>
