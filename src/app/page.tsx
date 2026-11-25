@@ -147,6 +147,9 @@ export default function Home() {
         <div className="grid gap-4 sm:grid-cols-2">
           {[
             { href: '/entretenimento-para-empresas', title: 'Entretenimento para empresas', detail: 'Confraternizações, premiações e recepção artística corporativa em São Paulo.' },
+            { href: '/eventos-culturais', title: 'Eventos culturais e festivais', detail: 'Performances para programações culturais, feiras e festivais.' },
+            { href: '/eventos-publicos', title: 'Eventos públicos e prefeituras', detail: 'Propostas artísticas para secretarias, celebrações municipais e instituições.' },
+            { href: '/campanhas-institucionais', title: 'Campanhas institucionais e RH', detail: 'Intervenções para comunicação, cidadania e ações educativas.' },
             { href: '/estatua-viva-para-eventos', title: 'Estátuas vivas para eventos', detail: 'Recepções, festas e experiências artísticas.' },
             { href: '/estatua-viva-para-casamento', title: 'Estátuas vivas para casamentos', detail: 'Recepção artística e personagens para celebrações.' },
             { href: '/estatua-viva-para-eventos-corporativos', title: 'Eventos corporativos e ações promocionais', detail: 'Feiras, lançamentos, ativações e experiências de marca.' },
