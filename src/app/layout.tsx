@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
+import Script from 'next/script';
 import { Cormorant_Garamond, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import { SITE_URL } from '@/lib/site-config';
 import MarketingAnalytics from '@/components/MarketingAnalytics';
@@ -96,6 +97,13 @@ export default function RootLayout({
             />
           </noscript>
         )}
+        <Script
+          id="google-adsense"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8791614255289045"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
         <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
         <NoiseOverlay />
         <SmoothScroll>
