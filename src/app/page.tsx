@@ -10,6 +10,7 @@ import ComoTrabalhamos from '@/components/ComoTrabalhamos';
 import EventCuratorship from '@/components/EventCuratorship';
 import CharacterCatalog from '@/components/CharacterCatalog';
 import CategoryGallery from '@/components/CategoryGallery';
+import GaleriaObrasVivas from '@/components/GaleriaObrasVivas';
 import BriefingBuilder from '@/components/BriefingBuilder';
 import ReviewsAndFaq from '@/components/ReviewsAndFaq';
 import Footer from '@/components/Footer';
@@ -140,6 +141,7 @@ export default function Home() {
       <ClientMarquee />
       <ComoTrabalhamos />
       <CategoryGallery />
+      <GaleriaObrasVivas />
       <section aria-labelledby="servicos-titulo" className="site-container py-14 sm:py-20">
         <p className="eyebrow">Soluções artísticas</p>
         <h2 id="servicos-titulo" className="font-serif text-3xl sm:text-5xl mb-5">Encontre a apresentação ideal para seu evento</h2>
