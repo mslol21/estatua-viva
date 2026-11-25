@@ -12,6 +12,15 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    const storage = 'https://br-super-moon-be663clt.storage.c-9.us-east-2.aws.neon.tech/estatua-viva-public';
+    // URLs públicas descritivas; arquivos originais continuam armazenados sem alterações.
+    return [
+      { source: '/midia/videos/novos-personagens-de-natal.mp4', destination: `${storage}/EV%20%281%29.mp4` },
+      { source: '/midia/videos/convite-artistico-de-natal.mp4', destination: `${storage}/EV.mp4` },
+      { source: '/midia/videos/natal-pela-perspectiva-do-personagem.mp4', destination: `${storage}/EV%20%282%29.mp4` },
+    ];
+  },
   async redirects() {
     return [
       {
