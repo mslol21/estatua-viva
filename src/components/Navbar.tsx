@@ -10,11 +10,15 @@ const links = [
   { label: 'Ouro', href: '/#estilo-ouro', image: '/portfolio/ouro.webp' },
   { label: 'Branca', href: '/#estilo-branca', image: '/portfolio/branca.webp' },
   { label: 'Prata', href: '/#estilo-prata', image: '/portfolio/prata.webp' },
+  { label: 'Cultura', href: '/eventos-culturais', image: '/images/estatuas-vivas/estatua-viva-colheita-terracota.webp' },
   { label: 'Equipe', href: '/equipe', image: undefined },
 ];
 
 const mobileLinks = [
   { label: 'Eventos Corporativos', href: '/eventos-corporativos' },
+  { label: 'Eventos Culturais', href: '/eventos-culturais' },
+  { label: 'Eventos Públicos e Prefeituras', href: '/eventos-publicos' },
+  { label: 'Campanhas Institucionais', href: '/campanhas-institucionais' },
   { label: 'Confraternização de Empresa', href: '/confraternizacao-empresa' },
   { label: 'Festas de Fim de Ano', href: '/fim-de-ano' },
   { label: 'Especial de Natal', href: '/natal' },
