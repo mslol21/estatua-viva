@@ -11,7 +11,7 @@
 .motion-value-card::after { content: ''; position: absolute; inset: -1px; border: 1px solid transparent; border-radius: inherit; pointer-events: none; background: radial-gradient(260px circle at var(--card-mouse-x,50%) var(--card-mouse-y,50%),#dfbd7c99,transparent 70%) border-box; -webkit-mask: linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask: linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0); mask-composite: exclude; opacity: 0; transition: opacity .3s; }
 .motion-value-card:hover::after { opacity: 1; }
 .event-detail { animation: panelSlideIn .28s cubic-bezier(.22,1,.36,1); }
-@keyframes panelSlideIn { from { opacity: 0; transform: translateY(12px); filter: blur(4px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+@keyframes panelSlideIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 .event-choice { position: relative; }
 .event-choice::before { content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 3px; background: #dfbd7c; box-shadow: 0 0 14px #dfbd7c66; transform: scaleY(0); transition: transform .3s ease; }
 .event-choice.is-active::before { transform: scaleY(1); }
@@ -143,7 +143,8 @@
 
 .neon-gold-pulse,
 [data-orbit-card][aria-hidden="false"] {
-  animation: neonGoldPulse 3.2s ease-in-out infinite;
+  /* Sombra dourada estática: evita repinturas de box-shadow a cada frame. */
+  box-shadow: 0 0 22px rgba(223, 189, 124, 0.35), 0 18px 45px rgba(0, 0, 0, 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {
