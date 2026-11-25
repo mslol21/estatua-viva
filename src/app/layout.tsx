@@ -102,7 +102,7 @@ export default function RootLayout({
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8791614255289045"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         <a href="#conteudo" className="skip-link">Pular para o conteúdo</a>
         <NoiseOverlay />
