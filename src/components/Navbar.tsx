@@ -11,12 +11,14 @@ const links = [
   { label: 'Branca', href: '/#estilo-branca', image: '/portfolio/branca.webp' },
   { label: 'Prata', href: '/#estilo-prata', image: '/portfolio/prata.webp' },
   { label: 'Cultura', href: '/eventos-culturais', image: '/images/estatuas-vivas/estatua-viva-colheita-terracota.webp' },
+  { label: 'Acervo', href: '/acervo-artistico', image: '/images/estatuas-vivas/estatua-viva-musa-lira-ouro.webp' },
   { label: 'Equipe', href: '/equipe', image: undefined },
 ];
 
 const mobileLinks = [
   { label: 'Eventos Corporativos', href: '/eventos-corporativos' },
   { label: 'Eventos Culturais', href: '/eventos-culturais' },
+  { label: 'Acervo Artístico', href: '/acervo-artistico' },
   { label: 'Eventos Públicos e Prefeituras', href: '/eventos-publicos' },
   { label: 'Campanhas Institucionais', href: '/campanhas-institucionais' },
   { label: 'Confraternização de Empresa', href: '/confraternizacao-empresa' },
